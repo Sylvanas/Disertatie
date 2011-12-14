@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="models/|views/|controllers/|views/First/|stores/" kind="src" path="client/app"/>
+	<classpathentry kind="src" path="client/app/controllers"/>
+	<classpathentry kind="src" path="client/app/models"/>
+	<classpathentry kind="src" path="client/app/stores"/>
+	<classpathentry excluding="First/" kind="src" path="client/app/views"/>
+	<classpathentry kind="src" path="client/app/views/First"/>
+	<classpathentry kind="src" path="client/lib"/>
+	<classpathentry kind="src" path="cloud"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

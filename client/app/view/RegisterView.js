@@ -1,0 +1,56 @@
+Ext.define('App.view.RegisterView', {
+    extend: 'Ext.Panel',
+    title: "Register View",
+    alias: "widget.RegisterView",
+    	config: {
+    		layout: { type: 'vbox', align: 'stretch' },
+		items: [
+		    { cls: 'logo', dock: 'top', height: 48 },
+			{
+				xtype : 'textfield',
+				id: 'RegisterViewUsernameField',
+				name : 'username',
+				style : 'margin: 10px',
+				placeHolder : 'Username'
+			},
+			{
+				xtype : 'emailfield',
+				id: 'RegisterViewEmailField',
+				name : 'email',
+				style : 'margin: 10px',
+				placeHolder : 'Email'
+			},
+			{
+				xtype : 'passwordfield',
+				id: 'RegisterViewPassField',
+				name : 'password',
+				style : 'margin: 10px',
+				placeHolder : 'Password'
+			},
+			{
+				xtype : 'passwordfield',
+				id: 'RegisterViewConfirmPassField',
+				name : 'confirmPassword',
+				style : 'margin: 10px',
+				placeHolder : 'Confirm Password'
+			},
+			{
+				xtype : 'button',
+				text: 'RegisterViewLoginButton',
+				id: 'goToLogin',
+				style : 'margin: 10px',
+			},
+    		{
+    			xtype : 'button',
+    			text: 'RegisterViewRegisterButton',
+    			id: 'registerButton',
+    			ui: 'action',
+    			style : 'margin: 10px',
+    		}
+		]
+	},
+	initialize: function() {
+		console.log('initialize register view');
+		this.callParent();
+	}
+});
