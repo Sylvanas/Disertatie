@@ -1,16 +1,14 @@
 Ext.define('App.view.HomeView', {
     extend: 'Ext.Panel',
-    layout: 'vbox',
     title: "Home View",
     alias: "widget.HomeView",
     config: {
-    		layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		    { cls: 'logo', dock: 'top', height: 48 },
     		{
     			xtype : 'button',
-    			text: 'Show Friend Location',
-    			id: 'HomeViewShowLocationButton',
+    			text: 'Show Friend On Map',
+    			id: 'HomeViewShowOnMapButton',
     			style : 'margin: 10px',
     		},
     		{
@@ -42,7 +40,6 @@ Ext.define('App.view.HomeView', {
 		]
 	},
 	initialize: function() {
-		console.log('initialize home view');
 		this.callParent();
 	}
 });

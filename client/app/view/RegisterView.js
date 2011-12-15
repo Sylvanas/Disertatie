@@ -10,40 +10,40 @@ Ext.define('App.view.RegisterView', {
 				xtype : 'textfield',
 				id: 'RegisterViewUsernameField',
 				name : 'username',
-				style : 'margin: 10px',
+				style : 'margin: 10px; height: 30px;',
 				placeHolder : 'Username'
 			},
 			{
 				xtype : 'emailfield',
 				id: 'RegisterViewEmailField',
 				name : 'email',
-				style : 'margin: 10px',
+				style : 'margin: 10px; height: 30px;',
 				placeHolder : 'Email'
 			},
 			{
 				xtype : 'passwordfield',
 				id: 'RegisterViewPassField',
 				name : 'password',
-				style : 'margin: 10px',
+				style : 'margin: 10px; height: 30px;',
 				placeHolder : 'Password'
 			},
 			{
 				xtype : 'passwordfield',
 				id: 'RegisterViewConfirmPassField',
 				name : 'confirmPassword',
-				style : 'margin: 10px',
+				style : 'margin: 10px; height: 30px;',
 				placeHolder : 'Confirm Password'
 			},
 			{
 				xtype : 'button',
-				text: 'RegisterViewLoginButton',
-				id: 'goToLogin',
+				text: 'Go To Login',
+				id: 'RegisterViewLoginButton',
 				style : 'margin: 10px',
 			},
     		{
     			xtype : 'button',
-    			text: 'RegisterViewRegisterButton',
-    			id: 'registerButton',
+    			text: 'Register',
+    			id: 'RegisterViewRegisterButton',
     			ui: 'action',
     			style : 'margin: 10px',
     		}

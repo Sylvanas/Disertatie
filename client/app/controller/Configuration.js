@@ -2,7 +2,6 @@ Ext.define('App.controller.Configuration', {
     extend: 'Ext.app.Controller',	
     views: ['ConfigurationView'],
     init: function() {
-        console.log('Init home controller');
 		// Start listening for events on views
 		this.control({
 			'#ConfigurationViewBackButton': { 'tap': function () {

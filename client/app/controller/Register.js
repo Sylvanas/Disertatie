@@ -2,7 +2,6 @@ Ext.define('App.controller.Register', {
     extend: 'Ext.app.Controller',	
     views: ['RegisterView'],
     init: function() {
-        console.log('Init home controller');
 		// Start listening for events on views
 		this.control({
 			'#RegisterViewLoginButton': { 'tap': function () {

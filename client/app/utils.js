@@ -11,23 +11,19 @@ Ext.define('ViewChanger', {
         }
     },
     
-    changeView: function(target) {
+    changeView: function(target, durationAnimation) {
+    	var speed = 400;
+    	if(durationAnimation!=null){
+    		speed = durationAnimation;
+    	}
     	var source = this.getView().getActiveItem().xtype;
         var direction = this.getViews().indexOf(target) > this.getViews().indexOf(source) ? true : false;
         this.getView().getLayout().setAnimation({
 	        type: 'slide',
-	        duration: 400,
+	        duration: speed,
 	        reverse: direction
 	    });
     	this.getView().setActiveItem(this.getViews().indexOf(target));
     },
-
-    speak0: function() {
-    	//alert('sdf');
-        //alert(this.getView());
-    },
     
-    speak: function() {
-        this.speak0();
-    }
 });

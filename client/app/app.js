@@ -8,14 +8,17 @@ Ext.Loader.setConfig({ enabled: true });
 ]);*/
 
 Ext.application({
-	phoneStartupScreen: 'images/sencha_logo.png',
+	//phoneStartupScreen: 'images/sencha_logo.png',
 	name: 'App',        
 	controllers: [
 				  'Login',
 			      'Register',
 	              'Home',
 	              'Configuration',
-	              ],	
+	              'Map',
+	              'ChangePassword',
+	              'ManageRequests',
+	              ],
 	initialize: function () {
 		this.callParent();
 	},	
@@ -29,11 +32,13 @@ Ext.application({
 			    { xtype: 'RegisterView' },
                 { xtype: 'HomeView' },
                 { xtype: 'ConfigurationView' },
+                { xtype: 'MapView' },
+                { xtype: 'ChangePasswordView' },
+                { xtype: 'ManageRequestsView' },
             ]
 		});
-		App.mainView.setActiveItem(2);
+		App.mainView.setActiveItem(0);
 		App.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
-		App.viewChanger.speak();
     }
 });
 

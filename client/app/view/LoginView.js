@@ -10,14 +10,15 @@ Ext.define('App.view.LoginView', {
     			xtype : 'textfield',
     			id: 'LoginViewUsernameField',
     			name : 'username',
-    			style : 'margin: 10px',
+    			style : 'margin: 10px; height: 30px;',
     			placeHolder : 'Username'
     		},
     		{
     			xtype : 'passwordfield',
     			id: 'LoginViewPassField',
     			name : 'password',
-    			style : 'margin: 10px',
+    			height: 30,
+    			style : 'margin: 10px; height: 30px;',
     			placeHolder : 'Password'
     		},
     		{
