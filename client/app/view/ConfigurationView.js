@@ -7,12 +7,7 @@ Ext.define('App.view.ConfigurationView', {
     		layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		    { cls: 'logo', dock: 'top', height: 48 },
-		    {
-    			xtype : 'button',
-    			text: 'back',
-    			id: 'ConfigurationViewBackButton',
-    			style : 'margin: 10px',
-    		},
+		    {xtype: 'spacer'},
     		{
     			xtype : 'button',
     			text: 'Manage Sound Alert',
@@ -26,6 +21,12 @@ Ext.define('App.view.ConfigurationView', {
     			style : 'margin: 10px',
     		},
 		    {xtype: 'spacer'},
+		    {
+    			xtype : 'button',
+    			text: 'Back',
+    			id: 'ConfigurationViewBackButton',
+    			style : 'margin: 10px',
+    		},
 		]
 	},
 	initialize: function() {

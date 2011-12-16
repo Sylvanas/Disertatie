@@ -23,6 +23,7 @@ Ext.define('App.view.ChangePasswordView', {
 					xtype : 'button',
 					text: 'Change Password',
 					id: 'ChangePasswordViewChangePasswordButton',
+					ui: 'action',
 					style : 'margin: 10px',
 				},
 				{xtype: 'spacer'},

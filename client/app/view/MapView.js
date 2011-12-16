@@ -8,7 +8,6 @@ Ext.define('App.view.MapView', {
 				{
 					xtype : 'toolbar',
 					ui: 'light',
-					title: '',
 					layout: { pack: 'center' },
 					items : [ 
 								{
@@ -16,6 +15,12 @@ Ext.define('App.view.MapView', {
 									text: 'Back',
 									id: 'MapViewBackButton',
 									ui: 'back',
+								},
+								{xtype: 'spacer'},
+								{
+									xtype : 'button',
+									text: 'Show Last Locations',
+									id: 'MapViewShowLastLocationsButton',
 								}
 					         ]
 				},
