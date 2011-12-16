@@ -6,7 +6,7 @@ Ext.define('App.view.ChangePasswordView', {
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		        { cls: 'logo', dock: 'top', height: 48 },
-				{xtype: 'spacer'},
+				{ xtype: 'spacer'},
 				{
 					xtype : 'textfield',
 					id: 'ChangePasswordViewNewPasswordField',
@@ -26,7 +26,7 @@ Ext.define('App.view.ChangePasswordView', {
 					ui: 'action',
 					style : 'margin: 10px',
 				},
-				{xtype: 'spacer'},
+				{ xtype: 'spacer'},
 				{
 					xtype : 'button',
 					text: 'Cancel',

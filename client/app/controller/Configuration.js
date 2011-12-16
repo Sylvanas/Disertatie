@@ -10,6 +10,7 @@ Ext.define('App.controller.Configuration', {
 			},
 			
 			'#ConfigurationViewManageSoundAlertButton': { 'tap': function () {
+				App.viewChanger.changeView(App.view.SoundAlertView.xtype);
 				}
 			},
 			
