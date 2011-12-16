@@ -19,6 +19,13 @@ Ext.define('App.view.ManageRequestsView', {
 								}
 					         ]
 				},
+				{
+					xtype: 'list',
+	                store: 'Requests',
+	                onItemDisclosure: function(record, btn, index) {
+	                },
+	                itemTpl: '<div class="contact"><strong>{id}</strong> {name}</div>'
+		        },
 		]
 	},
 	initialize: function() {	

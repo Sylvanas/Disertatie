@@ -18,6 +18,8 @@ Ext.application({
 	              'Map',
 	              'ChangePassword',
 	              'ManageRequests',
+	              'SoundAlert',
+	              'ChangeLanguage',
 	              ],
 	initialize: function () {
 		this.callParent();
@@ -35,9 +37,11 @@ Ext.application({
                 { xtype: 'MapView' },
                 { xtype: 'ChangePasswordView' },
                 { xtype: 'ManageRequestsView' },
+                { xtype: 'SoundAlertView' },
+                { xtype: 'ChangeLanguageView' },
             ]
 		});
-		App.mainView.setActiveItem(0);
+		App.mainView.setActiveItem(2);
 		App.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     }
 });

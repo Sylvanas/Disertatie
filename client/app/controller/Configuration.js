@@ -14,7 +14,8 @@ Ext.define('App.controller.Configuration', {
 				}
 			},
 			
-			'#ConfigurationViewChangeLanguadgeButton': { 'tap': function () {
+			'#ConfigurationViewChangeLanguageButton': { 'tap': function () {
+				App.viewChanger.changeView(App.view.ChangeLanguageView.xtype);
 				}
 			},
 
