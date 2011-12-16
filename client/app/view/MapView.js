@@ -27,6 +27,8 @@ Ext.define('App.view.MapView', {
 					mapOptions : {
 						center : new google.maps.LatLng(0, 0),
 						zoom : 14,
+						panControl: false,
+                        zoomControl: false,
 						mapTypeId : google.maps.MapTypeId.ROADMAP,
 						navigationControl: true,
 						navigationControlOptions: {style: google.maps.NavigationControlStyle.DEFAULT}

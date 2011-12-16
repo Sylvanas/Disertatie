@@ -34,19 +34,20 @@ Ext.define('App.view.RegisterView', {
 				style : 'margin: 10px; height: 30px;',
 				placeHolder : 'Confirm Password'
 			},
-			{
-				xtype : 'button',
-				text: 'Go To Login',
-				id: 'RegisterViewLoginButton',
-				style : 'margin: 10px',
-			},
     		{
     			xtype : 'button',
     			text: 'Register',
     			id: 'RegisterViewRegisterButton',
     			ui: 'action',
     			style : 'margin: 10px',
-    		}
+    		},
+    		{xtype: 'spacer'},
+			{
+				xtype : 'button',
+				text: 'Cancel',
+				id: 'RegisterViewLoginButton',
+				style : 'margin: 10px',
+			},
 		]
 	},
 	initialize: function() {

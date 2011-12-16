@@ -5,8 +5,9 @@ Ext.define('App.view.LoginView', {
     	config: {
     		layout: { type: 'vbox', align: 'stretch' },
 		items: [
-		        { cls: 'logo', dock: 'top', height: 48 },
-		        {
+		   { cls: 'logo', dock: 'top', height: 48 },
+		   {xtype: 'spacer'},
+		   {
     			xtype : 'textfield',
     			id: 'LoginViewUsernameField',
     			name : 'username',
