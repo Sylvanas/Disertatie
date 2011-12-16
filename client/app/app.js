@@ -20,6 +20,7 @@ Ext.application({
 	              'ManageRequests',
 	              'SoundAlert',
 	              'ChangeLanguage',
+	              'EditRequest',
 	              ],
 	initialize: function () {
 		this.callParent();
@@ -39,6 +40,7 @@ Ext.application({
                 { xtype: 'ManageRequestsView' },
                 { xtype: 'SoundAlertView' },
                 { xtype: 'ChangeLanguageView' },
+                { xtype: 'EditRequestView' },
             ]
 		});
 		App.mainView.setActiveItem(2);

@@ -23,6 +23,7 @@ Ext.define('App.view.ManageRequestsView', {
 					xtype: 'list',
 	                store: 'Requests',
 	                onItemDisclosure: function(record, btn, index) {
+	                	App.viewChanger.changeView(App.view.EditRequestView.xtype);
 	                },
 	                itemTpl: '<div class="contact"><strong>{id}</strong> {name}</div>'
 		        },
