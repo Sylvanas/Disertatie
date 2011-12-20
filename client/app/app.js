@@ -15,12 +15,13 @@ Ext.application({
 			      'Register',
 	              'Home',
 	              'Configuration',
-	              'Map',
 	              'ChangePassword',
 	              'ManageRequests',
 	              'SoundAlert',
 	              'ChangeLanguage',
 	              'EditRequest',
+	              'SelectFriend',
+	              'Map',
 	              ],
 	initialize: function () {
 		this.callParent();
@@ -35,12 +36,13 @@ Ext.application({
 			    { xtype: 'RegisterView' },
                 { xtype: 'HomeView' },
                 { xtype: 'ConfigurationView' },
-                { xtype: 'MapView' },
                 { xtype: 'ChangePasswordView' },
                 { xtype: 'ManageRequestsView' },
                 { xtype: 'SoundAlertView' },
                 { xtype: 'ChangeLanguageView' },
                 { xtype: 'EditRequestView' },
+                { xtype: 'SelectFriendView' },
+                { xtype: 'MapView' },
             ]
 		});
 		App.Global = Ext.create('Global');

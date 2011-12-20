@@ -1,7 +1,7 @@
-Ext.define('App.view.ManageRequestsView', {
+Ext.define('App.view.SelectFriendView', {
     extend: 'Ext.Panel',
-    title: "ManageRequests View",
-    alias: "widget.ManageRequestsView",
+    title: "SelectFriend View",
+    alias: "widget.SelectFriendView",
     	config: {
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
@@ -14,18 +14,18 @@ Ext.define('App.view.ManageRequestsView', {
 								{
 									xtype : 'button',
 									text: 'Back',
-									id: 'ManageRequestsViewBackButton',
+									id: 'SelectFriendViewBackButton',
 									ui: 'back',
-								}
+								},
 					         ]
 				},
 				{
 					xtype: 'list',
-	                store: 'Requests',
+	                store: 'SelectFriend',
+	                id: 'SelectFriendViewList',
 	                onItemDisclosure: function(record, btn, index) {
-	                	App.Global.changeView(App.view.EditRequestView.xtype);
 	                },
-	                itemTpl: '<div class="contact"><strong>{id}</strong> {name}</div>'
+	                itemTpl: '<div class="contact"><strong>{name}</strong></div>'
 		        },
 		]
 	},

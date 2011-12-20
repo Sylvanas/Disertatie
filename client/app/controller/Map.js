@@ -5,7 +5,7 @@ Ext.define('App.controller.Map', {
     init: function() {
 		this.control({
 			'#MapViewBackButton': { 'tap': function () {
-				App.Global.changeView(App.view.HomeView.xtype);
+				App.Global.changeView(App.view.SelectFriendView.xtype);
 				this.clearMapObjects();
 				}
 			},
@@ -22,8 +22,7 @@ Ext.define('App.controller.Map', {
 		});
     },
     
-    map: App.Global.map,
-    currentMarkers: new Array(),
+    markers: new Array(),
 	currentRoad: null,
 	currentMap: null,
 	currentDirectionsDisplay: null,
@@ -31,7 +30,16 @@ Ext.define('App.controller.Map', {
 	currentMarkers: null,
     
     setMapObjects: function() {
-    	
+    	if(!App.map) return;
+    	//for(int i=0;i<Map)
+    	//var x = Ext.getStore('Map');
+    	//alert(x);
+		/*this.CurrentMarker = new google.maps.Marker({
+	        position: new google.maps.LatLng(App.clientsView.CurrentClientLocation['latitude'], App.clientsView.CurrentClientLocation['longitude']),
+	        title : record.get('name'),
+	        map: this.CurrentMap
+	    });
+		this.CurrentMap.panTo(new google.maps.LatLng(App.clientsView.CurrentClientLocation['latitude'], App.clientsView.CurrentClientLocation['longitude']));*/
     },
     
     clearMapObjects: function() {

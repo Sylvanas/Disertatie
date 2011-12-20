@@ -16,8 +16,9 @@ Ext.define('App.controller.Home', {
     init: function() {
 		this.control({	
 			'#HomeViewShowOnMapButton': { 'tap': function () {
-				App.Global.changeView(App.view.MapView.xtype);
-				this.getController('Map').setMapObjects();
+				//TODO: implement some logic here, might want to go directly to MapView
+				App.Global.changeView(App.view.SelectFriendView.xtype);
+				//this.getController('Map').setMapObjects();
 				}
 			},
 			
