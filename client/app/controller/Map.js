@@ -31,15 +31,37 @@ Ext.define('App.controller.Map', {
     
     setMapObjects: function() {
     	if(!App.map) return;
-    	//for(int i=0;i<Map)
-    	//var x = Ext.getStore('Map');
-    	//alert(x);
+    	var map = Ext.getStore('Map');
+    	if(map.getCount()>0){
+    		var record = map.getAt(0);
+    		var firstMarker = new google.maps.Marker({
+    	        position: new google.maps.LatLng(record.get('latitude'), record.get('longitude')),
+    	        title : 'title',
+    	        map: App.map
+    	    });
+    		this.markers.push(firstMarker);
+    	}
+	
+    	/*for(var i=1;i<map.getCount();i++){
+    		var currentMarker = new google.maps.Marker({
+    	        position: new google.maps.LatLng(App.clientsView.CurrentClientLocation['latitude'], App.clientsView.CurrentClientLocation['longitude']),
+    	        title : record.get('name'),
+    	        map: null
+    	    });
+    	}*/
+
 		/*this.CurrentMarker = new google.maps.Marker({
 	        position: new google.maps.LatLng(App.clientsView.CurrentClientLocation['latitude'], App.clientsView.CurrentClientLocation['longitude']),
 	        title : record.get('name'),
 	        map: this.CurrentMap
 	    });
 		this.CurrentMap.panTo(new google.maps.LatLng(App.clientsView.CurrentClientLocation['latitude'], App.clientsView.CurrentClientLocation['longitude']));*/
+    },
+    
+    centerMap: function() {
+		if(this.markers.length>0){
+    		App.map.panTo(this.markers[0].getPosition());
+    	}
     },
     
     clearMapObjects: function() {

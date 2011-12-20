@@ -30,7 +30,6 @@ Ext.define('App.view.MapView', {
 				    id: 'applicationMap',
 				    useCurrentLocation: false,
 					mapOptions : {
-						center : new google.maps.LatLng(0, 0),
 						zoom : 14,
 						panControl: false,
                         zoomControl: false,
