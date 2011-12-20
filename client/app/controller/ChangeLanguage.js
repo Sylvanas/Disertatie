@@ -1,6 +1,7 @@
 Ext.define('App.controller.ChangeLanguage', {
     extend: 'Ext.app.Controller',	
     views: ['ChangeLanguageView'],
+    stores: ['Languages'],
     init: function() {
 		// Start listening for events on views
 		this.control({
