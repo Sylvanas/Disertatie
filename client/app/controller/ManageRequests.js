@@ -6,7 +6,7 @@ Ext.define('App.controller.ManageRequests', {
 		// Start listening for events on views
 		this.control({
 			'#ManageRequestsViewBackButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.HomeView.xtype);
+				App.Global.changeView(App.view.HomeView.xtype);
 				}
 			},
 		});

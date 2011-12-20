@@ -18,17 +18,17 @@ Ext.define('App.controller.Login', {
 		// Start listening for events on views
 		this.control({		
 			'#LoginViewLoginButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.HomeView.xtype);
+				App.Global.changeView(App.view.HomeView.xtype);
 				}
 			},
 			
 			'#LoginViewRegisterButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.RegisterView.xtype);
+				App.Global.changeView(App.view.RegisterView.xtype);
 				}
 			},
 			
 			'#LoginViewForgotPasswordButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.RegisterView.xtype);
+				App.Global.changeView(App.view.RegisterView.xtype);
 				}
 			},
 		});

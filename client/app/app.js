@@ -43,8 +43,8 @@ Ext.application({
                 { xtype: 'EditRequestView' },
             ]
 		});
+		App.Global = Ext.create('Global');
 		App.mainView.setActiveItem(2);
-		App.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     }
 });
 

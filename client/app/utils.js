@@ -27,3 +27,19 @@ Ext.define('ViewChanger', {
     },
     
 });
+
+Ext.define('Global', {
+    config: {
+        map: null,
+        viewChanger: null,
+    },
+
+    constructor: function() {   	
+    	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
+    },
+    
+    changeView: function(target, durationAnimation) {
+    	this.viewChanger.changeView(target, durationAnimation);
+    },
+    
+});

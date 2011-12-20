@@ -43,12 +43,16 @@ Ext.define('App.view.MapView', {
 							drag: { fn: function() { event.cancelBubble = true; } }
 						},
 		                maprender : function(comp, map) {
+		                	App.Map = map;
 		                }
 	
 		            }
 				},
 		]
 	},
+	
+	method: function () {alert('from custom method');},
+	
 	initialize: function() {	
 		this.callParent();
 	       

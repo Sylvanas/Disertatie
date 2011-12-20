@@ -4,7 +4,7 @@ Ext.define('App.controller.SoundAlert', {
     init: function() {
 		this.control({
 			'#SoundAlertViewBackButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.ConfigurationView.xtype);
+				App.Global.changeView(App.view.ConfigurationView.xtype);
 				}
 			},
 			

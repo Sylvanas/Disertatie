@@ -5,12 +5,12 @@ Ext.define('App.controller.Register', {
 		// Start listening for events on views
 		this.control({
 			'#RegisterViewLoginButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.LoginView.xtype);
+				App.Global.changeView(App.view.LoginView.xtype);
 				}
 			},
 			
 			'#RegisterViewRegisterButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.HomeView.xtype);
+				App.Global.changeView(App.view.HomeView.xtype);
 				}
 			},
 		});

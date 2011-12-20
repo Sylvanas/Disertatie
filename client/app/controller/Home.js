@@ -16,27 +16,28 @@ Ext.define('App.controller.Home', {
     init: function() {
 		this.control({	
 			'#HomeViewShowOnMapButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.MapView.xtype);
+				App.Global.changeView(App.view.MapView.xtype);
+				this.getController('Map').setMapObjects();
 				}
 			},
 			
 			'#HomeViewManageRequestsButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.ManageRequestsView.xtype);
+				App.Global.changeView(App.view.ManageRequestsView.xtype);
 				}
 			},
 			
 			'#HomeViewChangePasswordButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.ChangePasswordView.xtype);
+				App.Global.changeView(App.view.ChangePasswordView.xtype);
 				}
 			},
 			
 			'#HomeViewConfigurationButton': { 'tap': function () {
-					App.viewChanger.changeView(App.view.ConfigurationView.xtype);
+					App.Global.changeView(App.view.ConfigurationView.xtype);
 				}
 			},
 				
 			'#HomeViewLogoutButton': { 'tap': function () {
-					App.viewChanger.changeView(App.view.LoginView.xtype);
+					App.Global.changeView(App.view.LoginView.xtype);
 				}
 			},
 		});

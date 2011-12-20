@@ -24,14 +24,14 @@ Ext.define('App.view.ChangeLanguageView', {
 								},
 					         ]
 				},
-				{
-					xtype: 'list',
-	                store: 'Languages',
-	                onItemDisclosure: function(record, btn, index) {
-	                	App.viewChanger.changeView(App.view.EditRequestView.xtype);
-	                },
-	                itemTpl: '<div class="contact"><strong>{name}</strong> </div>'
-		        }
+				/*{
+	        		xtype: 'selectfield',
+	        		store: 'Languages',
+	        		displayField: 'name', 
+	    			valueField: 'id', 
+	        		//placeHolder:'Language',
+	        		//style : 'margin: 10px',
+	        	},*/
 		]
 	},
 	initialize: function() {	

@@ -5,17 +5,17 @@ Ext.define('App.controller.Configuration', {
 		// Start listening for events on views
 		this.control({
 			'#ConfigurationViewBackButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.HomeView.xtype);
+				App.Global.changeView(App.view.HomeView.xtype);
 				}
 			},
 			
 			'#ConfigurationViewManageSoundAlertButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.SoundAlertView.xtype);
+				App.Global.changeView(App.view.SoundAlertView.xtype);
 				}
 			},
 			
 			'#ConfigurationViewChangeLanguageButton': { 'tap': function () {
-				App.viewChanger.changeView(App.view.ChangeLanguageView.xtype);
+				App.Global.changeView(App.view.ChangeLanguageView.xtype);
 				}
 			},
 
