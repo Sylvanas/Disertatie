@@ -24,7 +24,7 @@ Ext.define('App.controller.Map', {
     
     currentMarker: null,
     friendMarkers: new Array(),
-	currentRoad: null,
+	road: new Array(),
 	currentMap: null,
 	currentDirectionsDisplay: null,
 	currentDirectionsService: null,
@@ -32,10 +32,9 @@ Ext.define('App.controller.Map', {
     
     setMapObjects: function() {
     	if(!App.map) return;
-    	var map = Ext.getStore('Map');
-    	this.setMapMarkers(map);
-    	
-
+    	var mapStore = Ext.getStore('Map');
+    	this.setMapMarkers(mapStore);
+    	this.setRoute(mapStore);
     	this.centerMap();
     },
     
@@ -46,12 +45,12 @@ Ext.define('App.controller.Map', {
     		var firstMarker = this.setMarker(new google.maps.LatLng(record.get('latitude'), record.get('longitude')), 'Current friend location', "http://maps.google.com/mapfiles/marker"+String.fromCharCode(65)+".png");
     		this.friendMarkers.push(firstMarker);
     	}
-    	
     	for(var i=1;i<map.getCount();i++){
     		var record = map.getAt(i);
     		var marker = this.setMarker(new google.maps.LatLng(record.get('latitude'), record.get('longitude')), 'Location '+i, "http://maps.google.com/mapfiles/marker"+String.fromCharCode(65+i)+".png");
     		this.friendMarkers.push(marker);
     	}
+    	this.setMarkerInfotexts(map);
     },
     
     setMarker: function (latLng, title, icon, map) {
@@ -71,6 +70,100 @@ Ext.define('App.controller.Map', {
 	    });
     },
     
+	setMarkerInfotexts: function(map) {
+		App.friendMarkers = new Array();
+		App.infoWindows = new Array();
+		var numberOfMarkers = this.friendMarkers.length;
+		for(var i=0;i<numberOfMarkers;i++){
+			var record = map.getAt(i);
+			var friendInfotext = '<div id="content">'+'</div>'+
+				  '<h1 id="firstHeading">Friend location:'+
+				  '<div id="bodyContent">'+
+				  '<p>Coordinates: '+new google.maps.LatLng(record.get('latitude'), record.get('longitude'))+'</p>'+
+				  '<p>Time: '+record.get('time')+'</p>'+
+				  '</br>'+
+				  '</div></div>';
+			App.infoWindows.push(new google.maps.InfoWindow({
+				   content: friendInfotext
+			}));
+			App.friendMarkers.push(this.friendMarkers[i]);	
+	}
+		if(numberOfMarkers>0){
+			google.maps.event.addListener(this.friendMarkers[0], 'click', function() {
+				App.infoWindows[0].open(App.map, App.friendMarkers[0]);
+			});
+		}
+		if(numberOfMarkers>1){
+			google.maps.event.addListener(this.friendMarkers[1], 'click', function() {
+				App.infoWindows[1].open(App.map, App.friendMarkers[1]);
+			});
+		}
+		if(numberOfMarkers>2){
+			google.maps.event.addListener(this.friendMarkers[2], 'click', function() {
+				App.infoWindows[2].open(App.map, App.friendMarkers[2]);
+			});
+		}
+		if(numberOfMarkers>3){
+			google.maps.event.addListener(this.friendMarkers[3], 'click', function() {
+				App.infoWindows[3].open(App.map, App.friendMarkers[3]);
+			});
+		}
+		if(numberOfMarkers>4){
+			google.maps.event.addListener(this.friendMarkers[4], 'click', function() {
+				App.infoWindows[4].open(App.map, App.friendMarkers[4]);
+			});
+		}
+		if(numberOfMarkers>5){
+			google.maps.event.addListener(this.friendMarkers[5], 'click', function() {
+				App.infoWindows[5].open(App.map, App.friendMarkers[5]);
+			});
+		}
+		if(numberOfMarkers>6){
+			google.maps.event.addListener(this.friendMarkers[6], 'click', function() {
+				App.infoWindows[6].open(App.map, App.friendMarkers[6]);
+			});
+		}
+		if(numberOfMarkers>7){
+			google.maps.event.addListener(this.friendMarkers[7], 'click', function() {
+				App.infoWindows[7].open(App.map, App.friendMarkers[7]);
+			});
+		}
+		if(numberOfMarkers>8){
+			google.maps.event.addListener(this.friendMarkers[8], 'click', function() {
+				App.infoWindows[8].open(App.map, App.friendMarkers[8]);
+			});
+		}
+		if(numberOfMarkers>9){
+			google.maps.event.addListener(this.friendMarkers[9], 'click', function() {
+				App.infoWindows[9].open(App.map, App.friendMarkers[9]);
+			});
+		}
+		if(numberOfMarkers>10){
+			google.maps.event.addListener(this.friendMarkers[10], 'click', function() {
+				App.infoWindows[10].open(App.map, App.friendMarkers[10]);
+			});
+		}
+		if(numberOfMarkers>11){
+			google.maps.event.addListener(this.friendMarkers[11], 'click', function() {
+				App.infoWindows[11].open(App.map, App.friendMarkers[11]);
+			});
+		}
+	},
+	
+	setRoute: function(mapStore) {
+		for(var i=0;i<mapStore.getCount()-1;i++){
+		   var points = [new google.maps.LatLng(mapStore.getAt(i).get('latitude'), mapStore.getAt(i).get('longitude')),
+		                  new google.maps.LatLng(mapStore.getAt(i+1).get('latitude'), mapStore.getAt(i+1).get('longitude'))];
+		   this.road.push(new google.maps.Polyline({
+		          map: App.map,
+		          path: points,
+		          strokeColor: "purple",
+		          strokeWeight: 3.5,
+		          strokeOpacity: 1.0
+		        }));
+		}
+	},
+	
     centerMap: function() {
 		if(this.friendMarkers.length>0){
     		App.map.panTo(this.friendMarkers[0].getPosition());
@@ -87,7 +180,13 @@ Ext.define('App.controller.Map', {
     	for(var i=0;i<this.friendMarkers.length;i++){
     		this.friendMarkers[i].setMap(null);
     	}
+    	for(var i=0;i<this.road.length;i++){
+    		this.road[i].setMap(null);
+    	}
     	this.friendMarkers= new Array();
+    	this.road= new Array();
+    	App.friendMarkers = new Array();
+		App.infoWindows = new Array();
     },
 
 	onLaunch: function() {
