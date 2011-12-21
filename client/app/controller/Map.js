@@ -7,15 +7,19 @@ Ext.define('App.controller.Map', {
 			'#MapViewBackButton': { 'tap': function () {
 				App.Global.changeView(App.view.SelectFriendView.xtype);
 				this.clearMapObjects();
+				var button = Ext.getCmp('MapViewShowLastLocationsButton');
+				button.setText('Hide Last Locations');
 				}
 			},
 			
 			'#MapViewShowLastLocationsButton': { 'tap': function (button, event, opt) {
 				if(button.getText() == 'Show Last Locations') {
 						button.setText('Hide Last Locations');
+						this.showLastLocations();
 					}
 				else {
 					button.setText('Show Last Locations');
+					this.hideLastLocations();
 					}
 				}
 			},
@@ -167,8 +171,30 @@ Ext.define('App.controller.Map', {
     	}
     },
     
+    showLastLocations: function(){
+    	this.setLastLocationsVisibility(true);
+    },
+    
+    hideLastLocations: function(){
+    	this.setLastLocationsVisibility(false);
+    },
+    
+    setLastLocationsVisibility: function(visibility) {
+    	var map = App.map;
+    	if(!visibility){
+    		map = null;
+    	}
+    	for(var i=1;i<this.friendMarkers.length;i++){
+    		this.friendMarkers[i].setMap(map);
+    	}
+    	for(var i=0;i<this.road.length;i++){
+    		this.road[i].setMap(map);
+    	}
+    },
+    
     clearMapObjects: function() {
     	this.clearMapMarkers();
+    	this.clearMapRoad();
     },
     
     clearMapMarkers: function() {
@@ -177,13 +203,18 @@ Ext.define('App.controller.Map', {
     	for(var i=0;i<this.friendMarkers.length;i++){
     		this.friendMarkers[i].setMap(null);
     	}
+    	
+    	this.friendMarkers= new Array();
+    	
+    	App.friendMarkers = new Array();
+		App.infoWindows = new Array();
+    },
+    
+    clearMapRoad: function(){
     	for(var i=0;i<this.road.length;i++){
     		this.road[i].setMap(null);
     	}
-    	this.friendMarkers= new Array();
     	this.road= new Array();
-    	App.friendMarkers = new Array();
-		App.infoWindows = new Array();
     },
 
 	onLaunch: function() {

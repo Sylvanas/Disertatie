@@ -19,7 +19,7 @@ Ext.define('App.view.MapView', {
 								{xtype: 'spacer'},
 								{
 									xtype : 'button',
-									text: 'Show Last Locations',
+									text: 'Hide Last Locations',
 									id: 'MapViewShowLastLocationsButton',
 								}
 					         ]
