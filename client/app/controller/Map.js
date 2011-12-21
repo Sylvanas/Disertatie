@@ -25,10 +25,7 @@ Ext.define('App.controller.Map', {
     currentMarker: null,
     friendMarkers: new Array(),
 	road: new Array(),
-	currentMap: null,
-	currentDirectionsDisplay: null,
-	currentDirectionsService: null,
-	currentMarkers: null,
+	friendName: null,
     
     setMapObjects: function() {
     	if(!App.map) return;
@@ -42,7 +39,7 @@ Ext.define('App.controller.Map', {
     	this.currentMarker = this.setMarker(App.Global.getCurrentLocation(), 'My location');
     	if(map.getCount()>0){
     		var record = map.getAt(0);
-    		var firstMarker = this.setMarker(new google.maps.LatLng(record.get('latitude'), record.get('longitude')), 'Current friend location', "http://maps.google.com/mapfiles/marker"+String.fromCharCode(65)+".png");
+    		var firstMarker = this.setMarker(new google.maps.LatLng(record.get('latitude'), record.get('longitude')), this.friendName+"'s current location", "http://maps.google.com/mapfiles/marker"+String.fromCharCode(65)+".png");
     		this.friendMarkers.push(firstMarker);
     	}
     	for(var i=1;i<map.getCount();i++){
@@ -77,7 +74,7 @@ Ext.define('App.controller.Map', {
 		for(var i=0;i<numberOfMarkers;i++){
 			var record = map.getAt(i);
 			var friendInfotext = '<div id="content">'+'</div>'+
-				  '<h1 id="firstHeading">Friend location:'+
+				  "<h1>" + this.friendName + "'s location:"+
 				  '<div id="bodyContent">'+
 				  '<p>Coordinates: '+new google.maps.LatLng(record.get('latitude'), record.get('longitude'))+'</p>'+
 				  '<p>Time: '+record.get('time')+'</p>'+
