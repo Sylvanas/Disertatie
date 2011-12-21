@@ -11,9 +11,8 @@ Ext.define('App.controller.SelectFriend', {
 			},
 			
 			'#SelectFriendViewList': { 'disclose': function (record,  target,  index,  e,  eOpts) {
-				this.getController('Map').setMapObjects();
 				App.Global.changeView(App.view.MapView.xtype);
-				this.getController('Map').centerMap();
+				this.getController('Map').setMapObjects();
 				}
 			},
 		});

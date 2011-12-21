@@ -41,4 +41,8 @@ Ext.define('Global', {
     	this.viewChanger.changeView(target, durationAnimation);
     },
     
+    getCurrentLocation: function() {
+    	return new google.maps.LatLng(0, 0);
+    },
+    
 });
