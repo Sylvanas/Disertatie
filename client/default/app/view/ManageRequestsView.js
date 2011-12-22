@@ -22,6 +22,7 @@ Ext.define('App.view.ManageRequestsView', {
 				{
 					xtype: 'list',
 	                store: 'Requests',
+	                flex: 1,
 	                onItemDisclosure: function(record, btn, index) {
 	                	App.Global.changeView(App.view.EditRequestView.xtype);
 	                },

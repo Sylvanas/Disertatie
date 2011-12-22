@@ -1,4 +1,4 @@
-//Ext.Loader.setConfig({ enabled: true });
+Ext.Loader.setConfig({ enabled: true });
 
 Ext.application({
 	//phoneStartupScreen: 'images/sencha_logo.png',
