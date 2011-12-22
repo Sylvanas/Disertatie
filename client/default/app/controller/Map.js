@@ -39,19 +39,19 @@ Ext.define('App.controller.Map', {
     	this.centerMap();
     },
     
-    setMapMarkers: function(map){
+    setMapMarkers: function(mapStore){
     	this.currentMarker = this.setMarker(App.Global.getCurrentLocation(), 'My location');
-    	if(map.getCount()>0){
-    		var record = map.getAt(0);
+    	if(mapStore.getCount()>0){
+    		var record = mapStore.getAt(0);
     		var firstMarker = this.setMarker(new google.maps.LatLng(record.get('latitude'), record.get('longitude')), this.friendName+"'s current location", "http://maps.google.com/mapfiles/marker"+String.fromCharCode(65)+".png");
     		this.friendMarkers.push(firstMarker);
     	}
-    	for(var i=1;i<map.getCount();i++){
-    		var record = map.getAt(i);
+    	for(var i=1;i<mapStore.getCount();i++){
+    		var record = mapStore.getAt(i);
     		var marker = this.setMarker(new google.maps.LatLng(record.get('latitude'), record.get('longitude')), 'Location '+i, "http://maps.google.com/mapfiles/marker"+String.fromCharCode(65+i)+".png");
     		this.friendMarkers.push(marker);
     	}
-    	this.setMarkerInfotexts(map);
+    	this.setMarkerInfotexts(mapStore);
     },
     
     setMarker: function (latLng, title, icon, map) {
@@ -71,12 +71,12 @@ Ext.define('App.controller.Map', {
 	    });
     },
     
-	setMarkerInfotexts: function(map) {
+	setMarkerInfotexts: function(mapStore) {
 		App.friendMarkers = new Array();
 		App.infoWindows = new Array();
 		var numberOfMarkers = this.friendMarkers.length;
 		for(var i=0;i<numberOfMarkers;i++){
-			var record = map.getAt(i);
+			var record = mapStore.getAt(i);
 			var friendInfotext = '<div id="content">'+'</div>'+
 				  "<h1>" + this.friendName + "'s location:"+
 				  '<div id="bodyContent">'+

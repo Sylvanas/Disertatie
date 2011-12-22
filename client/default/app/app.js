@@ -1,12 +1,5 @@
 //Ext.Loader.setConfig({ enabled: true });
 
-/*Ext.require([    
-    'Ext.XTemplate',
-    'Ext.Panel',
-	'Ext.Button',
-    'Ext.List'
-]);*/
-
 Ext.application({
 	//phoneStartupScreen: 'images/sencha_logo.png',
 	name: 'App',        
