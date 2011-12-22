@@ -9,5 +9,4 @@ Ext.define('App.store.SelectFriend', {
        	 {id: 'Aaron', name: 'Conran'},
        	 {id: 'Jamie', name: 'Avins1'}
        	 ],
-    autoLoad: true
 });
