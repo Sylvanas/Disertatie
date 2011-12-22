@@ -10,14 +10,36 @@ Ext.define('App.view.EditRequestView', {
 					ui: 'light',
 					title: '',
 					layout: { pack: 'center' },
-					items : [ 
-								{
+					items : [{
 									xtype : 'button',
 									text: 'Back',
 									id: 'EditRequestViewBackButton',
 									ui: 'back',
-								}
-					         ]
+								}]
+				},
+				{
+					xtype: 'fieldset',
+					style: 'margin:10px',
+					defaults: {
+						labelWidth: '35%',
+						style : 'height: 30px;',
+					},
+					items: [{
+					        	xtype: 'textfield',
+						        label: 'ID:',
+					        },
+					        {
+					        	xtype: 'textfield',
+					        	label: 'Name:'
+					        },
+					        {
+					        	xtype: 'checkboxfield',
+					        	label: 'Approved:'
+					        },
+					        {
+					        	xtype: 'checkboxfield',
+					        	label: 'IgnoreAlerts:'
+					        }],
 				},
 		]
 	},
