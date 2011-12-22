@@ -7,8 +7,6 @@ Ext.define('App.controller.SelectFriend', {
 			'#SelectFriendViewBackButton': { 'tap': function () {
 				this.getController('Map').setMapObjects();
 				App.Global.changeView(App.view.HomeView.xtype);
-				var mapStore = Ext.getStore('Map');
-				alert(mapStore.getAt(1).get('latitude'));
 				}
 			},
 			

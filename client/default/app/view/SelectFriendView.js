@@ -13,7 +13,7 @@ Ext.define('App.view.SelectFriendView', {
 					items : [ 
 								{
 									xtype : 'button',
-									text: 'Back1',
+									text: 'Back',
 									id: 'SelectFriendViewBackButton',
 									ui: 'back',
 								},
