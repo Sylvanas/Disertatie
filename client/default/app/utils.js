@@ -47,10 +47,8 @@ Ext.define('Global', {
     
     clearStore: function(store) {
     	var length = store.getCount();
-    	store.sync();
 		for(var i=0;i<length;i++) {
 			store.removeAt(0);
-			store.sync();
 		}
 	},
     
