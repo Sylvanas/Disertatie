@@ -33,6 +33,12 @@ Ext.define('App.controller.Login', {
     
     inputData: function() {
     	//TODO: check if data is valid
+    	var emailField = Ext.getCmp('LoginViewEmailField');
+		var passwordField = Ext.getCmp('LoginViewPassField');
+		if(!(emailField.getValue().length>0)){
+			Ext.Msg.alert('Invalid login data', "Please fill the email field");
+			return false;
+		}
     	return true;
     },
 
