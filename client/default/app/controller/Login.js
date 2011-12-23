@@ -27,7 +27,7 @@ Ext.define('App.controller.Login', {
 			'#LoginViewForgotPasswordButton': { 'tap': function () {
 				//TODO: implement this
 				Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
-					alert(email);
+					alert("Your current password was send to the specifyed email");
 				});
 				}
 			},
