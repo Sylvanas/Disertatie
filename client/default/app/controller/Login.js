@@ -1,24 +1,21 @@
 Ext.define('App.controller.Login', {
     extend: 'Ext.app.Controller',	
     views: ['LoginView'],
-	//stores: ['Stations'],
-    // These "refs" will generate "getters" for each of the view component instances
-    // e.g. getBottomField and getStationList
-	/*refs: [{
-		    selector: 'carousel > panel > #bottomInput',
-		    ref: 'bottomField'
-	        },
-            {
-            selector: 'carousel > list', 
-            ref: 'stationList'
-            }
-    ],*/
+    stores: ['Login'],
     init: function() {
-        console.log('Init home controller');
-		// Start listening for events on views
 		this.control({		
 			'#LoginViewLoginButton': { 'tap': function () {
-				App.Global.changeView(App.view.HomeView.xtype);
+				if(this.inputData()){
+					//TODO: implement login logic
+					var emailField = Ext.getCmp('LoginViewEmailField');
+					var passwordField = Ext.getCmp('LoginViewPassField');
+					//get the id from cloud
+					var loginData = { id: "sdfsdf", email: emailField.getValue(),  password: passwordField.getValue() };				
+					var loginStore = Ext.getStore('Login');
+					App.Global.clearStore(loginStore);
+					loginStore.add({ id: loginData['id'], email: loginData['email'],  password: loginData['password'] });
+					App.Global.changeView(App.view.HomeView.xtype);
+					}
 				}
 			},
 			
@@ -28,10 +25,15 @@ Ext.define('App.controller.Login', {
 			},
 			
 			'#LoginViewForgotPasswordButton': { 'tap': function () {
-				App.Global.changeView(App.view.RegisterView.xtype);
+				//TODO: message to fill email should appear
 				}
 			},
 		});
+    },
+    
+    inputData: function() {
+    	//TODO: check if data is valid
+    	return true;
     },
 
 	onLaunch: function() {

@@ -15,6 +15,7 @@ Ext.application({
 	              'EditRequest',
 	              'SelectFriend',
 	              'Map',
+	              'SendFriendRequest',
 	              ],
 	initialize: function () {
 		this.callParent();
@@ -36,10 +37,23 @@ Ext.application({
                 { xtype: 'EditRequestView' },
                 { xtype: 'SelectFriendView' },
                 { xtype: 'MapView' },
+                { xtype: 'SendFriendRequestView' },
             ]
 		});
+		this.startApp();
+    },
+    
+    startApp: function() {
+    	//var loginStore = Ext.getStore('Login');
+		//loginStore.sync();
+		/*if(loginStore.getCount>0){
+			App.mainView.setActiveItem(2);
+		}
+		else {
+			App.mainView.setActiveItem(0);
+		}*/
 		App.Global = Ext.create('Global');
-		App.mainView.setActiveItem(2);
-    }
+    	App.mainView.setActiveItem(0);
+    },
 });
 

@@ -1,6 +1,7 @@
 Ext.define('App.controller.Home', {
     extend: 'Ext.app.Controller',	
     views: ['HomeView'],
+    stores: ['Login'],
 	//stores: ['Stations'],
     // These "refs" will generate "getters" for each of the view component instances
     // e.g. getBottomField and getStationList
@@ -24,6 +25,11 @@ Ext.define('App.controller.Home', {
 			
 			'#HomeViewManageRequestsButton': { 'tap': function () {
 				App.Global.changeView(App.view.ManageRequestsView.xtype);
+				}
+			},
+			
+			'#HomeViewSendFriendRequestButton': { 'tap': function () {
+				App.Global.changeView(App.view.SendFriendRequestView.xtype);
 				}
 			},
 			

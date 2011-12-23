@@ -9,19 +9,25 @@ Ext.define('App.view.HomeView', {
 		    {xtype: 'spacer'},
     		{
     			xtype : 'button',
-    			text: 'Show Friend On Map',
+    			text: 'Show friend on map',
     			id: 'HomeViewShowOnMapButton',
     			style : 'margin: 10px',
     		},
     		{
     			xtype : 'button',
-    			text: 'Manage Requests',
+    			text: 'Manage requests',
     			id: 'HomeViewManageRequestsButton',
     			style : 'margin: 10px',
     		},
     		{
     			xtype : 'button',
-    			text: 'Change Password',
+    			text: 'Send friend request',
+    			id: 'HomeViewSendFriendRequestButton',
+    			style : 'margin: 10px',
+    		},
+    		{
+    			xtype : 'button',
+    			text: 'Change password',
     			id: 'HomeViewChangePasswordButton',
     			style : 'margin: 10px',
     		},

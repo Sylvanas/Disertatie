@@ -7,13 +7,6 @@ Ext.define('App.view.RegisterView', {
 		items: [
 		    { cls: 'logo', dock: 'top', height: 48 },
 			{
-				xtype : 'textfield',
-				id: 'RegisterViewUsernameField',
-				name : 'username',
-				style : 'margin: 10px; height: 30px;',
-				placeHolder : 'Username'
-			},
-			{
 				xtype : 'emailfield',
 				id: 'RegisterViewEmailField',
 				name : 'email',
