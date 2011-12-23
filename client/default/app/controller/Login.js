@@ -25,14 +25,17 @@ Ext.define('App.controller.Login', {
 			},
 			
 			'#LoginViewForgotPasswordButton': { 'tap': function () {
-				//TODO: message to fill email should appear
+				//TODO: implement this
+				Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
+					alert(email);
+				});
 				}
 			},
 		});
     },
     
     inputData: function() {
-    	//TODO: check if data is valid
+    	return true;
     	var emailField = Ext.getCmp('LoginViewEmailField');
 		var passwordField = Ext.getCmp('LoginViewPassField');
 		if(!(emailField.getValue().length>0)){
