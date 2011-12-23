@@ -5,7 +5,6 @@ Ext.define('App.controller.SelectFriend', {
     init: function() {
 		this.control({
 			'#SelectFriendViewBackButton': { 'tap': function () {
-				this.getController('Map').setMapObjects();
 				App.Global.changeView(App.view.HomeView.xtype);
 				}
 			},
