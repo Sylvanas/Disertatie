@@ -26,6 +26,7 @@ Ext.define('App.view.EditRequestView', {
 					xtype: 'formpanel',
 					id: 'EditRequestViewFormPanel',
 					style: 'margin:10px',
+					flex: 1,
 					defaults: {
 						labelWidth: '35%',
 						style : 'height: 30px;',
