@@ -8,7 +8,7 @@ Ext.define('App.view.LoginView', {
 		   { cls: 'logo', dock: 'top', height: 48 },
 		   {xtype: 'spacer'},
 		   {
-    			xtype : 'textfield',
+    			xtype : 'emailfield',
     			id: 'LoginViewEmailField',
     			name : 'email',
     			style : 'margin: 10px; height: 30px;',

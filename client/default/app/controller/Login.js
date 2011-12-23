@@ -39,6 +39,10 @@ Ext.define('App.controller.Login', {
 			Ext.Msg.alert('Invalid login data', "Please fill the email field");
 			return false;
 		}
+		if(!(passwordField.getValue().length>0)){
+			Ext.Msg.alert('Invalid login data', "Please fill the password field");
+			return false;
+		}
     	return true;
     },
 
