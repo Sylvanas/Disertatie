@@ -8,8 +8,7 @@ Ext.define('App.view.ChangeLanguageView', {
 				{
 					xtype : 'toolbar',
 					ui: 'light',
-					items : [ 
-								{
+					items : [{
 									xtype : 'button',
 									text: 'Back',
 									id: 'ChangeLanguageViewBackButton',
@@ -21,8 +20,7 @@ Ext.define('App.view.ChangeLanguageView', {
 									text: 'Save',
 									id: 'ChangeLanguageViewSaveButton',
 									ui: 'action',
-								},
-					         ]
+								}]
 				},
 				/*{
 	        		xtype: 'selectfield',

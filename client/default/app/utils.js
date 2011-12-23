@@ -45,4 +45,11 @@ Ext.define('Global', {
     	return new google.maps.LatLng(0, 0);
     },
     
+    clearStore: function(store) {
+    	var length = store.getCount();
+		for(var i=0;i<length;i++) {
+			store.removeAt(0);
+		}
+	},
+    
 });

@@ -8,17 +8,23 @@ Ext.define('App.view.EditRequestView', {
 				{
 					xtype : 'toolbar',
 					ui: 'light',
-					title: '',
-					layout: { pack: 'center' },
 					items : [{
 									xtype : 'button',
 									text: 'Back',
 									id: 'EditRequestViewBackButton',
 									ui: 'back',
+								},
+								{xtype: 'spacer'},
+								{
+									xtype : 'button',
+									text: 'Save',
+									id: 'EditRequestViewSaveButton',
+									ui: 'action',
 								}]
 				},
 				{
-					xtype: 'fieldset',
+					xtype: 'formpanel',
+					id: 'EditRequestViewFormPanel',
 					style: 'margin:10px',
 					defaults: {
 						labelWidth: '35%',
@@ -26,19 +32,25 @@ Ext.define('App.view.EditRequestView', {
 					},
 					items: [{
 					        	xtype: 'textfield',
+					        	disabled: true,
+					        	name: 'id',
 						        label: 'ID:',
 					        },
 					        {
 					        	xtype: 'textfield',
+					        	name: 'name',
 					        	label: 'Name:'
 					        },
 					        {
 					        	xtype: 'checkboxfield',
+					        	id: 'EditRequestViewApprovedField',
+					        	name: 'approved',
 					        	label: 'Approved:'
 					        },
 					        {
 					        	xtype: 'checkboxfield',
-					        	label: 'IgnoreAlerts:'
+					        	name: 'ignoreAlerts',
+					        	label: 'Ignore alerts:'
 					        }],
 				},
 		]

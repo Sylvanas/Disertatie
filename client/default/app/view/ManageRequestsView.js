@@ -21,12 +21,12 @@ Ext.define('App.view.ManageRequestsView', {
 				},
 				{
 					xtype: 'list',
+					id: 'ManageRequestsViewList',
 	                store: 'Requests',
 	                flex: 1,
 	                onItemDisclosure: function(record, btn, index) {
-	                	App.Global.changeView(App.view.EditRequestView.xtype);
 	                },
-	                itemTpl: '<div class="contact"><strong>{id}</strong> {name}</div>'
+	                itemTpl: '<div class="contact">{name}</div>'
 		        },
 		]
 	},
