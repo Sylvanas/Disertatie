@@ -28,7 +28,6 @@ Ext.define('App.view.EditRequestView', {
 					style: 'margin:10px',
 					flex: 1,
 					defaults: {
-						labelWidth: '35%',
 						style : 'height: 30px;',
 					},
 					items: [{
@@ -36,22 +35,26 @@ Ext.define('App.view.EditRequestView', {
 					        	disabled: true,
 					        	name: 'id',
 						        label: 'ID:',
+						        labelWidth: '20%',
 					        },
 					        {
 					        	xtype: 'textfield',
 					        	name: 'name',
-					        	label: 'Name:'
+					        	label: 'Name:',
+					        	labelWidth: '30%',
 					        },
 					        {
 					        	xtype: 'checkboxfield',
 					        	id: 'EditRequestViewApprovedField',
 					        	name: 'approved',
-					        	label: 'Approved:'
+					        	label: 'Approved:',
+					        	labelWidth: '40%',
 					        },
 					        {
 					        	xtype: 'checkboxfield',
 					        	name: 'ignoreAlerts',
-					        	label: 'Ignore alerts:'
+					        	label: 'Ignore alerts:',
+					        	labelWidth: '50%',
 					        }],
 				},
 		]
