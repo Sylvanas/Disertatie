@@ -11,6 +11,16 @@
 .x-body > .x-inner, .x-container > .x-inner {
 	min-height:0;
 }
+
+.x-input-el {
+	background: white;
+}
+
+.x-field-input .x-clear-icon {
+	display: none;
+}
+
+
 /*
 .x-panel
 {

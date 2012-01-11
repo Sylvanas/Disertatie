@@ -54,7 +54,7 @@ Ext.define('App.view.MapView', {
 	
 	initialize: function() {	
 		this.callParent();
-	       
+	    /*   
         // FIX: Rendering Problem von Sencha Touch 2.0.0-pr1
         var map = Ext.getCmp('applicationMap').map;
         this.on({
@@ -63,6 +63,6 @@ Ext.define('App.view.MapView', {
                 map.panTo(new google.maps.LatLng(50.71462, 12.496889));
             }
         });
-        // FIX: Rendering Problem von Sencha Touch 2.0.0-pr1
+        // FIX: Rendering Problem von Sencha Touch 2.0.0-pr1*/
 	}
 });

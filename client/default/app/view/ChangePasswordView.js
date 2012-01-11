@@ -33,6 +33,19 @@ Ext.define('App.view.ChangePasswordView', {
 					id: 'ChangePasswordViewCancelButton',
 					style : 'margin: 10px',
 				},
+				{
+					xtype : 'button',
+					text: 'Cancel',
+					id: 'ChangePasswordViewCancelButton',
+					style : 'margin: 10px',
+				},
+				{ xtype: 'spacer'},
+				{
+					xtype : 'button',
+					text: 'Cancel',
+					id: 'ChangePasswordViewCancelButton',
+					style : 'margin: 10px',
+				},
 		]
 	},
 	initialize: function() {	
