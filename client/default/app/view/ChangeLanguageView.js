@@ -22,14 +22,21 @@ Ext.define('App.view.ChangeLanguageView', {
 									ui: 'action',
 								}]
 				},
-				/*{
+				{xtype: 'spacer'},
+				{
 	        		xtype: 'selectfield',
 	        		store: 'Languages',
 	        		displayField: 'name', 
 	    			valueField: 'id', 
-	        		//placeHolder:'Language',
-	        		//style : 'margin: 10px',
-	        	},*/
+	        		margin: '10px',
+	        	},
+	        	{xtype: 'spacer'},
+	        	{
+					xtype: 'panel',
+					id: 'ChangeLanguageViewPanel',
+					html: 'text here<br>text here<br>text here<br>text here<br>',
+	        	},
+	        	{xtype: 'spacer'},
 		]
 	},
 	initialize: function() {	
