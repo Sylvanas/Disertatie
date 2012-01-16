@@ -17,26 +17,21 @@ Ext.define('App.controller.Home', {
     init: function() {
 		this.control({	
 			'#HomeViewShowOnMapButton': { 'tap': function () {
-				//TODO: implement some logic here, might want to go directly to MapView
-				App.Global.changeView(App.view.SelectFriendView.xtype);
-				//this.getController('Map').setMapObjects();
+					//TODO: implement some logic here, might want to go directly to MapView
+					App.Global.changeView(App.view.SelectFriendView.xtype);
+					//this.getController('Map').setMapObjects();
 				}
 			},
 			
-			'#HomeViewManageRequestsButton': { 'tap': function () {
-				App.Global.changeView(App.view.ManageRequestsView.xtype);
+			'#HomeViewAccountButton': { 'tap': function () {
+					App.Global.changeView(App.view.AccountView.xtype);
 				}
 			},
 			
 			'#HomeViewSendFriendRequestButton': { 'tap': function () {
-				App.Global.changeView(App.view.SendFriendRequestView.xtype);
+					App.Global.changeView(App.view.SendFriendRequestView.xtype);
 				}
-			},
-			
-			'#HomeViewChangePasswordButton': { 'tap': function () {
-				App.Global.changeView(App.view.ChangePasswordView.xtype);
-				}
-			},
+			},		
 			
 			'#HomeViewConfigurationButton': { 'tap': function () {
 					App.Global.changeView(App.view.ConfigurationView.xtype);

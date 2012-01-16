@@ -16,12 +16,6 @@ Ext.define('App.view.ConfigurationView', {
     		},
     		{
     			xtype : 'button',
-    			text: 'Show ID',
-    			id: 'ConfigurationViewShowIDButton',
-    			style : 'margin: 10px',
-    		},
-    		{
-    			xtype : 'button',
     			text: 'Change Language',
     			id: 'ConfigurationViewChangeLanguageButton',
     			style : 'margin: 10px',
@@ -33,6 +27,7 @@ Ext.define('App.view.ConfigurationView', {
     			id: 'ConfigurationViewBackButton',
     			style : 'margin: 10px',
     		},
+    		{xtype: 'spacer'},
 		]
 	},
 	initialize: function() {

@@ -1,22 +1,22 @@
 Ext.define('App.view.HomeView', {
     extend: 'Ext.Panel',
+    layout: 'vbox',
     title: "Home View",
     alias: "widget.HomeView",
     config: {
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		    { cls: 'logo', dock: 'top', height: 48 },
-		    {xtype: 'spacer'},
     		{
     			xtype : 'button',
     			text: 'Show friend on map',
     			id: 'HomeViewShowOnMapButton',
-    			style : 'margin: 10px',
+    			style : 'margin-left: 10px;margin-right: 10px;margin-bottom: 10px;margin-top: 30px;',
     		},
     		{
     			xtype : 'button',
-    			text: 'Manage requests',
-    			id: 'HomeViewManageRequestsButton',
+    			text: 'Account',
+    			id: 'HomeViewAccountButton',
     			style : 'margin: 10px',
     		},
     		{
@@ -27,24 +27,19 @@ Ext.define('App.view.HomeView', {
     		},
     		{
     			xtype : 'button',
-    			text: 'Change password',
-    			id: 'HomeViewChangePasswordButton',
-    			style : 'margin: 10px',
-    		},
-    		{
-    			xtype : 'button',
     			text: 'Configuration',
     			id: 'HomeViewConfigurationButton',
-    			style : 'margin: 10px',
+    			style : 'margin-left: 10px;margin-right: 10px;margin-bottom: 0px;margin-top: 10px;',
     		},
-		    {xtype: 'spacer'},
+    		{xtype: 'spacer'},
     		{
     			xtype : 'button',
     			text : 'Logout',
     			id: 'HomeViewLogoutButton',
     			ui: 'action',
     			style : 'margin: 10px',
-    		}
+    		},
+    		{xtype: 'spacer'},
 		]
 	},
 	initialize: function() {

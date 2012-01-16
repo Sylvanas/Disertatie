@@ -5,17 +5,17 @@ Ext.define('App.controller.ChangePassword', {
 		// Start listening for events on views 
 		this.control({
 			'#ChangePasswordViewBackButton': { 'tap': function () {
-				App.Global.changeView(App.view.HomeView.xtype);
+				App.Global.changeView(App.view.AccountView.xtype);
 				}
 			},
 			
 			'#ChangePasswordViewChangePasswordButton': { 'tap': function () {
-				App.Global.changeView(App.view.HomeView.xtype);
+				App.Global.changeView(App.view.AccountView.xtype);
 				}
 			},
 			
 			'#ChangePasswordViewCancelButton': { 'tap': function () {
-				App.Global.changeView(App.view.HomeView.xtype);
+				App.Global.changeView(App.view.AccountView.xtype);
 				}
 			},
 			

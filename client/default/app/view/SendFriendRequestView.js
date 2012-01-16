@@ -3,11 +3,12 @@ Ext.define('App.view.SendFriendRequestView', {
     title: "SendFriendRequest View",
     alias: "widget.SendFriendRequestView",
     	config: {
-    	layout: { type: 'vbox', align: 'stretch' },
-		items: [
-				{
+    	layout: { type: 'vbox' },
+		items: [{
 					xtype : 'toolbar',
 					ui: 'light',
+					dock: 'top',
+					style: 'margin-bottom: 20px;',
 					title: '',
 					layout: { pack: 'center' },
 					items : [ 
@@ -19,6 +20,21 @@ Ext.define('App.view.SendFriendRequestView', {
 								}
 					         ]
 				},
+				{
+					xtype: 'textfield',
+					id: 'SendFriendRequestViewSendRequestField',
+	    			height: 30,
+	    			style : 'margin: 10px; height: 30px;',
+	    			placeHolder : 'Friend ID'
+				},
+				{
+	    			xtype : 'button',
+	    			text: 'Send Request',
+	    			id: 'SendFriendRequestViewSendRequestButton',
+	    			ui: 'action',
+	    			style : 'margin: 10px;width:150px;',
+	    			disabled: true,
+	    		},
 		]
 	},
 	initialize: function() {	

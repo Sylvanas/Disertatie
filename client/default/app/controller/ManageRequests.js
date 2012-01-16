@@ -5,7 +5,7 @@ Ext.define('App.controller.ManageRequests', {
     init: function() {
 		this.control({
 			'#ManageRequestsViewBackButton': { 'tap': function () {
-				App.Global.changeView(App.view.HomeView.xtype);
+				App.Global.changeView(App.view.AccountView.xtype);
 				}
 			},
 			
