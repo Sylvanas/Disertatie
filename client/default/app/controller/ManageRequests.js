@@ -1,4 +1,4 @@
-Ext.define('App.controller.ManageRequests', {
+﻿Ext.define('App.controller.ManageRequests', {
     extend: 'Ext.app.Controller',	
     views: ['ManageRequestsView'],
     stores: ['Requests'],

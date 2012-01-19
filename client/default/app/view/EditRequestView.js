@@ -1,4 +1,4 @@
-Ext.define('App.view.EditRequestView', {
+﻿Ext.define('App.view.EditRequestView', {
     extend: 'Ext.Panel',
     title: "EditRequest View",
     alias: "widget.EditRequestView",

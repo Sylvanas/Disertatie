@@ -1,4 +1,4 @@
-Ext.define('App.controller.Map', {
+﻿Ext.define('App.controller.Map', {
     extend: 'Ext.app.Controller',	
     views: ['MapView'],
     stores: ['Map'],

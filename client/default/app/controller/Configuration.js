@@ -1,4 +1,4 @@
-Ext.define('App.controller.Configuration', {
+﻿Ext.define('App.controller.Configuration', {
     extend: 'Ext.app.Controller',	
     views: ['ConfigurationView'],
     init: function() {

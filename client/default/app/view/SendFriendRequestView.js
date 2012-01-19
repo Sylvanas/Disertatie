@@ -1,4 +1,4 @@
-Ext.define('App.view.SendFriendRequestView', {
+﻿Ext.define('App.view.SendFriendRequestView', {
     extend: 'Ext.Panel',
     title: "SendFriendRequest View",
     alias: "widget.SendFriendRequestView",

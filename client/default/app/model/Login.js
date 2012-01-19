@@ -1,4 +1,4 @@
-Ext.define('App.model.Login', {
+﻿Ext.define('App.model.Login', {
     extend: 'Ext.data.Model',
     fields: [
              {name: 'id', type: 'string'},

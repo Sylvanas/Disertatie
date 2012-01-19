@@ -1,4 +1,4 @@
-Ext.define('App.view.SoundAlertView', {
+﻿Ext.define('App.view.SoundAlertView', {
     extend: 'Ext.Panel',
     title: "SoundAlert View",
     alias: "widget.SoundAlertView",

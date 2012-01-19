@@ -1,4 +1,4 @@
-Ext.define('App.controller.EditRequest', {
+﻿Ext.define('App.controller.EditRequest', {
     extend: 'Ext.app.Controller',	
     views: ['EditRequestView'],
     stores: ['EditRequest'],

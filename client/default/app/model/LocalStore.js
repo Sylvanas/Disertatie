@@ -1,4 +1,4 @@
-Ext.define('App.model.LocalStore', {
+﻿Ext.define('App.model.LocalStore', {
     extend: 'Ext.data.Model',
     fields: [{name: 'id', type: 'string'},
              {name: 'language',  type: 'string'},

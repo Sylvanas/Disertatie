@@ -1,4 +1,4 @@
-Ext.define('App.model.EditRequest', {
+﻿Ext.define('App.model.EditRequest', {
     extend: 'Ext.data.Model',
     fields: [
              {name: 'id', type: 'string'},

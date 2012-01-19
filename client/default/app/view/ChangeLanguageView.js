@@ -1,4 +1,4 @@
-Ext.define('App.view.ChangeLanguageView', {
+﻿Ext.define('App.view.ChangeLanguageView', {
     extend: 'Ext.Panel',
     title: "ChangeLanguage View",
     alias: "widget.ChangeLanguageView",
