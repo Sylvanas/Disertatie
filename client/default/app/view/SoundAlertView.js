@@ -44,11 +44,9 @@ Ext.define('App.view.SoundAlertView', {
                 	        {
                 	        	xtype: 'selectfield',
                 	        	width: '80px',
-                	        	options: [
-                	        	          {text: '1', value: '1'},
-                	        	          {text: '2', value: '2'},
-                	        	          {text: '3', value: '3'},
-                	        	      ]
+                	        	store: 'HourListStart',
+            	        		displayField: 'id', 
+            	    			valueField: 'id', 
                 	        },
                 	        {
                 	        	xtype: 'panel',
@@ -59,11 +57,9 @@ Ext.define('App.view.SoundAlertView', {
                 	        {
                 	        	xtype: 'selectfield',
                 	        	width: '80px',
-                	        	options: [
-                	        	          {text: '1', value: '1'},
-                	        	          {text: '2', value: '2'},
-                	        	          {text: '3', value: '3'},
-                	        	      ]
+                	        	store: 'HourListEnd',
+            	        		displayField: 'id', 
+            	    			valueField: 'id', 
                 	        },
                 	        { xtype: 'spacer' }],
                 },

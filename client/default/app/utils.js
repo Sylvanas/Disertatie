@@ -51,5 +51,9 @@ Ext.define('Global', {
 			store.removeAt(0);
 		}
 	},
+	
+	getDefaultLocalStoreRecord: function (){
+		return { id: '1', language: 'English' , email: '1' , password: '' , soundVolume: '40' , startHour: '24' , endHour: '8' };
+	},
     
 });

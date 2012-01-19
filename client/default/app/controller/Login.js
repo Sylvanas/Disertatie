@@ -1,7 +1,7 @@
 Ext.define('App.controller.Login', {
     extend: 'Ext.app.Controller',	
     views: ['LoginView'],
-    stores: ['Login'],
+    stores: ['Login', 'LocalStore'],
     init: function() {
 		this.control({		
 			'#LoginViewLoginButton': { 'tap': function () {

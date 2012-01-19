@@ -6,7 +6,7 @@ Ext.define('App.view.HomeView', {
     config: {
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
-		    { cls: 'logo', dock: 'top', height: 48 },
+		    { cls: 'logo', docked: 'top', height: 48 },
     		{
     			xtype : 'button',
     			text: 'Show friend on map',

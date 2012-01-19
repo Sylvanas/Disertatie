@@ -1,7 +1,5 @@
 Ext.define('App.model.HourList', {
     extend: 'Ext.data.Model',
-    fields: [
-             {name: 'id' },
-             ],
+    fields: [{name: 'id', type: 'int'}],
     idProperty: "id",
 });

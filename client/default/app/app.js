@@ -46,16 +46,25 @@ Ext.application({
     },
     
     startApp: function() {
-    	//var loginStore = Ext.getStore('Login');
-		//loginStore.sync();
-		/*if(loginStore.getCount>0){
-			App.mainView.setActiveItem(2);
+    	App.Global = Ext.create('Global');
+    	this.loadLocalStore();
+		this.goToFirstView();
+    },
+    
+    loadLocalStore: function() {
+    	var localStore = Ext.getStore('LocalStore');
+		if(!localStore.getCount()>0){
+			localStore.add(App.Global.getDefaultLocalStoreRecord());
 		}
-		else {
-			App.mainView.setActiveItem(0);
-		}*/
-		App.Global = Ext.create('Global');
-    	App.mainView.setActiveItem(0);
+    },
+    
+    goToFirstView: function() {
+    	var localStore = Ext.getStore('LocalStore');
+    	if(localStore.getAt(0).get('email') === ''){
+    		App.mainView.setActiveItem(0);
+    	}else{
+    		App.mainView.setActiveItem(2);
+    	}
     },
 });
 

@@ -37,8 +37,11 @@ Ext.define('App.controller.Home', {
 					App.Global.changeView(App.view.ConfigurationView.xtype);
 				}
 			},
-				
+
 			'#HomeViewLogoutButton': { 'tap': function () {
+					var localStore = Ext.getStore('LocalStore');
+					localStore.removeAt(0);
+					localStore.add(App.Global.getDefaultLocalStoreRecord());
 					App.Global.changeView(App.view.LoginView.xtype);
 				}
 			},

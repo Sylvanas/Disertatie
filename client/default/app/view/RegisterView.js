@@ -5,7 +5,7 @@ Ext.define('App.view.RegisterView', {
     	config: {
     		layout: { type: 'vbox', align: 'stretch' },
 		items: [
-		    { cls: 'logo', dock: 'top', height: 48 },
+		    { cls: 'logo', docked: 'top', height: 48 },
 			{
 				xtype : 'emailfield',
 				id: 'RegisterViewEmailField',

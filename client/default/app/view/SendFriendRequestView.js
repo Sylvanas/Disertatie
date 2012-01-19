@@ -7,7 +7,7 @@ Ext.define('App.view.SendFriendRequestView', {
 		items: [{
 					xtype : 'toolbar',
 					ui: 'light',
-					dock: 'top',
+					docked: 'top',
 					style: 'margin-bottom: 20px;',
 					title: '',
 					layout: { pack: 'center' },
