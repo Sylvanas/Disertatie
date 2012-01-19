@@ -19,6 +19,62 @@ Ext.define('App.view.SoundAlertView', {
 								}
 					         ]
 				},
+				{
+					xtype: 'panel',
+					id: 'SoundAlertViewPanel1',
+					style : 'margin: 10px;',
+					html: '  Set volume:',
+	        	},
+	        	{
+                    xtype: 'sliderfield',
+                    name : 'height',
+                    label: ''
+                },
+                {
+                	xtype: 'panel',
+					id: 'SoundAlertViewPanel2',
+					style : 'margin: 10px;',
+					html: '  Set ignore hours:',
+                },
+                {
+                	xtype: 'panel',
+                	margin: '10px',
+                	layout: 'hbox',
+                	items: [{ xtype: 'spacer' },
+                	        {
+                	        	xtype: 'selectfield',
+                	        	width: '80px',
+                	        	options: [
+                	        	          {text: '1', value: '1'},
+                	        	          {text: '2', value: '2'},
+                	        	          {text: '3', value: '3'},
+                	        	      ]
+                	        },
+                	        {
+                	        	xtype: 'panel',
+                	        	cls: 'cls1',
+                	        	margin: "0px 10px 0px 10px",
+            					html: '<div class="cls2">:</div>',
+                            },
+                	        {
+                	        	xtype: 'selectfield',
+                	        	width: '80px',
+                	        	options: [
+                	        	          {text: '1', value: '1'},
+                	        	          {text: '2', value: '2'},
+                	        	          {text: '3', value: '3'},
+                	        	      ]
+                	        },
+                	        { xtype: 'spacer' }],
+                },
+                {
+		        	xtype: 'checkboxfield',
+		        	margin: '10px',
+		        	id: 'SoundAlertViewOverwriteField',
+		        	name: 'Overwrite',
+		        	label: 'Overwrite individual config:',
+		        	labelWidth: '75%',
+		        },
 		]
 	},
 	initialize: function() {	
