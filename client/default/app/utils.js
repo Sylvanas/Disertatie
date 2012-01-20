@@ -55,5 +55,22 @@ Ext.define('Global', {
 	getDefaultLocalStoreRecord: function (){
 		return { id: '1', language: 'English' , email: '1' , password: '' , soundVolume: '40' , startHour: '24' , endHour: '8' };
 	},
+	
+	refreshHourLists: function (startValue, endValue) {
+		var localStore = Ext.getStore('LocalStore');
+		var hourListStartStore = Ext.getStore('HourListStart');
+		var hourListEndStore = Ext.getStore('HourListEnd');
+		if(hourListStartStore.getCount()==24){
+			hourListStartStore.removeAt(localStore.getAt(0).get('startHour') - 1);
+		}
+		if(hourListEndStore.getCount()==24){
+			hourListEndStore.removeAt(localStore.getAt(0).get('endHour') - 1);
+		}
+	},
+	
+	refreshHourList: function (activeStore, inactiveStore, activeStoreValue, inactiveStoreValue, newValue) {
+		activeStore.removeAt(activeStoreValue - 1);
+		activeStore.add(newValue);
+	},
     
 });

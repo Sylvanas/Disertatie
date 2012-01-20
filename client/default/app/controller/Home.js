@@ -31,7 +31,7 @@
 			'#HomeViewSendFriendRequestButton': { 'tap': function () {
 					App.Global.changeView(App.view.SendFriendRequestView.xtype);
 				}
-			},		
+			},
 			
 			'#HomeViewConfigurationButton': { 'tap': function () {
 					App.Global.changeView(App.view.ConfigurationView.xtype);
