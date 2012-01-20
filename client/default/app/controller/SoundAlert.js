@@ -24,6 +24,25 @@
 				App.Global.changeHourLists(oldValue.data.id, newValue.data.id);
 				}
 			},
+
+			'#SoundAlertViewSlider': { 'change': function (control, value) {
+				Ext.getStore('LocalStore').getAt(0).set('soundVolume',value);
+				}
+			},
+
+			'#SoundAlertViewAlertHours': { 'check': function () {
+				Ext.getStore('LocalStore').getAt(0).set('alertHours',true);
+				}, 						   'uncheck': function () {
+					Ext.getStore('LocalStore').getAt(0).set('alertHours',false);
+				}
+			},
+
+			'#SoundAlertViewOverrideIndividualAlerts': { 'check': function () {
+				Ext.getStore('LocalStore').getAt(0).set('overrideIndividualAlerts',true);
+			}, 						   'uncheck': function () {
+				Ext.getStore('LocalStore').getAt(0).set('overrideIndividualAlerts',false);
+			}
+		},
 		});
     },
 

@@ -55,7 +55,10 @@ Ext.define('Global', {
     },
     
     setLocalstoreValues: function() {
-    	
+    	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+    	Ext.getCmp('SoundAlertViewSlider').setValue(localStoreRecord.get('soundVolume'));
+    	Ext.getCmp('SoundAlertViewAlertHours').setValue(localStoreRecord.get('alertHours'));
+    	Ext.getCmp('SoundAlertViewOverrideIndividualAlerts').setValue(localStoreRecord.get('overrideIndividualAlerts'));
     },
     
     clearStore: function(store) {
@@ -66,7 +69,7 @@ Ext.define('Global', {
 	},
 	
 	getDefaultLocalStoreRecord: function (){
-		return { id: '1', language: 'English' , accountID: 'testID' ,email: '1' , password: '' , soundVolume: '40' , startHour: '24' , endHour: '8' };
+		return { id: '1', language: 'English', accountID: 'testID', email: '1', password: '', soundVolume: '40', startHour: '24' , endHour: '8', alertHours: false , overrideIndividualAlerts: true };
 	},
 	
 	refreshHourLists: function () {

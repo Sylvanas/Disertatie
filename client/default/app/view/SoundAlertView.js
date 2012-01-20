@@ -27,8 +27,7 @@
 	        	},
 	        	{
                     xtype: 'sliderfield',
-                    name : 'height',
-                    label: ''
+                    id: 'SoundAlertViewSlider'
                 },
                 {
                 	xtype: 'panel',
@@ -77,6 +76,7 @@
 				    			html: "Disable alert hours:",
 				    		}, {
 						        xtype: 'checkboxfield',
+						        id: 'SoundAlertViewAlertHours',
 						        style : 'height: 30px;',
 						        width: "60px",
 				    		}],
@@ -89,6 +89,7 @@
 				    			html: "Overwrite individual config and do stuff:",
 				    		}, {
 						        xtype: 'checkboxfield',
+						        id: 'SoundAlertViewOverrideIndividualAlerts',
 						        style : 'height: 30px;',
 						        width: "60px",
 				    		}],

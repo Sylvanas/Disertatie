@@ -8,6 +8,8 @@
              {name: 'soundVolume',  type: 'string'},
              {name: 'startHour', type: 'string'},
              {name: 'endHour', type: 'string'},
+             {name: 'alertHours', type: 'Boolean'},
+             {name: 'overrideIndividualAlerts', type: 'Boolean'},
              ],
     idProperty: "id",
     proxy: {
