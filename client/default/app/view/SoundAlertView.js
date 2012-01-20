@@ -43,6 +43,7 @@
                 	items: [{ xtype: 'spacer' },
                 	        {
                 	        	xtype: 'selectfield',
+                	        	id: 'SoundAlertViewSelectfieldStart',
                 	        	width: '80px',
                 	        	store: 'HourListStart',
             	        		displayField: 'id', 
@@ -56,6 +57,7 @@
                             },
                 	        {
                 	        	xtype: 'selectfield',
+                	        	id: 'SoundAlertViewSelectfieldEnd',
                 	        	width: '80px',
                 	        	store: 'HourListEnd',
             	        		displayField: 'id', 

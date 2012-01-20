@@ -8,7 +8,22 @@
 				App.Global.changeView(App.view.ConfigurationView.xtype);
 				}
 			},
-			
+
+			'#SoundAlertViewSelectfieldStart': { 'change': function (selectField, newValue, oldValue) {
+				if(!App.Global || !oldValue || !App.SafeToExecuteSoundAlertSelectfieldAction){
+					return;
+				}
+				App.Global.changeHourLists(oldValue.data.id, newValue.data.id);
+				}
+			},
+
+			'#SoundAlertViewSelectfieldEnd': { 'change': function (selectField, newValue, oldValue) {
+				if(!App.Global || !oldValue || !App.SafeToExecuteSoundAlertSelectfieldAction){
+					return;
+				}
+				App.Global.changeHourLists(oldValue.data.id, newValue.data.id);
+				}
+			},
 		});
     },
 

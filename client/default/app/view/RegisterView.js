@@ -44,7 +44,6 @@
 		]
 	},
 	initialize: function() {
-		console.log('initialize register view');
 		this.callParent();
 	}
 });
