@@ -20,6 +20,16 @@
 	display: none;
 }
 
+.SoundAlertFormPanel {
+	text-shadow: white 0 1px 1px;
+	color: #333;
+	text-shadow: rgba(255, 255, 255, 0.25) 0 0.08em 0;
+	background-color: #F7F7F7;
+	border-top: 1px solid white;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
 /*
 .x-panel
 {

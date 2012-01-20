@@ -48,14 +48,12 @@
                 	        	store: 'HourListStart',
             	        		displayField: 'id', 
             	    			valueField: 'id', 
-                	        },
-                	        {
+                	        }, {
                 	        	xtype: 'panel',
                 	        	cls: 'cls1',
                 	        	margin: "0px 10px 0px 10px",
             					html: '<div class="cls2">:</div>',
-                            },
-                	        {
+                            }, {
                 	        	xtype: 'selectfield',
                 	        	id: 'SoundAlertViewSelectfieldEnd',
                 	        	width: '80px',
@@ -66,13 +64,36 @@
                 	        { xtype: 'spacer' }],
                 },
                 {
-		        	xtype: 'checkboxfield',
-		        	margin: '10px',
-		        	id: 'SoundAlertViewOverwriteField',
-		        	name: 'Overwrite',
-		        	label: 'Overwrite individual config:',
-		        	labelWidth: '75%',
-		        },
+                	xtype: 'panel',
+                	cls: "SoundAlertFormPanel",
+					style : 'margin: 10px;',
+			    	layout: { type: 'vbox', align: 'stretch' },
+			    	items: [{
+				    		xtype: 'panel',
+				    		layout: { type: 'hbox', align: 'stretch' },
+				    		items: [{
+				    			xtype: 'panel',
+				    			flex: 1,
+				    			html: "Disable alert hours:",
+				    		}, {
+						        xtype: 'checkboxfield',
+						        style : 'height: 30px;',
+						        width: "60px",
+				    		}],
+			    		}, {
+				    		xtype: 'panel',
+				    		layout: { type: 'hbox', align: 'stretch' },
+				    		items: [{
+				    			xtype: 'panel',
+				    			flex: 1,	
+				    			html: "Overwrite individual config and do stuff:",
+				    		}, {
+						        xtype: 'checkboxfield',
+						        style : 'height: 30px;',
+						        width: "60px",
+				    		}],
+			    		}],
+                },
 		]
 	},
 	initialize: function() {	
