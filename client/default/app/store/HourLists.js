@@ -3,6 +3,7 @@
     requires: 'App.model.HourList',
     model: 'App.model.HourList',
     sorters : 'id',
+    data: [],
     autoLoad: true
 });
 
@@ -11,5 +12,6 @@ Ext.define('App.store.HourListEnd', {
     requires: 'App.model.HourList',
     model: 'App.model.HourList',
     sorters : 'id',
+    data: [],
     autoLoad: true
 });
