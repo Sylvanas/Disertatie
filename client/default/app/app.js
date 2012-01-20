@@ -47,6 +47,7 @@ Ext.application({
     
     startApp: function() {
     	App.Global = Ext.create('Global');
+    	App.Global.loadStores();
     	this.loadLocalStore();
 		this.goToFirstView();
     },
