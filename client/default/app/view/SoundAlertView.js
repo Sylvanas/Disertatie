@@ -21,7 +21,7 @@
 				},
 				{
 					xtype: 'panel',
-					id: 'SoundAlertViewPanel1',
+					id: 'SoundAlertViewSetVolumePanel',
 					style : 'margin: 10px;',
 					html: '  Set volume:',
 	        	},
@@ -32,7 +32,7 @@
                 },
                 {
                 	xtype: 'panel',
-					id: 'SoundAlertViewPanel2',
+					id: 'SoundAlertViewSetIgnoreHoursPanel',
 					style : 'margin: 10px;',
 					html: '  Set ignore hours:',
                 },

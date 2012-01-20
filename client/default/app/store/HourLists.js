@@ -4,7 +4,6 @@
     model: 'App.model.HourList',
     sorters : 'id',
     data: [],
-    autoLoad: true
 });
 
 Ext.define('App.store.HourListEnd', {
@@ -13,5 +12,4 @@ Ext.define('App.store.HourListEnd', {
     model: 'App.model.HourList',
     sorters : 'id',
     data: [],
-    autoLoad: true
 });

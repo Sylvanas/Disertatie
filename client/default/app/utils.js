@@ -54,6 +54,10 @@ Ext.define('Global', {
 		}
     },
     
+    setLocalstoreValues: function() {
+    	
+    },
+    
     clearStore: function(store) {
     	var length = store.getCount();
 		for(var i=0;i<length;i++) {

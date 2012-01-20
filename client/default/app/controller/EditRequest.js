@@ -9,7 +9,7 @@
 				}
 			},
 			
-			'#EditRequestViewSaveButton': { 'tap': function () {
+			'#EditRequestViewApproveButton': { 'tap': function () {
 				App.Global.changeView(App.view.ManageRequestsView.xtype);
 				var formPanel = Ext.getCmp('EditRequestViewFormPanel');
 				this.sendDataToCloud({

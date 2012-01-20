@@ -3,7 +3,7 @@
     title: "EditRequest View",
     alias: "widget.EditRequestView",
     	config: {
-    	layout: { type: 'vbox', align: 'stretch' },
+    	layout: { type: 'vbox' },
 		items: [
 				{
 					xtype : 'toolbar',
@@ -14,13 +14,7 @@
 									id: 'EditRequestViewBackButton',
 									ui: 'back',
 								},
-								{xtype: 'spacer'},
-								{
-									xtype : 'button',
-									text: 'Save',
-									id: 'EditRequestViewSaveButton',
-									ui: 'action',
-								}]
+								{xtype: 'spacer'}]
 				},
 				{
 					xtype: 'formpanel',
@@ -57,6 +51,13 @@
 					        	labelWidth: '50%',
 					        }],
 				},
+				{
+	    			xtype : 'button',
+	    			text: 'Approve',
+	    			id: 'EditRequestViewApproveButton',
+	    			ui: 'action',
+	    			style : 'margin: 10px;width:150px;',
+	    		},{ xtype: 'spacer' }
 		]
 	},
 	initialize: function() {	
