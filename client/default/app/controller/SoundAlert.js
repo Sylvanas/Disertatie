@@ -32,8 +32,10 @@
 
 			'#SoundAlertViewAlertHours': { 'check': function () {
 				Ext.getStore('LocalStore').getAt(0).set('alertHours',true);
+				App.Global.setAlertHoursDisable(true);
 				}, 						   'uncheck': function () {
-					Ext.getStore('LocalStore').getAt(0).set('alertHours',false);
+				Ext.getStore('LocalStore').getAt(0).set('alertHours',false);
+				App.Global.setAlertHoursDisable(false);
 				}
 			},
 

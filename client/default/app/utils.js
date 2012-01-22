@@ -81,6 +81,11 @@ Ext.define('Global', {
 		App.SafeToExecuteSoundAlertSelectfieldAction = true;
 	},
 	
+	setAlertHoursDisable: function(disable) {
+    	Ext.getCmp('SoundAlertViewSelectfieldStart').setDisabled(disable);
+    	Ext.getCmp('SoundAlertViewSelectfieldEnd').setDisabled(disable);
+	},
+	
 	changeHourLists: function (oldValue, newValue) { 
 		var localStore = Ext.getStore('LocalStore');
 		var hourListStartStore = Ext.getStore('HourListStart');

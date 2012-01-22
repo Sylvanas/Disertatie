@@ -49,6 +49,7 @@ Ext.application({
     	App.Global = Ext.create('Global');
     	App.Global.loadStores();
     	App.Global.setLocalstoreValues();
+    	App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
 		this.goToFirstView();
     },
     
