@@ -1,19 +1,6 @@
-Ext.define('App.controller.Home', {
+﻿Ext.define('App.controller.Home', {
     extend: 'Ext.app.Controller',	
     views: ['HomeView'],
-    stores: ['Login'],
-	//stores: ['Stations'],
-    // These "refs" will generate "getters" for each of the view component instances
-    // e.g. getBottomField and getStationList
-	/*refs: [{
-		    selector: 'carousel > panel > #bottomInput',
-		    ref: 'bottomField'
-	        },
-            {
-            selector: 'carousel > list', 
-            ref: 'stationList'
-            }
-    ],*/
     init: function() {
 		this.control({	
 			'#HomeViewShowOnMapButton': { 'tap': function () {
@@ -31,7 +18,7 @@ Ext.define('App.controller.Home', {
 			'#HomeViewSendFriendRequestButton': { 'tap': function () {
 					App.Global.changeView(App.view.SendFriendRequestView.xtype);
 				}
-			},		
+			},
 			
 			'#HomeViewConfigurationButton': { 'tap': function () {
 					App.Global.changeView(App.view.ConfigurationView.xtype);

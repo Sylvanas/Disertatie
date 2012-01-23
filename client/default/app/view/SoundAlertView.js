@@ -1,4 +1,4 @@
-Ext.define('App.view.SoundAlertView', {
+﻿Ext.define('App.view.SoundAlertView', {
     extend: 'Ext.Panel',
     title: "SoundAlert View",
     alias: "widget.SoundAlertView",
@@ -21,18 +21,17 @@ Ext.define('App.view.SoundAlertView', {
 				},
 				{
 					xtype: 'panel',
-					id: 'SoundAlertViewPanel1',
+					id: 'SoundAlertViewSetVolumePanel',
 					style : 'margin: 10px;',
 					html: '  Set volume:',
 	        	},
 	        	{
                     xtype: 'sliderfield',
-                    name : 'height',
-                    label: ''
+                    id: 'SoundAlertViewSlider'
                 },
                 {
                 	xtype: 'panel',
-					id: 'SoundAlertViewPanel2',
+					id: 'SoundAlertViewSetIgnoreHoursPanel',
 					style : 'margin: 10px;',
 					html: '  Set ignore hours:',
                 },
@@ -43,19 +42,19 @@ Ext.define('App.view.SoundAlertView', {
                 	items: [{ xtype: 'spacer' },
                 	        {
                 	        	xtype: 'selectfield',
+                	        	id: 'SoundAlertViewSelectfieldStart',
                 	        	width: '80px',
                 	        	store: 'HourListStart',
             	        		displayField: 'id', 
             	    			valueField: 'id', 
-                	        },
-                	        {
+                	        }, {
                 	        	xtype: 'panel',
                 	        	cls: 'cls1',
                 	        	margin: "0px 10px 0px 10px",
             					html: '<div class="cls2">:</div>',
-                            },
-                	        {
+                            }, {
                 	        	xtype: 'selectfield',
+                	        	id: 'SoundAlertViewSelectfieldEnd',
                 	        	width: '80px',
                 	        	store: 'HourListEnd',
             	        		displayField: 'id', 
@@ -64,13 +63,38 @@ Ext.define('App.view.SoundAlertView', {
                 	        { xtype: 'spacer' }],
                 },
                 {
-		        	xtype: 'checkboxfield',
-		        	margin: '10px',
-		        	id: 'SoundAlertViewOverwriteField',
-		        	name: 'Overwrite',
-		        	label: 'Overwrite individual config:',
-		        	labelWidth: '75%',
-		        },
+                	xtype: 'panel',
+                	cls: "SoundAlertFormPanel",
+					style : 'margin: 10px;',
+			    	layout: { type: 'vbox', align: 'stretch' },
+			    	items: [{
+				    		xtype: 'panel',
+				    		layout: { type: 'hbox', align: 'stretch' },
+				    		items: [{
+				    			xtype: 'panel',
+				    			flex: 1,
+				    			html: "Disable alert hours:",
+				    		}, {
+						        xtype: 'checkboxfield',
+						        id: 'SoundAlertViewAlertHours',
+						        style : 'height: 30px;',
+						        width: "60px",
+				    		}],
+			    		}, {
+				    		xtype: 'panel',
+				    		layout: { type: 'hbox', align: 'stretch' },
+				    		items: [{
+				    			xtype: 'panel',
+				    			flex: 1,	
+				    			html: "Overwrite individual config and do stuff:",
+				    		}, {
+						        xtype: 'checkboxfield',
+						        id: 'SoundAlertViewOverrideIndividualAlerts',
+						        style : 'height: 30px;',
+						        width: "60px",
+				    		}],
+			    		}],
+                },
 		]
 	},
 	initialize: function() {	

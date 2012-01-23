@@ -1,4 +1,4 @@
-Ext.define('App.controller.SendFriendRequest', {
+﻿Ext.define('App.controller.SendFriendRequest', {
     extend: 'Ext.app.Controller',	
     views: ['SendFriendRequestView'],
     init: function() {

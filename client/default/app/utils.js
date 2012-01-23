@@ -1,4 +1,4 @@
-Ext.define('ViewChanger', {
+﻿Ext.define('ViewChanger', {
     config: {
         view: null,
         views: new Array()
@@ -45,6 +45,22 @@ Ext.define('Global', {
     	return new google.maps.LatLng(0, 0);
     },
     
+    loadStores: function() {
+    	this.setDefaultHoursToHourStore(Ext.getStore('HourListStart'));
+    	this.setDefaultHoursToHourStore(Ext.getStore('HourListEnd'));
+    	var localStore = Ext.getStore('LocalStore');
+		if(!localStore.getCount()>0){
+			localStore.add(this.getDefaultLocalStoreRecord());
+		}
+    },
+    
+    setLocalstoreValues: function() {
+    	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+    	Ext.getCmp('SoundAlertViewSlider').setValue(localStoreRecord.get('soundVolume'));
+    	Ext.getCmp('SoundAlertViewAlertHours').setValue(localStoreRecord.get('alertHours'));
+    	Ext.getCmp('SoundAlertViewOverrideIndividualAlerts').setValue(localStoreRecord.get('overrideIndividualAlerts'));
+    },
+    
     clearStore: function(store) {
     	var length = store.getCount();
 		for(var i=0;i<length;i++) {
@@ -53,7 +69,55 @@ Ext.define('Global', {
 	},
 	
 	getDefaultLocalStoreRecord: function (){
-		return { id: '1', language: 'English' , email: '1' , password: '' , soundVolume: '40' , startHour: '24' , endHour: '8' };
+		return { id: '1', language: 'English', accountID: 'testID', email: '1', password: '', soundVolume: '40', startHour: '24' , endHour: '8', alertHours: false , overrideIndividualAlerts: true };
+	},
+	
+	refreshHourLists: function () {
+		var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+		this.changeHourListValue(Ext.getStore('HourListStart'), localStoreRecord.get('endHour'));
+		Ext.getCmp('SoundAlertViewSelectfieldStart').setValue(localStoreRecord.get('startHour'));
+		this.changeHourListValue(Ext.getStore('HourListEnd'), localStoreRecord.get('startHour'));
+		Ext.getCmp('SoundAlertViewSelectfieldEnd').setValue(localStoreRecord.get('endHour'));
+		App.SafeToExecuteSoundAlertSelectfieldAction = true;
+	},
+	
+	setAlertHoursDisable: function(disable) {
+    	Ext.getCmp('SoundAlertViewSelectfieldStart').setDisabled(disable);
+    	Ext.getCmp('SoundAlertViewSelectfieldEnd').setDisabled(disable);
+	},
+	
+	changeHourLists: function (oldValue, newValue) { 
+		var localStore = Ext.getStore('LocalStore');
+		var hourListStartStore = Ext.getStore('HourListStart');
+		var hourListEndStore = Ext.getStore('HourListEnd');
+		if(localStore.getAt(0).get('startHour') == oldValue) {
+			this.changeHourListValue(hourListEndStore, newValue);
+			localStore.getAt(0).set('startHour', newValue);
+			Ext.getCmp('SoundAlertViewSelectfieldEnd').setStore(hourListEndStore);
+			this.setSelectfieldValue(Ext.getCmp('SoundAlertViewSelectfieldEnd'), localStore.getAt(0).get('endHour'));
+		}else {
+			this.changeHourListValue(hourListStartStore, newValue);
+			localStore.getAt(0).set('endHour', newValue);
+			Ext.getCmp('SoundAlertViewSelectfieldStart').setStore(hourListStartStore);
+			this.setSelectfieldValue(Ext.getCmp('SoundAlertViewSelectfieldStart'), localStore.getAt(0).get('startHour'));
+		}
 	},
     
+	changeHourListValue: function (store, newValue) {
+		this.setDefaultHoursToHourStore(store);
+		store.removeAt(newValue - 1);
+	},
+	
+	setSelectfieldValue: function (selectfield, value) {
+		App.SafeToExecuteSoundAlertSelectfieldAction = false;
+		selectfield.setValue(value);
+		App.SafeToExecuteSoundAlertSelectfieldAction = true;
+	},
+	
+	setDefaultHoursToHourStore: function (store) {
+		this.clearStore(store);
+		for(var i=1;i<=24;i++) {
+			store.add({id: i});
+		}
+	},
 });

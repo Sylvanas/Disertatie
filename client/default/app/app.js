@@ -1,4 +1,4 @@
-//Ext.Loader.setConfig({ enabled: true });
+﻿//Ext.Loader.setConfig({ enabled: true });
 
 Ext.application({
 	//phoneStartupScreen: 'images/sencha_logo.png',
@@ -47,15 +47,10 @@ Ext.application({
     
     startApp: function() {
     	App.Global = Ext.create('Global');
-    	this.loadLocalStore();
+    	App.Global.loadStores();
+    	App.Global.setLocalstoreValues();
+    	App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
 		this.goToFirstView();
-    },
-    
-    loadLocalStore: function() {
-    	var localStore = Ext.getStore('LocalStore');
-		if(!localStore.getCount()>0){
-			localStore.add(App.Global.getDefaultLocalStoreRecord());
-		}
     },
     
     goToFirstView: function() {

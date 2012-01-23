@@ -1,4 +1,4 @@
-Ext.define('App.controller.SelectFriend', {
+﻿Ext.define('App.controller.SelectFriend', {
     extend: 'Ext.app.Controller',	
     views: ['SelectFriendView'],
     stores: ['SelectFriend'],

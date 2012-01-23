@@ -1,4 +1,4 @@
-Ext.define('App.view.ManageRequestsView', {
+﻿Ext.define('App.view.ManageRequestsView', {
     extend: 'Ext.Panel',
     title: "ManageRequests View",
     alias: "widget.ManageRequestsView",

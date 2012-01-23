@@ -1,4 +1,4 @@
-Ext.define('App.store.Map', {
+﻿Ext.define('App.store.Map', {
     extend: 'Ext.data.Store',
     requires: 'App.model.Map',
     model: 'App.model.Map',

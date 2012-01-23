@@ -1,4 +1,4 @@
-Ext.define('App.store.SelectFriend', {
+﻿Ext.define('App.store.SelectFriend', {
     extend: 'Ext.data.Store',
     requires: 'App.model.SelectFriend',
     model: 'App.model.SelectFriend',

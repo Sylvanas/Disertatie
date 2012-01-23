@@ -1,4 +1,4 @@
-Ext.define('App.view.HomeView', {
+﻿Ext.define('App.view.HomeView', {
     extend: 'Ext.Panel',
     layout: 'vbox',
     title: "Home View",

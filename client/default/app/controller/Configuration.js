@@ -1,9 +1,10 @@
-Ext.define('App.controller.Configuration', {
+﻿Ext.define('App.controller.Configuration', {
     extend: 'Ext.app.Controller',	
     views: ['ConfigurationView'],
     init: function() {
 		this.control({
-			'#ConfigurationViewManageSoundAlertButton': { 'tap': function () {
+			'#ConfigurationViewManageSoundAlertButton': { 'tap': function () {				
+				App.Global.refreshHourLists();
 				App.Global.changeView(App.view.SoundAlertView.xtype);
 				}
 			},

@@ -1,7 +1,7 @@
-Ext.define('App.controller.Login', {
+﻿Ext.define('App.controller.Login', {
     extend: 'Ext.app.Controller',	
     views: ['LoginView'],
-    stores: ['Login', 'LocalStore'],
+    stores: [ 'LocalStore' ],
     init: function() {
 		this.control({		
 			'#LoginViewLoginButton': { 'tap': function () {
@@ -10,10 +10,9 @@ Ext.define('App.controller.Login', {
 					var emailField = Ext.getCmp('LoginViewEmailField');
 					var passwordField = Ext.getCmp('LoginViewPassField');
 					//get the id from cloud
-					var loginData = { id: "sdfsdf", email: emailField.getValue(),  password: passwordField.getValue() };				
-					var loginStore = Ext.getStore('Login');
-					App.Global.clearStore(loginStore);
-					loginStore.add({ id: loginData['id'], email: loginData['email'],  password: loginData['password'] });
+					var loginData = { id: "Test ID", email: emailField.getValue(),  password: passwordField.getValue() };				
+					var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+					localStoreRecord.set({ id: loginData['id'], email: loginData['email'],  password: loginData['password'] });
 					App.Global.changeView(App.view.HomeView.xtype);
 					}
 				}

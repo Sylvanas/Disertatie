@@ -1,4 +1,4 @@
-Ext.define('App.controller.Account', {
+﻿Ext.define('App.controller.Account', {
     extend: 'Ext.app.Controller',	
     views: ['AccountView'],
     init: function() {
@@ -9,7 +9,7 @@ Ext.define('App.controller.Account', {
 			},
 			
 			'#AccountViewShowIDButton': { 'tap': function () {
-				var loginStore = Ext.getStore('Login');
+				var localStore = Ext.getStore('LocalStore');
 				var popup = Ext.create('Ext.Panel',{
 					floating: true,
 					modal: true,
@@ -17,7 +17,7 @@ Ext.define('App.controller.Account', {
 					width: 300,
 					height: 125,
 					styleHtmlContent: true,
-					html: 'Your ID is:</br><b>'+loginStore.getAt(0).get('id')+'</b>',
+					html: 'Your ID is:</br><b>'+localStore.getAt(0).get('accountID')+'</b>',
 				    items: [{
 				    	docked: 'top',
 				    	xtype: 'toolbar',

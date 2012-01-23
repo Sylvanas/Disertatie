@@ -1,4 +1,4 @@
-Ext.define('App.view.SelectFriendView', {
+﻿Ext.define('App.view.SelectFriendView', {
     extend: 'Ext.Panel',
     title: "SelectFriend View",
     alias: "widget.SelectFriendView",

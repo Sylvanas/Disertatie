@@ -1,4 +1,4 @@
-Ext.define('App.controller.EditRequest', {
+﻿Ext.define('App.controller.EditRequest', {
     extend: 'Ext.app.Controller',	
     views: ['EditRequestView'],
     stores: ['EditRequest'],
@@ -9,7 +9,7 @@ Ext.define('App.controller.EditRequest', {
 				}
 			},
 			
-			'#EditRequestViewSaveButton': { 'tap': function () {
+			'#EditRequestViewApproveButton': { 'tap': function () {
 				App.Global.changeView(App.view.ManageRequestsView.xtype);
 				var formPanel = Ext.getCmp('EditRequestViewFormPanel');
 				this.sendDataToCloud({
