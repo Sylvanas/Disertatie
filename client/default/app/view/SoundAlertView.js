@@ -44,7 +44,8 @@ Ext.define('App.view.SoundAlertView', {
                 	        {
                 	        	xtype: 'selectfield',
                 	        	id: 'SoundAlertViewSelectfieldStart',
-                	        	//width: '80px',
+                	        	name: 'SelectfieldStart',
+                	        	width: '80px',
                 	        	store: 'HourListStart',
             	        		displayField: 'id', 
             	    			valueField: 'id', 
@@ -56,6 +57,7 @@ Ext.define('App.view.SoundAlertView', {
                             }, {
                 	        	xtype: 'selectfield',
                 	        	id: 'SoundAlertViewSelectfieldEnd',
+                	        	name: 'SelectfieldEnd',
                 	        	width: '80px',
                 	        	store: 'HourListEnd',
             	        		displayField: 'id', 
