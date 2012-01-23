@@ -1,4 +1,4 @@
-﻿Ext.define('App.store.Languages', {
+Ext.define('App.store.Languages', {
     extend: 'Ext.data.Store',
     requires: 'App.model.Languages',
     model: 'App.model.Languages',

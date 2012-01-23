@@ -1,4 +1,4 @@
-﻿Ext.define('App.view.ConfigurationView', {
+Ext.define('App.view.ConfigurationView', {
     extend: 'Ext.Panel',
     layout: 'vbox',
     title: "Configuration View",

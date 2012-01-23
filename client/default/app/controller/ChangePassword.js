@@ -1,4 +1,4 @@
-﻿Ext.define('App.controller.ChangePassword', {
+Ext.define('App.controller.ChangePassword', {
     extend: 'Ext.app.Controller',	
     views: ['ChangePasswordView'],
     init: function() {

@@ -1,4 +1,4 @@
-﻿Ext.define('App.view.AccountView', {
+Ext.define('App.view.AccountView', {
     extend: 'Ext.Panel',
     layout: 'vbox',
     title: "Account View",

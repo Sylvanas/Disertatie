@@ -1,4 +1,4 @@
-﻿Ext.define('ViewChanger', {
+Ext.define('ViewChanger', {
     config: {
         view: null,
         views: new Array()

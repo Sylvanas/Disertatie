@@ -1,4 +1,4 @@
-﻿Ext.define('App.store.EditRequest', {
+Ext.define('App.store.EditRequest', {
     extend: 'Ext.data.Store',
     requires: 'App.model.EditRequest',
     model: 'App.model.EditRequest',

@@ -1,4 +1,4 @@
-﻿Ext.define('App.store.Requests', {
+Ext.define('App.store.Requests', {
     extend: 'Ext.data.Store',
     requires: 'App.model.Requests',
     model: 'App.model.Requests',

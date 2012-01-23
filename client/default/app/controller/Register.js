@@ -1,4 +1,4 @@
-﻿Ext.define('App.controller.Register', {
+Ext.define('App.controller.Register', {
     extend: 'Ext.app.Controller',	
     views: ['RegisterView'],
     init: function() {

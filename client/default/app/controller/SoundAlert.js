@@ -1,4 +1,4 @@
-﻿Ext.define('App.controller.SoundAlert', {
+Ext.define('App.controller.SoundAlert', {
     extend: 'Ext.app.Controller',	
     views: ['SoundAlertView'],
     stores: [ 'HourListStart', 'HourListEnd' ],

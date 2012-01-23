@@ -1,4 +1,4 @@
-﻿Ext.define('App.view.RegisterView', {
+Ext.define('App.view.RegisterView', {
     extend: 'Ext.Panel',
     title: "Register View",
     alias: "widget.RegisterView",

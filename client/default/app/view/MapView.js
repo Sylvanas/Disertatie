@@ -1,4 +1,4 @@
-﻿Ext.define('App.view.MapView', {
+Ext.define('App.view.MapView', {
     extend: 'Ext.Panel',
     title: "Map View",
     alias: "widget.MapView",

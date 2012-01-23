@@ -1,4 +1,4 @@
-﻿Ext.define('App.view.ChangePasswordView', {
+Ext.define('App.view.ChangePasswordView', {
     extend: 'Ext.Panel',
     title: "ChangePassword View",
     alias: "widget.ChangePasswordView",

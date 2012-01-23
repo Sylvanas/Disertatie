@@ -1,4 +1,4 @@
-﻿Ext.define('App.model.Map', {
+Ext.define('App.model.Map', {
     extend: 'Ext.data.Model',
     fields: [
              {name: 'id', type: 'string'},

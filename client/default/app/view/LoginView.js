@@ -1,4 +1,4 @@
-﻿Ext.define('App.view.LoginView', {
+Ext.define('App.view.LoginView', {
     extend: 'Ext.Panel',
     title: "Login View",
     alias: "widget.LoginView",

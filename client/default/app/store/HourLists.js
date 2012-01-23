@@ -1,4 +1,4 @@
-﻿Ext.define('App.store.HourListStart', {
+Ext.define('App.store.HourListStart', {
     extend: 'Ext.data.Store',
     requires: 'App.model.HourList',
     model: 'App.model.HourList',

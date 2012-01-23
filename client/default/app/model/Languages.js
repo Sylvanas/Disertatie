@@ -1,4 +1,4 @@
-﻿Ext.define('App.model.Languages', {
+Ext.define('App.model.Languages', {
     extend: 'Ext.data.Model',
     fields: [
              {name: 'id', type: 'string'},

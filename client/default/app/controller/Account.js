@@ -1,4 +1,4 @@
-﻿Ext.define('App.controller.Account', {
+Ext.define('App.controller.Account', {
     extend: 'Ext.app.Controller',	
     views: ['AccountView'],
     init: function() {

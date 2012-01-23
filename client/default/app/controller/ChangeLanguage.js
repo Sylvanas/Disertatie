@@ -1,4 +1,4 @@
-﻿Ext.define('App.controller.ChangeLanguage', {
+Ext.define('App.controller.ChangeLanguage', {
     extend: 'Ext.app.Controller',	
     views: ['ChangeLanguageView'],
     stores: ['Languages'],

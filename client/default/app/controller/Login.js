@@ -1,4 +1,4 @@
-﻿Ext.define('App.controller.Login', {
+Ext.define('App.controller.Login', {
     extend: 'Ext.app.Controller',	
     views: ['LoginView'],
     stores: [ 'LocalStore' ],
