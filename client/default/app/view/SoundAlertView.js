@@ -89,7 +89,7 @@ Ext.define('App.view.SoundAlertView', {
 				    		items: [{
 				    			xtype: 'panel',
 				    			flex: 1,	
-				    			html: "Overwrite individual config and do stuff:",
+				    			html: "Overwrite individual </br>configuration:",
 				    		}, {
 						        xtype: 'checkboxfield',
 						        id: 'SoundAlertViewOverrideIndividualAlerts',

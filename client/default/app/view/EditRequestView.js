@@ -21,6 +21,7 @@ Ext.define('App.view.EditRequestView', {
 					id: 'EditRequestViewFormPanel',
 					style: 'margin:10px',
 					flex: 1,
+					scroll: 'none',
 					defaults: {
 						style : 'height: 30px;',
 					},
@@ -43,6 +44,7 @@ Ext.define('App.view.EditRequestView', {
 					        	name: 'approved',
 					        	label: 'Approved:',
 					        	labelWidth: '40%',
+					        	disabled: true,
 					        },
 					        {
 					        	xtype: 'checkboxfield',

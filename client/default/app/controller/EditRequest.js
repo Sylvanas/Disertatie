@@ -27,8 +27,6 @@ Ext.define('App.controller.EditRequest', {
     
     initialize: function(record) {
     	this.setFormPanel(record);
-    	var approveField = Ext.getCmp('EditRequestViewApprovedField');   	
-    	approveField.setDisabled(record.get('approved'));
     },
     
     setFormPanel: function(record) {
