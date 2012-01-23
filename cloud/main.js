@@ -28,7 +28,7 @@ function resetDB() {
 		});
 	}
 
-	$fh.log( {message:'Reset database'} );
+	$fh.log( {message:'Reset database'} ); 
 	
 	return getAllTaxis().list;
 }
