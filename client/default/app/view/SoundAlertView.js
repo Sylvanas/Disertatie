@@ -27,7 +27,8 @@ Ext.define('App.view.SoundAlertView', {
 	        	},
 	        	{
                     xtype: 'sliderfield',
-                    id: 'SoundAlertViewSlider'
+                    id: 'SoundAlertViewSlider',
+                    style: 'width: 300px',
                 },
                 {
                 	xtype: 'panel',
@@ -43,7 +44,7 @@ Ext.define('App.view.SoundAlertView', {
                 	        {
                 	        	xtype: 'selectfield',
                 	        	id: 'SoundAlertViewSelectfieldStart',
-                	        	width: '80px',
+                	        	//width: '80px',
                 	        	store: 'HourListStart',
             	        		displayField: 'id', 
             	    			valueField: 'id', 
