@@ -44,10 +44,20 @@
                 	        	xtype: 'selectfield',
                 	        	id: 'SoundAlertViewSelectfieldStart',
                 	        	width: '80px',
+<<<<<<< HEAD
                 	        	store: 'HourListStart',
             	        		displayField: 'id', 
             	    			valueField: 'id', 
                 	        }, {
+=======
+                	        	options: [
+                	        	          {text: '1', value: '1'},
+                	        	          {text: '2', value: '2'},
+                	        	          {text: '3', value: '3'},
+                	        	      ]
+                	        },
+                	        {
+>>>>>>> parent of 57e55a1... made more changes to SoundAlertView. Continued the implementation of the localStore. Implemented logic for logout button.
                 	        	xtype: 'panel',
                 	        	cls: 'cls1',
                 	        	margin: "0px 10px 0px 10px",
@@ -56,9 +66,11 @@
                 	        	xtype: 'selectfield',
                 	        	id: 'SoundAlertViewSelectfieldEnd',
                 	        	width: '80px',
-                	        	store: 'HourListEnd',
-            	        		displayField: 'id', 
-            	    			valueField: 'id', 
+                	        	options: [
+                	        	          {text: '1', value: '1'},
+                	        	          {text: '2', value: '2'},
+                	        	          {text: '3', value: '3'},
+                	        	      ]
                 	        },
                 	        { xtype: 'spacer' }],
                 },

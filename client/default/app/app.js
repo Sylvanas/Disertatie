@@ -46,6 +46,7 @@ Ext.application({
     },
     
     startApp: function() {
+<<<<<<< HEAD
     	App.Global = Ext.create('Global');
     	App.Global.loadStores();
     	App.Global.setLocalstoreValues();
@@ -60,6 +61,18 @@ Ext.application({
     	}else{
     		App.mainView.setActiveItem(2);
     	}
+=======
+    	//var loginStore = Ext.getStore('Login');
+		//loginStore.sync();
+		/*if(loginStore.getCount>0){
+			App.mainView.setActiveItem(2);
+		}
+		else {
+			App.mainView.setActiveItem(0);
+		}*/
+		App.Global = Ext.create('Global');
+    	App.mainView.setActiveItem(0);
+>>>>>>> parent of 57e55a1... made more changes to SoundAlertView. Continued the implementation of the localStore. Implemented logic for logout button.
     },
 });
 

@@ -1,7 +1,11 @@
 ﻿Ext.define('App.controller.Login', {
     extend: 'Ext.app.Controller',	
     views: ['LoginView'],
+<<<<<<< HEAD
     stores: [ 'LocalStore' ],
+=======
+    stores: ['Login'],
+>>>>>>> parent of 57e55a1... made more changes to SoundAlertView. Continued the implementation of the localStore. Implemented logic for logout button.
     init: function() {
 		this.control({		
 			'#LoginViewLoginButton': { 'tap': function () {

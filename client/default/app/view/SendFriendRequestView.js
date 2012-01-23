@@ -7,7 +7,7 @@
 		items: [{
 					xtype : 'toolbar',
 					ui: 'light',
-					docked: 'top',
+					dock: 'top',
 					style: 'margin-bottom: 20px;',
 					title: '',
 					layout: { pack: 'center' },

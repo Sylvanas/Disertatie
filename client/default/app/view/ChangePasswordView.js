@@ -5,7 +5,7 @@
     	config: {
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
-		        { cls: 'logo', docked: 'top', height: 48 },
+		        { cls: 'logo', dock: 'top', height: 48 },
 				{ xtype: 'spacer'},
 				{
 					xtype : 'textfield',

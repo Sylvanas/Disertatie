@@ -67,6 +67,7 @@ Ext.define('Global', {
 			store.removeAt(0);
 		}
 	},
+<<<<<<< HEAD
 	
 	getDefaultLocalStoreRecord: function (){
 		return { id: '1', language: 'English', accountID: 'testID', email: '1', password: '', soundVolume: '40', startHour: '24' , endHour: '8', alertHours: false , overrideIndividualAlerts: true };
@@ -102,6 +103,8 @@ Ext.define('Global', {
 			this.setSelectfieldValue(Ext.getCmp('SoundAlertViewSelectfieldStart'), localStore.getAt(0).get('startHour'));
 		}
 	},
+=======
+>>>>>>> parent of 57e55a1... made more changes to SoundAlertView. Continued the implementation of the localStore. Implemented logic for logout button.
     
 	changeHourListValue: function (store, newValue) {
 		this.setDefaultHoursToHourStore(store);
