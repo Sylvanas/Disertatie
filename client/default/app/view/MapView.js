@@ -32,7 +32,7 @@ Ext.define('App.view.MapView', {
 					mapOptions : {
 						zoom : 14,
 						panControl: false,
-                        zoomControl: false,
+                        //zoomControl: false,
 						mapTypeId : google.maps.MapTypeId.ROADMAP,
 						navigationControl: true,
 						navigationControlOptions: {style: google.maps.NavigationControlStyle.DEFAULT}
