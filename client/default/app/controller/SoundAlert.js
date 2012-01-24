@@ -10,18 +10,12 @@ Ext.define('App.controller.SoundAlert', {
 			},
 
 			'#SoundAlertViewSelectfieldStart': { 'change': function (selectField, newValue, oldValue) {
-				if(!App.Global || !oldValue || !App.SafeToExecuteSoundAlertSelectfieldAction){
-					return;
-				}
-				App.Global.changeHourLists(oldValue.data.id, newValue.data.id);
+				this.changeHourLists(oldValue, newValue);
 				}
 			},
 
 			'#SoundAlertViewSelectfieldEnd': { 'change': function (selectField, newValue, oldValue) {
-				if(!App.Global || !oldValue || !App.SafeToExecuteSoundAlertSelectfieldAction){
-					return;
-				}
-				App.Global.changeHourLists(oldValue.data.id, newValue.data.id);
+				this.changeHourLists(oldValue, newValue);
 				}
 			},
 
@@ -46,6 +40,12 @@ Ext.define('App.controller.SoundAlert', {
 			}
 		},
 		});
+    },
+    
+    changeHourLists: function(oldValue, newValue) {
+    	if(App.Global && oldValue && App.SafeToExecuteSoundAlertSelectfieldAction){
+    		App.Global.changeHourLists(oldValue.data.id, newValue.data.id);
+		}
     },
 
 	onLaunch: function() {
