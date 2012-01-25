@@ -21,7 +21,7 @@ Ext.define('App.view.EditRequestView', {
 					id: 'EditRequestViewFormPanel',
 					style: 'margin:10px',
 					flex: 1,
-					scroll: 'none',
+					scrollable: 'none',
 					defaults: {
 						style : 'height: 30px;',
 					},
