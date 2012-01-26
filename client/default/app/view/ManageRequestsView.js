@@ -10,14 +10,12 @@ Ext.define('App.view.ManageRequestsView', {
 					ui: 'light',
 					title: '',
 					layout: { pack: 'center' },
-					items : [ 
-								{
-									xtype : 'button',
+					items : [ {
+									xtype: 'button',
 									text: 'Back',
 									id: 'ManageRequestsViewBackButton',
 									ui: 'back',
-								}
-					         ]
+							  }, { xtype: 'spacer' } ]
 				},
 				{
 					xtype: 'list',

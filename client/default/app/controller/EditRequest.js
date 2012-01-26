@@ -1,6 +1,6 @@
 Ext.define('App.controller.EditRequest', {
     extend: 'Ext.app.Controller',	
-    views: ['EditRequestView'],
+    views: [ 'EditRequestView' , 'ManageRequestsView' ],
     stores: ['EditRequest'],
     init: function() {
 		this.control({
@@ -22,11 +22,26 @@ Ext.define('App.controller.EditRequest', {
 				});
 				}
 			},
+			
+			'#ManageRequestsViewList': { 'disclose': function (comp, currentRecord,  target,  index,  e,  eOpts) {
+				var editRequestStore = Ext.getStore('EditRequest');
+				App.Global.clearStore(editRequestStore);
+				var record = this.getRecordInfo(currentRecord.get('id'));
+				editRequestStore.add({ id: record['id'], name: record['name'],  approved: record['approved'], ignoreAlerts: record['ignoreAlerts']});
+				this.initialize(editRequestStore.getAt(0));
+				App.Global.changeView(App.view.EditRequestView.xtype);
+				}
+			},
 		});
     },
     
     initialize: function(record) {
     	this.setFormPanel(record);
+    },
+    
+    getRecordInfo: function(id) {
+    	//call cloud function
+    	return {id: 'sdrf3434d345d4sdf3', name: 'Spencer', approved: false, ignoreAlerts: true};
     },
     
     setFormPanel: function(record) {
