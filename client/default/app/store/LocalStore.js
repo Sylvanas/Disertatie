@@ -8,9 +8,9 @@ Ext.define('App.store.LocalStore', {
 	    	 property : 'id',
 	    	 direction: 'DESC'
 	    	 }],
-	    autoSync : true,
+	    //autoSync : true,
 	    //autoLoad: true, why does this crash? - "You are using a ServerProxy but have not supplied it with a url."
-	    storeID: "aaaLocalStore",
+	    //storeID: "aaaLocalStore",
 	    proxy: "ajax",
 	}
 });
