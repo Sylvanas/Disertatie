@@ -1,6 +1,6 @@
 Ext.define('App.controller.Map', {
     extend: 'Ext.app.Controller',	
-    views: ['MapView'],
+    views: ['MapView', 'SelectFriendView'],
     stores: ['Map'],
     init: function() {
 		this.control({
@@ -9,6 +9,11 @@ Ext.define('App.controller.Map', {
 				this.clearMapObjects();
 				var button = Ext.getCmp('MapViewShowLastLocationsButton');
 				button.setText('Hide Last Locations');
+				}
+			},
+			
+			'#MapViewMap': { 'maprender': function (comp, map) {
+				App.map = map;
 				}
 			},
 			
@@ -21,6 +26,13 @@ Ext.define('App.controller.Map', {
 					button.setText('Show Last Locations');
 					this.hideLastLocations();
 					}
+				}
+			},
+			
+			'#SelectFriendViewList': { 'disclose': function (comp, record) {
+				this.friendName = record.get('name');
+				App.Global.changeView(App.view.MapView.xtype);
+				this.setMapObjects();
 				}
 			},
 		});

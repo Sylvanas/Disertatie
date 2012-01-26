@@ -9,12 +9,6 @@ Ext.define('App.controller.SelectFriend', {
 				}
 			},
 			
-			'#SelectFriendViewList': { 'disclose': function (record,  target,  index,  e,  eOpts) {
-				this.getController('Map').friendName = record.get('name');
-				App.Global.changeView(App.view.MapView.xtype);
-				this.getController('Map').setMapObjects();
-				}
-			},
 		});
     },
 

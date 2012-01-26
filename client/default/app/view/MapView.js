@@ -27,7 +27,7 @@ Ext.define('App.view.MapView', {
 				{
 				    xtype: 'map',
 				    flex: '1',
-				    id: 'applicationMap',
+				    id: 'MapViewMap',
 				    useCurrentLocation: false,
 					mapOptions : {
 						zoom : 14,
@@ -37,7 +37,7 @@ Ext.define('App.view.MapView', {
 						navigationControl: true,
 						navigationControlOptions: {style: google.maps.NavigationControlStyle.DEFAULT}
 					},
-				    listeners : {
+				    /*listeners : {
 	                	el: {
 							drag: { fn: function() { event.cancelBubble = true; } }
 						},
@@ -45,7 +45,7 @@ Ext.define('App.view.MapView', {
 		                	App.map = map;
 		                }
 	
-		            }
+		            }*/
 				},
 		]
 	},
