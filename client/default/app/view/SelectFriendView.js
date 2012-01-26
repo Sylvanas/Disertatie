@@ -10,14 +10,12 @@ Ext.define('App.view.SelectFriendView', {
           ui: 'light',
           title: '',
           layout: { pack: 'center' },
-          items : [ 
-                {
-                  xtype : 'button',
-                  text: 'Back',
-                  id: 'SelectFriendViewBackButton',
-                  ui: 'back',
-                },
-                   ]
+          items : [ {
+	                  xtype: 'button',
+	                  text: 'Back',
+	                  id: 'SelectFriendViewBackButton',
+	                  ui: 'back',
+	                }, { xtype: 'spacer'} ]
         },
         {
           xtype: 'list',
