@@ -1,7 +1,11 @@
 Ext.define('App.controller.Login', {
-    extend: 'Ext.app.Controller',	
-    views: ['LoginView'],
-    stores: [ 'LocalStore' ],
+    extend: 'Ext.app.Controller',
+    config: {
+        refs: {
+            'viewport': 'LoginView',
+            'store': 'LocalStore',
+        },
+    },
     init: function() {
 		this.control({		
 			'#LoginViewLoginButton': { 'tap': function () {

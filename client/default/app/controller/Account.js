@@ -1,6 +1,10 @@
 Ext.define('App.controller.Account', {
-    extend: 'Ext.app.Controller',	
-    views: ['AccountView'],
+    extend: 'Ext.app.Controller',
+    config: {
+        refs: {
+            'viewport': 'AccountView',
+        },
+    },
     init: function() {
 		this.control({
 			'#AccountViewManageRequests': { 'tap': function () {

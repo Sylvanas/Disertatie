@@ -1,7 +1,12 @@
 Ext.define('App.controller.Map', {
-    extend: 'Ext.app.Controller',	
-    views: ['MapView', 'SelectFriendView'],
-    stores: ['Map'],
+    extend: 'Ext.app.Controller',
+    config: {
+        refs: {
+            'viewport': 'MapView',
+            'viewport': 'SelectFriendView',
+            'store': 'Map',
+        },
+    },
     init: function() {
 		this.control({
 			'#MapViewBackButton': { 'tap': function () {

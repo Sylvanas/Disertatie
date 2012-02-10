@@ -1,6 +1,11 @@
 Ext.define('App.controller.Home', {
-    extend: 'Ext.app.Controller',	
-    views: ['HomeView'],
+    extend: 'Ext.app.Controller',
+    config: {
+        refs: {
+            'viewport': 'HomeView',
+            'store': 'Languages',
+        },
+    },
     init: function() {
 		this.control({	
 			'#HomeViewShowOnMapButton': { 'tap': function () {

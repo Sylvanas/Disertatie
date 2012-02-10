@@ -1,7 +1,12 @@
 Ext.define('App.controller.SoundAlert', {
-    extend: 'Ext.app.Controller',	
-    views: ['SoundAlertView'],
-    stores: [ 'HourListStart', 'HourListEnd' ],
+    extend: 'Ext.app.Controller',
+    config: {
+        refs: {
+            'viewport': 'SoundAlertView',
+            'store': 'HourListStart',
+            'store': 'HourListEnd',
+        },
+    },
     init: function() {
 		this.control({
 			'#SoundAlertViewBackButton': { 'tap': function () {
@@ -43,7 +48,7 @@ Ext.define('App.controller.SoundAlert', {
     },
     
     changeHourLists: function(oldValue, newValue) {
-    	if(App.Global && oldValue && App.SafeToExecuteSoundAlertSelectfieldAction){
+    	if(App.Global && oldValue && App.Global.fireSoundAlertSelectfieldEvent){
     		App.Global.changeHourLists(oldValue.data.id, newValue.data.id);
 		}
     },

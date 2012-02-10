@@ -1,6 +1,10 @@
 Ext.define('App.controller.Register', {
     extend: 'Ext.app.Controller',	
-    views: ['RegisterView'],
+    config: {
+        refs: {
+            'viewport': 'RegisterView',
+        },
+    },
     init: function() {
 		// Start listening for events on views
 		this.control({

@@ -1,7 +1,11 @@
 Ext.define('App.controller.ManageRequests', {
-    extend: 'Ext.app.Controller',	
-    views: ['ManageRequestsView'],
-    stores: ['Requests'],
+    extend: 'Ext.app.Controller',
+    config: {
+        refs: {
+            'viewport': 'ManageRequestsView',
+            'store': 'Requests',
+        },
+    },
     init: function() {
 		this.control({
 			'#ManageRequestsViewBackButton': { 'tap': function () {

@@ -1,7 +1,11 @@
 Ext.define('App.controller.SelectFriend', {
-    extend: 'Ext.app.Controller',	
-    views: ['SelectFriendView'],
-    stores: ['SelectFriend'],
+    extend: 'Ext.app.Controller',
+    config: {
+        refs: {
+            'viewport': 'SelectFriendView',
+            'store': 'SelectFriend',
+        },
+    },
     init: function() {
 		this.control({
 			'#SelectFriendViewBackButton': { 'tap': function () {

@@ -1,6 +1,10 @@
 Ext.define('App.controller.SendFriendRequest', {
     extend: 'Ext.app.Controller',	
-    views: ['SendFriendRequestView'],
+    config: {
+        refs: {
+            'viewport': 'SendFriendRequestView',
+        },
+    },
     init: function() {
     	this.validIDField = false;
     	

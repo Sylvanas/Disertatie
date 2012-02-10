@@ -1,8 +1,25 @@
 //Ext.Loader.setConfig({ enabled: true });
+//Ext.require('Ext.field.Email');
 
 Ext.application({
 	//phoneStartupScreen: 'images/sencha_logo.png',
-	name: 'App',        
+	name: 'App',  
+
+	views : [
+	        /* 'LoginView',
+	         'RegisterView', 
+	         'HomeView',
+	         'AccountView',
+	         'ConfigurationView', 
+	         'ChangePasswordView',
+	         'ManageRequestsView',
+	         'SoundAlertView', 
+	         'ChangeLanguageView',
+	         'EditRequestView',
+	         'SelectFriendView', 
+	         'MapView',
+	         'SendFriendRequestView', */
+	         ],
 	controllers: [
 				  'Login',
 			      'Register',
@@ -18,6 +35,35 @@ Ext.application({
 	              'Map',
 	              'SendFriendRequest',
 	              ],
+	models: [
+             'EditRequest',
+             'HourList',
+             'Languages',
+             'LocalStore',
+             'Map',
+             'Requests',
+             'SelectFriend',
+             ],
+	stores : [
+	             'EditRequest',
+	             'HourListEnd',
+	             'HourListStart',
+	             'Languages',
+	             'LocalStore',
+	             'Map',
+	             'Requests',
+	             'SelectFriend',
+	             ],          
+	 requires:[
+	           'Ext.field.Email',
+	           'Ext.field.Password',
+	           'Ext.dataview.List',
+	           'Ext.field.Slider',
+	           'Ext.field.Select',
+	           'Ext.field.Checkbox',
+	           'Ext.form.Panel',
+	           'Ext.Map',
+	         ],
 	initialize: function () {
 		this.callParent();
 	},	

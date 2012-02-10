@@ -16,7 +16,7 @@ Ext.define('App.view.SoundAlertView', {
 									text: 'Back',
 									id: 'SoundAlertViewBackButton',
 									ui: 'back',
-								}
+								}, { xtype: 'spacer'} 
 					         ]
 				},
 				{

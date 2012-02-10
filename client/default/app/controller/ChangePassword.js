@@ -1,6 +1,10 @@
 Ext.define('App.controller.ChangePassword', {
-    extend: 'Ext.app.Controller',	
-    views: ['ChangePasswordView'],
+    extend: 'Ext.app.Controller',
+    config: {
+        refs: {
+            'viewport': 'ChangePasswordView',
+        },
+    },
     init: function() {
 		// Start listening for events on views 
 		this.control({

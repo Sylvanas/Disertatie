@@ -1,7 +1,12 @@
 Ext.define('App.controller.EditRequest', {
-    extend: 'Ext.app.Controller',	
-    views: [ 'EditRequestView' , 'ManageRequestsView' ],
-    stores: ['EditRequest'],
+    extend: 'Ext.app.Controller',
+    config: {
+        refs: {
+            'viewport': 'EditRequestView',
+            'viewport': 'ManageRequestsView',
+            'store': 'EditRequest',
+        },
+    },
     init: function() {
 		this.control({
 			'#EditRequestViewBackButton': { 'tap': function () {
