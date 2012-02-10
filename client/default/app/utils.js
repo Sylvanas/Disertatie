@@ -31,6 +31,7 @@ Ext.define('ViewChanger', {
 Ext.define('Global', {
     config: {
         viewChanger: null,
+        fireSoundAlertSelectfieldEvent: false,
     },
 
     constructor: function() {   
@@ -73,12 +74,13 @@ Ext.define('Global', {
 	},
 	
 	refreshHourLists: function () {
+		this.fireSoundAlertSelectfieldEvent = false;
 		var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
 		this.changeHourListValue(Ext.getStore('HourListStart'), localStoreRecord.get('endHour'));
 		Ext.getCmp('SoundAlertViewSelectfieldStart').setValue(localStoreRecord.get('startHour'));
 		this.changeHourListValue(Ext.getStore('HourListEnd'), localStoreRecord.get('startHour'));
 		Ext.getCmp('SoundAlertViewSelectfieldEnd').setValue(localStoreRecord.get('endHour'));
-		App.SafeToExecuteSoundAlertSelectfieldAction = true;
+		this.fireSoundAlertSelectfieldEvent = true;
 	},
 	
 	setAlertHoursDisable: function(disable) {
@@ -87,7 +89,8 @@ Ext.define('Global', {
     	Ext.getStore('LocalStore').getAt(0).set('alertHours',disable);
 	},
 	
-	changeHourLists: function (oldValue, newValue) { 
+	changeHourLists: function (oldValue, newValue) {
+		this.fireSoundAlertSelectfieldEvent = false;
 		var localStore = Ext.getStore('LocalStore');
 		var hourListStartStore = Ext.getStore('HourListStart');
 		var hourListEndStore = Ext.getStore('HourListEnd');
@@ -102,6 +105,7 @@ Ext.define('Global', {
 			Ext.getCmp('SoundAlertViewSelectfieldStart').setStore(hourListStartStore);
 			this.setSelectfieldValue(Ext.getCmp('SoundAlertViewSelectfieldStart'), localStore.getAt(0).get('startHour'));
 		}
+		this.fireSoundAlertSelectfieldEvent = true;
 	},
     
 	changeHourListValue: function (store, newValue) {
@@ -110,9 +114,9 @@ Ext.define('Global', {
 	},
 	
 	setSelectfieldValue: function (selectfield, value) {
-		App.SafeToExecuteSoundAlertSelectfieldAction = false;
+		this.fireSoundAlertSelectfieldEvent = false;
 		selectfield.setValue(value);
-		App.SafeToExecuteSoundAlertSelectfieldAction = true;
+		this.fireSoundAlertSelectfieldEvent = true;
 	},
 	
 	setDefaultHoursToHourStore: function (store) {
