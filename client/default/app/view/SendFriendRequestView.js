@@ -11,14 +11,12 @@ Ext.define('App.view.SendFriendRequestView', {
 					style: 'margin-bottom: 20px;',
 					title: '',
 					layout: { pack: 'center' },
-					items : [ 
-								{
+					items : [ {
 									xtype : 'button',
 									text: 'Back',
 									id: 'SendFriendRequestViewBackButton',
 									ui: 'back',
-								}
-					         ]
+								}, { xtype: 'spacer'} ]
 				},
 				{
 					xtype: 'textfield',
