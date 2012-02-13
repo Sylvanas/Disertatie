@@ -16,6 +16,10 @@
 	background: white;
 }
 
+.x-container .x-panel .x-layout-card-item {
+	background: white;
+}
+
 .x-field-input .x-clear-icon {
 	display: none;
 }
