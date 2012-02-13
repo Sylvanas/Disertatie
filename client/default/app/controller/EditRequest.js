@@ -32,7 +32,7 @@ Ext.define('App.controller.EditRequest', {
 				var editRequestStore = Ext.getStore('EditRequest');
 				App.Global.clearStore(editRequestStore);
 				var record = this.getRecordInfo(currentRecord.get('id'));
-				editRequestStore.add({ id: record['id'], name: record['name'],  approved: record['approved'], ignoreAlerts: record['ignoreAlerts']});
+				editRequestStore.add({ id: record['id'], name: record['name'], approved: record['approved'], ignoreAlerts: record['ignoreAlerts']});
 				this.initialize(editRequestStore.getAt(0));
 				App.Global.changeView(App.view.EditRequestView.xtype);
 				}
@@ -51,7 +51,12 @@ Ext.define('App.controller.EditRequest', {
     
     setFormPanel: function(record) {
     	var formPanel = Ext.getCmp('EditRequestViewFormPanel');
-    	formPanel.load(record);
+    	formPanel.setValues({
+    		id: record.get('id'),
+    		name: record.get('name'),
+    		approved: record.get('approved'),
+    		ignoreAlerts: record.get('ignoreAlerts')
+    	});
     },
     
     sendDataToCloud: function(data) {
