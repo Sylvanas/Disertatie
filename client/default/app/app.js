@@ -35,7 +35,7 @@ Ext.application({
 	              'Map',
 	              'SendFriendRequest',
 	              ],
-	models: [
+	/*models: [
              'EditRequest',
              'HourList',
              'Languages',
@@ -43,7 +43,7 @@ Ext.application({
              'Map',
              'Requests',
              'SelectFriend',
-             ],
+             ],*/
 	stores : [
 	             'EditRequest',
 	             'HourListEnd',
@@ -53,17 +53,7 @@ Ext.application({
 	             'Map',
 	             'Requests',
 	             'SelectFriend',
-	             ],          
-	 requires:[
-	           'Ext.field.Email',
-	           'Ext.field.Password',
-	           'Ext.dataview.List',
-	           'Ext.field.Slider',
-	           'Ext.field.Select',
-	           'Ext.field.Checkbox',
-	           'Ext.form.Panel',
-	           'Ext.Map',
-	         ],
+	             ],
 	initialize: function () {
 		this.callParent();
 	},	
