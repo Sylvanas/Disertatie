@@ -49,10 +49,12 @@ Ext.define('Global', {
     loadStores: function() {
     	this.setDefaultHoursToHourStore(Ext.getStore('HourListStart'));
     	this.setDefaultHoursToHourStore(Ext.getStore('HourListEnd'));
-    	var localStore = Ext.getStore('LocalStore');
+    	var localStore = Ext.getStore('LocalStore');	
+    	localStore.sync();    	
 		if(!localStore.getCount()>0){
 			localStore.add(this.getDefaultLocalStoreRecord());
 		}
+    	localStore.sync();
     },
     
     setLocalstoreValues: function() {
@@ -70,7 +72,11 @@ Ext.define('Global', {
 	},
 	
 	getDefaultLocalStoreRecord: function (){
-		return { id: '1', language: 'English', accountID: 'testID', email: '1', password: '', soundVolume: '40', startHour: '24' , endHour: '8', alertHours: false , overrideIndividualAlerts: true };
+		var model = App.model.LocalStore;
+        var record = new model({
+        	language: 'English', accountID: 'testID', email: '1', password: '', soundVolume: '40', startHour: '24' , endHour: '8', alertHours: false , overrideIndividualAlerts: true
+        });
+        return record; 	
 	},
 	
 	refreshHourLists: function () {

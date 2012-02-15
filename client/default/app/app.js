@@ -35,7 +35,7 @@ Ext.application({
 	              'Map',
 	              'SendFriendRequest',
 	              ],
-	/*models: [
+	models: [
              'EditRequest',
              'HourList',
              'Languages',
@@ -43,7 +43,7 @@ Ext.application({
              'Map',
              'Requests',
              'SelectFriend',
-             ],*/
+             ],
 	stores : [
 	             'EditRequest',
 	             'HourListEnd',
@@ -78,19 +78,38 @@ Ext.application({
                 { xtype: 'SendFriendRequestView' },
             ]
 		});
+		Ext.getStore('LocalStore').load({
+            callback: this.onSearchesStoreLoad,
+            scope: this
+        });
 		this.startApp();
     },
     
     startApp: function() {
     	App.Global = Ext.create('Global');
     	App.Global.loadStores();
-    	App.Global.setLocalstoreValues();
-    	App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
+    	//App.Global.setLocalstoreValues();
+    	//App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
 		this.goToFirstView();
     },
     
     goToFirstView: function() {
     	var localStore = Ext.getStore('LocalStore');
+    	//localStore.sync;
+    	//localStore.removeAt(0);
+    	
+    	//localStore.sync;
+    	//alert(localStore.getCount());
+    	/*localStore.add({name: 'nume',
+            language: 'ro',
+            accountID:  'sadf34r',
+            email:  'email',
+            password:  'pass',
+            soundVolume:  '34',
+            startHour: '21',
+            endHour: '23',
+            alertHours: true,
+            overrideIndividualAlerts: true});*/
     	if(localStore.getAt(0).get('email') === ''){
     		App.mainView.setActiveItem(0);
     	}else{

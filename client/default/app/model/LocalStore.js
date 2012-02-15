@@ -1,7 +1,7 @@
 Ext.define('App.model.LocalStore', {
     extend: 'Ext.data.Model',
     config: {
-	    fields: [{name: 'id', type: 'string'},
+	    fields: [{name: 'id'},
 	             {name: 'language',  type: 'string'},
 	             {name: 'accountID',  type: 'string'},
 	             {name: 'email',  type: 'string'},
@@ -12,10 +12,9 @@ Ext.define('App.model.LocalStore', {
 	             {name: 'alertHours', type: 'Boolean'},
 	             {name: 'overrideIndividualAlerts', type: 'Boolean'},
 	             ],
-	    idProperty: "id",
 	    proxy: {
 	        type: 'localstorage',
-	        id: 'appLocalStore'
-	    },
+	        id: 'appLocalStore0'
+	    }
     }
 });
