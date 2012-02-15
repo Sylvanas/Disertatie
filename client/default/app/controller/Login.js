@@ -14,9 +14,10 @@ Ext.define('App.controller.Login', {
 					var emailField = Ext.getCmp('LoginViewEmailField');
 					var passwordField = Ext.getCmp('LoginViewPassField');
 					//get the id from cloud
-					var loginData = { id: "Test ID", email: emailField.getValue(),  password: passwordField.getValue() };				
+					//var loginData = { accountID: 'Test ID', email: emailField.getValue(),  password: passwordField.getValue() };
+					var loginData = { accountID: 'dg934f9sd', email: 'test mail',  password:'test pass' };	
 					var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
-					localStoreRecord.set('id', loginData['id']);
+					localStoreRecord.set('accountID', loginData['accountID']);
 					localStoreRecord.set('email', loginData['email']);
 					localStoreRecord.set('password', loginData['password']);
 					App.Global.changeView(App.view.HomeView.xtype);

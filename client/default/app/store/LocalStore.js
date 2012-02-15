@@ -3,9 +3,7 @@ Ext.define('App.store.LocalStore', {
 	requires: [ 'App.model.LocalStore' ],
 	config: { 
 	    model: 'App.model.LocalStore',
-	    autoLoad: true
-        //autoSync : true,
-	    //autoLoad: true, //why does this crash? - "You are using a ServerProxy but have not supplied it with a url."
-	    //storeID: "aaaLocalStore",
+	    autoLoad: true,
+        autoSync : true,
 	}
 });
