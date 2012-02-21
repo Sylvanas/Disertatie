@@ -14,22 +14,35 @@ Ext.define('App.controller.Account', {
 			
 			'#AccountViewShowIDButton': { 'tap': function () {
 				var localStore = Ext.getStore('LocalStore');
-				var popup = Ext.create('Ext.Panel',{
-					floating: true,
-					modal: true,
-					centered: true,
-					width: 300,
-					height: 125,
-					styleHtmlContent: true,
-					html: 'Your ID is:</br><b>'+localStore.getAt(0).get('accountID')+'</b>',
-				    items: [{
-				    	docked: 'top',
-				    	xtype: 'toolbar',
-				    	title: 'Profile ID',
-				    }],
-				    scrollable: true,
-				});
-				popup.show();
+                this.overlay = Ext.Viewport.add({
+                    xtype: 'panel',
+                    modal: true,
+                    hideOnMaskTap: true,
+                    showAnimation: {
+                        type: 'popIn',
+                        duration: 250,
+                        easing: 'ease-out'
+                    },
+                    hideAnimation: {
+                        type: 'popOut',
+                        duration: 250,
+                        easing: 'ease-out'
+                    },
+                    centered: true,
+                    width: 300,
+                    height: 75,
+                    styleHtmlContent: true,
+                    html: 'Your ID is:</br><b>'+localStore.getAt(0).get('accountID')+'</b>',
+                    items: [
+                        {
+                            docked: 'top',
+                            xtype: 'toolbar',
+                            title: 'Profile ID',
+                        }
+                    ],
+                    scrollable: false
+                });
+                this.overlay.show();
 				}
 			},
 			
