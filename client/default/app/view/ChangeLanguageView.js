@@ -2,12 +2,14 @@ Ext.define('App.view.ChangeLanguageView', {
     extend: 'Ext.Panel',
     title: "ChangeLanguage View",
     alias: "widget.ChangeLanguageView",
-    	config: {
+    config: {
+    	scrollable: true,
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 				{
 					xtype : 'toolbar',
 					ui: 'light',
+					docked: 'top',
 					items : [{
 									xtype : 'button',
 									text: 'Back',
@@ -28,7 +30,7 @@ Ext.define('App.view.ChangeLanguageView', {
 	        		store: 'Languages',
 	        		displayField: 'name', 
 	    			valueField: 'id', 
-	        		margin: '10px',
+	    			padding: '10px',
 	        	},
 	        	{xtype: 'spacer'},
 	        	{

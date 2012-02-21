@@ -4,6 +4,7 @@ Ext.define('App.view.HomeView', {
     title: "Home View",
     alias: "widget.HomeView",
     config: {
+    	scrollable: true,
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		    { cls: 'logo', docked: 'top', height: 48 },

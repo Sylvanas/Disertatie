@@ -2,13 +2,15 @@ Ext.define('App.view.SoundAlertView', {
     extend: 'Ext.Panel',
     title: "SoundAlert View",
     alias: "widget.SoundAlertView",
-    	config: {
+    config: {
+    	scrollable: true,
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 				{
 					xtype : 'toolbar',
 					ui: 'light',
 					title: '',
+					docked: 'top',
 					layout: { pack: 'center' },
 					items : [ 
 								{

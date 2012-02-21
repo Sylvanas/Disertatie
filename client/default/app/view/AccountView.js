@@ -4,7 +4,8 @@ Ext.define('App.view.AccountView', {
     title: "Account View",
     alias: "widget.AccountView",
     config: {
-    		layout: { type: 'vbox', align: 'stretch' },
+    	scrollable: true,
+    	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		    { cls: 'logo', docked: 'top', height: 48 },
 		    {xtype: 'spacer'},

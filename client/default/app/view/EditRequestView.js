@@ -2,12 +2,14 @@ Ext.define('App.view.EditRequestView', {
     extend: 'Ext.Panel',
     title: "EditRequest View",
     alias: "widget.EditRequestView",
-    	config: {
+    config: {
+    	scrollable: true,
     	layout: { type: 'vbox' },
 		items: [
 				{
 					xtype : 'toolbar',
 					ui: 'light',
+					docked: 'top',
 					items : [{
 									xtype : 'button',
 									text: 'Back',

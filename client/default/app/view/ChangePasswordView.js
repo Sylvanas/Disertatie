@@ -2,7 +2,8 @@ Ext.define('App.view.ChangePasswordView', {
     extend: 'Ext.Panel',
     title: "ChangePassword View",
     alias: "widget.ChangePasswordView",
-    	config: {
+    config: {
+    	scrollable: true,
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		        { cls: 'logo', docked: 'top', height: 48 },
@@ -10,13 +11,13 @@ Ext.define('App.view.ChangePasswordView', {
 				{
 					xtype : 'textfield',
 					id: 'ChangePasswordViewNewPasswordField',
-					style : 'margin: 10px; height: 30px;',
+					style : 'padding: 10px; height: 30px;',
 					placeHolder : 'New Password'
 				},
 				{
 					xtype : 'emailfield',
 					id: 'ChangePasswordViewConfirmNewPasswordField',
-					style : 'margin: 10px; height: 30px;',
+					style : 'padding: 10px; height: 30px;',
 					placeHolder : 'Confirm New Password'
 				},
 				{

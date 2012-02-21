@@ -2,7 +2,8 @@ Ext.define('App.view.LoginView', {
     extend: 'Ext.Panel',
     title: "Login View",
     alias: "widget.LoginView",
-    	config: {
+   config: {
+	        scrollable: true,
     		layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		   { cls: 'logo', docked: 'top', height: 48 },
@@ -11,7 +12,7 @@ Ext.define('App.view.LoginView', {
     			xtype : 'emailfield',
     			id: 'LoginViewEmailField',
     			name : 'email',
-    			style : 'margin: 10px; height: 30px;',
+    			style : 'padding: 10px; height: 30px;',
     			placeHolder : 'Email'
     		},
     		{
@@ -19,7 +20,7 @@ Ext.define('App.view.LoginView', {
     			id: 'LoginViewPassField',
     			name : 'password',
     			height: 30,
-    			style : 'margin: 10px; height: 30px;',
+    			style : 'padding: 10px; height: 30px;',
     			placeHolder : 'Password'
     		},
     		{
@@ -34,15 +35,14 @@ Ext.define('App.view.LoginView', {
     			text: 'Register',
     			id: 'LoginViewRegisterButton',
     			style : 'margin: 10px',
-    		},
-		    {xtype: 'spacer'},
+    		}, {xtype: 'spacer'},
     		{
     			xtype : 'button',
     			text : 'Forgot Password?',
     			id: 'LoginViewForgotPasswordButton',
     			ui: 'plain',
     			style : 'margin: 10px',
-    		}
+    		}, {xtype: 'spacer'},
 		]
 	},
 	initialize: function() {

@@ -2,29 +2,31 @@ Ext.define('App.view.RegisterView', {
     extend: 'Ext.Panel',
     title: "Register View",
     alias: "widget.RegisterView",
-    	config: {
-    		layout: { type: 'vbox', align: 'stretch' },
+   config: {
+	    scrollable: true,
+    	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		    { cls: 'logo', docked: 'top', height: 48 },
+		    {xtype: 'spacer'},
 			{
 				xtype : 'emailfield',
 				id: 'RegisterViewEmailField',
 				name : 'email',
-				style : 'margin: 10px; height: 30px;',
+				style : 'padding: 10px; height: 30px;',
 				placeHolder : 'Email'
 			},
 			{
 				xtype : 'passwordfield',
 				id: 'RegisterViewPassField',
 				name : 'password',
-				style : 'margin: 10px; height: 30px;',
+				style : 'padding: 10px; height: 30px;',
 				placeHolder : 'Password'
 			},
 			{
 				xtype : 'passwordfield',
 				id: 'RegisterViewConfirmPassField',
 				name : 'confirmPassword',
-				style : 'margin: 10px; height: 30px;',
+				style : 'padding: 10px; height: 30px;',
 				placeHolder : 'Confirm Password'
 			},
     		{
@@ -40,7 +42,7 @@ Ext.define('App.view.RegisterView', {
 				text: 'Cancel',
 				id: 'RegisterViewLoginButton',
 				style : 'margin: 10px',
-			},
+			}, {xtype: 'spacer'},
 		]
 	},
 	initialize: function() {

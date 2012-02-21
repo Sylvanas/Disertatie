@@ -12,16 +12,16 @@
 	min-height:0;
 }
 
-.x-input-el {
-	background: white;
-}
-
 .x-container .x-panel .x-layout-card-item {
 	background: white;
 }
 
 .x-field-input .x-clear-icon {
 	display: none;
+}
+
+.x-input-el {
+	border-width: 2;
 }
 
 .SoundAlertFormPanel {

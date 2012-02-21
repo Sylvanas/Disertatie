@@ -2,7 +2,8 @@ Ext.define('App.view.SendFriendRequestView', {
     extend: 'Ext.Panel',
     title: "SendFriendRequest View",
     alias: "widget.SendFriendRequestView",
-    	config: {
+    config: {
+    	scrollable: true,
     	layout: { type: 'vbox' },
 		items: [{
 					xtype : 'toolbar',
@@ -22,7 +23,7 @@ Ext.define('App.view.SendFriendRequestView', {
 					xtype: 'textfield',
 					id: 'SendFriendRequestViewSendRequestField',
 	    			height: 30,
-	    			style : 'margin: 10px; height: 30px;',
+	    			style : 'padding: 10px; height: 30px;',
 	    			placeHolder : 'Friend ID'
 				},
 				{
