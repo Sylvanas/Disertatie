@@ -95,7 +95,7 @@ Ext.application({
     
     goToFirstView: function() {
     	var localStore = Ext.getStore('LocalStore');
-    	if(localStore.getAt(0).get('email') === ''){
+    	if(localStore.getAt(0).get('accountID') == ''){
     		App.mainView.setActiveItem(0);
     	}else{
     		App.mainView.setActiveItem(2);
