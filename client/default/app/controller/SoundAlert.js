@@ -24,8 +24,8 @@ Ext.define('App.controller.SoundAlert', {
 				}
 			},
 
-			'#SoundAlertViewSlider': { 'change': function (control, value) {
-				Ext.getStore('LocalStore').getAt(0).set('soundVolume',value);
+			'#SoundAlertViewSlider': { 'change': function (control, thumb, newValue) {
+				Ext.getStore('LocalStore').getAt(0).set('soundVolume',newValue);
 				}
 			},
 
