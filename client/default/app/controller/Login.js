@@ -9,19 +9,28 @@ Ext.define('App.controller.Login', {
     init: function() {
 		this.control({		
 			'#LoginViewLoginButton': { 'tap': function () {
-				if(this.inputData()){
-					//TODO: implement login logic
-					var emailField = Ext.getCmp('LoginViewEmailField');
-					var passwordField = Ext.getCmp('LoginViewPassField');
-					//get the id from cloud
-					//var loginData = { accountID: 'Test ID', email: emailField.getValue(),  password: passwordField.getValue() };
-					var loginData = { accountID: 'dg934f9sd', email: 'test mail',  password:'test pass' };	
-					var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
-					localStoreRecord.set('accountID', loginData['accountID']);
-					localStoreRecord.set('email', loginData['email']);
-					localStoreRecord.set('password', loginData['password']);
-					App.Global.changeView(App.view.HomeView.xtype);
-					}
+				var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+    	    	localStoreRecord.set('accountID', 'asdf34f34rf');
+    	    	localStoreRecord.set('email', Ext.getCmp('LoginViewEmailField').getValue());
+    	    	localStoreRecord.set('password', Ext.getCmp('LoginViewPassField').getValue());
+				App.Global.changeView(App.view.HomeView.xtype);
+				/*if(this.inputData()){
+					var email = Ext.getCmp('LoginViewEmailField').getValue();
+					var password = Ext.getCmp('LoginViewPassField').getValue();
+					$fh.act({
+			    	      act : 'Login',
+			    	      req : {
+			    	        email : email,
+			    	        password : password
+			    	      }
+			    	    }, function(res) {
+			    	    	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+			    	    	localStoreRecord.set('accountID', res.accountID);
+			    	    	localStoreRecord.set('email', Ext.getCmp('LoginViewEmailField').getValue());
+			    	    	localStoreRecord.set('password', Ext.getCmp('LoginViewPassField').getValue());
+			    	    	App.Global.changeView(App.view.HomeView.xtype);
+						});		
+					}*/
 				}
 			},
 			
