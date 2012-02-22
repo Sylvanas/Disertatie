@@ -63,6 +63,7 @@ Ext.define('Global', {
     	Ext.getCmp('SoundAlertViewSlider').setValue(localStoreRecord.get('soundVolume'));
     	Ext.getCmp('SoundAlertViewAlertHours').setValue(localStoreRecord.get('alertHours'));
     	Ext.getCmp('SoundAlertViewOverrideIndividualAlerts').setValue(localStoreRecord.get('overrideIndividualAlerts'));
+    	Ext.getCmp('ChangeLanguageViewSelectField').setValue(localStoreRecord.get('language'));
     },
     
     clearStore: function(store) {

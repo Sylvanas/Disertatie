@@ -27,6 +27,7 @@ Ext.define('App.view.ChangeLanguageView', {
 				{xtype: 'spacer'},
 				{
 	        		xtype: 'selectfield',
+	        		id: 'ChangeLanguageViewSelectField',
 	        		store: 'Languages',
 	        		displayField: 'name', 
 	    			valueField: 'id', 

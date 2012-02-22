@@ -7,7 +7,6 @@ Ext.define('App.controller.ChangeLanguage', {
         },
     },
     init: function() {
-		// Start listening for events on views
 		this.control({
 			'#ChangeLanguageViewBackButton': { 'tap': function () {
 				App.Global.changeView(App.view.ConfigurationView.xtype);
@@ -15,7 +14,8 @@ Ext.define('App.controller.ChangeLanguage', {
 			},
 			
 			'#ChangeLanguageViewSaveButton': { 'tap': function () {
-				App.Global.changeView(App.view.ConfigurationView.xtype);
+				Ext.getStore('LocalStore').getAt(0).set('language',Ext.getCmp('ChangeLanguageViewSelectField').getRecord().get('name'));
+			    App.Global.changeView(App.view.ConfigurationView.xtype);
 				}
 			},
 		});
