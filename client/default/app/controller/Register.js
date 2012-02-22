@@ -13,7 +13,7 @@ Ext.define('App.controller.Register', {
 					var confirmPasswordField = Ext.getCmp('RegisterViewConfirmPassField').getValue();
 					if(this.DataIsValid(emailField, passwordField, confirmPasswordField)){
 						if(this.SendDataToServer(emailField, passwordField)){
-							App.Global.startSendindGeoData();
+							App.Global.startSendingGeoData();
 							App.Global.changeView(App.view.HomeView.xtype);
 						}
 					}

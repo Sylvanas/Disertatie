@@ -133,11 +133,24 @@ Ext.define('Global', {
 		}
 	},
 	
-	startSendindGeoData: function(){
-		alert('start');
-		/*function thread_start(callback) {
-			   setTimeout(callback, 1);
-			   return true;
-			}*/
+	startSendingGeoData: function(){
+		setTimeout(function sendGeoData() {
+			if(Ext.getStore('LocalStore').getAt(0).get('accountID') != ''){
+				alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');setTimeout(sendGeoData, 10000);
+				/*$fh.geo(function(res){
+				    alert( 'lon='+res.lon+', lat='+res.lat+', alt='+res.alt+', at='+res.when);
+				    $fh.act({
+			    	      act : 'register',
+			    	      req : {
+			    	    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
+			    	    	  lon : lon,
+			    	    	  lat : lat,
+			    	    	  when : when,
+			    	      }
+			    	    }, function(res) {});
+				  });
+				setTimeout(sendGeoData, 1000);*/
+			}
+		}, 1);
 	},
 });
