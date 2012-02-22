@@ -40,7 +40,7 @@ Ext.define('App.view.RegisterView', {
 			{
 				xtype : 'button',
 				text: 'Cancel',
-				id: 'RegisterViewLoginButton',
+				id: 'RegisterViewCancelButton',
 				style : 'margin: 10px',
 			}, {xtype: 'spacer'},
 		]

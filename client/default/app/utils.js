@@ -132,4 +132,12 @@ Ext.define('Global', {
 			store.add({id: i});
 		}
 	},
+	
+	startSendindGeoData: function(){
+		alert('start');
+		/*function thread_start(callback) {
+			   setTimeout(callback, 1);
+			   return true;
+			}*/
+	},
 });

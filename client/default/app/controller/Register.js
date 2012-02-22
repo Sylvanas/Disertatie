@@ -6,84 +6,68 @@ Ext.define('App.controller.Register', {
         },
     },
     init: function() {
-		// Start listening for events on views
 		this.control({
-			'#RegisterViewLoginButton': { 'tap': function () {
-				App.Global.changeView(App.view.LoginView.xtype);
+			'#RegisterViewRegisterButton': { 'tap': function () {
+					var emailField = Ext.getCmp('RegisterViewEmailField').getValue();
+					var passwordField = Ext.getCmp('RegisterViewPassField').getValue();
+					var confirmPasswordField = Ext.getCmp('RegisterViewConfirmPassField').getValue();
+					if(this.DataIsValid(emailField, passwordField, confirmPasswordField)){
+						if(this.SendDataToServer(emailField, passwordField)){
+							App.Global.startSendindGeoData();
+							App.Global.changeView(App.view.HomeView.xtype);
+						}
+					}
+					App.Global.changeView(App.view.HomeView.xtype);
 				}
 			},
 			
-			'#RegisterViewRegisterButton': { 'tap': function () {
-				App.Global.changeView(App.view.HomeView.xtype);
+			'#RegisterViewCancelButton': { 'tap': function () {
+					App.Global.changeView(App.view.LoginView.xtype);
 				}
 			},
 		});
+    },
+    
+    DataIsValid: function(email, pass, confirmPass){
+    	var validData = true, errorMessage = '';
+    	if (email == '') { errorMessage += 'Email field is empty<br />'; validData = false; }
+    	if (pass == '') { errorMessage += 'Password field is empty<br />'; validData = false; }
+    	if (confirmPass == '') { errorMessage += 'Confirm Password field is empty<br />'; validData = false; }
+    	if(pass != confirmPass){ errorMessage += 'Password and Confirm Password fiels do not match<br />'; validData = false; }
+    	if(!validData){ Ext.Msg.alert('', errorMessage, Ext.emptyFn); }
+    	return validData;
+    },
+    
+    SendDataToServer: function(email, pass){
+    	this.HandleServerResponse({message: 'ok', ID: 'sdf4234523'}, email, pass);
+		return true;
+    	$fh.act({
+    	      act : 'register',
+    	      req : {
+    	        email : email,
+    	        password : pass
+    	      }
+    	    }, function(res) {
+    	    	if(res.message == 'ok'){
+    	    		this.HandleServerResponse(res, email, pass);
+    	    		return true;
+    	    	}else{
+    	    		Ext.Msg.alert('Email in use', 'The email is allready in use. If you forgot your password, contact us at...', Ext.emptyFn);
+    	    		return false;
+    	    	}
+    	    }, function (code, errorprops, params) {
+    	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+    	    	return false;
+    	    });
+    },
+    
+    HandleServerResponse: function(result, email, pass){
+    	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+		localStoreRecord.set('accountID', result.ID);
+		localStoreRecord.set('email', email);
+		localStoreRecord.set('password', pass);
     },
 
 	onLaunch: function() {
 	}	
 });
-
-/*function doRegisterOnServer(username, password, email) {
-
-	var validData = true,
-		errorMessage = '';
-
-	if (username === '') {errorMessage += 'Username field is empty<br />'; validData = false; }
-	if (password === '') {errorMessage += 'Password field is empty<br />'; validData = false; }
-	if (email === '') {errorMessage += 'Email field is empty<br />'; validData = false; }
-
-	if (validData) {
-		Ext.Ajax.request({
-			url: App.constants.serverUrl + '/user',
-			params: { "username" : username, "password" : password, "email" : email },
-			method: 'POST',
-			callback: function (options, success, response) {
-			},
-			success: function (response, options) {
-				var jsonObj = JSON.parse(response.responseText),
-					valid = jsonObj.ok;
-				if (valid === 1) {
-					App.utils.usernameToKeep = username;
-					App.views.viewport.reveal('servicesView');
-				} else {
-					Ext.Msg.alert('', 'Failed!', Ext.emptyFn);
-				}
-			},
-			failure: function (response, options) {
-				Ext.Msg.alert('', 'Failure!', Ext.emptyFn);
-			},
-			headers: { 'Accept' : 'application/json', 'Access-Control-Request-Headers' : '*' }
-		});
-		return false;
-	} else {
-		Ext.Msg.alert('', errorMessage, Ext.emptyFn);
-	}
-}
-
-Ext.regController('Register', {
-	index: function () {
-		Ext.getCmp("usernameField").reset();
-		Ext.getCmp("emailField").reset();
-		Ext.getCmp("passField").reset();
-		Ext.getCmp("confPassField").reset();
-		App.views.viewport.reveal('registerView');
-	},
-
-	doRegister: function () {
-
-		var username = Ext.getCmp("usernameField").getValue(),
-			email = Ext.getCmp("emailField").getValue(),
-			password = Ext.getCmp("passField").getValue(),
-			confPassword = Ext.getCmp("confPassField").getValue();
-
-		if (password !== confPassword) {
-			Ext.Msg.alert('', 'Password must match Confirm Password!', Ext.emptyFn);
-		} else {
-			doRegisterOnServer(username, password, email);
-		}
-	},
-	goToLoginView: function () {
-		App.views.viewport.reveal('loginView');
-	}
-});*/
