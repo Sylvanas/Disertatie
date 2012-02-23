@@ -32,19 +32,19 @@ Ext.define('App.controller.SendFriendRequest', {
 			},
 			
 			'#SendFriendRequestViewSendRequestButton': { 'tap': function () {
-					this.sendFriendRequest();
+					this.sendFriendRequest(Ext.getStore('LocalStore').getAt(0).get('accountID'), Ext.getCmp('SendFriendRequestViewSendRequestField').getValue());
 				}
 			},
 		});
     },
     
-    sendFriendRequest: function() {
+    sendFriendRequest: function(senderID, targetID) {
     	App.Global.changeView(App.view.HomeView.xtype);return;
     	$fh.act({
   	      act : 'SendFriendRequest',
   	      req : {
-  	        senderID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
-  	        targetID : Ext.getCmp('SendFriendRequestViewSendRequestField').getValue()
+  	        senderID : senderID,
+  	        targetID : targetID
   	      }
   	    }, function(res) {
   	    	App.Global.changeView(App.view.HomeView.xtype);

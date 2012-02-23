@@ -6,24 +6,45 @@ Ext.define('App.controller.ChangePassword', {
         },
     },
     init: function() {
-		// Start listening for events on views 
-		this.control({
-			'#ChangePasswordViewBackButton': { 'tap': function () {
-				App.Global.changeView(App.view.AccountView.xtype);
-				}
-			},
-			
+		this.control({		
 			'#ChangePasswordViewChangePasswordButton': { 'tap': function () {
-				App.Global.changeView(App.view.AccountView.xtype);
+					var pass = Ext.getCmp('ChangePasswordViewNewPasswordField').getValue();
+					var confirmPassword = Ext.getCmp('ChangePasswordViewConfirmNewPasswordField').getValue();
+					if(this.DataIsValid(pass, confirmPassword)){
+						this.SendDataToServer(Ext.getStore('LocalStore').getAt(0).get('accountID'), pass);
+					}
 				}
 			},
 			
 			'#ChangePasswordViewCancelButton': { 'tap': function () {
-				App.Global.changeView(App.view.AccountView.xtype);
+					App.Global.changeView(App.view.AccountView.xtype);
 				}
 			},
 			
 		});
+    },
+    
+    DataIsValid: function(pass, confirmPass){
+    	var validData = true, errorMessage = '';
+    	if(pass == '') { errorMessage += 'Password field is empty<br />'; validData = false; }
+    	if(pass != confirmPass){ errorMessage += 'Password and Confirm Password fiels do not match<br />'; validData = false; }
+    	if(!validData){ Ext.Msg.alert('', errorMessage, Ext.emptyFn); }
+    	return validData;
+    },
+    
+    SendDataToServer: function(accountID, pass){
+    	App.Global.changeView(App.view.AccountView.xtype); return;
+    	$fh.act({
+    	      act : 'ChangePassword',
+    	      req : {
+    	    	  accountID : accountID,
+    	    	  pass : pass
+    	      }
+    	    }, function(res) {
+    	    	App.Global.changeView(App.view.AccountView.xtype);
+    	    }, function (code, errorprops, params) {
+    	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+    	    });
     },
 
 	onLaunch: function() {

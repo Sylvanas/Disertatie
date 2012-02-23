@@ -9,13 +9,13 @@ Ext.define('App.view.ChangePasswordView', {
 		        { cls: 'logo', docked: 'top', height: 48 },
 				{ xtype: 'spacer'},
 				{
-					xtype : 'textfield',
+					xtype : 'passwordfield',
 					id: 'ChangePasswordViewNewPasswordField',
 					style : 'padding: 10px; height: 30px;',
 					placeHolder : 'New Password'
 				},
 				{
-					xtype : 'emailfield',
+					xtype : 'passwordfield',
 					id: 'ChangePasswordViewConfirmNewPasswordField',
 					style : 'padding: 10px; height: 30px;',
 					placeHolder : 'Confirm New Password'
@@ -33,20 +33,7 @@ Ext.define('App.view.ChangePasswordView', {
 					text: 'Cancel',
 					id: 'ChangePasswordViewCancelButton',
 					style : 'margin: 10px',
-				},
-				{
-					xtype : 'button',
-					text: 'Cancel',
-					id: 'ChangePasswordViewCancelButton',
-					style : 'margin: 10px',
-				},
-				{ xtype: 'spacer'},
-				{
-					xtype : 'button',
-					text: 'Cancel',
-					id: 'ChangePasswordViewCancelButton',
-					style : 'margin: 10px',
-				},
+				},{ xtype: 'spacer'},
 		]
 	},
 	initialize: function() {	
