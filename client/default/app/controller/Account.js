@@ -61,18 +61,21 @@ Ext.define('App.controller.Account', {
     },
 
     GetRequests: function(accountID){
-    	var result = {requests: [{id: 'dgdg', name: 'Spencer'},  {id: 'dgw', name: 'Maintz'}, {id: 'ftgsd', name: 'Conran'}, {id: '4534', name: 'Avins'}]};this.HandleServerResponse(result);
-    	return;
-    	$fh.act({
-  	      act : 'GetRequests',
-  	      req : {
-  	    	  accountID : accountID,
-  	      }
-  	    }, function(res) {
-  	    	this.HandleServerResponse(res);
-  	    }, function (code, errorprops, params) {
-  	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
-  	    });
+    	if(App.Global.releaseCode){
+    		$fh.act({
+		      act : 'GetRequests',
+		      req : {
+		    	  accountID : accountID,
+		      }
+		    }, function(res) {
+		    	this.HandleServerResponse(res);
+		    }, function (code, errorprops, params) {
+		    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+		    });
+	    	}else{
+	    		var result = {requests: [{id: 'dgdg', name: 'Spencer'},  {id: 'dgw', name: 'Maintz'}, {id: 'ftgsd', name: 'Conran'}, {id: '4534', name: 'Avins'}]};this.HandleServerResponse(result);
+	        	return;
+	    	}
     },
 
     HandleServerResponse: function(result){

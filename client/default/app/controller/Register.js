@@ -39,26 +39,29 @@ Ext.define('App.controller.Register', {
     },
     
     SendDataToServer: function(email, pass){
-    	this.HandleServerResponse({message: 'ok', ID: 'sdf4234523'}, email, pass);
-		return true;
-    	$fh.act({
-    	      act : 'register',
-    	      req : {
-    	        email : email,
-    	        password : pass
-    	      }
-    	    }, function(res) {
-    	    	if(res.message == 'ok'){
-    	    		this.HandleServerResponse(res, email, pass);
-    	    		return true;
-    	    	}else{
-    	    		Ext.Msg.alert('Email in use', 'The email is allready in use. If you forgot your password, contact us at...', Ext.emptyFn);
-    	    		return false;
-    	    	}
-    	    }, function (code, errorprops, params) {
-    	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
-    	    	return false;
-    	    });
+		if(App.Global.releaseCode){
+			$fh.act({
+			      act : 'register',
+			      req : {
+			        email : email,
+			        password : pass
+			      }
+			    }, function(res) {
+			    	if(res.message == 'ok'){
+			    		this.HandleServerResponse(res, email, pass);
+			    		return true;
+			    	}else{
+			    		Ext.Msg.alert('Email in use', 'The email is allready in use. If you forgot your password, contact us at...', Ext.emptyFn);
+			    		return false;
+			    	}
+			    }, function (code, errorprops, params) {
+			    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+			    	return false;
+			    });
+		    	}else{
+		    		this.HandleServerResponse({message: 'ok', ID: 'sdf4234523'}, email, pass);
+		    		return true;
+		    	}
     },
     
     HandleServerResponse: function(result, email, pass){

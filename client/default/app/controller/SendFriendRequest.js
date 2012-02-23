@@ -39,18 +39,22 @@ Ext.define('App.controller.SendFriendRequest', {
     },
     
     sendFriendRequest: function(senderID, targetID) {
-    	App.Global.changeView(App.view.HomeView.xtype);return;
-    	$fh.act({
-  	      act : 'SendFriendRequest',
-  	      req : {
-  	        senderID : senderID,
-  	        targetID : targetID
-  	      }
-  	    }, function(res) {
-  	    	App.Global.changeView(App.view.HomeView.xtype);
-		}, function (code, errorprops, params) {
-    	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
-    	    });	
+		if(App.Global.releaseCode){
+			$fh.act({
+		  	      act : 'SendFriendRequest',
+		  	      req : {
+		  	        senderID : senderID,
+		  	        targetID : targetID
+		  	      }
+		  	    }, function(res) {
+		  	    	App.Global.changeView(App.view.HomeView.xtype);
+				}, function (code, errorprops, params) {
+		    	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+		    	    });	
+		    	}else{
+		    		App.Global.changeView(App.view.HomeView.xtype);
+		    		return;
+		    	}
     },
 
 	onLaunch: function() {

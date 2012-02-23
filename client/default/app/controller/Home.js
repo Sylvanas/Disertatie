@@ -42,18 +42,22 @@ Ext.define('App.controller.Home', {
     },
     
     GetFriends: function(accountID){
-    	var result = {requests: [{id: 'dgdg', name: 'Codrean'},  {id: 'dgw', name: 'Kisu'}, {id: 'ftgsd', name: 'Mantog'}, {id: '4534', name: 'Mangu'}]};this.HandleServerResponse(result);
-    	return;
-    	$fh.act({
-  	      act : 'GetFriends',
-  	      req : {
-  	    	  accountID : accountID,
-  	      }
-  	    }, function(res) {
-  	    	this.HandleServerResponse(res);
-  	    }, function (code, errorprops, params) {
-  	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
-  	    });
+		if(App.Global.releaseCode){
+			$fh.act({
+			      act : 'GetFriends',
+			      req : {
+			    	  accountID : accountID,
+			      }
+			    }, function(res) {
+			    	this.HandleServerResponse(res);
+			    }, function (code, errorprops, params) {
+			    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+			    });
+		    	}else{
+		    		var result = {requests: [{id: 'dgdg', name: 'Codrean'},  {id: 'dgw', name: 'Kisu'}, {id: 'ftgsd', name: 'Mantog'}, {id: '4534', name: 'Mangu'}]};
+		    		this.HandleServerResponse(result);
+		        	return;
+		    	}
     },
     
     HandleServerResponse: function(result){

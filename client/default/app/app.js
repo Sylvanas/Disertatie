@@ -99,6 +99,7 @@ Ext.application({
     		App.mainView.setActiveItem(0);
     	}else{
     		App.mainView.setActiveItem(2);
+    		App.Global.startSendingGeoData();
     	}
     },
 });

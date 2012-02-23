@@ -36,6 +36,7 @@ Ext.define('Global', {
 
     constructor: function() {   
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
+    	this.releaseCode = false;
     },
     
     changeView: function(target, durationAnimation) {
@@ -65,13 +66,6 @@ Ext.define('Global', {
     	Ext.getCmp('SoundAlertViewOverrideIndividualAlerts').setValue(localStoreRecord.get('overrideIndividualAlerts'));
     	Ext.getCmp('ChangeLanguageViewSelectField').setValue(localStoreRecord.get('language'));
     },
-    
-    clearStore: function(store) {
-    	var length = store.getCount();
-		for(var i=0;i<length;i++) {
-			store.removeAt(0);
-		}
-	},
 	
 	getDefaultLocalStoreRecord: function (){
 		var model = App.model.LocalStore;
@@ -128,7 +122,7 @@ Ext.define('Global', {
 	},
 	
 	setDefaultHoursToHourStore: function (store) {
-		this.clearStore(store);
+		store.removeAll();
 		for(var i=1;i<=24;i++) {
 			store.add({id: i});
 		}
@@ -137,20 +131,23 @@ Ext.define('Global', {
 	startSendingGeoData: function(){
 		setTimeout(function sendGeoData() {
 			if(Ext.getStore('LocalStore').getAt(0).get('accountID') != ''){
-				alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');setTimeout(sendGeoData, 10000);
-				/*$fh.geo(function(res){
-				    alert( 'lon='+res.lon+', lat='+res.lat+', alt='+res.alt+', at='+res.when);
-				    $fh.act({
-			    	      act : 'register',
-			    	      req : {
-			    	    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
-			    	    	  lon : lon,
-			    	    	  lat : lat,
-			    	    	  when : when,
-			    	      }
-			    	    }, function(res) {});
-				  });
-				setTimeout(sendGeoData, 1000);*/
+				//alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');
+				setTimeout(sendGeoData, 10000);
+				if(this.releaseCode){
+					$fh.geo(function(res){
+					    alert( 'lon='+res.lon+', lat='+res.lat+', alt='+res.alt+', at='+res.when);
+					    $fh.act({
+				    	      act : 'register',
+				    	      req : {
+				    	    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
+				    	    	  lon : lon,
+				    	    	  lat : lat,
+				    	    	  when : when,
+				    	      }
+				    	    }, function(res) {});
+					  });
+					setTimeout(sendGeoData, 1000);
+				}
 			}
 		}, 1);
 	},

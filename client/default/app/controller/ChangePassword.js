@@ -33,18 +33,22 @@ Ext.define('App.controller.ChangePassword', {
     },
 
     SendDataToServer: function(accountID, pass){
-    	App.Global.changeView(App.view.AccountView.xtype); return;
-    	$fh.act({
-    	      act : 'ChangePassword',
-    	      req : {
-    	    	  accountID : accountID,
-    	    	  pass : pass
-    	      }
-    	    }, function(res) {
-    	    	App.Global.changeView(App.view.AccountView.xtype);
-    	    }, function (code, errorprops, params) {
-    	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
-    	    });
+		if(App.Global.releaseCode){
+			$fh.act({
+			      act : 'ChangePassword',
+			      req : {
+			    	  accountID : accountID,
+			    	  pass : pass
+			      }
+			    }, function(res) {
+			    	App.Global.changeView(App.view.AccountView.xtype);
+			    }, function (code, errorprops, params) {
+			    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+			    });
+		    }else{
+		    	App.Global.changeView(App.view.AccountView.xtype); 
+		    	return;
+		    }
     },
 
 	onLaunch: function() {

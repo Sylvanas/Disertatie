@@ -49,25 +49,28 @@ Ext.define('App.controller.Map', {
 	friendName: null,
 	
 	getLocations: function(id){
-		var result = [
-	    	 	       	 {id: '123', index: '0', latitude: '53.340342', longitude: '-6.24312', time: '12.05.2011 12.20'},
-	    		         {id: '232', index: '1', latitude: '53.240342', longitude: '-6.14312', time: '12.05.2011 12.18'},
-	    		         {id: '1', index: '2', latitude: '53.140342', longitude: '-6.24312', time: '12.05.2011 12.16'},
-	    		         {id: '12343r234', index: '3', latitude: '53.140342', longitude: '-6.12312', time: '12.05.2011 12.14'},
-	    		         {id: '12341234', index: '4', latitude: '53.070342', longitude: '-6.11312', time: '12.05.2011 12.13'},
-	    		         {id: '12dsfg', index: '5', latitude: '53.210342', longitude: '-6.26312', time: '12.05.2011 12.12'},
-	    		       	 ];this.handleServerResponse(result);
-    	return;
-    	$fh.act({
-  	      act : 'GetLocations',
-  	      req : {
-  	    	  accountID : id,
-  	      }
-  	    }, function(res) {
-  	    	this.handleServerResponse(res);
-  	    }, function (code, errorprops, params) {
-  	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
-  	    });
+		if(App.Global.releaseCode){
+			$fh.act({
+		  	      act : 'GetLocations',
+		  	      req : {
+		  	    	  accountID : id,
+		  	      }
+		  	    }, function(res) {
+		  	    	this.handleServerResponse(res);
+		  	    }, function (code, errorprops, params) {
+		  	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+		  	    });
+		    	}else{
+		    		var result = [
+		 	    	 	       	 {id: '123', index: '0', latitude: '53.340342', longitude: '-6.24312', time: '12.05.2011 12.20'},
+		 	    		         {id: '232', index: '1', latitude: '53.240342', longitude: '-6.14312', time: '12.05.2011 12.18'},
+		 	    		         {id: '1', index: '2', latitude: '53.140342', longitude: '-6.24312', time: '12.05.2011 12.16'},
+		 	    		         {id: '12343r234', index: '3', latitude: '53.140342', longitude: '-6.12312', time: '12.05.2011 12.14'},
+		 	    		         {id: '12341234', index: '4', latitude: '53.070342', longitude: '-6.11312', time: '12.05.2011 12.13'},
+		 	    		         {id: '12dsfg', index: '5', latitude: '53.210342', longitude: '-6.26312', time: '12.05.2011 12.12'},
+		 	    		       	 ];this.handleServerResponse(result);
+		     	return;
+		    	}
 	},
 	
     handleServerResponse: function(result){

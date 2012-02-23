@@ -43,18 +43,21 @@ Ext.define('App.controller.EditRequest', {
     },
     
     getRecordInfo: function(id) {
-    	var result = {id: 'sdrf3434d345d4sdf3', name: 'Spencer', approved: true, ignoreAlerts: true};this.handleServerResponse(result);
-    	return;
-    	$fh.act({
-  	      act : 'GetRecordInfo',
-  	      req : {
-  	    	  accountID : id,
-  	      }
-  	    }, function(res) {
-  	    	this.handleServerResponse(res);
-  	    }, function (code, errorprops, params) {
-  	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
-  	    });
+    	if(App.Global.releaseCode){
+    		$fh.act({
+    	  	      act : 'GetRecordInfo',
+    	  	      req : {
+    	  	    	  accountID : id,
+    	  	      }
+    	  	    }, function(res) {
+    	  	    	this.handleServerResponse(res);
+    	  	    }, function (code, errorprops, params) {
+    	  	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+    	  	    });
+    	}else{
+    		var result = {id: 'sdrf3434d345d4sdf3', name: 'Spencer', approved: true, ignoreAlerts: true};this.handleServerResponse(result);
+        	return;
+    	}
     },
     
     handleServerResponse: function(result){
@@ -88,17 +91,20 @@ Ext.define('App.controller.EditRequest', {
     },
 
     sendDataToCloud: function(request) {
-    	return;
-    	$fh.act({
-    	      act : 'EditRequest',
-    	      req : {
-    	    	  request : request,
-    	      }
-    	    }, function(res) { 
-    	    	App.Global.changeView(App.view.ManageRequestsView.xtype);
-    	    }, function (code, errorprops, params) {
-    	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
-    	    });
+    	if(App.Global.releaseCode){
+    		$fh.act({
+      	      act : 'EditRequest',
+      	      req : {
+      	    	  request : request,
+      	      }
+      	    }, function(res) { 
+      	    	App.Global.changeView(App.view.ManageRequestsView.xtype);
+      	    }, function (code, errorprops, params) {
+      	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+      	    });
+    	}else{
+    		return;
+    	}
     },
 
 	onLaunch: function() {
