@@ -39,9 +39,18 @@ Ext.define('App.controller.SendFriendRequest', {
     },
     
     sendFriendRequest: function() {
-    	//var textField = Ext.getCmp('SendFriendRequestViewSendRequestField');
-		//alert(textField.getValue());
-		App.Global.changeView(App.view.HomeView.xtype);
+    	App.Global.changeView(App.view.HomeView.xtype);return;
+    	$fh.act({
+  	      act : 'SendFriendRequest',
+  	      req : {
+  	        senderID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
+  	        targetID : Ext.getCmp('SendFriendRequestViewSendRequestField').getValue()
+  	      }
+  	    }, function(res) {
+  	    	App.Global.changeView(App.view.HomeView.xtype);
+		}, function (code, errorprops, params) {
+    	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+    	    });	
     },
 
 	onLaunch: function() {
