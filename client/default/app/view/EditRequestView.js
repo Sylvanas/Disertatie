@@ -16,7 +16,13 @@ Ext.define('App.view.EditRequestView', {
 									id: 'EditRequestViewBackButton',
 									ui: 'back',
 								},
-								{xtype: 'spacer'}]
+								{xtype: 'spacer'},
+								{
+									xtype : 'button',
+									text: 'Save',
+									id: 'EditRequestViewSaveButton',
+									ui: 'action',
+								}]
 				},
 				{
 					xtype: 'formpanel',
@@ -46,7 +52,6 @@ Ext.define('App.view.EditRequestView', {
 					        	name: 'approved',
 					        	label: 'Approved:',
 					        	labelWidth: '40%',
-					        	disabled: true,
 					        },
 					        {
 					        	xtype: 'checkboxfield',
