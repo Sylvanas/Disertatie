@@ -23,7 +23,7 @@ Ext.define('App.view.SendFriendRequestView', {
 					xtype: 'textfield',
 					id: 'SendFriendRequestViewSendRequestField',
 	    			height: 30,
-	    			style : 'padding: 10px; height: 30px;',
+	    			style : 'margin: 10px; height: 30px;',
 	    			placeHolder : 'Friend ID'
 				},
 				{

@@ -12,7 +12,7 @@ Ext.define('App.view.LoginView', {
     			xtype : 'emailfield',
     			id: 'LoginViewEmailField',
     			name : 'email',
-    			style : 'padding: 10px; height: 30px;',
+    			style : 'margin: 10px; height: 30px;',
     			placeHolder : 'Email'
     		},
     		{
@@ -20,7 +20,7 @@ Ext.define('App.view.LoginView', {
     			id: 'LoginViewPassField',
     			name : 'password',
     			height: 30,
-    			style : 'padding: 10px; height: 30px;',
+    			style : 'margin: 10px; height: 30px;',
     			placeHolder : 'Password'
     		},
     		{

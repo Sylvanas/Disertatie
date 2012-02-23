@@ -12,21 +12,21 @@ Ext.define('App.view.RegisterView', {
 				xtype : 'emailfield',
 				id: 'RegisterViewEmailField',
 				name : 'email',
-				style : 'padding: 10px; height: 30px;',
+				style : 'margin: 10px; height: 30px;',
 				placeHolder : 'Email'
 			},
 			{
 				xtype : 'passwordfield',
 				id: 'RegisterViewPassField',
 				name : 'password',
-				style : 'padding: 10px; height: 30px;',
+				style : 'margin: 10px; height: 30px;',
 				placeHolder : 'Password'
 			},
 			{
 				xtype : 'passwordfield',
 				id: 'RegisterViewConfirmPassField',
 				name : 'confirmPassword',
-				style : 'padding: 10px; height: 30px;',
+				style : 'margin: 10px; height: 30px;',
 				placeHolder : 'Confirm Password'
 			},
     		{

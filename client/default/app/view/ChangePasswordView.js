@@ -11,13 +11,13 @@ Ext.define('App.view.ChangePasswordView', {
 				{
 					xtype : 'passwordfield',
 					id: 'ChangePasswordViewNewPasswordField',
-					style : 'padding: 10px; height: 30px;',
+					style : 'margin: 10px; height: 30px;',
 					placeHolder : 'New Password'
 				},
 				{
 					xtype : 'passwordfield',
 					id: 'ChangePasswordViewConfirmNewPasswordField',
-					style : 'padding: 10px; height: 30px;',
+					style : 'margin: 10px; height: 30px;',
 					placeHolder : 'Confirm New Password'
 				},
 				{

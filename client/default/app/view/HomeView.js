@@ -7,12 +7,12 @@ Ext.define('App.view.HomeView', {
     	scrollable: true,
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
-		    { cls: 'logo', docked: 'top', height: 48 },
+		    { cls: 'logo', docked: 'top', height: 48 }, {xtype: 'spacer'},
     		{
     			xtype : 'button',
     			text: 'Show friend on map',
     			id: 'HomeViewShowOnMapButton',
-    			style : 'margin-left: 10px;margin-right: 10px;margin-bottom: 10px;margin-top: 30px;',
+    			style : 'margin-left: 10px;margin-right: 10px;margin-bottom: 10px;margin-top: 0px;',
     		},
     		{
     			xtype : 'button',
@@ -39,8 +39,7 @@ Ext.define('App.view.HomeView', {
     			id: 'HomeViewLogoutButton',
     			ui: 'action',
     			style : 'margin: 10px',
-    		},
-    		{xtype: 'spacer'},
+    		}, {xtype: 'spacer'},
 		]
 	},
 	initialize: function() {
