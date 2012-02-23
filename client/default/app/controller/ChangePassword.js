@@ -23,7 +23,7 @@ Ext.define('App.controller.ChangePassword', {
 			
 		});
     },
-    
+
     DataIsValid: function(pass, confirmPass){
     	var validData = true, errorMessage = '';
     	if(pass == '') { errorMessage += 'Password field is empty<br />'; validData = false; }
@@ -31,7 +31,7 @@ Ext.define('App.controller.ChangePassword', {
     	if(!validData){ Ext.Msg.alert('', errorMessage, Ext.emptyFn); }
     	return validData;
     },
-    
+
     SendDataToServer: function(accountID, pass){
     	App.Global.changeView(App.view.AccountView.xtype); return;
     	$fh.act({

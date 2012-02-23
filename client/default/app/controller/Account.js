@@ -8,7 +8,8 @@ Ext.define('App.controller.Account', {
     init: function() {
 		this.control({
 			'#AccountViewManageRequests': { 'tap': function () {
-				App.Global.changeView(App.view.ManageRequestsView.xtype);
+					Ext.getStore('Requests').removeAll();
+					this.GetRequests(Ext.getStore('LocalStore').getAt(0).get('accountID'));
 				}
 			},
 			
@@ -57,6 +58,26 @@ Ext.define('App.controller.Account', {
 			},
 
 		});
+    },
+
+    GetRequests: function(accountID){
+    	var result = {requests: [{id: 'dgdg', name: 'Spencer'},  {id: 'dgw', name: 'Maintz'}, {id: 'ftgsd', name: 'Conran'}, {id: '4534', name: 'Avins'}]};this.HandleServerResponse(result);
+    	return;
+    	$fh.act({
+  	      act : 'GetRequests',
+  	      req : {
+  	    	  accountID : accountID,
+  	      }
+  	    }, function(res) {
+  	    	this.HandleServerResponse(res);
+  	    }, function (code, errorprops, params) {
+  	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+  	    });
+    },
+
+    HandleServerResponse: function(result){
+    	Ext.getStore('Requests').setData(result.requests);
+    	App.Global.changeView(App.view.ManageRequestsView.xtype);
     },
 
 	onLaunch: function() {
