@@ -3,7 +3,7 @@ Ext.define('App.store.Requests', {
 	requires: [ 'App.model.Requests' ],
 	config: {  
 	    model: 'App.model.Requests',
-	    sorters : 'id',
+	    sorters : 'name',
 	    //proxy: "ajax",
 	}
 });

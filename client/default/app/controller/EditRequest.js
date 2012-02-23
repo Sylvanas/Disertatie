@@ -22,15 +22,15 @@ Ext.define('App.controller.EditRequest', {
 					this.sendDataToCloud(recordToSend);
 				}
 			},
-			
+
 			'#EditRequestViewSaveButton': { 'tap': function () {
-				App.Global.changeView(App.view.ManageRequestsView.xtype);
-				var recordToSend = this.getRecordFromForm();
-				recordToSend.currentID = Ext.getStore('LocalStore').getAt(0).get('accountID');
-				this.sendDataToCloud(recordToSend);
-			}
-		},
-			
+					App.Global.changeView(App.view.ManageRequestsView.xtype);
+					var recordToSend = this.getRecordFromForm();
+					recordToSend.currentID = Ext.getStore('LocalStore').getAt(0).get('accountID');
+					this.sendDataToCloud(recordToSend);
+				}
+			},
+
 			'#ManageRequestsViewList': { 'disclose': function (comp, currentRecord,  target,  index,  e,  eOpts) {
 					Ext.getStore('EditRequest').removeAll();
 					this.getRecordInfo(currentRecord.get('id'));
@@ -39,8 +39,7 @@ Ext.define('App.controller.EditRequest', {
 		});
     },
     
-    initialize: function(result) {
-    	this.setFormPanel(result);
+    initialize: function() {
     },
     
     getRecordInfo: function(id) {
@@ -61,7 +60,7 @@ Ext.define('App.controller.EditRequest', {
     handleServerResponse: function(result){
     	var editRequestStore = Ext.getStore('EditRequest');
     	editRequestStore.setData(result);
-    	this.initialize(result);
+    	this.setFormPanel(result);
     	App.Global.changeView(App.view.EditRequestView.xtype);
     },
     

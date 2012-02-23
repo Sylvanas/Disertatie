@@ -12,7 +12,7 @@ Ext.define('App.controller.Account', {
 					this.GetRequests(Ext.getStore('LocalStore').getAt(0).get('accountID'));
 				}
 			},
-			
+
 			'#AccountViewShowIDButton': { 'tap': function () {
 				var localStore = Ext.getStore('LocalStore');
                 this.overlay = Ext.Viewport.add({
@@ -46,12 +46,12 @@ Ext.define('App.controller.Account', {
                 this.overlay.show();
 				}
 			},
-			
+
 			'#AccountViewChangePasswordButton': { 'tap': function () {
 				App.Global.changeView(App.view.ChangePasswordView.xtype);
 			    }
 		    },
-			
+
 			'#AccountViewBackButton': { 'tap': function () {
 				App.Global.changeView(App.view.HomeView.xtype);
 				}

@@ -15,7 +15,7 @@ Ext.define('App.controller.ChangePassword', {
 					}
 				}
 			},
-			
+
 			'#ChangePasswordViewCancelButton': { 'tap': function () {
 					App.Global.changeView(App.view.AccountView.xtype);
 				}
