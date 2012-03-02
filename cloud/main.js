@@ -4,7 +4,7 @@ var parameters = new Array();
 //-------------------------------------------------------------------------------
 //database methods
 function insertUser(user){
-	var insertedUser = $fh.db({
+  var insertedUser = $fh.db({
 		"act" : "create",
 		"type" : "UserTable",
 		"fields" : {
@@ -96,10 +96,10 @@ function testClass(){
 	this.inheritFrom = adminClass;
 	this.inheritFrom();
 	this.register = subclassRegister;
-	this.register = subclassLogIn;
+	this.logIn = subclassLogIn;
 }
 
-function subclassInsertUser(){
+function subclassRegister(){
 	return {email: "anEmail" , password: "aPassword", contactList: "", guid: "asr234rasdr23"};
 }
 
@@ -113,7 +113,7 @@ function actualClass(){
 	this.inheritFrom = testClass;
 	this.inheritFrom();
 	this.register = actualRegister;
-	this.register = actualLogIn;
+	this.logIn = actualLogIn;
 }
 
 function actualLogIn(){
@@ -176,7 +176,7 @@ function actualRegister(){
 	var users = getAllUsers();
 	if (users.message == "fail") return {message : "fail"};
 	for(var i=0;i<users.count;i++){
-		if(users.list[i].email == this.parameters[0]){
+		if(users.list[i].fields.email == this.parameters[0]){
 			return {message: "fail"};
 		}
 	}
@@ -190,7 +190,7 @@ function actualLogIn(){
 	var users = getAllUsers();
 	if (users.message == "fail") return {message : "fail"};
 	for(var i=0;i<users.count;i++){
-		if(users.list[i].email == this.parameters[0] && users.list[i].password == this.parameters[1]){
+		if(users.list[i].fields.email == this.parameters[0] && users.list[i].fields.password == this.parameters[1]){
 			return {message: "ok", guid: users.list[i].guid};
 		}
 	}
@@ -202,10 +202,6 @@ function actualLogIn(){
 function fastClass(){
 	this.inheritFrom = actualClass;
 	this.inheritFrom();
-}
-
-function test(){
-
 }
 
 //-------------------------------------------------------------------------------
