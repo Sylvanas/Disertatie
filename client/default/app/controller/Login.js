@@ -19,7 +19,7 @@ Ext.define('App.controller.Login', {
 	    					var email = Ext.getCmp('LoginViewEmailField').getValue();
 	    					var password = Ext.getCmp('LoginViewPassField').getValue();
 	    					$fh.act({
-	    			    	      act : 'Login',
+	    			    	      act : 'CloudLogIn',
 	    			    	      req : {
 	    			    	        email : email,
 	    			    	        password : password

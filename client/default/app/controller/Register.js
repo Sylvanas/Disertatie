@@ -41,7 +41,7 @@ Ext.define('App.controller.Register', {
     SendDataToServer: function(email, pass){
 		if(App.Global.releaseCode){
 			$fh.act({
-			      act : 'register',
+			      act : 'CloudRegister',
 			      req : {
 			        email : email,
 			        password : pass
