@@ -16,8 +16,9 @@ Ext.define('App.controller.Register', {
 							App.Global.startSendingGeoData();
 							App.Global.changeView(App.view.HomeView.xtype);
 						}
+					} else {
+						App.Global.changeView(App.view.HomeView.xtype);
 					}
-					App.Global.changeView(App.view.HomeView.xtype);
 				}
 			},
 			
