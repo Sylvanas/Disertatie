@@ -13,7 +13,7 @@ Ext.define('App.controller.Login', {
 	    	    	localStoreRecord.set('accountID', 'asdf34f34rf');
 	    	    	localStoreRecord.set('email', Ext.getCmp('LoginViewEmailField').getValue());
 	    	    	localStoreRecord.set('password', Ext.getCmp('LoginViewPassField').getValue());
-	    	    	App.Global.startSendingGeoData();
+	    	    	App.Global.startSendingGeoData()
 	    	    	if(App.Global.releaseCode){
 	    	    		if(this.validInputData()){
 	    					var email = Ext.getCmp('LoginViewEmailField').getValue();
@@ -25,11 +25,18 @@ Ext.define('App.controller.Login', {
 	    			    	        password : password
 	    			    	      }
 	    			    	    }, function(res) {
-	    			    	    	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
-	    			    	    	localStoreRecord.set('accountID', res.accountID);
-	    			    	    	localStoreRecord.set('email', Ext.getCmp('LoginViewEmailField').getValue());
-	    			    	    	localStoreRecord.set('password', Ext.getCmp('LoginViewPassField').getValue());
-	    			    	    	App.Global.changeView(App.view.HomeView.xtype);
+	    			    	    	if(res.message == 'ok'){
+	    			    	    		var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+		    			    	    	localStoreRecord.set('accountID', res.accountID);
+		    			    	    	localStoreRecord.set('email', Ext.getCmp('LoginViewEmailField').getValue());
+		    			    	    	localStoreRecord.set('password', Ext.getCmp('LoginViewPassField').getValue());
+		    			    	    	App.Global.changeView(App.view.HomeView.xtype);
+	    			                  }else if (res.message == 'fail') {
+	    			                	  Ext.Msg.alert('Invalid login data', "The login data is invalid. Please retype your email and password.");
+	    			                  } else {
+	    			                	  Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
+	    			                  }
+	    			    	    	
 	    						});		
 	    					}
 	    	    	}else{
