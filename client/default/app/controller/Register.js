@@ -50,8 +50,9 @@ Ext.define('App.controller.Register', {
 			        password : pass
 			      }
 			    }, function(res) {
+			    	Ext.Msg.alert('more values',  res.message + ' ' + res.guid + ' '+ email + ' '+ pass, Ext.emptyFn);
 			    	if(res.message == 'ok'){
-			    		Ext.Msg.alert('values', result.guid + ' '+ email + ' '+ pass, Ext.emptyFn);
+			    		Ext.Msg.alert('values', res.guid + ' '+ email + ' '+ pass, Ext.emptyFn);
 			    		this.HandleServerResponse(res, email, pass);
 			    		return true;
 			    	}else{
