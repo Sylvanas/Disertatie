@@ -74,7 +74,6 @@ Ext.define('App.controller.Register', {
 });
 
 function HandleServerResponse(result, email, pass){
-	Ext.Msg.alert('Email in use', '1', Ext.emptyFn);
 	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
 	localStoreRecord.set('accountID', result.guid);
 	localStoreRecord.set('email', email);
