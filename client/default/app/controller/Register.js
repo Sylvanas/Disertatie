@@ -49,7 +49,8 @@ Ext.define('App.controller.Register', {
 			        password : pass
 			      }
 			    }, function(res) {
-			    	if(res.message == 'ok'){
+			    	alert('--'+res.message);
+			    	if(res.message == "ok"){
 			    		this.HandleServerResponse(res, email, pass);
 			    		alert('-+'+res.message);
 			    		return true;
