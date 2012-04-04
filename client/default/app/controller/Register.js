@@ -54,6 +54,7 @@ Ext.define('App.controller.Register', {
 			    }, function(res) {
 			    	if(res.message == 'ok'){
 			    		HandleServerResponse(res, email, pass);
+			    		Ext.Msg.alert('Email in use', '1', Ext.emptyFn);
 			    		return true;
 			    	}else{
 			    		Ext.Msg.alert('Email in use', 'The email is allready in use. If you forgot your password, contact us at...', Ext.emptyFn);
