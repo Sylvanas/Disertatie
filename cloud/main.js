@@ -264,7 +264,7 @@ function CloudChangePassword(){
 	array.push($params.accountID);
 	array.push($params.password);
 	newClass.parameters = array;
-	return.newClass.changePassword();
+	return newClass.changePassword();
 }
 
 //-------------------------------------------------------------------------------
