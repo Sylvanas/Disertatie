@@ -13,8 +13,7 @@ Ext.define('App.controller.Register', {
 					var confirmPasswordField = Ext.getCmp('RegisterViewConfirmPassField').getValue();
 					if(this.DataIsValid(emailField, passwordField, confirmPasswordField)){
 						if(this.SendDataToServer(emailField, passwordField)){
-							//App.Global.startSendingGeoData();
-							alert('++');
+							App.Global.startSendingGeoData();
 							App.Global.changeView(App.view.HomeView.xtype);
 						}
 					} else {
@@ -49,11 +48,8 @@ Ext.define('App.controller.Register', {
 			        password : pass
 			      }
 			    }, function(res) {
-			    	alert('--'+res.message);
 			    	if(res.message == 'ok'){
-			    		alert('after if');
 			    		this.HandleServerResponse(res, email, pass);
-			    		alert('-+'+res.message);
 			    		return true;
 			    	}else{
 			    		Ext.Msg.alert('Email in use', 'The email is allready in use. If you forgot your password, contact us at...', Ext.emptyFn);
