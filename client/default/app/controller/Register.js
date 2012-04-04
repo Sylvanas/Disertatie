@@ -13,10 +13,12 @@ Ext.define('App.controller.Register', {
 					var confirmPasswordField = Ext.getCmp('RegisterViewConfirmPassField').getValue();
 					if(this.DataIsValid(emailField, passwordField, confirmPasswordField)){
 						var serverDataOk = this.SendDataToServer(emailField, passwordField);
-						if(serverDataOk){
-							Ext.Msg.alert('aaaaaaaaaaaaaa', serverDataOk, Ext.emptyFn);
-						}else {
-							Ext.Msg.alert('bbbbbbbbbbbbb', serverDataOk, Ext.emptyFn);
+						if(serverDataOk ==  true){
+							Ext.Msg.alert('it is true', serverDataOk, Ext.emptyFn);
+						}else if(serverDataOk ==  false){
+							Ext.Msg.alert('it is false', serverDataOk, Ext.emptyFn);
+						} else {
+							Ext.Msg.alert('wtf', serverDataOk, Ext.emptyFn);
 						}
 						
 						if(serverDataOk){
@@ -60,7 +62,9 @@ Ext.define('App.controller.Register', {
 			      }
 			    }, function(res) {
 			    	if(res.message == 'ok'){
+			    		Ext.Msg.alert('It is ok', res.message, Ext.emptyFn);
 			    		HandleServerResponse(res, email, pass);
+			    		App.Global.changeView(App.view.HomeView.xtype);
 			    		return true;
 			    	}else{
 			    		Ext.Msg.alert('Email in use', email + ' is allready in use. If you forgot your password, contact us at...', Ext.emptyFn);
