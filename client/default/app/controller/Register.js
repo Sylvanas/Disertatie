@@ -50,11 +50,8 @@ Ext.define('App.controller.Register', {
 			        password : pass
 			      }
 			    }, function(res) {
-			    	//Ext.Msg.alert('more values',  res.message + ' ' + res.guid + ' '+ email + ' '+ pass, Ext.emptyFn);
 			    	if(res.message == 'ok'){
-			    		//Ext.Msg.alert('values', res.guid + ' '+ email + ' '+ pass, Ext.emptyFn);
-			    		this.HandleServerResponse(res, email, pass);
-			    		this.TestFunction();
+			    		HandleServerResponse(res, email, pass);
 			    		return true;
 			    	}else{
 			    		Ext.Msg.alert('Email in use', 'The email is allready in use. If you forgot your password, contact us at...', Ext.emptyFn);
@@ -65,25 +62,18 @@ Ext.define('App.controller.Register', {
 			    	return false;
 			    });
 		    	}else{
-		    		this.HandleServerResponse({message: 'ok', guid: 'sdf4234523'}, email, pass);
+		    		HandleServerResponse({message: 'ok', guid: 'sdf4234523'}, email, pass);
 		    		return true;
 		    	}
     },
-    
-    HandleServerResponse: function(result, email, pass){
-    	Ext.Msg.alert('start','start', Ext.emptyFn);
-    	/*var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
-    	Ext.Msg.alert(localStoreRecord, Ext.emptyFn);
-		localStoreRecord.set('accountID', result.guid);
-		Ext.Msg.alert(result.guid, Ext.emptyFn);
-		localStoreRecord.set('email', email);
-		localStoreRecord.set('password', pass);*/
-    },
-    
-    TestFunction: function(){
-    	Ext.Msg.alert('test','test', Ext.emptyFn);
-    },
 
 	onLaunch: function() {
-	}	
+	}
 });
+
+function HandleServerResponse(result, email, pass){
+	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+	localStoreRecord.set('accountID', result.guid);
+	localStoreRecord.set('email', email);
+	localStoreRecord.set('password', pass);
+}
