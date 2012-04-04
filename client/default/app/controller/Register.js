@@ -11,22 +11,8 @@ Ext.define('App.controller.Register', {
 					var emailField = Ext.getCmp('RegisterViewEmailField').getValue();
 					var passwordField = Ext.getCmp('RegisterViewPassField').getValue();
 					var confirmPasswordField = Ext.getCmp('RegisterViewConfirmPassField').getValue();
-					if(this.DataIsValid(emailField, passwordField, confirmPasswordField)){
-						var serverDataOk = this.SendDataToServer(emailField, passwordField);
-						if(serverDataOk ==  true){
-							Ext.Msg.alert('it is true', serverDataOk, Ext.emptyFn);
-						}else if(serverDataOk ==  false){
-							Ext.Msg.alert('it is false', serverDataOk, Ext.emptyFn);
-						} else {
-							Ext.Msg.alert('wtf', serverDataOk, Ext.emptyFn);
-						}
-						
-						if(serverDataOk){
-							Ext.Msg.alert('Email in use', '2', Ext.emptyFn);
-							//App.Global.startSendingGeoData();
-							//Ext.Msg.alert('Email in use', '3', Ext.emptyFn);
-							App.Global.changeView(App.view.HomeView.xtype);
-						}
+					if(this.DataIsValid(emailField, passwordField, confirmPasswordField)){					
+						this.SendDataToServer(emailField, passwordField);
 					} else {
 						if(!App.Global.releaseCode){
 							App.Global.changeView(App.view.HomeView.xtype);
@@ -62,21 +48,17 @@ Ext.define('App.controller.Register', {
 			      }
 			    }, function(res) {
 			    	if(res.message == 'ok'){
-			    		Ext.Msg.alert('It is ok', res.message, Ext.emptyFn);
 			    		HandleServerResponse(res, email, pass);
+			    		App.Global.startSendingGeoData();
 			    		App.Global.changeView(App.view.HomeView.xtype);
-			    		return true;
 			    	}else{
 			    		Ext.Msg.alert('Email in use', email + ' is allready in use. If you forgot your password, contact us at...', Ext.emptyFn);
-			    		return false;
 			    	}
 			    }, function (code, errorprops, params) {
 			    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
-			    	return false;
 			    });
 		    	}else{
 		    		HandleServerResponse({message: 'ok', guid: 'sdf4234523'}, email, pass);
-		    		return true;
 		    	}
     },
 
