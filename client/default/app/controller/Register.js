@@ -60,14 +60,14 @@ Ext.define('App.controller.Register', {
 			    	return false;
 			    });
 		    	}else{
-		    		this.HandleServerResponse({message: 'ok', ID: 'sdf4234523'}, email, pass);
+		    		this.HandleServerResponse({message: 'ok', guid: 'sdf4234523'}, email, pass);
 		    		return true;
 		    	}
     },
     
     HandleServerResponse: function(result, email, pass){
     	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
-		localStoreRecord.set('accountID', result.ID);
+		localStoreRecord.set('accountID', result.guid);
 		localStoreRecord.set('email', email);
 		localStoreRecord.set('password', pass);
     },
