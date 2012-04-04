@@ -12,7 +12,9 @@ Ext.define('App.controller.Register', {
 					var passwordField = Ext.getCmp('RegisterViewPassField').getValue();
 					var confirmPasswordField = Ext.getCmp('RegisterViewConfirmPassField').getValue();
 					if(this.DataIsValid(emailField, passwordField, confirmPasswordField)){
-						if(this.SendDataToServer(emailField, passwordField)){
+						var serverDataOk = this.SendDataToServer(emailField, passwordField);
+						Ext.Msg.alert('Email in use', serverDataOk, Ext.emptyFn);
+						if(serverDataOk){
 							Ext.Msg.alert('Email in use', '2', Ext.emptyFn);
 							//App.Global.startSendingGeoData();
 							//Ext.Msg.alert('Email in use', '3', Ext.emptyFn);
@@ -54,7 +56,6 @@ Ext.define('App.controller.Register', {
 			    }, function(res) {
 			    	if(res.message == 'ok'){
 			    		HandleServerResponse(res, email, pass);
-			    		Ext.Msg.alert('Email in use', '1', Ext.emptyFn);
 			    		return true;
 			    	}else{
 			    		Ext.Msg.alert('Email in use', 'The email is allready in use. If you forgot your password, contact us at...', Ext.emptyFn);
