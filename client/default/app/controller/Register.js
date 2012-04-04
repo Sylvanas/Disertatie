@@ -49,7 +49,7 @@ Ext.define('App.controller.Register', {
 			      }
 			    }, function(res) {
 			    	if(res.message == 'ok'){
-			    		alert('before method');
+			    		Ext.Msg.alert('before method', Ext.emptyFn);
 			    		this.HandleServerResponse(res, email, pass);
 			    		return true;
 			    	}else{
@@ -67,11 +67,11 @@ Ext.define('App.controller.Register', {
     },
     
     HandleServerResponse: function(result, email, pass){
-    	alert('start');
+    	Ext.Msg.alert('start', Ext.emptyFn);
     	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
-    	alert(localStoreRecord);
+    	Ext.Msg.alert(localStoreRecord, Ext.emptyFn);
 		localStoreRecord.set('accountID', result.guid);
-		alert(result.guid);
+		Ext.Msg.alert(result.guid, Ext.emptyFn);
 		localStoreRecord.set('email', email);
 		localStoreRecord.set('password', pass);
     },
