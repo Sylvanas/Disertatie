@@ -36,22 +36,25 @@ function getUser(ID){
 }
 
 function updateUser(newUser,ID){
-	var user = $fh.db({
-		"act": "read",
-		"type": "UserTable",
-		"guid": ID
-		});
-		var userFields = user.fields;
-		userFields.email = newUser.fields.name;
-		userFields.password = newUser.fields.password;
-		userFields.contactList = newUser.fields.plateNo;
-		$fh.db({
-		"act" : "update",
-		"type" : "UserTable",
-		"guid" : ID,
-		"fields" : userFields
-		});
-		return {message: "ok"};
+	try{
+		var user = $fh.db({
+			"act": "read",
+			"type": "UserTable",
+			"guid": ID
+			});
+			var userFields = user.fields;
+			userFields.email = newUser.fields.name;
+			userFields.password = newUser.fields.password;
+			userFields.contactList = newUser.fields.plateNo;
+			$fh.db({
+			"act" : "update",
+			"type" : "UserTable",
+			"guid" : ID,
+			"fields" : userFields
+			});
+			return {message: "ok"};
+	}catch(err){return {message: "fail"};}
+		
 }
 
 function deleteUser(ID){
@@ -62,7 +65,7 @@ function deleteUser(ID){
 			"guid": ID
 			});
 		return {message: "ok"};
-		}catch(err){return {message: "fail"};}
+	}catch(err){return {message: "fail"};}
 }
 
 function clearUserTable(){
@@ -88,6 +91,7 @@ function adminClass(){
 	this.parameters;
 	this.register;
 	this.logIn;
+	this.changePassword;
 }
 
 //-------------------------------------------------------------------------------
@@ -97,6 +101,7 @@ function testClass(){
 	this.inheritFrom();
 	this.register = subclassRegister;
 	this.logIn = subclassLogIn;
+	this.changePassword = subclassChangePassword;
 }
 
 function subclassRegister(){
@@ -107,6 +112,10 @@ function subclassLogIn(){
 	return {message: "ok" , guid: "asrwr3asdr23"};
 }
 
+function subclassChangePassword(){
+	return { message: "ok" };
+}
+
 //-------------------------------------------------------------------------------
 //actual class
 function actualClass(){
@@ -114,6 +123,7 @@ function actualClass(){
 	this.inheritFrom();
 	this.register = actualRegister;
 	this.logIn = actualLogIn;
+	this.changePassword = actualChangePassword;
 }
 
 function actualLogIn(){
@@ -166,6 +176,13 @@ function actualUpdateUser(){
 	updatedUser.fields.password = this.parameters[2];
 	updatedUser.fields.contactList = this.parameters[3];
 	return updateUser(updatedUser,this.parameters[0]);
+}
+
+function actualChangePassword(){
+	var userToUpdate = getUser(this.parameters[0]);
+	if(userToUpdate.message == "fail") return {message: "fail"};
+	userToUpdate.fields.password = this.parameters[1];
+	return updateUser(userToUpdate, this.parameters[0]);
 }
 
 function actualDeleteUser(){
@@ -240,6 +257,14 @@ function CloudLogIn(){
 	array.push($params.password);
 	newClass.parameters = array;
 	return newClass.logIn();
+}
+
+function CloudChangePassword(){
+	var array = new Array();
+	array.push($params.accountID);
+	array.push($params.password);
+	newClass.parameters = array;
+	return.newClass.changePassword();
 }
 
 //-------------------------------------------------------------------------------

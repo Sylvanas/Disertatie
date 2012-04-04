@@ -35,10 +35,10 @@ Ext.define('App.controller.ChangePassword', {
     SendDataToServer: function(accountID, pass){
 		if(App.Global.releaseCode){
 			$fh.act({
-			      act : 'ChangePassword',
+			      act : 'CloudChangePassword',
 			      req : {
 			    	  accountID : accountID,
-			    	  pass : pass
+			    	  password : pass
 			      }
 			    }, function(res) {
 			    	App.Global.changeView(App.view.AccountView.xtype);
