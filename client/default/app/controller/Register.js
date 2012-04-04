@@ -67,7 +67,9 @@ Ext.define('App.controller.Register', {
     
     HandleServerResponse: function(result, email, pass){
     	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+    	alert(localStoreRecord);
 		localStoreRecord.set('accountID', result.guid);
+		alert(result.guid);
 		localStoreRecord.set('email', email);
 		localStoreRecord.set('password', pass);
     },
