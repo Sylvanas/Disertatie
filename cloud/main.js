@@ -36,7 +36,6 @@ function getUser(ID){
 }
 
 function updateUser(newUser,ID){
-	try{
 		var user = $fh.db({
 			"act": "read",
 			"type": "UserTable",
@@ -52,9 +51,7 @@ function updateUser(newUser,ID){
 			"guid" : ID,
 			"fields" : userFields
 			});
-			return {message: "ok"};
-	}catch(err){return {message: "fail"};}
-		
+			return {message: "ok"};		
 }
 
 function deleteUser(ID){
