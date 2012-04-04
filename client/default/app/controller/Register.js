@@ -17,7 +17,9 @@ Ext.define('App.controller.Register', {
 							App.Global.changeView(App.view.HomeView.xtype);
 						}
 					} else {
-						App.Global.changeView(App.view.HomeView.xtype);
+						if(!App.Global.releaseCode){
+							App.Global.changeView(App.view.HomeView.xtype);
+						}
 					}
 				}
 			},
