@@ -50,7 +50,8 @@ Ext.define('App.controller.Register', {
 			      }
 			    }, function(res) {
 			    	alert('--'+res.message);
-			    	if(res.message == "ok"){
+			    	if(res.message == 'ok'){
+			    		alert('after if');
 			    		this.HandleServerResponse(res, email, pass);
 			    		alert('-+'+res.message);
 			    		return true;
