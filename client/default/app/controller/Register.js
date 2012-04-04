@@ -49,7 +49,7 @@ Ext.define('App.controller.Register', {
 			      }
 			    }, function(res) {
 			    	if(res.message == 'ok'){
-			    		Ext.Msg.alert('before method', Ext.emptyFn);
+			    		//Ext.Msg.alert('before method', Ext.emptyFn);
 			    		this.HandleServerResponse(res, email, pass);
 			    		return true;
 			    	}else{
