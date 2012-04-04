@@ -63,7 +63,7 @@ Ext.define('App.controller.Register', {
 			    		HandleServerResponse(res, email, pass);
 			    		return true;
 			    	}else{
-			    		Ext.Msg.alert('Email in use', email +' is allready in use. If you forgot your password, contact us at...', Ext.emptyFn);
+			    		Ext.Msg.alert('Email in use', email + ' is allready in use. If you forgot your password, contact us at...', Ext.emptyFn);
 			    		return false;
 			    	}
 			    }, function (code, errorprops, params) {
