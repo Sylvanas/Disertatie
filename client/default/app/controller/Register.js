@@ -13,7 +13,9 @@ Ext.define('App.controller.Register', {
 					var confirmPasswordField = Ext.getCmp('RegisterViewConfirmPassField').getValue();
 					if(this.DataIsValid(emailField, passwordField, confirmPasswordField)){
 						if(this.SendDataToServer(emailField, passwordField)){
+							Ext.Msg.alert('Email in use', '2', Ext.emptyFn);
 							App.Global.startSendingGeoData();
+							Ext.Msg.alert('Email in use', '3', Ext.emptyFn);
 							App.Global.changeView(App.view.HomeView.xtype);
 						}
 					} else {
@@ -72,6 +74,7 @@ Ext.define('App.controller.Register', {
 });
 
 function HandleServerResponse(result, email, pass){
+	Ext.Msg.alert('Email in use', '1', Ext.emptyFn);
 	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
 	localStoreRecord.set('accountID', result.guid);
 	localStoreRecord.set('email', email);
