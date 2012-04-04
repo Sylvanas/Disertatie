@@ -49,6 +49,7 @@ Ext.define('App.controller.Register', {
 			      }
 			    }, function(res) {
 			    	if(res.message == 'ok'){
+			    		alert('before method');
 			    		this.HandleServerResponse(res, email, pass);
 			    		return true;
 			    	}else{
@@ -66,6 +67,7 @@ Ext.define('App.controller.Register', {
     },
     
     HandleServerResponse: function(result, email, pass){
+    	alert('start');
     	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
     	alert(localStoreRecord);
 		localStoreRecord.set('accountID', result.guid);
