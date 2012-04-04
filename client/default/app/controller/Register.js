@@ -13,7 +13,12 @@ Ext.define('App.controller.Register', {
 					var confirmPasswordField = Ext.getCmp('RegisterViewConfirmPassField').getValue();
 					if(this.DataIsValid(emailField, passwordField, confirmPasswordField)){
 						var serverDataOk = this.SendDataToServer(emailField, passwordField);
-						Ext.Msg.alert('Email in use', serverDataOk, Ext.emptyFn);
+						if(serverDataOk){
+							Ext.Msg.alert('aaaaaaaaaaaaaa', serverDataOk, Ext.emptyFn);
+						}else {
+							Ext.Msg.alert('bbbbbbbbbbbbb', serverDataOk, Ext.emptyFn);
+						}
+						
 						if(serverDataOk){
 							Ext.Msg.alert('Email in use', '2', Ext.emptyFn);
 							//App.Global.startSendingGeoData();
