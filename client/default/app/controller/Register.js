@@ -78,5 +78,4 @@ function HandleServerResponse(result, email, pass){
 	localStoreRecord.set('accountID', result.guid);
 	localStoreRecord.set('email', email);
 	localStoreRecord.set('password', pass);
-	Ext.Msg.alert('Email in use', '1', Ext.emptyFn);
 }
