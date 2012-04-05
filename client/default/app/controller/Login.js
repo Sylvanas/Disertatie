@@ -27,7 +27,7 @@ Ext.define('App.controller.Login', {
 	    			    	    }, function(res) {
 	    			    	    	if(res.message == 'ok'){
 	    			    	    		var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
-		    			    	    	localStoreRecord.set('accountID', res.accountID);
+		    			    	    	localStoreRecord.set('accountID', res.guid);
 		    			    	    	localStoreRecord.set('email', Ext.getCmp('LoginViewEmailField').getValue());
 		    			    	    	localStoreRecord.set('password', Ext.getCmp('LoginViewPassField').getValue());
 		    			    	    	App.Global.changeView(App.view.HomeView.xtype);

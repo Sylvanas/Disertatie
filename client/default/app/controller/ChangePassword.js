@@ -34,7 +34,6 @@ Ext.define('App.controller.ChangePassword', {
 
     SendDataToServer: function(accountID, pass){
 		if(App.Global.releaseCode){
-			  Ext.Msg.alert('test', accountID + ' ' + pass);
 			$fh.act({
 			      act : 'CloudChangePassword',
 			      req : {
@@ -50,7 +49,7 @@ Ext.define('App.controller.ChangePassword', {
 	                	  Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
 	                  }
 			    }, function (code, errorprops, params) {
-			    	//Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+			    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
 			    });
 		    }else{
 		    	App.Global.changeView(App.view.AccountView.xtype); 
