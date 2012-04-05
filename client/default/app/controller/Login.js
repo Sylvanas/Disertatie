@@ -59,12 +59,12 @@ Ext.define('App.controller.Login', {
 							Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
 								alert("Your current password was send to the specifyed email. Tables cleared");
 							});
-							return;
+						});
+					} else {
+						Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
+							alert("Your current password was send to the specifyed email");
 						});
 					}
-					Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
-						alert("Your current password was send to the specifyed email");
-					});
 				}
 			},
 		});
