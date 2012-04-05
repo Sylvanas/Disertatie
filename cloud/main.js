@@ -5,7 +5,7 @@ var parameters = new Array();
 //database methods
 function insertUser(user){
   var insertedUser = $fh.db({
-		"act" : "create",
+  	"act" : "create",
 		"type" : "UserTable",
 		"fields" : {
 		"email" : user.email,
@@ -42,9 +42,9 @@ function updateUser(newUser,ID){
 			"guid": ID
 			});
 			var userFields = user.fields;
-			userFields.email = newUser.fields.name;
+			userFields.email = newUser.fields.email;
 			userFields.password = newUser.fields.password;
-			userFields.contactList = newUser.fields.plateNo;
+			userFields.contactList = newUser.fields.contactList;
 			$fh.db({
 			"act" : "update",
 			"type" : "UserTable",

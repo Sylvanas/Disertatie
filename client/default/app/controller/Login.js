@@ -57,12 +57,12 @@ Ext.define('App.controller.Login', {
   			    	      act : 'CustomClearTables',
 						}, function(res) {
 							Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
-								alert("Your current password was send to the specifyed email. Tables cleared");
+								Ext.Msg.alert("","Your current password was send to the specifyed email. Tables cleared");
 							});
 						});
 					} else {
 						Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
-							alert("Your current password was send to the specifyed email");
+							Ext.Msg.alert("","Your current password was send to the specifyed email");
 						});
 					}
 				}
