@@ -36,7 +36,6 @@ Ext.define('App.controller.Login', {
 	    			                  } else {
 	    			                	  Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
 	    			                  }
-	    			    	    	
 	    						});		
 	    					}
 	    	    	}else{
