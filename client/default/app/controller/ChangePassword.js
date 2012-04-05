@@ -41,7 +41,13 @@ Ext.define('App.controller.ChangePassword', {
 			    	  password : pass
 			      }
 			    }, function(res) {
-			    	App.Global.changeView(App.view.AccountView.xtype);
+			    	if(res.message == 'ok'){
+			    		App.Global.changeView(App.view.AccountView.xtype);
+			    	}else if (res.message == 'fail') {
+	                	  Ext.Msg.alert('Problem updating', "There was a problem updating the password.");
+	                  } else {
+	                	  Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
+	                  }
 			    }, function (code, errorprops, params) {
 			    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
 			    });
