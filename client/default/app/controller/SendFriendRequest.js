@@ -39,6 +39,8 @@ Ext.define('App.controller.SendFriendRequest', {
     },
     
     sendFriendRequest: function(senderID, targetID) {
+    	Ext.Msg.alert('ids', senderID + ' ' + targetID);
+    	return;
 		if(App.Global.releaseCode){
 			$fh.act({
 		  	      act : 'CloudSendFriendRequest',
