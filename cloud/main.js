@@ -10,7 +10,7 @@ function insertUser(user){
 		"fields" : {
 		"email" : user.email,
 		"password" : user.password,
-		"contactList" : user.contactList
+		"contactList" : user.contactList,
 		"friendRequests" : user.friendRequests,
 		"lastLocations" : user.lastLocations}
 		});
