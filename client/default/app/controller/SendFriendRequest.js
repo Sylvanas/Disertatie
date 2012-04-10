@@ -37,7 +37,7 @@ Ext.define('App.controller.SendFriendRequest', {
 			},
 		});
     },
-    
+
     sendFriendRequest: function(senderID, targetID) {
 		if(App.Global.releaseCode){
 			$fh.act({
@@ -50,10 +50,12 @@ Ext.define('App.controller.SendFriendRequest', {
 		  	    	if(res.message == 'ok'){
 		  	    		App.Global.changeView(App.view.HomeView.xtype);
 			    	}else if (res.message == 'fail') {
-	                	  Ext.Msg.alert('User not found', "The ID is not entered correctly. Please retype the ID.");
+			    		Ext.Msg.alert('User not found', "The ID is not entered correctly. Please retype the ID.");
+	                  } else if (res.message == 'exists') {
+	                	  Ext.Msg.alert('Friend request allredy send', "You allready send a friend request to the entered ID.");
 	                  } else {
 	                	  Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
-	                  }
+	                  }  	    		  	    	
 				}, function (code, errorprops, params) {
 		    	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
 		    	    });	
