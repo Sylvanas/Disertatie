@@ -39,6 +39,9 @@ Ext.define('App.controller.SendFriendRequest', {
     },
 
     sendFriendRequest: function(senderID, targetID) {
+    	if(senderID == targetID){
+    		Ext.Msg.alert('Invalid friend Id', "Cannot add yourself as a friend.");
+    	} else 
 		if(App.Global.releaseCode){
 			$fh.act({
 		  	      act : 'CloudSendFriendRequest',
