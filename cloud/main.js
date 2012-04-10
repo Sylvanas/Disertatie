@@ -5,7 +5,7 @@ var parameters = new Array();
 //database methods
 function insertUser(user){
   var insertedUser = $fh.db({
-  	"act" : "create",
+    "act" : "create",
 		"type" : "UserTable",
 		"fields" : {
 		"email" : user.email,
@@ -28,13 +28,14 @@ function getAllUsers(){
 }
 
 function getUser(ID){
-	try{
-	return $fh.db({
-		"act": "read",
-		"type": "UserTable",
-		"guid" : ID
-		});
-	}catch(err){return {message: "fail"};}
+  var users = getAllUsers();
+  if (users.message == "fail") return {message : "fail"};
+  for(var i=0;i<users.count;i++){
+		if(users.list[i].guid == ID){
+			return users.list[i];
+		}
+  }
+  return {message: "fail"};
 }
 
 function updateUser(newUser,ID){
@@ -191,7 +192,17 @@ function actualChangePassword(){
 function actualSendFriendRequest(){
 	var userToUpdate = getUser(this.parameters[1]);
 	if(userToUpdate.message == "fail") return {message: "fail"};
-	userToUpdate.fields.friendRequests.push({requestID: this.parameters[0]});
+  var friendRequestAdded = false;
+  for(var i=0;i<userToUpdate.fields.friendRequests.length;i++){
+    if(userToUpdate.fields.friendRequests[0]['requestID'] == this.parameters[0]){
+      friendRequestAdded = true;break;
+    }
+  }
+  if(friendRequestAdded) {
+  	 return {message: "exists"};
+	 } else {
+     userToUpdate.fields.friendRequests.push({requestID: this.parameters[0]});
+   }
 	return updateUser(userToUpdate, this.parameters[1]);
 }
 
