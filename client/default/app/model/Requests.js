@@ -3,7 +3,8 @@ Ext.define('App.model.Requests', {
     config: {
 	    fields: [
 	             {name: 'id', type: 'string'},
-	             {name: 'name',  type: 'string'}
+	             {name: 'name',  type: 'string'},
+	             {name: 'approved',  type: 'boolean'},
 	             ],
 	    idProperty: "id",
     }

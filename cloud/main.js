@@ -6,12 +6,11 @@ var parameters = new Array();
 function insertUser(user){
   var insertedUser = $fh.db({
     "act" : "create",
-		"type" : "UserTable",
+  	"type" : "UserTable",
 		"fields" : {
 		"email" : user.email,
 		"password" : user.password,
-		"contactList" : user.contactList,
-		"friendRequests" : user.friendRequests,
+		"personsList" : user.personsList,
 		"lastLocations" : user.lastLocations}
 		});
 	return {message: "ok", guid: insertedUser.guid};
@@ -48,8 +47,7 @@ function updateUser(newUser,ID){
 			var userFields = user.fields;
 			userFields.email = newUser.fields.email;
 			userFields.password = newUser.fields.password;
-			userFields.contactList = newUser.fields.contactList;
-			userFields.friendRequests = newUser.fields.friendRequests;
+			userFields.personsList = newUser.fields.personsList;
 			userFields.lastLocations = newUser.fields.lastLocations;
 			$fh.db({
 			"act" : "update",
@@ -82,13 +80,13 @@ function clearUserTable(){
 
 //-------------------------------------------------------------------------------
 //database classes
-
 function user(){
-	this.email="";
-	this.password="";
-	this.contactList = new Array();
-	this.friendRequests = new Array();
-	this.lastLocations = new Array();
+	var emptyArray = new Array();
+  return {email: "", password:"", personsList: emptyArray, lastLocations: emptyArray};
+}
+
+function person(personID){
+	return {id: personID, name: personID, approved: false};
 }
 
 //-------------------------------------------------------------------------------
@@ -99,6 +97,7 @@ function adminClass(){
 	this.logIn;
 	this.changePassword;
 	this.sendFriendRequest;
+	this.getPersons;
 }
 
 //-------------------------------------------------------------------------------
@@ -110,10 +109,11 @@ function testClass(){
 	this.logIn = subclassLogIn;
 	this.changePassword = subclassChangePassword;
 	this.sendFriendRequest = subclassSendFriendRequest;
+	this.getPersons = subclassGetPersons;
 }
 
 function subclassRegister(){
-	return {email: "anEmail" , password: "aPassword", contactList: "", guid: "asr234rasdr23"};
+	return {email: "anEmail" , password: "aPassword", personsList: "", guid: "asr234rasdr23"};
 }
 
 function subclassLogIn(){
@@ -128,6 +128,10 @@ function subclassSendFriendRequest(){
 	return { message: "ok" };
 }
 
+function subclassGetPersons(){
+	return {persons: [{id: 'dgdg', name: 'Spencer', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
+}
+
 //-------------------------------------------------------------------------------
 //actual class
 function actualClass(){
@@ -137,6 +141,7 @@ function actualClass(){
 	this.logIn = actualLogIn;
 	this.changePassword = actualChangePassword;
 	this.sendFriendRequest = actualSendFriendRequest;
+	this.getPersons = actualGetPersons;
 }
 
 function actualLogIn(){
@@ -162,14 +167,14 @@ function actualGetUsers(){
 function actualGetUser(){
 	var resultUser  = getUser(this.parameters[0]);
 	if (resultUser.message == "fail") return {message: "fail"};
-	return {email: resultTaxi.fields.email, password: resultTaxi.fields.password, contactList: resultTaxi.fields.contactList};
+	return {email: resultTaxi.fields.email, password: resultTaxi.fields.password, personsList: resultTaxi.fields.personsList};
 }
 
 function actualInsertUser(){
-	var newUser = new user();
-	newUser.email = this.parameters[0];
-	newUser.password = this.parameters[1];
-	newUser.contactList = this.parameters[2];
+	var newUser = user();
+	newUser['email'] = this.parameters[0];
+	newUser['password'] = this.parameters[1];
+	newUser['personsList'] = this.parameters[2];
 	return insertUser(newUser);
 }
 
@@ -193,17 +198,29 @@ function actualSendFriendRequest(){
 	var userToUpdate = getUser(this.parameters[1]);
 	if(userToUpdate.message == "fail") return {message: "fail"};
   var friendRequestAdded = false;
-  for(var i=0;i<userToUpdate.fields.friendRequests.length;i++){
-    if(userToUpdate.fields.friendRequests[0]['requestID'] == this.parameters[0]){
+  for(var i=0;i<userToUpdate.fields.personsList.length;i++){
+    if(userToUpdate.fields.personsList[i]['id'] == this.parameters[0]){
       friendRequestAdded = true;break;
     }
   }
   if(friendRequestAdded) {
   	 return {message: "exists"};
 	 } else {
-     userToUpdate.fields.friendRequests.push({requestID: this.parameters[0]});
+		 //var person = new person(this.parameters[0]);
+  var person = {id: this.parameters[0], name: this.parameters[0], approved: false};
+		 userToUpdate.fields.personsList.push(person);
    }
 	return updateUser(userToUpdate, this.parameters[1]);
+}
+
+function actualGetPersons(){
+	var user = getUser(this.parameters[0]);
+	if(user.message == "fail") return {message: "fail"};
+	var persons = new Array();
+	for(var i=0;i<user.fields.personsList.length;i++){
+		persons.push(user.fields.personsList[i]);
+	}
+	return {message: "ok", persons: persons};
 }
 
 function actualDeleteUser(){
@@ -294,6 +311,13 @@ function CloudSendFriendRequest(){
 	array.push($params.targetID);
 	newClass.parameters = array;
 	return newClass.sendFriendRequest();
+}
+
+function CloudGetRequests(){
+	var array = new Array();
+	array.push($params.accountID);
+	newClass.parameters = array;
+	return newClass.getPersons();
 }
 
 //-------------------------------------------------------------------------------

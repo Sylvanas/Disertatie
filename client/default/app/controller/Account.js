@@ -63,23 +63,30 @@ Ext.define('App.controller.Account', {
     GetRequests: function(accountID){
     	if(App.Global.releaseCode){
     		$fh.act({
-		      act : 'GetRequests',
+		      act : 'CloudGetRequests',
 		      req : {
 		    	  accountID : accountID,
 		      }
 		    }, function(res) {
-		    	this.HandleServerResponse(res);
+		    	if(res.message == 'ok'){
+		    		this.HandleServerResponse(res);
+		    	} else if(res.message == 'fail'){
+		    		Ext.Msg.alert('Fail to get user', 'Fail to get user.', Ext.emptyFn);
+		    	} else {
+		    		Ext.Msg.alert('Unexpected problem', 'Unexpected problem.', Ext.emptyFn);
+		    	}
 		    }, function (code, errorprops, params) {
 		    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
 		    });
 	    	}else{
-	    		var result = {requests: [{id: 'dgdg', name: 'Spencer'},  {id: 'dgw', name: 'Maintz'}, {id: 'ftgsd', name: 'Conran'}, {id: '4534', name: 'Avins'}]};this.HandleServerResponse(result);
+	    		var result = {persons: [{id: 'dgdg', name: 'Spencer', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
+	    		this.HandleServerResponse(result);
 	        	return;
 	    	}
     },
 
     HandleServerResponse: function(result){
-    	Ext.getStore('Requests').setData(result.requests);
+    	Ext.getStore('Requests').setData(result.persons);
     	App.Global.changeView(App.view.ManageRequestsView.xtype);
     },
 
