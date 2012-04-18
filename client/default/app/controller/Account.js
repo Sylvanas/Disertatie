@@ -69,7 +69,7 @@ Ext.define('App.controller.Account', {
 		      }
 		    }, function(res) {
 		    	if(res.message == 'ok'){
-		    		Ext.Msg.alert('ok', Ext.emptyFn);
+		    		Ext.Msg.alert('ok','ok '+ res.persons.length+res.persons[0]['approved'], Ext.emptyFn);
 		    		//this.HandleServerResponse(res);
 		    	} else if(res.message == 'fail'){
 		    		Ext.Msg.alert('Fail to get user', 'Fail to get user.', Ext.emptyFn);
