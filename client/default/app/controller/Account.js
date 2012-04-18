@@ -61,6 +61,9 @@ Ext.define('App.controller.Account', {
     },
 
     GetRequests: function(accountID){
+    	var result = {persons: [{id: 'dgdg', name: accountID, approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
+		this.HandleServerResponse(result);
+    	return;
     	if(App.Global.releaseCode){
     		$fh.act({
 		      act : 'CloudGetRequests',
