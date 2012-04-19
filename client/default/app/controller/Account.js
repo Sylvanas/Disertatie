@@ -70,7 +70,9 @@ Ext.define('App.controller.Account', {
 		    }, function(res) {
 		    	if(res.message == 'ok'){
 		    		Ext.Msg.alert('ok','ok '+ res.persons.length+res.persons[0]['approved']+' '+res.persons[0]['id']+' '+res.persons[0]['name'], Ext.emptyFn);
-		    		var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true}]};
+		    		//var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true}]};
+		    		//this.HandleServerResponse(result);
+		    		var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
 		    		this.HandleServerResponse(result);
 		    		//this.HandleServerResponse(res);
 		    	} else if(res.message == 'fail'){
