@@ -61,9 +61,6 @@ Ext.define('App.controller.Account', {
     },
 
     GetRequests: function(accountID){
-    	/*var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
-		this.HandleServerResponse(result);
-		return;*/
     	if(App.Global.releaseCode){
     		$fh.act({
 		      act : 'CloudGetRequests',
@@ -72,14 +69,7 @@ Ext.define('App.controller.Account', {
 		      }
 		    }, function(res) {
 		    	if(res.message == 'ok'){
-		    		//Ext.Msg.alert('ok','ok '+ res.persons.length+res.persons[0]['approved']+' '+res.persons[0]['id']+' '+res.persons[0]['name'], Ext.emptyFn);
-		    		//var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true}]};
-		    		//this.HandleServerResponse(result);
-		    		var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
-		    		Ext.Msg.alert('0', '0', Ext.emptyFn);
-		    		HandleServerResponse(result);
-		    		return;
-		    		//this.HandleServerResponse(res);
+		    		this.HandleServerResponse(res);
 		    	} else if(res.message == 'fail'){
 		    		Ext.Msg.alert('Fail to get user', 'Fail to get user.', Ext.emptyFn);
 		    	} else {
@@ -101,8 +91,6 @@ Ext.define('App.controller.Account', {
 
 
 function HandleServerResponse(result){
-	Ext.Msg.alert('1', '1', Ext.emptyFn);
 	Ext.getStore('Requests').setData(result.persons);
-	Ext.Msg.alert('2', '2', Ext.emptyFn);
 	App.Global.changeView(App.view.ManageRequestsView.xtype);
 }
