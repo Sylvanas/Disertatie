@@ -61,9 +61,9 @@ Ext.define('App.controller.Account', {
     },
 
     GetRequests: function(accountID){
-    	var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
+    	/*var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
 		this.HandleServerResponse(result);
-		return;
+		return;*/
     	if(App.Global.releaseCode){
     		$fh.act({
 		      act : 'CloudGetRequests',
@@ -77,6 +77,7 @@ Ext.define('App.controller.Account', {
 		    		//this.HandleServerResponse(result);
 		    		var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
 		    		this.HandleServerResponse(result);
+		    		return;
 		    		//this.HandleServerResponse(res);
 		    	} else if(res.message == 'fail'){
 		    		Ext.Msg.alert('Fail to get user', 'Fail to get user.', Ext.emptyFn);
