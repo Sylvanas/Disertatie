@@ -95,7 +95,9 @@ Ext.define('App.controller.Account', {
     },
 
     HandleServerResponse: function(result){
+    	Ext.Msg.alert('1', '1', Ext.emptyFn);
     	Ext.getStore('Requests').setData(result.persons);
+    	Ext.Msg.alert('2', '2', Ext.emptyFn);
     	App.Global.changeView(App.view.ManageRequestsView.xtype);
     },
 
