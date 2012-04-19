@@ -76,7 +76,8 @@ Ext.define('App.controller.Account', {
 		    		//var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true}]};
 		    		//this.HandleServerResponse(result);
 		    		var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
-		    		this.HandleServerResponse(result);
+		    		Ext.Msg.alert('0', '0', Ext.emptyFn);
+		    		HandleServerResponse(result);
 		    		return;
 		    		//this.HandleServerResponse(res);
 		    	} else if(res.message == 'fail'){
@@ -89,18 +90,19 @@ Ext.define('App.controller.Account', {
 		    });
 	    	}else{
 	    		var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
-	    		this.HandleServerResponse(result);
+	    		HandleServerResponse(result);
 	        	return;
 	    	}
-    },
-
-    HandleServerResponse: function(result){
-    	Ext.Msg.alert('1', '1', Ext.emptyFn);
-    	Ext.getStore('Requests').setData(result.persons);
-    	Ext.Msg.alert('2', '2', Ext.emptyFn);
-    	App.Global.changeView(App.view.ManageRequestsView.xtype);
     },
 
 	onLaunch: function() {
 	}	
 });
+
+
+function HandleServerResponse(result){
+	Ext.Msg.alert('1', '1', Ext.emptyFn);
+	Ext.getStore('Requests').setData(result.persons);
+	Ext.Msg.alert('2', '2', Ext.emptyFn);
+	App.Global.changeView(App.view.ManageRequestsView.xtype);
+}
