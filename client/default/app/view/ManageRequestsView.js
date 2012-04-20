@@ -24,7 +24,30 @@ Ext.define('App.view.ManageRequestsView', {
 	                flex: 1,
 	                onItemDisclosure: function(record, btn, index) {
 	                },
-	                itemTpl: '<div class="contact">{name}</div>'
+	                itemTpl: '<table>'+
+	                  '<tpl for="."">'+
+		                  '<tpl  if="approved == false">'+
+		                    '<tr>'+
+		                        '<td>'+
+		                            '<img class="notification_icon" src="./resources/img/notApproved.png">'+
+		                        '</td>'+
+		                        '<td width="100%">'+
+		                            '<span>{name}</span><br/>'+
+		                        '</td>'+
+		                    '</tr>'+
+		                    '</tpl>'+
+		                    '<tpl  if="approved == true">'+
+		                    '<tr>'+
+		                        '<td>'+
+		                            '<img class="notification_icon" src="./resources/img/approved.png">'+
+		                        '</td>'+
+		                        '<td width="100%">'+
+		                            '<span>{name}</span><br/>'+
+		                        '</td>'+
+		                    '</tr>'+
+		                    '</tpl>'+
+	                    '</tpl>'+
+	                '</table>'
 		        },
 		]
 	},
