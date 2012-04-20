@@ -89,7 +89,6 @@ Ext.define('App.controller.Account', {
 	}	
 });
 
-
 function HandleServerResponse(result){
 	Ext.getStore('Requests').setData(result.persons);
 	App.Global.changeView(App.view.ManageRequestsView.xtype);

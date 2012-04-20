@@ -33,7 +33,7 @@ Ext.define('App.controller.EditRequest', {
 
 			'#ManageRequestsViewList': { 'disclose': function (comp, currentRecord,  target,  index,  e,  eOpts) {
 					Ext.getStore('EditRequest').removeAll();
-					this.getRecordInfo(currentRecord.get('id'));
+					this.getRecordInfo(Ext.getStore('LocalStore').getAt(0).get('accountID'), currentRecord.get('id'));
 				}
 			},
 		});
@@ -42,41 +42,31 @@ Ext.define('App.controller.EditRequest', {
     initialize: function() {
     },
     
-    getRecordInfo: function(id) {
+    getRecordInfo: function(senderID, targetID) {
     	if(App.Global.releaseCode){
     		$fh.act({
-    	  	      act : 'GetRecordInfo',
+    	  	      act : 'CloudGetRequestInfo',
     	  	      req : {
-    	  	    	  accountID : id,
+    	  	    	  senderID : senderID,
+    	  	    	  targetID : targetID
     	  	      }
     	  	    }, function(res) {
-    	  	    	this.handleServerResponse(res);
-    	  	    }, function (code, errorprops, params) {
+		  	    	if(res.message == 'ok'){
+		  	    		handleServerResponse(res.info);
+			    	}else if (res.message == 'fail') {
+			    		Ext.Msg.alert('User not found', "There is a problem with the server.");
+	                  } else if (res.message == 'error') {
+	                	  Ext.Msg.alert('Friend not found', "There is a problem with the server.");
+	                  } else {
+	                	  Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
+	                  }  	    		  	    	
+				}, function (code, errorprops, params) {
     	  	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
     	  	    });
     	}else{
-    		var result = {id: 'sdrf3434d345d4sdf3', name: 'Spencer', approved: true, ignoreAlerts: true};this.handleServerResponse(result);
+    		var result = {id: 'sdrf3434d345d4sdf3', name: 'Spencer', approved: true, ignoreAlerts: true};handleServerResponse(result);
         	return;
     	}
-    },
-    
-    handleServerResponse: function(result){
-    	var editRequestStore = Ext.getStore('EditRequest');
-    	editRequestStore.setData(result);
-    	this.setFormPanel(result);
-    	App.Global.changeView(App.view.EditRequestView.xtype);
-    },
-    
-    setFormPanel: function(result) {
-    	var formPanel = Ext.getCmp('EditRequestViewFormPanel');
-    	formPanel.setValues({
-    		id: result.id,
-    		name: result.name,
-    		approved: result.approved,
-    		ignoreAlerts: result.ignoreAlerts
-    	});
-    	Ext.getCmp('EditRequestViewApprovedField').setDisabled(result.approved);
-		Ext.getCmp('EditRequestViewApproveButton').setDisabled(result.approved);
     },
     
     getRecordFromForm: function(){
@@ -110,3 +100,22 @@ Ext.define('App.controller.EditRequest', {
 	onLaunch: function() {
 	}	
 });
+
+function handleServerResponse(result){
+	var editRequestStore = Ext.getStore('EditRequest');
+	editRequestStore.setData(result);
+	setFormPanel(result);
+	App.Global.changeView(App.view.EditRequestView.xtype);
+}
+
+function setFormPanel(result){
+	var formPanel = Ext.getCmp('EditRequestViewFormPanel');
+	formPanel.setValues({
+		id: result.id,
+		name: result.name,
+		approved: result.approved,
+		ignoreAlerts: result.ignoreAlerts
+	});
+	Ext.getCmp('EditRequestViewApprovedField').setDisabled(result.approved);
+	Ext.getCmp('EditRequestViewApproveButton').setDisabled(result.approved);
+}

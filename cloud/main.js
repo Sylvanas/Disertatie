@@ -6,7 +6,7 @@ var parameters = new Array();
 function insertUser(user){
   var insertedUser = $fh.db({
     "act" : "create",
-  	"type" : "UserTable",
+    "type" : "UserTable",
 		"fields" : {
 		"email" : user.email,
 		"password" : user.password,
@@ -86,7 +86,7 @@ function user(){
 }
 
 function person(personID){
-	return {id: personID, name: personID, approved: false};
+	return {id: personID, name: personID, approved: false, ignoreAlerts: false};
 }
 
 //-------------------------------------------------------------------------------
@@ -98,6 +98,7 @@ function adminClass(){
 	this.changePassword;
 	this.sendFriendRequest;
 	this.getPersons;
+	this.getRequestInfo;
 }
 
 //-------------------------------------------------------------------------------
@@ -110,6 +111,7 @@ function testClass(){
 	this.changePassword = subclassChangePassword;
 	this.sendFriendRequest = subclassSendFriendRequest;
 	this.getPersons = subclassGetPersons;
+	this.getRequestInfo = subclassGetRequestInfo;
 }
 
 function subclassRegister(){
@@ -132,6 +134,10 @@ function subclassGetPersons(){
 	return {persons: [{id: 'dgdg', name: 'Spencer', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
 }
 
+function subclassGetRequestInfo(){
+	return {id: 'sdrf3434d345d4sdf3', name: 'Spencer', approved: true, ignoreAlerts: true};
+}
+
 //-------------------------------------------------------------------------------
 //actual class
 function actualClass(){
@@ -142,6 +148,7 @@ function actualClass(){
 	this.changePassword = actualChangePassword;
 	this.sendFriendRequest = actualSendFriendRequest;
 	this.getPersons = actualGetPersons;
+	this.getRequestInfo = actualGetRequestInfo;
 }
 
 function actualLogIn(){
@@ -207,7 +214,7 @@ function actualSendFriendRequest(){
   	 return {message: "exists"};
 	 } else {
 		 //var person = new person(this.parameters[0]);
-  var person = {id: this.parameters[0], name: this.parameters[0], approved: false};
+  var person = {id: this.parameters[0], name: this.parameters[0], approved: false, ignoreAlerts: false};
 		 userToUpdate.fields.personsList.push(person);
    }
 	return updateUser(userToUpdate, this.parameters[1]);
@@ -221,6 +228,17 @@ function actualGetPersons(){
 		persons.push(user.fields.personsList[i]);
 	}
 	return {message: "ok", persons: persons};
+}
+
+function actualGetRequestInfo(){
+	var senderUser = getUser(this.parameters[0]);
+	if(senderUser.message == "fail") return {message: "fail"};
+	for(var i=0;i<senderUser.fields.personsList.length;i++){
+	    if(senderUser.fields.personsList[i]['id'] == this.parameters[1]){
+	    	return {message: "ok", info: senderUser.fields.personsList[i]};
+	    }
+	  }
+	return {message: "error"};
 }
 
 function actualDeleteUser(){
@@ -318,6 +336,14 @@ function CloudGetRequests(){
 	array.push($params.accountID);
 	newClass.parameters = array;
 	return newClass.getPersons();
+}
+
+function CloudGetRequestInfo(){
+	var array = new Array();
+	array.push($params.senderID);
+	array.push($params.targetID);
+	newClass.parameters = array;
+	return newClass.getRequestInfo();
 }
 
 //-------------------------------------------------------------------------------
