@@ -7,7 +7,7 @@ function insertUser(user){
   var insertedUser = $fh.db({
     "act" : "create",
     "type" : "UserTable",
-		"fields" : {
+  	"fields" : {
 		"email" : user.email,
 		"password" : user.password,
 		"personsList" : user.personsList,
@@ -80,12 +80,12 @@ function clearUserTable(){
 
 //-------------------------------------------------------------------------------
 //database classes
-function user(){
-	var emptyArray = new Array();
+function createUser(){
+  var emptyArray = new Array();
   return {email: "", password:"", personsList: emptyArray, lastLocations: emptyArray};
 }
 
-function person(personID){
+function createPerson(personID){
 	return {id: personID, name: personID, approved: false, ignoreAlerts: false};
 }
 
@@ -178,7 +178,7 @@ function actualGetUser(){
 }
 
 function actualInsertUser(){
-	var newUser = user();
+	var newUser = createUser();
 	newUser['email'] = this.parameters[0];
 	newUser['password'] = this.parameters[1];
 	newUser['personsList'] = this.parameters[2];
@@ -213,8 +213,7 @@ function actualSendFriendRequest(){
   if(friendRequestAdded) {
   	 return {message: "exists"};
 	 } else {
-		 //var person = new person(this.parameters[0]);
-  var person = {id: this.parameters[0], name: this.parameters[0], approved: false, ignoreAlerts: false};
+		 var person = createPerson(this.parameters[0]);
 		 userToUpdate.fields.personsList.push(person);
    }
 	return updateUser(userToUpdate, this.parameters[1]);
@@ -253,7 +252,7 @@ function actualRegister(){
 			return {message: "fail"};
 		}
 	}
-	var newUser = new user();
+	var newUser = createUser();
 	newUser.email = this.parameters[0];
 	newUser.password = this.parameters[1];
 	return insertUser(newUser);
