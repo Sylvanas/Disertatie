@@ -128,6 +128,7 @@ Ext.define('Global', {
 		}
 	},
 	
+//---------------------------------------------------
 	getCloudRequests: function(){
 		if(App.Global.releaseCode){
     		$fh.act({
@@ -157,6 +158,7 @@ Ext.define('Global', {
 		Ext.getStore('Requests').setData(result.persons);
 		App.Global.changeView(App.view.ManageRequestsView.xtype);
 	},
+//---------------------------------------------------
 	
 	startSendingGeoData: function(){
 		setTimeout(function sendGeoData() {
