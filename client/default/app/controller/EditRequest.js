@@ -88,7 +88,7 @@ Ext.define('App.controller.EditRequest', {
 		  	      }
 		  	    }, function(res) {
 		  	    	if(res.message == 'ok'){
-		  	    		App.Global.changeView(App.view.ManageRequestsView.xtype);
+		  	    		App.Global.getCloudRequests();
 			    	}else if (res.message == 'fail') {
 			    		Ext.Msg.alert('Server problem', "Server problem.");
 	                  } else {
