@@ -9,7 +9,7 @@ Ext.define('App.controller.Account', {
 		this.control({
 			'#AccountViewManageRequests': { 'tap': function () {
 					Ext.getStore('Requests').removeAll();
-					this.GetRequests(Ext.getStore('LocalStore').getAt(0).get('accountID'));
+					this.GetRequests();
 				}
 			},
 
@@ -60,12 +60,12 @@ Ext.define('App.controller.Account', {
 		});
     },
 
-    GetRequests: function(accountID){
+    GetRequests: function(){
     	if(App.Global.releaseCode){
     		$fh.act({
 		      act : 'CloudGetRequests',
 		      req : {
-		    	  accountID : accountID,
+		    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
 		      }
 		    }, function(res) {
 		    	if(res.message == 'ok'){
