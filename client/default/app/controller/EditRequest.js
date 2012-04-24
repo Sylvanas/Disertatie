@@ -18,14 +18,14 @@ Ext.define('App.controller.EditRequest', {
 					var recordToSend = this.getRecordFromForm();
 					recordToSend.approved = true;
 					recordToSend.currentID = Ext.getStore('LocalStore').getAt(0).get('accountID');
-					this.sendDataToCloud(recordToSend);
+					this.sendDataToCloud(Ext.getStore('LocalStore').getAt(0).get('accountID'), recordToSend);
 				}
 			},
 
 			'#EditRequestViewSaveButton': { 'tap': function () {			
 					var recordToSend = this.getRecordFromForm();
 					recordToSend.currentID = Ext.getStore('LocalStore').getAt(0).get('accountID');
-					this.sendDataToCloud(recordToSend);
+					this.sendDataToCloud(Ext.getStore('LocalStore').getAt(0).get('accountID'), recordToSend);
 				}
 			},
 
@@ -78,7 +78,7 @@ Ext.define('App.controller.EditRequest', {
     	return formValues;
     },
 
-    sendDataToCloud: function(request) {
+    sendDataToCloud: function(senderID, request) {
     	if(App.Global.releaseCode){
 			$fh.act({
 		  	      act : 'CloudEditRequest',
