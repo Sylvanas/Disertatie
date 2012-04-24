@@ -248,7 +248,7 @@ function actualGetFriendRequests(){
 	if(user.message == "fail") return {message: "fail"};
 	var persons = new Array();
 	for(var i=0;i<user.fields.personsList.length;i++){
-		if(senderUser.fields.personsList[i]['approved']){
+		if(user.fields.personsList[i]['approved']){
 			persons.push(user.fields.personsList[i]);
 		}
 	}
