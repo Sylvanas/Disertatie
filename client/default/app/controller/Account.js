@@ -9,7 +9,7 @@ Ext.define('App.controller.Account', {
 		this.control({
 			'#AccountViewManageRequests': { 'tap': function () {
 					Ext.getStore('Requests').removeAll();
-					this.GetRequests();
+					App.Global.getCloudRequests();
 				}
 			},
 
@@ -60,36 +60,6 @@ Ext.define('App.controller.Account', {
 		});
     },
 
-    GetRequests: function(){
-    	if(App.Global.releaseCode){
-    		$fh.act({
-		      act : 'CloudGetRequests',
-		      req : {
-		    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
-		      }
-		    }, function(res) {
-		    	if(res.message == 'ok'){
-		    		this.HandleServerResponse(res);
-		    	} else if(res.message == 'fail'){
-		    		Ext.Msg.alert('Fail to get user', 'Fail to get user.', Ext.emptyFn);
-		    	} else {
-		    		Ext.Msg.alert('Unexpected problem', 'Unexpected problem.', Ext.emptyFn);
-		    	}
-		    }, function (code, errorprops, params) {
-		    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
-		    });
-	    	}else{
-	    		var result = {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
-	    		HandleServerResponse(result);
-	        	return;
-	    	}
-    },
-
 	onLaunch: function() {
 	}	
 });
-
-function HandleServerResponse(result){
-	Ext.getStore('Requests').setData(result.persons);
-	App.Global.changeView(App.view.ManageRequestsView.xtype);
-}
