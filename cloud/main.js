@@ -99,6 +99,7 @@ function adminClass(){
 	this.sendFriendRequest;
 	this.getPersons;
 	this.getRequestInfo;
+	this.editRequest;
 }
 
 //-------------------------------------------------------------------------------
@@ -112,6 +113,7 @@ function testClass(){
 	this.sendFriendRequest = subclassSendFriendRequest;
 	this.getPersons = subclassGetPersons;
 	this.getRequestInfo = subclassGetRequestInfo;
+	this.editRequest = subclassEditRequest;
 }
 
 function subclassRegister(){
@@ -138,6 +140,10 @@ function subclassGetRequestInfo(){
 	return {id: 'sdrf3434d345d4sdf3', name: 'Spencer', approved: true, ignoreAlerts: true};
 }
 
+function subclassEditRequest(){
+	return { message: "ok" };
+}
+
 //-------------------------------------------------------------------------------
 //actual class
 function actualClass(){
@@ -149,6 +155,7 @@ function actualClass(){
 	this.sendFriendRequest = actualSendFriendRequest;
 	this.getPersons = actualGetPersons;
 	this.getRequestInfo = actualGetRequestInfo;
+	this.editRequest = actualEditRequest;
 }
 
 function actualLogIn(){
@@ -238,6 +245,20 @@ function actualGetRequestInfo(){
 	    }
 	  }
 	return {message: "error"};
+}
+
+function actualEditRequest(){
+	var userToUpdate = getUser(this.parameters[0]);
+	if(userToUpdate.message == "fail") return {message: "fail"};
+	for(var i=0;i<userToUpdate.fields.personsList.length;i++){
+		if(userToUpdate.fields.personsList[i]['id'] == this.parameters[1]['id']){
+			userToUpdate.fields.personsList[i]['name'] = this.parameters[1]['name'];
+			userToUpdate.fields.personsList[i]['approved'] = this.parameters[1]['approved'];
+			userToUpdate.fields.personsList[i]['ignoreAlerts'] = this.parameters[1]['ignoreAlerts'];
+			break;
+		}
+	}
+	return updateUser(userToUpdate, this.parameters[0]);
 }
 
 function actualDeleteUser(){
@@ -343,6 +364,14 @@ function CloudGetRequestInfo(){
 	array.push($params.targetID);
 	newClass.parameters = array;
 	return newClass.getRequestInfo();
+}
+
+function CloudEditRequest(){
+	var array = new Array();
+	array.push($params.senderID);
+	array.push($params.request);
+	newClass.parameters = array;
+	return newClass.editRequest();
 }
 
 //-------------------------------------------------------------------------------
