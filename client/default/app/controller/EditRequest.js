@@ -10,7 +10,7 @@ Ext.define('App.controller.EditRequest', {
     init: function() {
 		this.control({
 			'#EditRequestViewBackButton': { 'tap': function () {
-					App.Global.changeView(App.view.ManageRequestsView.xtype);
+				App.Global.getCloudRequests();
 				}
 			},
 			
