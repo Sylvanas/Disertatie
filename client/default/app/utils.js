@@ -36,7 +36,7 @@ Ext.define('Global', {
 
     constructor: function() {   
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
-    	this.releaseCode = false;
+    	this.releaseCode = true;
     },
     
     changeView: function(target, durationAnimation) {
