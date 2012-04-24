@@ -100,6 +100,7 @@ function adminClass(){
 	this.getPersons;
 	this.getRequestInfo;
 	this.editRequest;
+	this.getFriendRequests;
 }
 
 //-------------------------------------------------------------------------------
@@ -114,6 +115,7 @@ function testClass(){
 	this.getPersons = subclassGetPersons;
 	this.getRequestInfo = subclassGetRequestInfo;
 	this.editRequest = subclassEditRequest;
+	this.getFriendRequests = subclassGetFriendRequests;
 }
 
 function subclassRegister(){
@@ -144,6 +146,10 @@ function subclassEditRequest(){
 	return { message: "ok" };
 }
 
+function subclassGetFriendRequests(){
+	return { message: "ok", requests: [{id: 'dgdg', name: 'Codrean'},  {id: 'dgw', name: 'Kisu'}, {id: 'ftgsd', name: 'Mantog'}, {id: '4534', name: 'Mangu'}] };
+}
+
 //-------------------------------------------------------------------------------
 //actual class
 function actualClass(){
@@ -156,6 +162,7 @@ function actualClass(){
 	this.getPersons = actualGetPersons;
 	this.getRequestInfo = actualGetRequestInfo;
 	this.editRequest = actualEditRequest;
+	this.getFriendRequests = actualGetFriendRequests;
 }
 
 function actualLogIn(){
@@ -234,6 +241,18 @@ function actualGetPersons(){
 		persons.push(user.fields.personsList[i]);
 	}
 	return {message: "ok", persons: persons};
+}
+
+function actualGetFriendRequests(){
+	var user = getUser(this.parameters[0]);
+	if(user.message == "fail") return {message: "fail"};
+	var persons = new Array();
+	for(var i=0;i<user.fields.personsList.length;i++){
+		if(senderUser.fields.personsList[i]['approved']){
+			persons.push(user.fields.personsList[i]);
+		}
+	}
+	return {message: "ok", requests: persons};
 }
 
 function actualGetRequestInfo(){
@@ -372,6 +391,13 @@ function CloudEditRequest(){
 	array.push($params.request);
 	newClass.parameters = array;
 	return newClass.editRequest();
+}
+
+function CloudGetFriendRequests(){
+	var array = new Array();
+	array.push($params.accountID);
+	newClass.parameters = array;
+	return newClass.getFriendRequests();
 }
 
 //-------------------------------------------------------------------------------

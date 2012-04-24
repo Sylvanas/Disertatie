@@ -42,29 +42,35 @@ Ext.define('App.controller.Home', {
     },
     
     GetFriends: function(accountID){
-		if(App.Global.releaseCode){
+    	if(App.Global.releaseCode){
 			$fh.act({
-			      act : 'GetFriends',
-			      req : {
-			    	  accountID : accountID,
-			      }
-			    }, function(res) {
-			    	this.HandleServerResponse(res);
-			    }, function (code, errorprops, params) {
-			    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
-			    });
+		  	      act : 'CloudGetFriendRequests',
+		  	      req : {
+		  	    	accountID : accountID
+		  	      }
+		  	    }, function(res) {
+		  	    	if(res.message == 'ok'){
+		  	    		HandleServerResponse(result);
+			    	}else if (res.message == 'fail') {
+			    		Ext.Msg.alert('Error getting fried requests', "Error getting fried requests.");
+	                  } else {
+	                	  Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
+	                  }  	    		  	    	
+				}, function (code, errorprops, params) {
+		    	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+		    	    });	
 		    	}else{
 		    		var result = {requests: [{id: 'dgdg', name: 'Codrean'},  {id: 'dgw', name: 'Kisu'}, {id: 'ftgsd', name: 'Mantog'}, {id: '4534', name: 'Mangu'}]};
-		    		this.HandleServerResponse(result);
-		        	return;
+		    		HandleServerResponse(result);
+		    		return;
 		    	}
-    },
-    
-    HandleServerResponse: function(result){
-    	Ext.getStore('SelectFriend').setData(result.requests);
-    	App.Global.changeView(App.view.SelectFriendView.xtype);
     },
 
 	onLaunch: function() {
     },
 });
+
+function HomeViewHandleServerResponse(result){
+	Ext.getStore('SelectFriend').setData(result.requests);
+	App.Global.changeView(App.view.SelectFriendView.xtype);
+}
