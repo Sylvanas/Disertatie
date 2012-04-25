@@ -50,7 +50,9 @@ Ext.define('App.controller.Home', {
 		  	      }
 		  	    }, function(res) {
 		  	    	if(res.message == 'ok'){
-		  	    		HomeViewHandleServerResponse(result);
+		  	    		HomeViewHandleServerResponse({message: 'ok', requests: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]});
+
+		  	    		//HomeViewHandleServerResponse(result);
 			    	}else if (res.message == 'fail') {
 			    		Ext.Msg.alert('Error getting fried requests', "Error getting fried requests.");
 	                  } else {
