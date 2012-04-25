@@ -147,7 +147,7 @@ function subclassEditRequest(){
 }
 
 function subclassGetFriendRequests(){
-	return { message: "ok", requests: [{id: 'dgdg', name: 'Codrean'},  {id: 'dgw', name: 'Kisu'}, {id: 'ftgsd', name: 'Mantog'}, {id: '4534', name: 'Mangu'}] };
+	return {message: 'ok', persons: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};;
 }
 
 //-------------------------------------------------------------------------------
@@ -248,9 +248,9 @@ function actualGetFriendRequests(){
 	if(user.message == "fail") return {message: "fail"};
 	var persons = new Array();
 	for(var i=0;i<user.fields.personsList.length;i++){
-		if(user.fields.personsList[i]['approved'] == true){
+		//if(user.fields.personsList[i]['approved'] == true){
 			persons.push(user.fields.personsList[i]);
-		}
+		//}
 	}
 	return {message: "ok", requests: persons};
 	//test this
