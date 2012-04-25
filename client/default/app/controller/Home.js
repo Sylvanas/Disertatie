@@ -42,7 +42,6 @@ Ext.define('App.controller.Home', {
     },
     
     GetFriends: function(accountID){
-    	Ext.Msg.alert(accountID);return;
     	if(App.Global.releaseCode){
 			$fh.act({
 		  	      act : 'CloudGetFriendRequests',
