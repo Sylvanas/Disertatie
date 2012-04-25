@@ -42,6 +42,7 @@ Ext.define('App.controller.Home', {
     },
     
     GetFriends: function(accountID){
+    	Ext.Msg.alert(accountID);return;
     	if(App.Global.releaseCode){
 			$fh.act({
 		  	      act : 'CloudGetFriendRequests',
@@ -71,7 +72,6 @@ Ext.define('App.controller.Home', {
 });
 
 function HomeViewHandleServerResponse(result){
-	Ext.Msg.alert('In function ' + result.requests.length);
 	Ext.getStore('SelectFriend').setData(result.requests);
 	App.Global.changeView(App.view.SelectFriendView.xtype);
 }
