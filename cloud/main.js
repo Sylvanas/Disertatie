@@ -244,8 +244,6 @@ function actualGetPersons(){
 }
 
 function actualGetFriendRequests(){
-	return {message: 'ok', requests: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};;
-
 	var user = getUser(this.parameters[0]);
 	if(user.message == "fail") return {message: "fail"};
 	var persons = new Array();
@@ -397,8 +395,6 @@ function CloudEditRequest(){
 }
 
 function CloudGetFriendRequests(){
-	return {message: 'ok', requests: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};;
-
 	var array = new Array();
 	array.push($params.accountID);
 	newClass.parameters = array;
