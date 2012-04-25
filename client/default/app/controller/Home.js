@@ -50,7 +50,6 @@ Ext.define('App.controller.Home', {
 		  	      }
 		  	    }, function(res) {
 		  	    	if(res.message == 'ok'){
-		  	    		Ext.Msg.alert('In res.');
 		  	    		HomeViewHandleServerResponse(result);
 			    	}else if (res.message == 'fail') {
 			    		Ext.Msg.alert('Error getting fried requests', "Error getting fried requests.");
@@ -72,7 +71,7 @@ Ext.define('App.controller.Home', {
 });
 
 function HomeViewHandleServerResponse(result){
-	Ext.Msg.alert('In function.');
+	Ext.Msg.alert('In function ' + result.requests.length);
 	Ext.getStore('SelectFriend').setData(result.requests);
 	App.Global.changeView(App.view.SelectFriendView.xtype);
 }
