@@ -8,6 +8,7 @@ Ext.define('App.controller.Map', {
         },
     },
     init: function() {
+    	App.MapController = this;//TODO: fix this workaroud
 		this.control({
 			'#MapViewBackButton': { 'tap': function () {
 				App.Global.changeView(App.view.SelectFriendView.xtype);
@@ -56,7 +57,7 @@ Ext.define('App.controller.Map', {
 		  	    	  accountID : id,
 		  	      }
 		  	    }, function(res) {
-		  	    	this.handleServerResponse(res);
+		  	    	MapViewHandleServerResponse(res);
 		  	    }, function (code, errorprops, params) {
 		  	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
 		  	    });
@@ -68,17 +69,10 @@ Ext.define('App.controller.Map', {
 		 	    		         {id: '12343r234', index: '3', latitude: '53.140342', longitude: '-6.12312', time: '12.05.2011 12.14'},
 		 	    		         {id: '12341234', index: '4', latitude: '53.070342', longitude: '-6.11312', time: '12.05.2011 12.13'},
 		 	    		         {id: '12dsfg', index: '5', latitude: '53.210342', longitude: '-6.26312', time: '12.05.2011 12.12'},
-		 	    		       	 ];this.handleServerResponse(result);
+		 	    		       	 ];MapViewHandleServerResponse(result);
 		     	return;
 		    	}
 	},
-	
-    handleServerResponse: function(result){
-    	var mapStore = Ext.getStore('Map');
-    	mapStore.setData(result);
-    	App.Global.changeView(App.view.MapView.xtype);
-		this.setMapObjects();;
-    },
     
     setMapObjects: function() {
     	if(!App.map) return;
@@ -269,3 +263,10 @@ Ext.define('App.controller.Map', {
 	onLaunch: function() {
 	}	
 });
+
+function MapViewHandleServerResponse(result){
+	var mapStore = Ext.getStore('Map');
+	mapStore.setData(result);
+	App.Global.changeView(App.view.MapView.xtype);
+	App.MapController.setMapObjects();
+}
