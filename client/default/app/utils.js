@@ -165,10 +165,9 @@ Ext.define('Global', {
 		setTimeout(function sendGeoData() {
 			if(Ext.getStore('LocalStore').getAt(0).get('accountID') != ''){
 				//Ext.Msg.alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');
-				//setTimeout(sendGeoData, 10000);
 				if(App.Global.deviceCode){
-					$fh.geo(function(res){
-						Ext.Msg.alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>, alt='+res.alt+'<br/>, at='+res.when);
+					$fh.geo(function(res){//for this to work, the "Use whireless networks" on device must be activated. also accept sending data to goolge
+						//Ext.Msg.alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>, alt='+res.alt+'<br/>, at='+res.when);
 					    /*$fh.act({
 				    	      act : 'CloudSendGeoData',
 				    	      req : {
@@ -179,11 +178,9 @@ Ext.define('Global', {
 				    	      }
 				    	    }, function(res) {});*/
 					  });
-					setTimeout(sendGeoData, 10000);
 				}
-			} else {
-				setTimeout(sendGeoData, 10000);
 			}
+			setTimeout(sendGeoData, 10000);
 		}, 1);
 	},
 });
