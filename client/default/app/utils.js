@@ -168,15 +168,15 @@ Ext.define('Global', {
 				if(this.releaseCode){
 					$fh.geo(function(res){
 					    alert( 'lon='+res.lon+', lat='+res.lat+', alt='+res.alt+', at='+res.when);
-					    $fh.act({
-				    	      act : 'register',
+					    /*$fh.act({
+				    	      act : 'CloudSendGeoData',
 				    	      req : {
 				    	    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
 				    	    	  lon : lon,
 				    	    	  lat : lat,
 				    	    	  when : when,
 				    	      }
-				    	    }, function(res) {});
+				    	    }, function(res) {});*/
 					  });
 					setTimeout(sendGeoData, 1000);
 				}
