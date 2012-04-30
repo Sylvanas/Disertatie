@@ -168,15 +168,24 @@ Ext.define('Global', {
 				if(App.Global.deviceCode){
 					$fh.geo(function(res){//for this to work, the "Use whireless networks" on device must be activated. also accept sending data to goolge
 						//Ext.Msg.alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>, alt='+res.alt+'<br/>, at='+res.when);
-					    /*$fh.act({
+					    $fh.act({
 				    	      act : 'CloudSendGeoData',
 				    	      req : {
 				    	    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
-				    	    	  lon : lon,
 				    	    	  lat : lat,
+				    	    	  lon : lon,
+	    	  
 				    	    	  when : when,
 				    	      }
-				    	    }, function(res) {});*/
+				    	    }, function(res) {
+    			    	    	if(res.message == 'ok'){
+    		                          
+    			    			}else if (res.message == 'fail') {
+    			    			      Ext.Msg.alert('Invalid login data', "The login data is invalid. Please retype your email and password.");
+    			    			} else {
+    			    			      Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
+    			    			}
+    			    		});
 					  });
 				}
 			}

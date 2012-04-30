@@ -89,6 +89,10 @@ function createPerson(personID){
 	return {id: personID, name: personID, approved: false, ignoreAlerts: false};
 }
 
+function createLocation(personID, lat, lng, when){
+	return {id: personID, latitude: lat, longitude: lng, time: when};
+}
+
 //-------------------------------------------------------------------------------
 //base class
 function adminClass(){
@@ -101,6 +105,7 @@ function adminClass(){
 	this.getRequestInfo;
 	this.editRequest;
 	this.getFriendRequests;
+	this.sendGeoData;
 }
 
 //-------------------------------------------------------------------------------
@@ -116,6 +121,7 @@ function testClass(){
 	this.getRequestInfo = subclassGetRequestInfo;
 	this.editRequest = subclassEditRequest;
 	this.getFriendRequests = subclassGetFriendRequests;
+	this.sendGeoData = subclassSendGeoData;
 }
 
 function subclassRegister(){
@@ -147,7 +153,11 @@ function subclassEditRequest(){
 }
 
 function subclassGetFriendRequests(){
-	return {message: 'ok', requests: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};;
+	return {message: 'ok', requests: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
+}
+
+function subclassSendGeoData(){
+	return {message: 'ok'};
 }
 
 //-------------------------------------------------------------------------------
@@ -163,6 +173,7 @@ function actualClass(){
 	this.getRequestInfo = actualGetRequestInfo;
 	this.editRequest = actualEditRequest;
 	this.getFriendRequests = actualGetFriendRequests;
+	this.sendGeoData = actualSendGeoData;
 }
 
 function actualLogIn(){
@@ -309,11 +320,18 @@ function actualLogIn(){
 	return {message: "fail"};
 }
 
-//-------------------------------------------------------------------------------
-//fast class
-function fastClass(){
-	this.inheritFrom = actualClass;
-	this.inheritFrom();
+function actualSendGeoData(){
+	var userToUpdate = getUser(this.parameters[0]);
+	if(userToUpdate.message == "fail") return {message: "fail"};
+	var locations = userToUpdate.fields.lastLocations;
+	var locationID = locations.length;
+	if(locationID == 9){
+		locations = locations[0]['id'];
+		locations.shift();
+	}
+	var locationToAdd = createLocation(locationID, this.parameters[1], this.parameters[2], this.parameters[3]);
+	userToUpdate.fields.lastLocations = locations;
+	return updateUser(userToUpdate, this.parameters[0]);
 }
 
 //-------------------------------------------------------------------------------
@@ -398,6 +416,16 @@ function CloudGetFriendRequests(){
 	array.push($params.accountID);
 	newClass.parameters = array;
 	return newClass.getFriendRequests();
+}
+
+function CloudSendGeoData(){
+	var array = new Array();
+	array.push($params.accountID);
+	array.push($params.lat);
+	array.push($params.lon);
+	array.push($params.when);
+	newClass.parameters = array;
+	return newClass.sendGeoData();
 }
 
 //-------------------------------------------------------------------------------
