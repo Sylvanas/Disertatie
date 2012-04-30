@@ -3,7 +3,6 @@ Ext.define('App.model.Map', {
     config: {
 	    fields: [
 	             {name: 'id', type: 'string'},
-	             {name: 'index',  type: 'string'},
 	             {name: 'latitude',  type: 'string'},
 	             {name: 'longitude',  type: 'string'},
 	             {name: 'time',  type: 'date'},

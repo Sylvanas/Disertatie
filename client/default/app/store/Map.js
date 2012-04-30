@@ -3,7 +3,6 @@ Ext.define('App.store.Map', {
 	requires: [ 'App.model.Map' ],
 	config: {  
 	    model: 'App.model.Map',
-	    sorters : 'index',
 	    proxy: "ajax",
 	}
 });
