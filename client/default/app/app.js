@@ -91,6 +91,7 @@ Ext.application({
     	App.Global.setLocalstoreValues();
     	App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
 		this.goToFirstView();
+		App.Global.startSendingGeoData();
     },
     
     goToFirstView: function() {
@@ -98,8 +99,7 @@ Ext.application({
     	if(localStore.getAt(0).get('accountID') == ''){
     		App.mainView.setActiveItem(0);
     	}else{
-    		App.mainView.setActiveItem(2);
-    		App.Global.startSendingGeoData();
+    		App.mainView.setActiveItem(2);		
     	}
     },
 });
