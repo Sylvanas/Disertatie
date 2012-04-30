@@ -167,10 +167,10 @@ Ext.define('Global', {
 				//Ext.Msg.alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');
 				//setTimeout(sendGeoData, 10000);
 				if(App.Global.releaseCode){
-					Ext.Msg.alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');
-					/*$fh.geo(function(res){
+					//Ext.Msg.alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');
+					$fh.geo(function(res){
 						Ext.Msg.alert( 'lon='+res.lon+', lat='+res.lat+', alt='+res.alt+', at='+res.when);
-					    $fh.act({
+					    /*$fh.act({
 				    	      act : 'CloudSendGeoData',
 				    	      req : {
 				    	    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
@@ -178,8 +178,8 @@ Ext.define('Global', {
 				    	    	  lat : lat,
 				    	    	  when : when,
 				    	      }
-				    	    }, function(res) {});
-					  });*/
+				    	    }, function(res) {});*/
+					  });
 					setTimeout(sendGeoData, 10000);
 				}
 			}
