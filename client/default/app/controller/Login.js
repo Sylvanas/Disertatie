@@ -44,10 +44,7 @@ Ext.define('App.controller.Login', {
 			},
 			
 			'#LoginViewRegisterButton': { 'tap': function () {
-				$fh.geo(function(res){
-					Ext.Msg.alert('1:lon='+res.lon+', lat='+res.lat+', alt='+res.alt+', at='+res.when);
-				  });
-					//App.Global.changeView(App.view.RegisterView.xtype);
+					App.Global.changeView(App.view.RegisterView.xtype);
 				}
 			},
 			
