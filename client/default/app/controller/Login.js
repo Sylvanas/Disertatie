@@ -13,7 +13,6 @@ Ext.define('App.controller.Login', {
 	    	    	localStoreRecord.set('accountID', 'asdf34f34rf');
 	    	    	localStoreRecord.set('email', Ext.getCmp('LoginViewEmailField').getValue());
 	    	    	localStoreRecord.set('password', Ext.getCmp('LoginViewPassField').getValue());
-	    	    	App.Global.startSendingGeoData();
 	    	    	if(App.Global.releaseCode){
 	    	    		if(this.validInputData()){
 	    					var email = Ext.getCmp('LoginViewEmailField').getValue();
