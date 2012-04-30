@@ -6,7 +6,7 @@ Ext.define('App.model.Map', {
 	             {name: 'index',  type: 'string'},
 	             {name: 'latitude',  type: 'string'},
 	             {name: 'longitude',  type: 'string'},
-	             {name: 'time',  type: 'string'},
+	             {name: 'time',  type: 'date'},
 	             ],
 	    idProperty: "id",
     }

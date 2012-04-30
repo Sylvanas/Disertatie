@@ -63,12 +63,12 @@ Ext.define('App.controller.Map', {
 		  	    });
 		    	}else{
 		    		var result = [
-		 	    	 	       	 {id: '123', index: '0', latitude: '53.340342', longitude: '-6.24312', time: '12.05.2011 12.20'},
-		 	    		         {id: '232', index: '1', latitude: '53.240342', longitude: '-6.14312', time: '12.05.2011 12.18'},
-		 	    		         {id: '1', index: '2', latitude: '53.140342', longitude: '-6.24312', time: '12.05.2011 12.16'},
-		 	    		         {id: '12343r234', index: '3', latitude: '53.140342', longitude: '-6.12312', time: '12.05.2011 12.14'},
-		 	    		         {id: '12341234', index: '4', latitude: '53.070342', longitude: '-6.11312', time: '12.05.2011 12.13'},
-		 	    		         {id: '12dsfg', index: '5', latitude: '53.210342', longitude: '-6.26312', time: '12.05.2011 12.12'},
+		 	    	 	       	 {id: '123', index: '0', latitude: '53.340342', longitude: '-6.24312', time: new Date()},
+		 	    		         {id: '232', index: '1', latitude: '53.240342', longitude: '-6.14312', time: new Date()},
+		 	    		         {id: '1', index: '2', latitude: '53.140342', longitude: '-6.24312', time: new Date()},
+		 	    		         {id: '12343r234', index: '3', latitude: '53.140342', longitude: '-6.12312', time: new Date()},
+		 	    		         {id: '12341234', index: '4', latitude: '53.070342', longitude: '-6.11312', time: new Date()},
+		 	    		         {id: '12dsfg', index: '5', latitude: '53.210342', longitude: '-6.26312', time: new Date()},
 		 	    		       	 ];MapViewHandleServerResponse(result);
 		     	return;
 		    	}
@@ -124,7 +124,7 @@ Ext.define('App.controller.Map', {
 				  "<h1>" + this.friendName + "'s location:"+
 				  '<div id="bodyContent">'+
 				  '<p>Coordinates: '+new google.maps.LatLng(record.get('latitude'), record.get('longitude'))+'</p>'+
-				  '<p>Time: '+record.get('time')+'</p>'+
+				  '<p>Time: '+ record.get('time').getHours() + ':' + record.get('time').getMinutes() +'</p>'+
 				  '</br>'+
 				  '</div></div>';
 			App.infoWindows.push(new google.maps.InfoWindow({
