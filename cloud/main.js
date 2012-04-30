@@ -106,6 +106,7 @@ function adminClass(){
 	this.editRequest;
 	this.getFriendRequests;
 	this.sendGeoData;
+	this.getLocations;
 }
 
 //-------------------------------------------------------------------------------
@@ -122,6 +123,7 @@ function testClass(){
 	this.editRequest = subclassEditRequest;
 	this.getFriendRequests = subclassGetFriendRequests;
 	this.sendGeoData = subclassSendGeoData;
+	this.getLocations = subclassGetLocations;
 }
 
 function subclassRegister(){
@@ -160,6 +162,16 @@ function subclassSendGeoData(){
 	return {message: 'ok'};
 }
 
+function subclassGetLocations(){
+	return {message: 'ok', locations:[
+	 		 	    	 	       	 {id: '123', latitude: '53.340342', longitude: '-6.24312', time: new Date()},
+			 	    		         {id: '232', latitude: '53.240342', longitude: '-6.14312', time: new Date()},
+			 	    		         {id: '1', latitude: '53.140342', longitude: '-6.24312', time: new Date()},
+			 	    		         {id: '12343r234', latitude: '53.140342', longitude: '-6.12312', time: new Date()},
+			 	    		         {id: '12341234', latitude: '53.070342', longitude: '-6.11312', time: new Date()},
+			 	    		         {id: '12dsfg', latitude: '53.210342', longitude: '-6.26312', time: new Date()},
+			 	    		       	 ]};
+}
 //-------------------------------------------------------------------------------
 //actual class
 function actualClass(){
@@ -174,6 +186,7 @@ function actualClass(){
 	this.editRequest = actualEditRequest;
 	this.getFriendRequests = actualGetFriendRequests;
 	this.sendGeoData = actualSendGeoData;
+	this.getLocations = actualGetLocations;
 }
 
 function actualLogIn(){
@@ -334,6 +347,12 @@ function actualSendGeoData(){
 	return updateUser(userToUpdate, this.parameters[0]);
 }
 
+function actualGetLocations(){
+	var user = getUser(this.parameters[0]);
+	if(user.message == "fail") return {message: "fail"};
+	return {message: "ok", locations: user.fields.lastLocations};
+}
+
 //-------------------------------------------------------------------------------
 //helper functions
 
@@ -426,6 +445,13 @@ function CloudSendGeoData(){
 	array.push($params.when);
 	newClass.parameters = array;
 	return newClass.sendGeoData();
+}
+
+function CloudGetLocations(){
+	var array = new Array();
+	array.push($params.accountID);
+	newClass.parameters = array;
+	return newClass.getLocations();
 }
 
 //-------------------------------------------------------------------------------

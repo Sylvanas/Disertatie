@@ -174,14 +174,13 @@ Ext.define('Global', {
 				    	    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
 				    	    	  lat : lat,
 				    	    	  lon : lon,
-	    	  
 				    	    	  when : when,
 				    	      }
 				    	    }, function(res) {
     			    	    	if(res.message == 'ok'){
     		                          
     			    			}else if (res.message == 'fail') {
-    			    			      Ext.Msg.alert('Invalid login data', "The login data is invalid. Please retype your email and password.");
+    			    			      Ext.Msg.alert('Failed to send geo data', "Failed to send geo data.");
     			    			} else {
     			    			      Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
     			    			}
