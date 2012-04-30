@@ -37,6 +37,7 @@ Ext.define('Global', {
     constructor: function() {   
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.releaseCode = true;
+    	this.deviceCode = true;
     },
     
     changeView: function(target, durationAnimation) {
@@ -165,9 +166,9 @@ Ext.define('Global', {
 			if(Ext.getStore('LocalStore').getAt(0).get('accountID') != ''){
 				//Ext.Msg.alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');
 				//setTimeout(sendGeoData, 10000);
-				if(App.Global.releaseCode){
+				if(App.Global.deviceCode){
 					$fh.geo(function(res){
-						Ext.Msg.alert( 'lon='+res.lon+', lat='+res.lat+', alt='+res.alt+', at='+res.when);
+						Ext.Msg.alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>, alt='+res.alt+'<br/>, at='+res.when);
 					    /*$fh.act({
 				    	      act : 'CloudSendGeoData',
 				    	      req : {

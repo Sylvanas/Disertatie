@@ -91,7 +91,9 @@ Ext.application({
     	App.Global.setLocalstoreValues();
     	App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
 		this.goToFirstView();
-		App.Global.startSendingGeoData();
+		if(App.Global.releaseCode){
+			App.Global.startSendingGeoData();
+		}
     },
     
     goToFirstView: function() {
