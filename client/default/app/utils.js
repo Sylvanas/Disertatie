@@ -164,9 +164,10 @@ Ext.define('Global', {
 		Ext.Msg.alert('started');
 		setTimeout(function sendGeoData() {
 			if(Ext.getStore('LocalStore').getAt(0).get('accountID') != ''){
-				Ext.Msg.alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');
+				//Ext.Msg.alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');
 				setTimeout(sendGeoData, 10000);
 				if(this.releaseCode){
+					Ext.Msg.alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');
 					$fh.geo(function(res){
 						Ext.Msg.alert( 'lon='+res.lon+', lat='+res.lat+', alt='+res.alt+', at='+res.when);
 					    /*$fh.act({
