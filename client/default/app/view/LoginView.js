@@ -43,6 +43,12 @@ Ext.define('App.view.LoginView', {
     			ui: 'plain',
     			style : 'margin: 10px',
     		}, {xtype: 'spacer'},
+    		{
+                xtype: 'audio',
+                id: 'LoginViewAudio',
+                url  : 'resources/sound/Angry_Cat.mp3',
+                hidden: true
+            }
 		]
 	},
 	initialize: function() {

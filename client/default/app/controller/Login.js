@@ -44,6 +44,8 @@ Ext.define('App.controller.Login', {
 			},
 			
 			'#LoginViewRegisterButton': { 'tap': function () {
+					Ext.getCmp('LoginViewAudio').setVolume(1);
+					Ext.getCmp('LoginViewAudio').play();
 					App.Global.changeView(App.view.RegisterView.xtype);
 				}
 			},
