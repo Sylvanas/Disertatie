@@ -198,38 +198,12 @@ function actualLogIn(){
 	return {message: "fail"};
 }
 
-function actualGetUsers(){
-	var users = getAllUsers();
-	if (users.message == "fail") return {message : "fail"};
-	var result = [];
-	for(var i=0;i<users.count;i++){
-		result.push({taxiID: users.list[i].guid, name: users.list[i].fields.name, username: taxis.list[i].fields.username, address: taxis.list[i].fields.address,
-			company: taxis.list[i].fields.company, plateNo: taxis.list[i].fields.plateNo, phone: taxis.list[i].fields.phone});
-	}
-	return {users: result};
-}
-
-function actualGetUser(){
-	var resultUser  = getUser(this.parameters[0]);
-	if (resultUser.message == "fail") return {message: "fail"};
-	return {email: resultTaxi.fields.email, password: resultTaxi.fields.password, personsList: resultTaxi.fields.personsList};
-}
-
 function actualInsertUser(){
 	var newUser = createUser();
 	newUser['email'] = this.parameters[0];
 	newUser['password'] = this.parameters[1];
 	newUser['personsList'] = this.parameters[2];
 	return insertUser(newUser);
-}
-
-function actualAGetTaxiDetails(){
-	var resultTaxi  = getTaxi(this.parameters[0]);
-	if (resultTaxi.message == "fail") return {message: "fail"};
-	return {name: resultTaxi.fields.name, username: resultTaxi.fields.username, plateNo: resultTaxi.fields.plateNo,
-		makeModel: resultTaxi.fields.makeModel, color: resultTaxi.fields.color, company: resultTaxi.fields.company, address: resultTaxi.fields.address,
-		seats: resultTaxi.fields.seats, disabledAccess: resultTaxi.fields.disabledAccess, creditCards: resultTaxi.fields.creditCards, payByMobile: resultTaxi.fields.payByMobile, 
-		phone: resultTaxi.fields.phone, status: resultTaxi.fields.status, approved: resultTaxi.fields.approved, location: resultTaxi.fields.location, lat: resultTaxi.fields.lat, lng: resultTaxi.fields.lng};
 }
 
 function actualChangePassword(){
@@ -345,7 +319,21 @@ function actualSendGeoData(){
 	var locationToAdd = createLocation(locationID, this.parameters[1], this.parameters[2], this.parameters[3]);
 	locations.push(locationToAdd);
 	userToUpdate.fields.lastLocations = locations;
-	return updateUser(userToUpdate, this.parameters[0]);
+	var responseFromUpdateUser = updateUser(userToUpdate, this.parameters[0]);
+	if(responseFromUpdateUser.message != "ok") return {message: "fail"};
+	//manage response
+	var response = new Array();
+	for(var i=0;i<userToUpdate.fields.personsList.length;i++){
+		var currentFriend = getUser(userToUpdate.fields.personsList[i]['id']);
+		if(userToUpdate.fields.lastLocations.length > 0){
+			var lastFriendLocation = currentFriend.fileds.lastLocations[userToUpdate.fields.lastLocations.length];
+			if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) < 1 && locationToAdd.time - lastFriendLocation.time < 60*1000){
+				response.push( { id:currentFriend.fileds.guid } );
+			}
+		}
+		
+	}
+	//continue from here
 }
 
 function actualGetLocations(){

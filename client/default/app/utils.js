@@ -36,6 +36,7 @@ Ext.define('Global', {
 
     constructor: function() {   
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
+    	this.lastFriendsInArea = new Array();
     	this.releaseCode = true;
     	this.deviceCode = true;
     },
@@ -178,7 +179,9 @@ Ext.define('Global', {
 				    	      }
 				    	    }, function(res) {
     			    	    	if(res.message == 'ok'){
-    		                          
+    			    	    		App.Global.lastFriendsInArea = new Array();
+    		                          //push the ids from area
+    			    	    		//App.Global.lastFriendsInArea.push('4f8e554e96efdd39710205ea');
     			    			}else if (res.message == 'fail') {
     			    			      Ext.Msg.alert('Failed to send geo data', "Failed to send geo data.");
     			    			} else {
