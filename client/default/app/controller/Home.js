@@ -9,10 +9,8 @@ Ext.define('App.controller.Home', {
     init: function() {
 		this.control({	
 			'#HomeViewShowOnMapButton': { 'tap': function () {
-					//TODO: implement some logic here, might want to go directly to MapView
 					Ext.getStore('SelectFriend').removeAll();
 					this.GetFriends(Ext.getStore('LocalStore').getAt(0).get('accountID'));
-					//this.getController('Map').setMapObjects();
 				}
 			},
 			
@@ -88,6 +86,23 @@ Ext.define('App.controller.Home', {
 });
 
 function HomeViewHandleServerResponse(result){
+	if(!App.Global.releaseCode){
+		App.Global.lastFriendsInArea.push('4f8e554e96efdd39710205ea');
+		App.Global.lastFriendsInArea.push('ftgsd');
+	}
+	for(var i=0;i<result.requests.length;i++){
+		result.requests[i]['inArea'] = IdInFrindInArea(result.requests[i]['id']);
+	}
 	Ext.getStore('SelectFriend').setData(result.requests);
 	App.Global.changeView(App.view.SelectFriendView.xtype);
+	App.Global.lastFriendsInArea = new Array();
+}
+
+function IdInFrindInArea(id){
+	for(var i=0;i<App.Global.lastFriendsInArea.length;i++){
+		if(App.Global.lastFriendsInArea[i] == id){
+			return true;
+		}
+	}
+	return false;
 }
