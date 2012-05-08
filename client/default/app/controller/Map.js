@@ -41,6 +41,13 @@ Ext.define('App.controller.Map', {
 					this.getLocations(record.get('id'));
 				}
 			},
+			
+			'#SelectFriendViewList': { 'itemtap': function (list, index, target, record) {
+					this.friendName = record.get('name');
+					Ext.getStore('Map').removeAll();
+					this.getLocations(record.get('id'));
+				}
+			},
 		});
     },
     
