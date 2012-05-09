@@ -34,6 +34,12 @@ Ext.define('App.controller.EditRequest', {
 					this.getRecordInfo(Ext.getStore('LocalStore').getAt(0).get('accountID'), currentRecord.get('id'));
 				}
 			},
+			
+			'#ManageRequestsViewList': { 'itemtap': function (list, index, target, currentRecord) {
+				Ext.getStore('EditRequest').removeAll();
+				this.getRecordInfo(Ext.getStore('LocalStore').getAt(0).get('accountID'), currentRecord.get('id'));
+			}
+		},
 		});
     },
     
