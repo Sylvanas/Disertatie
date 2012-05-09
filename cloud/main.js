@@ -326,14 +326,13 @@ function actualSendGeoData(){
 	for(var i=0;i<userToUpdate.fields.personsList.length;i++){
 		var currentFriend = getUser(userToUpdate.fields.personsList[i]['id']);
 		if(userToUpdate.fields.lastLocations.length > 0){
-			var lastFriendLocation = currentFriend.fileds.lastLocations[userToUpdate.fields.lastLocations.length];
+			var lastFriendLocation = currentFriend.fileds.lastLocations[currentFriend.fields.lastLocations.length];
 			if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) < 1 && locationToAdd.time - lastFriendLocation.time < 60*1000){
-				response.push( { id:currentFriend.fileds.guid } );
+				response.push( currentFriend.fileds.guid );
 			}
 		}
-		
 	}
-	//continue from here
+	return {message: "ok", friendsIDs: response};
 }
 
 function actualGetLocations(){
@@ -445,6 +444,10 @@ function CloudGetLocations(){
 
 //-------------------------------------------------------------------------------
 //custom cloud test functions
+
+function CloudTestFunction(){
+	return {message: 'ok'};
+}
 
 function CustomClearUserTable(){
 	return clearUserTable();
