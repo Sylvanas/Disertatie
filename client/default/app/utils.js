@@ -28,7 +28,7 @@ Ext.define('ViewChanger', {
     
 });
 
-alert('platform: ' + Ext.platform + 'phone: ' + (Ext.platform.isPhone || Ext.platform.isTablet));
+//alert('platform: ' + Ext.platform + 'phone: ');
 
 Ext.define('Global', {
     config: {
@@ -210,3 +210,9 @@ Ext.define('Global', {
 	},
 	
 });
+
+try{
+	$fh.act({
+	      act : 'CloudTestFunction',
+	    }, function(res) {App.Global.releaseCode = true;});
+}catch(err){}
