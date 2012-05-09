@@ -91,18 +91,9 @@ function HomeViewHandleServerResponse(result){
 		App.Global.lastFriendsInArea.push('ftgsd');
 	}
 	for(var i=0;i<result.requests.length;i++){
-		result.requests[i]['inArea'] = IdInFrindInArea(result.requests[i]['id']);
+		result.requests[i]['inArea'] = App.Global.IdInFriendInArea(result.requests[i]['id']);
 	}
 	Ext.getStore('SelectFriend').setData(result.requests);
 	App.Global.changeView(App.view.SelectFriendView.xtype);
 	App.Global.lastFriendsInArea = new Array();
-}
-
-function IdInFrindInArea(id){
-	for(var i=0;i<App.Global.lastFriendsInArea.length;i++){
-		if(App.Global.lastFriendsInArea[i] == id){
-			return true;
-		}
-	}
-	return false;
 }
