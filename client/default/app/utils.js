@@ -28,6 +28,19 @@ Ext.define('ViewChanger', {
     
 });
 
+var releaseCode = false;
+var deviceCode = false;
+
+try{
+	$fh.act({
+	      act : 'CloudTestFunction',
+	    }, function(res) {releaseCode = true;});
+}catch(err){}
+
+try{
+	$fh.geo(function(res){deviceCode = true;});
+}catch(err){}
+
 Ext.define('Global', {
     config: {
         viewChanger: null,
@@ -37,8 +50,9 @@ Ext.define('Global', {
     constructor: function() {   
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.lastFriendsInArea = new Array();
-    	this.releaseCode = true;
-    	this.deviceCode = true;
+    	//set both there variables to true when app finished
+    	this.releaseCode = releaseCode;
+    	this.deviceCode = deviceCode;
     },
     
     changeView: function(target, durationAnimation) {
@@ -180,6 +194,9 @@ Ext.define('Global', {
 				    	    }, function(res) {
     			    	    	if(res.message == 'ok'){
     			    	    		App.Global.lastFriendsInArea = new Array();
+    			    	    		for(var i=0;i<res.friendsIDs.length;i++){
+    			    	    			result.friendsIDs[i]['inArea'] = App.Global.IdInFriendInArea(result.requests[i]['id']);
+    			    	    		}
     		                          //push the ids from area
     			    	    		//App.Global.lastFriendsInArea.push('4f8e554e96efdd39710205ea');
     			    			}else if (res.message == 'fail') {
@@ -194,4 +211,14 @@ Ext.define('Global', {
 			setTimeout(sendGeoData, 10000);
 		}, 1);
 	},
+	
+	 IdInFriendInArea: function(id){
+			for(var i=0;i<App.Global.lastFriendsInArea.length;i++){
+				if(App.Global.lastFriendsInArea[i] == id){
+					return true;
+				}
+			}
+			return false;
+	},
+	
 });
