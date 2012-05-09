@@ -28,8 +28,6 @@ Ext.define('ViewChanger', {
     
 });
 
-//alert('platform: ' + Ext.platform + 'phone: ');
-
 Ext.define('Global', {
     config: {
         viewChanger: null,
@@ -40,7 +38,13 @@ Ext.define('Global', {
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.lastFriendsInArea = new Array();
     	this.releaseCode = false;
-    	this.deviceCode = true;
+    	this.deviceCode = false;
+    	if(Ext.platform){
+    		if(Ext.platform.isPhone || Ext.platform.isTablet){
+    			this.deviceCode = true;
+    		}
+    	}
+    	//alert(this.deviceCode);
     },
     
     changeView: function(target, durationAnimation) {
