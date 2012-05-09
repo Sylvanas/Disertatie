@@ -28,19 +28,6 @@ Ext.define('ViewChanger', {
     
 });
 
-var releaseCode = false;
-var deviceCode = false;
-
-try{
-	$fh.act({
-	      act : 'CloudTestFunction',
-	    }, function(res) {releaseCode = true;});
-}catch(err){}
-
-try{
-	$fh.geo(function(res){deviceCode = true;});
-}catch(err){}
-
 Ext.define('Global', {
     config: {
         viewChanger: null,
@@ -50,9 +37,8 @@ Ext.define('Global', {
     constructor: function() {   
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.lastFriendsInArea = new Array();
-    	//set both there variables to true when app finished
-    	this.releaseCode = releaseCode;
-    	this.deviceCode = deviceCode;
+    	this.releaseCode = true;
+    	this.deviceCode = true;
     },
     
     changeView: function(target, durationAnimation) {
