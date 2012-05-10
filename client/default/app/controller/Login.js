@@ -44,8 +44,13 @@ Ext.define('App.controller.Login', {
 			},
 			
 			'#LoginViewRegisterButton': { 'tap': function () {
-					Ext.getCmp('LoginViewAudio').setVolume(1);
-					Ext.getCmp('LoginViewAudio').play();
+				$fh.notify({
+			        type: 'beep'//'beep' or 'vibrate'
+			      }, function () {
+			        // no need to do anything here
+			      }, function (msg) {
+			        //app.u.notify.error('Device doesn\'t support this feature (Error: ' + msg);
+			      });
 					App.Global.changeView(App.view.RegisterView.xtype);
 				}
 			},

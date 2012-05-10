@@ -44,7 +44,7 @@ Ext.define('Global', {
     			this.deviceCode = true;
     		}
     	}
-    	//alert(this.deviceCode);
+    	Ext.Msg.alert(this.deviceCode);
     },
     
     changeView: function(target, durationAnimation) {
