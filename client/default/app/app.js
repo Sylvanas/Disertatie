@@ -86,13 +86,13 @@ Ext.application({
     },
     
     startApp: function() {
+    	App.Global = Ext.create('Global');
     	try{
     		$fh.act({
     		      act : 'CloudTestFunction',
     		    }, function(res) {});
-    	}catch(err){App.Global.releaseCode = false;Ext.Msg.alert('not release code', "not release code.");
+    	}catch(err){App.Global.releaseCode = false;//Ext.Msg.alert('not release code', "not release code.");
     	}
-    	App.Global = Ext.create('Global');
     	App.Global.loadStores();
     	App.Global.setLocalstoreValues();
     	App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
