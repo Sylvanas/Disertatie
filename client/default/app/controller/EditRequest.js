@@ -68,20 +68,16 @@ Ext.define('App.controller.EditRequest', {
     	  	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
     	  	    });
     	}else{
-    		var result = {id: 'sdrf3434d345d4sdf3', name: 'Spencer', approved: true, ignoreAlerts: true};handleServerResponse(result);
+    		var result = {id: '4f91037a96efdd3971020626', name: '4f91037a96efdd3971020626', approved: true, ignoreAlerts: true};handleServerResponse(result);
         	return;
     	}
     },
     
-    getRecordFromForm: function(){
-    	var formValues =  Ext.getCmp('EditRequestViewFormPanel').getValues();
-    	if(formValues.approved != true){
-    		formValues.approved = false;
-    	}
-    	if(formValues.ignoreAlerts != true){
-    		formValues.ignoreAlerts = false;
-    	}
-    	return formValues;
+    getRecordFromForm: function(){		
+		return {id: Ext.getCmp('EditRequestViewId').getValue(),
+			    name: Ext.getCmp('EditRequestViewName').getValue(),
+			    approved: Ext.getCmp('EditRequestViewApprovedField').getValue(),
+			    ignoreAlerts: Ext.getCmp('EditRequestViewIgnoreAlerts').getValue()};
     },
 
     sendDataToCloud: function(senderID, request) {
@@ -120,13 +116,10 @@ function handleServerResponse(result){
 }
 
 function setFormPanel(result){
-	var formPanel = Ext.getCmp('EditRequestViewFormPanel');
-	formPanel.setValues({
-		id: result.id,
-		name: result.name,
-		approved: result.approved,
-		ignoreAlerts: result.ignoreAlerts
-	});
+	Ext.getCmp('EditRequestViewId').setValue(result.id);
+	Ext.getCmp('EditRequestViewName').setValue(result.name);
+	Ext.getCmp('EditRequestViewApprovedField').setValue(result.approved);
+	Ext.getCmp('EditRequestViewIgnoreAlerts').setValue(result.ignoreAlerts);
 	Ext.getCmp('EditRequestViewApprovedField').setDisabled(result.approved);
 	Ext.getCmp('EditRequestViewApproveButton').setDisabled(result.approved);
 }

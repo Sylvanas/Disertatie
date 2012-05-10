@@ -22,6 +22,7 @@ Ext.define('App.view.ManageRequestsView', {
 					id: 'ManageRequestsViewList',
 	                store: 'Requests',
 	                flex: 1,
+	                disableSelection: true,
 	                onItemDisclosure: function(record, btn, index) {
 	                },
 	                itemTpl: '<table>'+

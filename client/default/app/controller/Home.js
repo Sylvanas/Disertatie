@@ -25,7 +25,7 @@ Ext.define('App.controller.Home', {
 			},
 			
 			'#HomeViewConfigurationButton': { 'tap': function () {
-				$fh.act({
+				/*$fh.act({
       			    act : 'CloudSendGeoData',
 	    			    	      req : {
 	    			    	    accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
@@ -41,8 +41,8 @@ Ext.define('App.controller.Home', {
 	    			            } else {
 	    			                Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
 	    			            }
-	    						});
-					//App.Global.changeView(App.view.ConfigurationView.xtype);
+	    						});*/
+				App.Global.changeView(App.view.ConfigurationView.xtype);
 				}
 			},
 
