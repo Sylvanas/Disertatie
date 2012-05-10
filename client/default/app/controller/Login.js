@@ -47,11 +47,11 @@ Ext.define('App.controller.Login', {
 				$fh.notify({
 			        type: 'vibrate'//'beep' or 'vibrate'
 			      }, function () {
-			    	  App.Global.changeView(App.view.RegisterView.xtype);
+			    	  
 			      }, function (msg) {
 			        //app.u.notify.error('Device doesn\'t support this feature (Error: ' + msg);
 			      });
-					
+				App.Global.changeView(App.view.RegisterView.xtype);
 				}
 			},
 			
