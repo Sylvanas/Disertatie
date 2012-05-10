@@ -212,13 +212,13 @@ Ext.define('Global', {
 	},
 	
 });
-/*
+
 try{
 	$fh.act({
 	      act : 'CloudTestFunction',
 	    }, function(res) {App.Global.releaseCode = true;Ext.Msg.alert('release');});
 }catch(err){}
-
+/*
 try{
 	$fh.geo(function(res){App.Global.deviceCode = true;Ext.Msg.alert('on device');});
 }catch(err){}*/
