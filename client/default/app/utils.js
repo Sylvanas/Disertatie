@@ -38,7 +38,7 @@ Ext.define('Global', {
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.lastFriendsInArea = new Array();
     	this.releaseCode = true;
-    	this.deviceCode = true;
+    	this.deviceCode = (Ext.os.deviceType == 'Phone');
     },
     
     changeView: function(target, durationAnimation) {
@@ -212,7 +212,7 @@ Ext.define('Global', {
 	},
 	
 });
-
+/*
 try{
 	$fh.act({
 	      act : 'CloudTestFunction',
@@ -221,4 +221,4 @@ try{
 
 try{
 	$fh.geo(function(res){App.Global.deviceCode = true;Ext.Msg.alert('on device');});
-}catch(err){}
+}catch(err){}*/
