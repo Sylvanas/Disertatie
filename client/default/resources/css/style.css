@@ -8,6 +8,42 @@
 	margin: 5px;
 }
 
+.x-input-el{
+	background-color: white;
+	border-width: 2;
+}
+
+/*the form panel border*/
+.x-inner .x-form-fieldset-inner{
+	border-width:4px;
+	border-color: #2590DC;
+}
+
+.x-form-label{
+	border-width:1px;
+	border-style:solid;
+	border-color: #2590DC;
+}
+
+.x-field-input{
+	border-width:1px;
+	border-style:solid;
+	border-color: #2590DC;
+}
+
+.x-form-label{
+	color: #2590DC;
+}
+
+/*this is not working*/
+.x-input-el .x-form-field .x-input-text{
+	color: #2590DC;
+}
+
+.x-item-disabled .x-form-label span, .x-item-disabled input, .x-item-disabled .x-input-el, .x-item-disabled .x-spinner-body, .x-item-disabled select, .x-item-disabled textarea, .x-item-disabled .x-field-clear-container{
+	-webkit-text-fill-color: #B4D7F3;
+}
+
 .x-body > .x-inner, .x-container > .x-inner {
 	min-height:0;
 }
@@ -20,10 +56,6 @@
 	display: none;
 }
 
-.x-input-el {
-	border-width: 2;
-}
-
 .SoundAlertFormPanel {
 	text-shadow: white 0 1px 1px;
 	color: #333;
@@ -32,6 +64,10 @@
 	border-top: 1px solid white;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+}
+
+.x-field-clearable .x-field-input{
+	padding: 0 !important;	
 }
 
 /*
