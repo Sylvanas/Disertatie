@@ -39,15 +39,6 @@ Ext.define('Global', {
     	this.lastFriendsInArea = new Array();
     	this.releaseCode = false;
     	this.deviceCode = false;
-    	if(Ext.platform){
-    		if(Ext.platform.isPhone || Ext.platform.isTablet){
-    			this.deviceCode = true;
-    		}
-    	}
-    	Ext.Msg.alert("","platform:"+ Ext.platform);
-    	if(this.deviceCode){
-    		Ext.Msg.alert('device');
-    	}
     },
     
     changeView: function(target, durationAnimation) {
@@ -190,10 +181,13 @@ Ext.define('Global', {
     			    	    	if(res.message == 'ok'){
     			    	    		App.Global.lastFriendsInArea = new Array();
     			    	    		for(var i=0;i<res.friendsIDs.length;i++){
-    			    	    			result.friendsIDs[i]['inArea'] = App.Global.IdInFriendInArea(result.requests[i]['id']);
+    			    	    			App.Global.lastFriendsInArea.push(res.friendsIDs[i]);
     			    	    		}
-    		                          //push the ids from area
-    			    	    		//App.Global.lastFriendsInArea.push('4f8e554e96efdd39710205ea');
+    			    	    		if(res.friendsIDs.length>0){
+    			    					$fh.notify({
+    			    				        type: 'vibrate'
+    			    				      }, function () {}, function (msg) {});
+    			    	    		}
     			    			}else if (res.message == 'fail') {
     			    			      Ext.Msg.alert('Failed to send geo data', "Failed to send geo data.");
     			    			} else {
@@ -222,4 +216,8 @@ try{
 	$fh.act({
 	      act : 'CloudTestFunction',
 	    }, function(res) {App.Global.releaseCode = true;});
+}catch(err){}
+
+try{
+	$fh.geo(function(res){App.Global.deviceCode = true;Ext.Msg.alert('on device');});
 }catch(err){}
