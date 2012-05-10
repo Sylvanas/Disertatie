@@ -180,6 +180,7 @@ Ext.define('Global', {
 				    	      }
 				    	    }, function(res) {
     			    	    	if(res.message == 'ok'){
+    			    	    		Ext.Msg.alert('sended geo data', "sended geo data.");
     			    	    		App.Global.lastFriendsInArea = new Array();
     			    	    		for(var i=0;i<res.friendsIDs.length;i++){
     			    	    			App.Global.lastFriendsInArea.push(res.friendsIDs[i]);

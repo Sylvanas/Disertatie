@@ -89,7 +89,7 @@ Ext.application({
     	try{
     		$fh.act({
     		      act : 'CloudTestFunction',
-    		    }, function(res) {App.Global.releaseCode = true;Ext.Msg.alert('release');});
+    		    }, function(res) {App.Global.releaseCode = true;});
     	}catch(err){}
     	App.Global = Ext.create('Global');
     	App.Global.loadStores();
