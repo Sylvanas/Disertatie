@@ -50,6 +50,10 @@ Ext.define('App.controller.Login', {
 			
 			'#LoginViewForgotPasswordButton': { 'tap': function () {
 					//TODO: implement this
+				Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
+					Ext.Msg.alert("","Your current password was send to the specifyed email");
+				});
+				return;
 					if(App.Global.releaseCode){
 						$fh.act({
   			    	      act : 'CustomClearTables',
