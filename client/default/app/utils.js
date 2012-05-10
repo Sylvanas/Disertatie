@@ -37,8 +37,8 @@ Ext.define('Global', {
     constructor: function() {   
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.lastFriendsInArea = new Array();
-    	this.releaseCode = false;
-    	this.deviceCode = false;
+    	this.releaseCode = true;
+    	this.deviceCode = true;
     },
     
     changeView: function(target, durationAnimation) {
@@ -216,7 +216,7 @@ Ext.define('Global', {
 try{
 	$fh.act({
 	      act : 'CloudTestFunction',
-	    }, function(res) {App.Global.releaseCode = true;});
+	    }, function(res) {App.Global.releaseCode = true;Ext.Msg.alert('release');});
 }catch(err){}
 
 try{

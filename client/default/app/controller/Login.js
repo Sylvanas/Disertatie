@@ -44,6 +44,7 @@ Ext.define('App.controller.Login', {
 			},
 			
 			'#LoginViewRegisterButton': { 'tap': function () {
+				Ext.Msg.alert("","device type:"+Ext.os.deviceType); 
 				App.Global.changeView(App.view.RegisterView.xtype);
 				}
 			},
