@@ -25,13 +25,22 @@ Ext.define('App.view.SoundAlertView', {
 					xtype: 'panel',
 					id: 'SoundAlertViewSetVolumePanel',
 					style : 'margin: 10px;',
-					html: '  Set volume:',
+					html: '  Set alert:',
+					hidden: true,
 	        	},
 	        	{
                     xtype: 'sliderfield',
                     id: 'SoundAlertViewSlider',
                     style: 'width: 300px',
+                    hidden: true,
                 },
+	        	{
+	                xtype: 'togglefield',
+	                id: 'SoundAlertViewSetAlertTogglefield',
+	                value: 1,
+	                label: 'Set alert:',
+	                labelWidth: '40%'
+	            },
                 {
                 	xtype: 'panel',
 					id: 'SoundAlertViewSetIgnoreHoursPanel',

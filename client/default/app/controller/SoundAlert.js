@@ -13,6 +13,12 @@ Ext.define('App.controller.SoundAlert', {
 				App.Global.changeView(App.view.ConfigurationView.xtype);
 				}
 			},
+			
+			
+			'#SoundAlertViewSetAlertTogglefield': { 'change': function (me, Slider, thumb, newValue, oldValue, eOpts) {
+				Ext.getStore('LocalStore').getAt(0).set('alertStatus',newValue);
+				}
+			},
 
 			'#SoundAlertViewSelectfieldStart': { 'change': function (selectField, newValue, oldValue) {
 				this.changeHourLists(oldValue, newValue);

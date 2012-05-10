@@ -63,6 +63,7 @@ Ext.define('Global', {
     
     setLocalstoreValues: function() {
     	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+    	Ext.getCmp('SoundAlertViewSetAlertTogglefield').setValue(localStoreRecord.get('alertStatus'));
     	Ext.getCmp('SoundAlertViewSlider').setValue(localStoreRecord.get('soundVolume'));
     	Ext.getCmp('SoundAlertViewAlertHours').setValue(localStoreRecord.get('alertHours'));
     	Ext.getCmp('SoundAlertViewOverrideIndividualAlerts').setValue(localStoreRecord.get('overrideIndividualAlerts'));
@@ -72,7 +73,7 @@ Ext.define('Global', {
 	getDefaultLocalStoreRecord: function (){
 		var model = App.model.LocalStore;
         var record = new model({
-        	language: 'English', accountID: '', email: '', password: '', soundVolume: '40', startHour: '24' , endHour: '8', alertHours: false , overrideIndividualAlerts: true
+        	language: 'English', accountID: '', email: '', password: '', alertStatus: 1, soundVolume: '40', startHour: '24' , endHour: '8', alertHours: false , overrideIndividualAlerts: true
         });
         return record; 	
 	},
