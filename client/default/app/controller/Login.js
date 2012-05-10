@@ -45,13 +45,13 @@ Ext.define('App.controller.Login', {
 			
 			'#LoginViewRegisterButton': { 'tap': function () {
 				$fh.notify({
-			        type: 'beep'//'beep' or 'vibrate'
+			        type: 'vibrate'//'beep' or 'vibrate'
 			      }, function () {
-			        // no need to do anything here
+			    	  App.Global.changeView(App.view.RegisterView.xtype);
 			      }, function (msg) {
 			        //app.u.notify.error('Device doesn\'t support this feature (Error: ' + msg);
 			      });
-					App.Global.changeView(App.view.RegisterView.xtype);
+					
 				}
 			},
 			
