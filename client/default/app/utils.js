@@ -44,6 +44,7 @@ Ext.define('Global', {
     			this.deviceCode = true;
     		}
     	}
+    	Ext.Msg.alert(Ext.platform);
     	if(this.deviceCode){
     		Ext.Msg.alert('device');
     	}
