@@ -206,6 +206,7 @@ Ext.define('Global', {
 				}
 				else if(App.Global.releaseCode){
 					var latitude = 53.340342 + App.Global.GenerateRandomNumberForMaps();var longitude = -6.24312 + App.Global.GenerateRandomNumberForMaps();var time = new Date();
+					Ext.Msg.alert('sending location data', "sending location data.");
 					$fh.act({
 			    	      act : 'CloudSendGeoData',
 			    	      req : {
