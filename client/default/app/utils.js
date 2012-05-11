@@ -46,7 +46,13 @@ Ext.define('Global', {
     },
     
     getCurrentLocation: function() {
-    	return new google.maps.LatLng(0, 0);
+    	if(App.Global.deviceCode){
+    		$fh.geo(function(res){
+    			return new google.maps.LatLng(res.lat, res.log);
+    		});
+    	} else {
+    		return new google.maps.LatLng(53.340342 + App.Global.GenerateRandomNumberForMaps(),  -6.24312 + App.Global.GenerateRandomNumberForMaps());
+    	}
     },
     
     loadStores: function() {
@@ -174,9 +180,9 @@ Ext.define('Global', {
 				    	      act : 'CloudSendGeoData',
 				    	      req : {
 				    	    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
-				    	    	  lat : lat,
-				    	    	  lon : lon,
-				    	    	  when : when,
+				    	    	  lat : res.lat,
+				    	    	  lon : res.lon,
+				    	    	  when : res.when,
 				    	      }
 				    	    }, function(res) {
     			    	    	if(res.message == 'ok'){
@@ -198,6 +204,33 @@ Ext.define('Global', {
     			    		});
 					  });
 				}
+				else if(App.Global.releaseCode){
+					var latitude = 53.340342 + App.Global.GenerateRandomNumberForMaps();var longitude = -6.24312 + App.Global.GenerateRandomNumberForMaps();var time = new Date();
+					$fh.act({
+			    	      act : 'CloudSendGeoData',
+			    	      req : {
+			    	    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
+			    	    	  lat : latitude,
+			    	    	  lon : longitude,
+			    	    	  when : time,
+			    	      }
+			    	    }, function(res) {
+			    	    	if(res.message == 'ok'){
+			    	    		Ext.Msg.alert('sended geo data', "sended geo data from test code.");
+			    	    		App.Global.lastFriendsInArea = new Array();
+			    	    		for(var i=0;i<res.friendsIDs.length;i++){
+			    	    			App.Global.lastFriendsInArea.push(res.friendsIDs[i]);
+			    	    		}
+			    	    		if(res.friendsIDs.length>0){
+			    	    			Ext.Msg.alert('Friends near you', "Friends near you");
+			    	    		}
+			    			}else if (res.message == 'fail') {
+			    			      Ext.Msg.alert('Failed to send geo data', "Failed to send geo data.");
+			    			} else {
+			    			      Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
+			    			}
+			    		});
+				}
 			}
 			setTimeout(sendGeoData, 10000);
 		}, 1);
@@ -210,6 +243,10 @@ Ext.define('Global', {
 				}
 			}
 			return false;
+	},
+	
+	GenerateRandomNumberForMaps: function(){
+		return Math.floor(Math.random()*11)*0.001;
 	},
 	
 });
