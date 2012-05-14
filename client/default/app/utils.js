@@ -247,8 +247,7 @@ Ext.define('Global', {
 	},
 	
 	GenerateRandomNumberForMaps: function(){
-		//return Math.floor(Math.random()*11)*0.001;
-		return Math.floor(Math.random()*11);//*0.001;
+		return Math.floor(Math.random()*11)*0.001;
 	},
 	
 });

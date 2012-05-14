@@ -65,7 +65,14 @@ Ext.define('App.controller.Map', {
 		  	      }
 		  	    }, function(res) {
 	    	    	if(res.message == 'ok'){
-	    	    		MapViewHandleServerResponse(res.locations);
+	    	    		MapViewHandleServerResponse([
+	    	    		      		 	    	 	       	 {id: '123', latitude: '53.340342', longitude: '-6.24312', time: new Date()},
+	    	    		    		 	    		         {id: '232', latitude: '53.240342', longitude: '-6.14312', time: new Date()},
+	    	    		    		 	    		         {id: '1', latitude: '53.140342', longitude: '-6.24312', time: new Date()},
+	    	    		    		 	    		         {id: '12343r234', latitude: '53.140342', longitude: '-6.12312', time: new Date()},
+	    	    		    		 	    		         {id: '12341234', latitude: '53.070342', longitude: '-6.11312', time: new Date()},
+	    	    		    		 	    		         {id: '12dsfg', latitude: '53.210342', longitude: '-6.26312', time: new Date()},
+	    	    		    		 	    		       	 ]);
 	    			}else if (res.message == 'fail') {
 	    			      Ext.Msg.alert('Failed to get locations', "Failed to get locations.");
 	    			} else {
