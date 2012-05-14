@@ -37,7 +37,7 @@ Ext.define('Global', {
     constructor: function() {   
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.lastFriendsInArea = new Array();
-    	this.releaseCode = true;
+    	this.releaseCode = false;
     	this.deviceCode = (Ext.os.deviceType == 'Phone');
     },
     
