@@ -205,8 +205,10 @@ Ext.define('Global', {
 					  });
 				}
 				else if(App.Global.releaseCode){
-					var latitude = 53.340342 + App.Global.GenerateRandomNumberForMaps();var longitude = -6.24312 + App.Global.GenerateRandomNumberForMaps();var time = Date.parse(new Date());
-					//Ext.Msg.alert('sending location data', "sending location data.");
+					var latitude = 53.340342 + App.Global.GenerateRandomNumberForMaps();
+					var longitude = -6.24312 + App.Global.GenerateRandomNumberForMaps();
+					var time = Date.parse(new Date());
+					Ext.Msg.alert('sending location data', "send:" + latitude + longitude);
 					$fh.act({
 			    	      act : 'CloudSendGeoData',
 			    	      req : {
@@ -217,7 +219,7 @@ Ext.define('Global', {
 			    	      }
 			    	    }, function(res) {
 			    	    	if(res.message == 'ok'){
-			    	    		Ext.Msg.alert('sended geo data', "sended geo data from test code.");
+			    	    		//Ext.Msg.alert('sended geo data', "sended geo data from test code.");
 			    	    		App.Global.lastFriendsInArea = new Array();
 			    	    		for(var i=0;i<res.friendsIDs.length;i++){
 			    	    			App.Global.lastFriendsInArea.push(res.friendsIDs[i]);
