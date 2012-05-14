@@ -182,7 +182,7 @@ Ext.define('Global', {
 				    	    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
 				    	    	  lat : res.lat,
 				    	    	  lon : res.lon,
-				    	    	  when : res.when,
+				    	    	  when : Date.parse(new Date()),
 				    	      }
 				    	    }, function(res) {
     			    	    	if(res.message == 'ok'){
@@ -198,15 +198,15 @@ Ext.define('Global', {
     			    	    		}
     			    			}else if (res.message == 'fail') {
     			    			      Ext.Msg.alert('Failed to send geo data', "Failed to send geo data.");
-    			    			} else {
+    			    			}else {
     			    			      Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
     			    			}
     			    		});
 					  });
 				}
 				else if(App.Global.releaseCode){
-					var latitude = 53.340342 + App.Global.GenerateRandomNumberForMaps();var longitude = -6.24312 + App.Global.GenerateRandomNumberForMaps();var time = new Date();
-					Ext.Msg.alert('sending location data', "sending location data.");
+					var latitude = 53.340342 + App.Global.GenerateRandomNumberForMaps();var longitude = -6.24312 + App.Global.GenerateRandomNumberForMaps();var time = nDate.parse(new Date());
+					//Ext.Msg.alert('sending location data', "sending location data.");
 					$fh.act({
 			    	      act : 'CloudSendGeoData',
 			    	      req : {

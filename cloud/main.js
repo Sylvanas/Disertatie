@@ -7,7 +7,7 @@ function insertUser(user){
   var insertedUser = $fh.db({
     "act" : "create",
     "type" : "UserTable",
-  	"fields" : {
+    "fields" : {
 		"email" : user.email,
 		"password" : user.password,
 		"personsList" : user.personsList,
@@ -164,12 +164,12 @@ function subclassSendGeoData(){
 
 function subclassGetLocations(){
 	return {message: 'ok', locations:[
-	 		 	    	 	       	 {id: '123', latitude: '53.340342', longitude: '-6.24312', time: new Date()},
-			 	    		         {id: '232', latitude: '53.240342', longitude: '-6.14312', time: new Date()},
-			 	    		         {id: '1', latitude: '53.140342', longitude: '-6.24312', time: new Date()},
-			 	    		         {id: '12343r234', latitude: '53.140342', longitude: '-6.12312', time: new Date()},
-			 	    		         {id: '12341234', latitude: '53.070342', longitude: '-6.11312', time: new Date()},
-			 	    		         {id: '12dsfg', latitude: '53.210342', longitude: '-6.26312', time: new Date()},
+	 		 	    	 	       	 {id: '123', latitude: '53.340342', longitude: '-6.24312', time: Date.parse(new Date())},
+			 	    		         {id: '232', latitude: '53.240342', longitude: '-6.14312', time: Date.parse(new Date())},
+			 	    		         {id: '1', latitude: '53.140342', longitude: '-6.24312', time: Date.parse(new Date())},
+			 	    		         {id: '12343r234', latitude: '53.140342', longitude: '-6.12312', time: Date.parse(new Date())},
+			 	    		         {id: '12341234', latitude: '53.070342', longitude: '-6.11312', time: Date.parse(new Date())},
+			 	    		         {id: '12dsfg', latitude: '53.210342', longitude: '-6.26312', time: Date.parse(new Date())},
 			 	    		       	 ]};
 }
 //-------------------------------------------------------------------------------
@@ -326,11 +326,11 @@ function actualSendGeoData(){
 	for(var i=0;i<userToUpdate.fields.personsList.length;i++){
 		var currentFriend = getUser(userToUpdate.fields.personsList[i]['id']);
 		if(userToUpdate.fields.lastLocations.length > 0){
-			var lastFriendLocation = currentFriend.fileds.lastLocations[currentFriend.fields.lastLocations.length];
-			if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) < 1 && locationToAdd.time - lastFriendLocation.time < 60*1000){
-				response.push( currentFriend.fileds.guid );
-			}
-		}
+			var lastFriendLocation = currentFriend.fields.lastLocations[currentFriend.fields.lastLocations.length-1];
+      if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) < 1 && locationToAdd.time - lastFriendLocation.time < 60*1000){
+				response.push( currentFriend.guid );
+			}  
+		} 
 	}
 	return {message: "ok", friendsIDs: response};
 }
