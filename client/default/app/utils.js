@@ -37,7 +37,7 @@ Ext.define('Global', {
     constructor: function() {   
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.lastFriendsInArea = new Array();
-    	this.releaseCode = false;
+    	this.releaseCode = true;
     	this.deviceCode = (Ext.os.deviceType == 'Phone');
     },
     
@@ -247,7 +247,8 @@ Ext.define('Global', {
 	},
 	
 	GenerateRandomNumberForMaps: function(){
-		return Math.floor(Math.random()*11)*0.001;
+		//return Math.floor(Math.random()*11)*0.001;
+		return Math.floor(Math.random()*11);//*0.001;
 	},
 	
 });
