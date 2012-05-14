@@ -205,8 +205,8 @@ Ext.define('Global', {
 					  });
 				}
 				else if(App.Global.releaseCode){
-					var latitude = 53.340342 + App.Global.GenerateRandomNumberForMaps();
-					var longitude = -6.24312 + App.Global.GenerateRandomNumberForMaps();
+					var latitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+					var longitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
 					var time = Date.parse(new Date());
 					Ext.Msg.alert('sending location data', "send:" + latitude + longitude);
 					$fh.act({
@@ -235,7 +235,7 @@ Ext.define('Global', {
 			    		});
 				}
 			}
-			setTimeout(sendGeoData, 10000);
+			setTimeout(sendGeoData, 1000);
 		}, 1);
 	},
 	
@@ -249,7 +249,7 @@ Ext.define('Global', {
 	},
 	
 	GenerateRandomNumberForMaps: function(){
-		return Math.floor(Math.random()*11 +1)/1000;
+		return (Math.round(Math.random()*11 +1))/1000;
 	},
 	
 });
