@@ -235,7 +235,7 @@ Ext.define('Global', {
 			    		});
 				}
 			}
-			setTimeout(sendGeoData, 1000);
+			setTimeout(sendGeoData, 10000);
 		}, 1);
 	},
 	
