@@ -91,7 +91,7 @@ Ext.application({
     		$fh.act({
     		      act : 'CloudTestFunction',
     		    }, function(res) {});
-    	}catch(err){App.Global.releaseCode = false;//Ext.Msg.alert('not release code', "not release code.");
+    	}catch(err){App.Global.releaseCode = false;
     	}
     	App.Global.loadStores();
     	App.Global.setLocalstoreValues();

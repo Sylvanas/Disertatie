@@ -311,9 +311,6 @@ function actualSendGeoData(){
 	var userToUpdate = getUser(this.parameters[0]);
 	if(userToUpdate.message == "fail") return {message: "fail"};
 	var locations = userToUpdate.fields.lastLocations;
-	if(locations.length > 6){
-		locations = new Array();
-	}
 	if(locations.length == 6){
 		locations.shift();
 	}
