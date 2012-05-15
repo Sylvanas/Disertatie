@@ -311,10 +311,10 @@ function actualSendGeoData(){
 	var userToUpdate = getUser(this.parameters[0]);
 	if(userToUpdate.message == "fail") return {message: "fail"};
 	var locations = userToUpdate.fields.lastLocations;
-	if(locations.length > 5){
+	if(locations.length > 6){
 		locations = new Array();
 	}
-	if(locations.length == 5){
+	if(locations.length == 6){
 		locations.shift();
 	}
 	var locationToAdd = createLocation(this.parameters[1], this.parameters[2], this.parameters[3]);

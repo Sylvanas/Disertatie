@@ -181,31 +181,6 @@ Ext.define('App.controller.Map', {
 				App.infoWindows[6].open(App.map, App.friendMarkers[6]);
 			});
 		}
-		if(numberOfMarkers>7){
-			google.maps.event.addListener(this.friendMarkers[7], 'click', function() {
-				App.infoWindows[7].open(App.map, App.friendMarkers[7]);
-			});
-		}
-		if(numberOfMarkers>8){
-			google.maps.event.addListener(this.friendMarkers[8], 'click', function() {
-				App.infoWindows[8].open(App.map, App.friendMarkers[8]);
-			});
-		}
-		if(numberOfMarkers>9){
-			google.maps.event.addListener(this.friendMarkers[9], 'click', function() {
-				App.infoWindows[9].open(App.map, App.friendMarkers[9]);
-			});
-		}
-		if(numberOfMarkers>10){
-			google.maps.event.addListener(this.friendMarkers[10], 'click', function() {
-				App.infoWindows[10].open(App.map, App.friendMarkers[10]);
-			});
-		}
-		if(numberOfMarkers>11){
-			google.maps.event.addListener(this.friendMarkers[11], 'click', function() {
-				App.infoWindows[11].open(App.map, App.friendMarkers[11]);
-			});
-		}
 	},
 	
 	setRoute: function(mapStore) {
