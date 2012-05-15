@@ -76,12 +76,12 @@ Ext.define('App.controller.Map', {
 		  	    });
 		    	}else{
 		    		var result = {message: 'ok', locations:[
-		 	    	 	       	 {id: '123', latitude: '53.340342', longitude: '-6.24312', time: new Date()},
-		 	    		         {id: '232', latitude: '53.240342', longitude: '-6.14312', time: new Date()},
-		 	    		         {id: '1', latitude: '53.140342', longitude: '-6.24312', time: new Date()},
-		 	    		         {id: '12343r234', latitude: '53.140342', longitude: '-6.12312', time: new Date()},
-		 	    		         {id: '12341234', latitude: '53.070342', longitude: '-6.11312', time: new Date()},
-		 	    		         {id: '12dsfg', latitude: '53.210342', longitude: '-6.26312', time: new Date()},
+		 	    	 	       	 {latitude: '53.340342', longitude: '-6.24312', time: Date.parse(new Date())},
+		 	    		         {latitude: '53.240342', longitude: '-6.14312', time: Date.parse(new Date())},
+		 	    		         {latitude: '53.140342', longitude: '-6.24312', time: Date.parse(new Date())},
+		 	    		         {latitude: '53.140342', longitude: '-6.12312', time: Date.parse(new Date())},
+		 	    		         {latitude: '53.070342', longitude: '-6.11318', time: Date.parse(new Date())},
+		 	    		         {latitude: '53.210342', longitude: '-6.26317', time: Date.parse(new Date())},
 		 	    		       	 ]};
 		    		MapViewHandleServerResponse(result.locations);
 		     	return;
@@ -138,7 +138,7 @@ Ext.define('App.controller.Map', {
 				  "<h1>" + this.friendName + "'s location:"+
 				  '<div id="bodyContent">'+
 				  '<p>Coordinates: '+new google.maps.LatLng(record.get('latitude'), record.get('longitude'))+'</p>'+
-				  '<p>Time: '+ record.get('time').getHours() + ':' + record.get('time').getMinutes() +'</p>'+
+				  //'<p>Time: '+ record.get('time').getHours() + ':' + record.get('time').getMinutes() +'</p>'+
 				  '</br>'+
 				  '</div></div>';
 			App.infoWindows.push(new google.maps.InfoWindow({
@@ -280,6 +280,7 @@ Ext.define('App.controller.Map', {
 
 function MapViewHandleServerResponse(result){
 	var mapStore = Ext.getStore('Map');
+	mapStore.removeAll();
 	mapStore.setData(result);
 	App.Global.changeView(App.view.MapView.xtype);
 	App.MapController.setMapObjects();

@@ -89,8 +89,8 @@ function createPerson(personID){
 	return {id: personID, name: personID, approved: false, ignoreAlerts: false};
 }
 
-function createLocation(locationID, lat, lng, when){
-	return {id: locationID, latitude: lat, longitude: lng, time: when};
+function createLocation(lat, lng, when){
+	return {latitude: lat, longitude: lng, time: when};
 }
 
 //-------------------------------------------------------------------------------
@@ -311,12 +311,13 @@ function actualSendGeoData(){
 	var userToUpdate = getUser(this.parameters[0]);
 	if(userToUpdate.message == "fail") return {message: "fail"};
 	var locations = userToUpdate.fields.lastLocations;
-	var locationID = locations.length;
-	if(locations.length == 9){
-		locationID = locations[0]['id'];
+	if(locations.length > 5){
+		locations = new Array();
+	}
+	if(locations.length == 5){
 		locations.shift();
 	}
-	var locationToAdd = createLocation(locationID, this.parameters[1], this.parameters[2], this.parameters[3]);
+	var locationToAdd = createLocation(this.parameters[1], this.parameters[2], this.parameters[3]);
 	locations.push(locationToAdd);
 	userToUpdate.fields.lastLocations = locations;
 	var responseFromUpdateUser = updateUser(userToUpdate, this.parameters[0]);
