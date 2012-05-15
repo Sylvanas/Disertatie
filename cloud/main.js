@@ -164,12 +164,12 @@ function subclassSendGeoData(){
 
 function subclassGetLocations(){
 	return {message: 'ok', locations:[
-	 		 	    	 	       	 {id: '123', latitude: '53.340342', longitude: '-6.24312', time: Date.parse(new Date())},
-			 	    		         {id: '232', latitude: '53.240342', longitude: '-6.14312', time: Date.parse(new Date())},
-			 	    		         {id: '1', latitude: '53.140342', longitude: '-6.24312', time: Date.parse(new Date())},
-			 	    		         {id: '12343r234', latitude: '53.140342', longitude: '-6.12312', time: Date.parse(new Date())},
-			 	    		         {id: '12341234', latitude: '53.070342', longitude: '-6.11312', time: Date.parse(new Date())},
-			 	    		         {id: '12dsfg', latitude: '53.210342', longitude: '-6.26312', time: Date.parse(new Date())},
+										 {latitude: '53.340342', longitude: '-6.24312', time: Date.parse(new Date())},
+										 {latitude: '53.240342', longitude: '-6.14312', time: Date.parse(new Date())},
+										 {latitude: '53.140342', longitude: '-6.24312', time: Date.parse(new Date())},
+										 {latitude: '53.140342', longitude: '-6.12312', time: Date.parse(new Date())},
+										 {latitude: '53.070342', longitude: '-6.11318', time: Date.parse(new Date())},
+										 {latitude: '53.210342', longitude: '-6.26317', time: Date.parse(new Date())},
 			 	    		       	 ]};
 }
 //-------------------------------------------------------------------------------
