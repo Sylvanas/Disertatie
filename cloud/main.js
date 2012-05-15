@@ -323,9 +323,11 @@ function actualSendGeoData(){
 	var response = new Array();
 	for(var i=0;i<userToUpdate.fields.personsList.length;i++){
 		var currentFriend = getUser(userToUpdate.fields.personsList[i]['id']);
-		if(userToUpdate.fields.lastLocations.length > 0){
-			var lastFriendLocation = currentFriend.fields.lastLocations[currentFriend.fields.lastLocations.length-1];
-      if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) < 1 && locationToAdd.time - lastFriendLocation.time < 60*1000){
+		if(userToUpdate.fields.lastLocations.length > 1){
+			var friendLocation = currentFriend.fields.lastLocations[currentFriend.fields.lastLocations.length-1];
+			var lastFriendLocation = currentFriend.fields.lastLocations[currentFriend.fields.lastLocations.length-2];
+			if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 1 && locationToAdd.time - friendLocation.time < 60*1000 
+				&& KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) > 1 ){
 				response.push( currentFriend.guid );
 			}  
 		} 

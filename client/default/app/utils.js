@@ -208,7 +208,7 @@ Ext.define('Global', {
 					var latitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
 					var longitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
 					var time = Date.parse(new Date());
-					Ext.Msg.alert('sending location data', "send:" + latitude + longitude);
+					//Ext.Msg.alert('sending location data', "send:" + latitude + longitude);
 					$fh.act({
 			    	      act : 'CloudSendGeoData',
 			    	      req : {
