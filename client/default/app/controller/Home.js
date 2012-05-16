@@ -55,7 +55,7 @@ Ext.define('App.controller.Home', {
 			},
 		});
     },
-    
+
     GetFriends: function(accountID){
     	if(App.Global.releaseCode){
 			$fh.act({

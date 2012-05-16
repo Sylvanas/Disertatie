@@ -51,7 +51,9 @@ Ext.define('Global', {
     			return new google.maps.LatLng(res.lat, res.log);
     		});
     	} else {
-    		return new google.maps.LatLng(53.340342 + App.Global.GenerateRandomNumberForMaps(),  -6.24312 + App.Global.GenerateRandomNumberForMaps());
+    		var latitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+			var longitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+    		return new google.maps.LatLng(latitude, longitude);
     	}
     },
     
