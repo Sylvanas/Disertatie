@@ -190,13 +190,22 @@ Ext.define('Global', {
     			    	    	if(res.message == 'ok'){
     			    	    		Ext.Msg.alert('sended geo data', "sended geo data.");//the problem is here. not getting here
     			    	    		App.Global.lastFriendsInArea = new Array();
-    			    	    		for(var i=0;i<res.friendsIDs.length;i++){
-    			    	    			App.Global.lastFriendsInArea.push(res.friendsIDs[i]);
+    			    	    		for(var i=0;i<res.friends.length;i++){
+    			    	    			App.Global.lastFriendsInArea.push(res.friends[i]['id']);
     			    	    		}
-    			    	    		if(res.friendsIDs.length>0){
-    			    					$fh.notify({
-    			    				        type: 'vibrate'
-    			    				      }, function () {}, function (msg) {});
+    			    	    		var aFriendAlertActive = false;
+    			    	    		for(var i=0;i<res.friends.length;i++){
+    			    	    			if(res.friends[i]['ignoreAlerts']){ 
+    			    	    				aFriendAlertActive = true;
+    			    	    				break;
+    			    	    			}
+    			    	    		}
+    			    	    		if(res.friends.length>0 && (aFriendAlertActive && (!Ext.getStore('LocalStore').getAt(0).get('overrideIndividualAlerts') || Ext.getStore('LocalStore').getAt(0).get('alertStatus')))){
+    			    	    			if(ShouldAlertDueToIgnoreHours()){
+    			    	    				$fh.notify({
+        			    				        type: 'vibrate'
+        			    				      }, function () {}, function (msg) {});
+    			    	    			}
     			    	    		}
     			    			}else if (res.message == 'fail') {
     			    			      Ext.Msg.alert('Failed to send geo data', "Failed to send geo data.");
@@ -223,11 +232,20 @@ Ext.define('Global', {
 			    	    	if(res.message == 'ok'){
 			    	    		//Ext.Msg.alert('sended geo data', "sended geo data from test code.");
 			    	    		App.Global.lastFriendsInArea = new Array();
-			    	    		for(var i=0;i<res.friendsIDs.length;i++){
-			    	    			App.Global.lastFriendsInArea.push(res.friendsIDs[i]);
+			    	    		for(var i=0;i<res.friends.length;i++){
+			    	    			App.Global.lastFriendsInArea.push(res.friends[i]['id']);
 			    	    		}
-			    	    		if(res.friendsIDs.length>0){
-			    	    			Ext.Msg.alert('Friends near you', "Friends near you");
+			    	    		var aFriendAlertActive = false;
+			    	    		for(var i=0;i<res.friends.length;i++){
+			    	    			if(res.friends[i]['ignoreAlerts']){ 
+			    	    				aFriendAlertActive = true;
+			    	    				break;
+			    	    			}
+			    	    		}
+			    	    		if(res.friends.length>0 && (aFriendAlertActive && (!Ext.getStore('LocalStore').getAt(0).get('overrideIndividualAlerts') || Ext.getStore('LocalStore').getAt(0).get('alertStatus')))){
+			    	    			if(ShouldAlertDueToIgnoreHours()){
+			    	    				Ext.Msg.alert('Friends near you', "Friends near you");
+			    	    			}
 			    	    		}
 			    			}else if (res.message == 'fail') {
 			    			      Ext.Msg.alert('Failed to send geo data', "Failed to send geo data.");
@@ -252,6 +270,24 @@ Ext.define('Global', {
 	
 	GenerateRandomNumberForMaps: function(){
 		return (Math.round(Math.random()*11 +1))/1000;
+	},
+	
+	ShouldAlertDueToIgnoreHours: function(){
+		if(Ext.getStore('LocalStore').getAt(0).get('alertHours')){ return true; }
+		var currentDate = new Date();
+		var currentHourCount = currentDate.getHours();
+		var startHour = Ext.getStore('LocalStore').getAt(0).get('startHour');
+		var endHour = Ext.getStore('LocalStore').getAt(0).get('endHour');
+		if(startHour<endHour){
+			if(currentHourCount > startHour && currentHourCount < endHour){
+				return false;
+			}
+		}else{
+			if(!(currentHourCount > endHour && currentHourCount < startHour)){
+				return false;
+			}
+		}
+		return true;
 	},
 	
 });

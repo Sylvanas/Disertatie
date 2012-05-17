@@ -328,11 +328,12 @@ function actualSendGeoData(){
 			var lastFriendLocation = currentFriend.fields.lastLocations[currentFriend.fields.lastLocations.length-2];
 			if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 1 && locationToAdd.time - friendLocation.time < 60*1000 
 				&& KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) > 1 ){
-				response.push( currentFriend.guid );
+				//also add the ignore field
+				response.push( { id: currentFriend.guid, ignoreAlerts: false } );
 			}  
 		} 
 	}
-	return {message: "ok", friendsIDs: response};
+	return {message: "ok", friends: response};
 }
 
 function actualGetLocations(){
