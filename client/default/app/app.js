@@ -55,11 +55,9 @@ Ext.application({
 	             'SelectFriend',
 	             ],*/
 	initialize: function () {
-		Ext.Msg.alert('1','1');
 		this.callParent();
 	},	
 	launch: function() {
-		Ext.Msg.alert('2','3');
 		App.mainView = Ext.create('Ext.Panel', {
 			id: 'appContainer',
 		    fullscreen: true,
@@ -88,9 +86,7 @@ Ext.application({
     },
     
     startApp: function() {
-    	Ext.Msg.alert('3','3');
     	App.mainView.setActiveItem(0);
-    	Ext.Msg.alert('4','4');
     	/*App.Global = Ext.create('Global');
     	try{
     		$fh.act({
