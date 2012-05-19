@@ -20,7 +20,7 @@ Ext.application({
 	         'MapView',
 	         'SendFriendRequestView', */
 	         ],
-	controllers: [
+	/*controllers: [
 				  'Login',
 			      'Register',
 	              'Home',
@@ -53,7 +53,7 @@ Ext.application({
 	             'Map',
 	             'Requests',
 	             'SelectFriend',
-	             ],
+	             ],*/
 	initialize: function () {
 		Ext.Msg.alert('1','1');
 		this.callParent();
@@ -66,7 +66,7 @@ Ext.application({
 		    layout: 'card',
 			items: [
 			    { xtype: 'LoginView' },
-			    { xtype: 'RegisterView' },
+			   /* { xtype: 'RegisterView' },
                 { xtype: 'HomeView' },
                 { xtype: 'AccountView' },
                 { xtype: 'ConfigurationView' },
@@ -77,7 +77,7 @@ Ext.application({
                 { xtype: 'EditRequestView' },
                 { xtype: 'SelectFriendView' },
                 { xtype: 'MapView' },
-                { xtype: 'SendFriendRequestView' },
+                { xtype: 'SendFriendRequestView' },*/
             ]
 		});
 		/*Ext.getStore('LocalStore').load({
