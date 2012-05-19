@@ -77,26 +77,27 @@ Ext.application({
                 { xtype: 'SendFriendRequestView' },
             ]
 		});
-		Ext.getStore('LocalStore').load({
+		/*Ext.getStore('LocalStore').load({
             callback: this.onSearchesStoreLoad,
             scope: this
-        });
+        });*/
 		this.startApp();
     },
     
     startApp: function() {
+    	//App.mainView.setActiveItem(0);
     	App.Global = Ext.create('Global');
-    	try{
+    	/*try{
     		$fh.act({
     		      act : 'CloudTestFunction',
     		    }, function(res) {});
     	}catch(err){App.Global.releaseCode = false;
-    	}
+    	}*/
     	App.Global.loadStores();
-    	App.Global.setLocalstoreValues();
-    	App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
+    	//App.Global.setLocalstoreValues();
+    	//App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
 		this.goToFirstView();
-		App.Global.startSendingGeoData();
+		//App.Global.startSendingGeoData();
     },
     
     goToFirstView: function() {
