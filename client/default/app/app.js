@@ -34,7 +34,7 @@ Ext.application({
 	              'Map',
 	              'SendFriendRequest',*/
 	              ],
-	models: [
+	/*models: [
              'EditRequest',
              'HourList',
              'Languages',
@@ -52,7 +52,7 @@ Ext.application({
 	             'Map',
 	             'Requests',
 	             'SelectFriend',
-	             ],
+	             ],*/
 	initialize: function () {
 		this.callParent();
 	},	
