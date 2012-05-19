@@ -87,17 +87,17 @@ Ext.application({
     
     startApp: function() {
     	App.Global = Ext.create('Global');
-    	try{
+    	/*try{
     		$fh.act({
     		      act : 'CloudTestFunction',
     		    }, function(res) {});
     	}catch(err){App.Global.releaseCode = false;
-    	}
+    	}*/
     	App.Global.loadStores();
     	App.Global.setLocalstoreValues();
-    	App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
+    	//App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
 		this.goToFirstView();
-		App.Global.startSendingGeoData();
+		//App.Global.startSendingGeoData();
     },
     
     goToFirstView: function() {
