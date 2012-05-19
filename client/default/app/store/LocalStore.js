@@ -3,7 +3,7 @@ Ext.define('App.store.LocalStore', {
 	requires: [ 'App.model.LocalStore' ],
 	config: { 
 	    model: 'App.model.LocalStore',
-	    autoLoad: true,
-        autoSync : true,
+	    //autoLoad: true,
+        //autoSync : true,
 	}
 });

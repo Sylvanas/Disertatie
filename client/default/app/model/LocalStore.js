@@ -13,9 +13,9 @@ Ext.define('App.model.LocalStore', {
 	             {name: 'alertHours', type: 'Boolean'},
 	             {name: 'overrideIndividualAlerts', type: 'Boolean'},
 	             ],
-	    proxy: {
+	   /* proxy: {
 	        type: 'localstorage',
 	        id: 'appLocalStore3'
-	    }
+	    }*/
     }
 });
