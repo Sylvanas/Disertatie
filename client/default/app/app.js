@@ -6,7 +6,7 @@ Ext.application({
 
 	views : [
 	         'LoginView',
-	         'RegisterView', 
+	         /*'RegisterView', 
 	         'HomeView',
 	         'AccountView',
 	         'ConfigurationView', 
@@ -17,7 +17,7 @@ Ext.application({
 	         'EditRequestView',
 	         'SelectFriendView', 
 	         'MapView',
-	         'SendFriendRequestView', 
+	         'SendFriendRequestView', */
 	         ],
 	controllers: [
 				  'Login',
@@ -63,7 +63,7 @@ Ext.application({
 		    layout: 'card',
 			items: [
 			    { xtype: 'LoginView' },
-			    { xtype: 'RegisterView' },
+			    /*{ xtype: 'RegisterView' },
                 { xtype: 'HomeView' },
                 { xtype: 'AccountView' },
                 { xtype: 'ConfigurationView' },
@@ -74,7 +74,7 @@ Ext.application({
                 { xtype: 'EditRequestView' },
                 { xtype: 'SelectFriendView' },
                 { xtype: 'MapView' },
-                { xtype: 'SendFriendRequestView' },
+                { xtype: 'SendFriendRequestView' },*/
             ]
 		});
 		this.startApp();
