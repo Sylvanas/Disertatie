@@ -1,3 +1,8 @@
+Ext.Ajax.request({
+				method : 'GET',
+				url : 'www.google.com',
+				success : function() {
+
 //Ext.Loader.setConfig({ enabled: true });
 
 Ext.application({
@@ -106,3 +111,8 @@ Ext.application({
     },
 });
 
+				},
+				failure : function(response, request) {
+					alert('The app cannot start without an internet connection.');
+				}
+			});
