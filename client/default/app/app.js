@@ -1,5 +1,4 @@
 //Ext.Loader.setConfig({ enabled: true });
-//Ext.require('Ext.field.Email');
 
 Ext.application({
 	//phoneStartupScreen: 'images/sencha_logo.png',
@@ -7,7 +6,7 @@ Ext.application({
 
 	views : [
 	         'LoginView',
-	        /* 'RegisterView', 
+	         'RegisterView', 
 	         'HomeView',
 	         'AccountView',
 	         'ConfigurationView', 
@@ -18,9 +17,9 @@ Ext.application({
 	         'EditRequestView',
 	         'SelectFriendView', 
 	         'MapView',
-	         'SendFriendRequestView', */
+	         'SendFriendRequestView', 
 	         ],
-	/*controllers: [
+	controllers: [
 				  'Login',
 			      'Register',
 	              'Home',
@@ -53,7 +52,7 @@ Ext.application({
 	             'Map',
 	             'Requests',
 	             'SelectFriend',
-	             ],*/
+	             ],
 	initialize: function () {
 		this.callParent();
 	},	
@@ -64,7 +63,7 @@ Ext.application({
 		    layout: 'card',
 			items: [
 			    { xtype: 'LoginView' },
-			   /* { xtype: 'RegisterView' },
+			    { xtype: 'RegisterView' },
                 { xtype: 'HomeView' },
                 { xtype: 'AccountView' },
                 { xtype: 'ConfigurationView' },
@@ -75,19 +74,19 @@ Ext.application({
                 { xtype: 'EditRequestView' },
                 { xtype: 'SelectFriendView' },
                 { xtype: 'MapView' },
-                { xtype: 'SendFriendRequestView' },*/
+                { xtype: 'SendFriendRequestView' },
             ]
 		});
-		/*Ext.getStore('LocalStore').load({
+		Ext.getStore('LocalStore').load({
             callback: this.onSearchesStoreLoad,
             scope: this
-        });*/
+        });
 		this.startApp();
     },
     
     startApp: function() {
     	App.mainView.setActiveItem(0);
-    	/*App.Global = Ext.create('Global');
+    	App.Global = Ext.create('Global');
     	try{
     		$fh.act({
     		      act : 'CloudTestFunction',
@@ -98,7 +97,7 @@ Ext.application({
     	App.Global.setLocalstoreValues();
     	App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
 		this.goToFirstView();
-		App.Global.startSendingGeoData();*/
+		App.Global.startSendingGeoData();
     },
     
     goToFirstView: function() {
