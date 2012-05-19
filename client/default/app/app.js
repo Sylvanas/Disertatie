@@ -6,7 +6,7 @@ Ext.application({
 
 	views : [
 	         'LoginView',
-	         'RegisterView', 
+	         /*'RegisterView', 
 	         'HomeView',
 	         'AccountView',
 	         'ConfigurationView', 
@@ -17,11 +17,11 @@ Ext.application({
 	         'EditRequestView',
 	         'SelectFriendView', 
 	         'MapView',
-	         'SendFriendRequestView', 
+	         'SendFriendRequestView', */
 	         ],
 	controllers: [
 				  'Login',
-			      'Register',
+			      /*'Register',
 	              'Home',
 	              'Account',
 	              'Configuration',
@@ -32,7 +32,7 @@ Ext.application({
 	              'EditRequest',
 	              'SelectFriend',
 	              'Map',
-	              'SendFriendRequest',
+	              'SendFriendRequest',*/
 	              ],
 	models: [
              'EditRequest',
@@ -63,7 +63,7 @@ Ext.application({
 		    layout: 'card',
 			items: [
 			    { xtype: 'LoginView' },
-			    { xtype: 'RegisterView' },
+			    /*{ xtype: 'RegisterView' },
                 { xtype: 'HomeView' },
                 { xtype: 'AccountView' },
                 { xtype: 'ConfigurationView' },
@@ -74,7 +74,7 @@ Ext.application({
                 { xtype: 'EditRequestView' },
                 { xtype: 'SelectFriendView' },
                 { xtype: 'MapView' },
-                { xtype: 'SendFriendRequestView' },
+                { xtype: 'SendFriendRequestView' },*/
             ]
 		});
 		/*Ext.getStore('LocalStore').load({
@@ -85,19 +85,19 @@ Ext.application({
     },
     
     startApp: function() {
-    	//App.mainView.setActiveItem(0);
-    	App.Global = Ext.create('Global');
-    	/*try{
+    	App.mainView.setActiveItem(0);
+    	/*App.Global = Ext.create('Global');
+    	try{
     		$fh.act({
     		      act : 'CloudTestFunction',
     		    }, function(res) {});
     	}catch(err){App.Global.releaseCode = false;
-    	}*/
+    	}
     	App.Global.loadStores();
-    	//App.Global.setLocalstoreValues();
-    	//App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
+    	App.Global.setLocalstoreValues();
+    	App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
 		this.goToFirstView();
-		//App.Global.startSendingGeoData();
+		App.Global.startSendingGeoData();*/
     },
     
     goToFirstView: function() {
