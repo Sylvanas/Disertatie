@@ -85,7 +85,6 @@ Ext.application({
     },
     
     startApp: function() {
-    	App.mainView.setActiveItem(0);
     	App.Global = Ext.create('Global');
     	try{
     		$fh.act({
