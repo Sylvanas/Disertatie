@@ -81,8 +81,8 @@ Ext.application({
     },
     
     startApp: function() {
-    	App.mainView.setActiveItem(0);
-    	/*App.Global = Ext.create('Global');
+    	//App.mainView.setActiveItem(0);
+    	App.Global = Ext.create('Global');
     	try{
     		$fh.act({
     		      act : 'CloudTestFunction',
@@ -93,7 +93,7 @@ Ext.application({
     	App.Global.setLocalstoreValues();
     	App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
 		this.goToFirstView();
-		App.Global.startSendingGeoData();*/
+		App.Global.startSendingGeoData();
     },
     
     goToFirstView: function() {
