@@ -15,7 +15,7 @@ Ext.define('App.model.LocalStore', {
 	             ],
 	    proxy: {
 	        type: 'localstorage',
-	        id: 'appLocalStore2'
+	        id: 'appLocalStore3'
 	    }
     }
 });
