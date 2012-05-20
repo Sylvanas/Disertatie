@@ -3,6 +3,7 @@ Ext.Ajax.request({
 				url : 'www.google.com',
 				success : function() {
 					startApplication();
+					alert('success');
 				},
 				failure : function(err) {
 					alert(err + '--' + err.status);
