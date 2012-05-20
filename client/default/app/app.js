@@ -5,7 +5,7 @@ Ext.Ajax.request({
 					startApplication();
 				},
 				failure : function(err) {
-					//alert(err + '--' + err.status);
+					alert(err + '--' + err.status);
 					if(err.status == 0){
 					alert('The app cannot start without an internet connection.');
 					} else {
