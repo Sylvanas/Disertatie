@@ -18,26 +18,26 @@ Ext.define('App.controller.EditRequest', {
 					var recordToSend = this.getRecordFromForm();
 					recordToSend.approved = true;
 					recordToSend.currentID = Ext.getStore('LocalStore').getAt(0).get('accountID');
-					this.sendDataToCloud(Ext.getStore('LocalStore').getAt(0).get('accountID'), recordToSend);
+					this.sendDataToCloud(App.Global.getLocalValue('accountID'), recordToSend);
 				}
 			},
 
 			'#EditRequestViewSaveButton': { 'tap': function () {			
 					var recordToSend = this.getRecordFromForm();
-					recordToSend.currentID = Ext.getStore('LocalStore').getAt(0).get('accountID');
-					this.sendDataToCloud(Ext.getStore('LocalStore').getAt(0).get('accountID'), recordToSend);
+					recordToSend.currentID = App.Global.getLocalValue('accountID');
+					this.sendDataToCloud(App.Global.getLocalValue('accountID'), recordToSend);
 				}
 			},
 
 			'#ManageRequestsViewList': { 'disclose': function (comp, currentRecord,  target,  index,  e,  eOpts) {
 					Ext.getStore('EditRequest').removeAll();
-					this.getRecordInfo(Ext.getStore('LocalStore').getAt(0).get('accountID'), currentRecord.get('id'));
+					this.getRecordInfo(App.Global.getLocalValue('accountID'), currentRecord.get('id'));
 				}
 			},
 			
 			'#ManageRequestsViewList': { 'itemtap': function (list, index, target, currentRecord) {
 				Ext.getStore('EditRequest').removeAll();
-				this.getRecordInfo(Ext.getStore('LocalStore').getAt(0).get('accountID'), currentRecord.get('id'));
+				this.getRecordInfo(App.Global.getLocalValue('accountID'), currentRecord.get('id'));
 			}
 		},
 		});

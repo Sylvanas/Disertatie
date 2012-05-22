@@ -16,7 +16,7 @@ Ext.define('App.controller.SoundAlert', {
 			
 			
 			'#SoundAlertViewSetAlertTogglefield': { 'change': function (me, Slider, thumb, newValue, oldValue, eOpts) {
-				Ext.getStore('LocalStore').getAt(0).set('alertStatus',newValue);
+				App.Global.saveLocalValue('alertStatus',newValue);
 				}
 			},
 
@@ -31,23 +31,23 @@ Ext.define('App.controller.SoundAlert', {
 			},
 
 			'#SoundAlertViewSlider': { 'change': function (control, thumb, newValue) {
-				Ext.getStore('LocalStore').getAt(0).set('soundVolume',newValue);
+				App.Global.saveLocalValue('soundVolume',newValue);
 				}
 			},
 
 			'#SoundAlertViewAlertHours': { 'check': function () {
-				Ext.getStore('LocalStore').getAt(0).set('alertHours',true);
+				App.Global.saveLocalValue('alertHours',true);
 				App.Global.setAlertHoursDisable(true);
 				}, 						   'uncheck': function () {
-				Ext.getStore('LocalStore').getAt(0).set('alertHours',false);
+				App.Global.saveLocalValue('alertHours',false);
 				App.Global.setAlertHoursDisable(false);
 				}
 			},
 
 			'#SoundAlertViewOverrideIndividualAlerts': { 'check': function () {
-				Ext.getStore('LocalStore').getAt(0).set('overrideIndividualAlerts',true);
+				App.Global.saveLocalValue('overrideIndividualAlerts',true);
 			}, 						   'uncheck': function () {
-				Ext.getStore('LocalStore').getAt(0).set('overrideIndividualAlerts',false);
+				App.Global.saveLocalValue('overrideIndividualAlerts',false);
 			}
 		},
 		});

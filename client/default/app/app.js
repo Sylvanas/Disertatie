@@ -57,7 +57,6 @@ function startApplication() {
 	             'EditRequest',
 	             'HourList',
 	             'Languages',
-	             'LocalStore',
 	             'Map',
 	             'Requests',
 	             'SelectFriend',
@@ -67,7 +66,6 @@ function startApplication() {
 		             'HourListEnd',
 		             'HourListStart',
 		             'Languages',
-		             'LocalStore',
 		             'Map',
 		             'Requests',
 		             'SelectFriend',
@@ -105,24 +103,18 @@ function startApplication() {
 	    	try{
 	    		$fh.act({
 	    		      act : 'CloudTestFunction',
-	    		    }, function(res) {});
-	    	}catch(err){App.Global.releaseCode = false;
-	    	}
-	    	App.Global.loadStores();
-	    	App.Global.setLocalstoreValues();
-	    	App.Global.setAlertHoursDisable(Ext.getStore('LocalStore').getAt(0).get('alertHours'));
-			this.goToFirstView();
-			App.Global.startSendingGeoData();
-	    },
-	    
-	    goToFirstView: function() {
-	    	var localStore = Ext.getStore('LocalStore');
-	    	if(localStore.getAt(0).get('accountID') == ''){
-	    		App.mainView.setActiveItem(0);
-	    	}else{
-	    		App.mainView.setActiveItem(2);		
+	    		    }, function(res) {
+	    		    	App.Global.loadStores();
+	    		    	App.Global.setLocalstoreValues();
+	    		    	App.Global.setAlertHoursDisable(App.Global.getLocalValue('alertHours'));
+	    				App.Global.startSendingGeoData();
+	    		    });
+	    	}catch(err){
+	    		App.Global.releaseCode = false;
+	    		App.Global.goToFirstView();
 	    	}
 	    },
+
 	});
 
 }

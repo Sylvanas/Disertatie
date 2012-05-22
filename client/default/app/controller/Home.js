@@ -10,7 +10,7 @@ Ext.define('App.controller.Home', {
 		this.control({	
 			'#HomeViewShowOnMapButton': { 'tap': function () {
 					Ext.getStore('SelectFriend').removeAll();
-					this.GetFriends(Ext.getStore('LocalStore').getAt(0).get('accountID'));
+					this.GetFriends(App.Global.getLocalValue('accountID'));
 				}
 			},
 			
@@ -47,10 +47,10 @@ Ext.define('App.controller.Home', {
 			},
 
 			'#HomeViewLogoutButton': { 'tap': function () {
-					var localStore = Ext.getStore('LocalStore');
-					localStore.removeAt(0);
-					localStore.add(App.Global.getDefaultLocalStoreRecord());
-					App.Global.changeView(App.view.LoginView.xtype);
+				App.Global.saveLocalValue('accountID');
+				App.Global.saveLocalValue('email');
+				App.Global.saveLocalValue('password');
+				App.Global.changeView(App.view.LoginView.xtype);
 				}
 			},
 		});

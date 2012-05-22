@@ -11,7 +11,7 @@ Ext.define('App.controller.ChangePassword', {
 					var pass = Ext.getCmp('ChangePasswordViewNewPasswordField').getValue();
 					var confirmPassword = Ext.getCmp('ChangePasswordViewConfirmNewPasswordField').getValue();
 					if(this.DataIsValid(pass, confirmPassword)){
-						this.SendDataToServer(Ext.getStore('LocalStore').getAt(0).get('accountID'), pass);
+						this.SendDataToServer(App.Global.getLocalValue('accountID'), pass);
 					}
 				}
 			},

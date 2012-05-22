@@ -38,6 +38,7 @@ Ext.define('Global', {
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.lastFriendsInArea = new Array();
     	this.releaseCode = true;
+    	this.localData = {language: "", accountID: "", email: "", password: "", soundVolume: "", alertStatus: "", startHour: "", endHour: "", alertHours: "", overrideIndividualAlerts: ""};
     	this.deviceCode = (Ext.os.deviceType == 'Phone');
     },
     
@@ -57,42 +58,74 @@ Ext.define('Global', {
     	}
     },
     
-    loadStores: function() {
-    	this.setDefaultHoursToHourStore(Ext.getStore('HourListStart'));
-    	this.setDefaultHoursToHourStore(Ext.getStore('HourListEnd'));
-    	var localStore = Ext.getStore('LocalStore'); 
-    	/*if(localStore.getCount()>0){
-			localStore.removeAt(0);
-		}*/
-		if(!localStore.getCount()>0){
-			localStore.add(this.getDefaultLocalStoreRecord());
-		}
+    saveLocalValue: function(key,value){
+    	if(App.releaseCode){
+    		$fh.data({act:'save', key:key, val:value}, function(){});
+    	}
+    	App.Global.localData[key] = value;
     },
     
-    setLocalstoreValues: function() {
-    	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
-    	Ext.getCmp('SoundAlertViewSetAlertTogglefield').setValue(localStoreRecord.get('alertStatus'));
-    	Ext.getCmp('SoundAlertViewSlider').setValue(localStoreRecord.get('soundVolume'));
-    	Ext.getCmp('SoundAlertViewAlertHours').setValue(localStoreRecord.get('alertHours'));
-    	Ext.getCmp('SoundAlertViewOverrideIndividualAlerts').setValue(localStoreRecord.get('overrideIndividualAlerts'));
-    	Ext.getCmp('ChangeLanguageViewSelectField').setValue(localStoreRecord.get('language'));
+    getLocalValue: function(key){
+    	return App.Global.localData[key];
     },
-	
-	getDefaultLocalStoreRecord: function (){
-		var model = App.model.LocalStore;
-        var record = new model({
-        	language: 'English', accountID: '', email: '', password: '', alertStatus: 1, soundVolume: '40', startHour: '24' , endHour: '8', alertHours: false , overrideIndividualAlerts: true
-        });
-        return record; 	
-	},
-	
+    
+    loadStores: function() {
+    	$fh.data({act:'load', key:"language"}, function(res){
+    		App.Global.localData["language"] = res.val;
+    		$fh.data({act:'load', key:"accountID"}, function(res){	
+    			App.Global.localData["accountID"] = res.val;
+    			$fh.data({act:'load', key:"email"}, function(res){
+    		    	App.Global.localData["email"] = res.val;	
+    		    	$fh.data({act:'load', key:"password"}, function(res){
+    		        	App.Global.localData["password"] = res.val;		
+    		        	$fh.data({act:'load', key:"soundVolume"}, function(res){
+    		            	App.Global.localData["soundVolume"] = res.val;	
+    		            	$fh.data({act:'load', key:"alertStatus"}, function(res){
+    		                	App.Global.localData["alertStatus"] = res.val;	
+    		                	$fh.data({act:'load', key:"startHour"}, function(res){
+    		                    	App.Global.localData["startHour"] = res.val;	
+    		                    	$fh.data({act:'load', key:"endHour"}, function(res){
+    		                        	App.Global.localData["endHour"] = res.val;	
+    		                        	$fh.data({act:'load', key:"alertHours"}, function(res){
+    		                            	App.Global.localData["alertHours"] = res.val;	
+    		                            	$fh.data({act:'load', key:"overrideIndividualAlerts"}, function(res){
+    		                                	App.Global.localData["overrideIndividualAlerts"] = res.val;	
+    		                                	App.Global.setLocalValues();
+    		                                	App.Global.goToFirstView();
+    		                                	}, function(){});
+    		                            	}, function(){});
+    		                        	}, function(){});
+    		                    	}, function(){});
+    		                	}, function(){});
+    		            	}, function(){});
+    		        	}, function(){});
+    		    	}, function(){});
+        	}, function(){});
+    	}, function(){});
+    },
+
+    setLocalValues: function() {
+    	Ext.getCmp('SoundAlertViewSetAlertTogglefield').setValue(App.Global.getLocalValue("alertStatus"));
+    	Ext.getCmp('SoundAlertViewSlider').setValue(App.Global.getLocalValue("soundVolume"));
+    	Ext.getCmp('SoundAlertViewAlertHours').setValue(App.Global.getLocalValue("alertHours"));
+    	Ext.getCmp('SoundAlertViewOverrideIndividualAlerts').setValue(App.Global.getLocalValue("overrideIndividualAlerts"));
+    	Ext.getCmp('ChangeLanguageViewSelectField').setValue(App.Global.getLocalValue("language"));
+    },
+
+    goToFirstView: function() {
+    	if(App.Global.getLocalValue('accountID') == ''){
+    		App.mainView.setActiveItem(0);
+    	}else{
+    		App.mainView.setActiveItem(2);		
+    	}
+    },
+
 	refreshHourLists: function () {
 		this.fireSoundAlertSelectfieldEvent = false;
-		var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
-		this.changeHourListValue(Ext.getStore('HourListStart'), localStoreRecord.get('endHour'));
-		Ext.getCmp('SoundAlertViewSelectfieldStart').setValue(localStoreRecord.get('startHour'));
-		this.changeHourListValue(Ext.getStore('HourListEnd'), localStoreRecord.get('startHour'));
-		Ext.getCmp('SoundAlertViewSelectfieldEnd').setValue(localStoreRecord.get('endHour'));
+		this.changeHourListValue(Ext.getStore('HourListStart'), App.Global.getLocalValue('endHour'));
+		Ext.getCmp('SoundAlertViewSelectfieldStart').setValue(App.Global.getLocalValue('startHour'));
+		this.changeHourListValue(Ext.getStore('HourListEnd'), App.Global.getLocalValue('startHour'));
+		Ext.getCmp('SoundAlertViewSelectfieldEnd').setValue(App.Global.getLocalValue('endHour'));
 		this.fireSoundAlertSelectfieldEvent = true;
 	},
 	
@@ -104,19 +137,18 @@ Ext.define('Global', {
 	
 	changeHourLists: function (oldValue, newValue) {
 		this.fireSoundAlertSelectfieldEvent = false;
-		var localStore = Ext.getStore('LocalStore');
 		var hourListStartStore = Ext.getStore('HourListStart');
 		var hourListEndStore = Ext.getStore('HourListEnd');
-		if(localStore.getAt(0).get('startHour') == oldValue) {
+		if(App.Global.getLocalValue('startHour') == oldValue) {
 			this.changeHourListValue(hourListEndStore, newValue);
-			localStore.getAt(0).set('startHour', newValue);
+			App.Global.saveLocalValue('startHour', newValue);
 			Ext.getCmp('SoundAlertViewSelectfieldEnd').setStore(hourListEndStore);
-			this.setSelectfieldValue(Ext.getCmp('SoundAlertViewSelectfieldEnd'), localStore.getAt(0).get('endHour'));
+			this.setSelectfieldValue(Ext.getCmp('SoundAlertViewSelectfieldEnd'), App.Global.getLocalValue('endHour'));
 		}else {
 			this.changeHourListValue(hourListStartStore, newValue);
-			localStore.getAt(0).set('endHour', newValue);
+			App.Global.saveLocalValue('endHour', newValue);
 			Ext.getCmp('SoundAlertViewSelectfieldStart').setStore(hourListStartStore);
-			this.setSelectfieldValue(Ext.getCmp('SoundAlertViewSelectfieldStart'), localStore.getAt(0).get('startHour'));
+			this.setSelectfieldValue(Ext.getCmp('SoundAlertViewSelectfieldStart'), App.Global.getLocalValue('startHour'));
 		}
 		this.fireSoundAlertSelectfieldEvent = true;
 	},
@@ -145,7 +177,7 @@ Ext.define('Global', {
     		$fh.act({
 		      act : 'CloudGetRequests',
 		      req : {
-		    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
+		    	  accountID : App.Global.getLocalValue('accountID'),
 		      }
 		    }, function(res) {
 		    	if(res.message == 'ok'){
@@ -173,7 +205,7 @@ Ext.define('Global', {
 	
 	startSendingGeoData: function(){
 		setTimeout(function sendGeoData() {
-			if(Ext.getStore('LocalStore').getAt(0).get('accountID') != ''){
+			if(App.Global.getLocalValue('accountID') != ''){
 				//Ext.Msg.alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');
 				if(App.Global.deviceCode){
 					$fh.geo(function(res){//for this to work, the "Use whireless networks" on device must be activated. also accept sending data to goolge
@@ -181,7 +213,7 @@ Ext.define('Global', {
 					    $fh.act({
 				    	      act : 'CloudSendGeoData',
 				    	      req : {
-				    	    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
+				    	    	  accountID : App.Global.getLocalValue('accountID'),
 				    	    	  lat : res.lat,
 				    	    	  lon : res.lon,
 				    	    	  when : Date.parse(new Date()),
@@ -200,7 +232,7 @@ Ext.define('Global', {
     			    	    				break;
     			    	    			}
     			    	    		}
-    			    	    		if(res.friends.length>0 && (aFriendAlertActive && (!Ext.getStore('LocalStore').getAt(0).get('overrideIndividualAlerts') || Ext.getStore('LocalStore').getAt(0).get('alertStatus')))){
+    			    	    		if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
     			    	    			if(ShouldAlertDueToIgnoreHours()){
     			    	    				$fh.notify({
         			    				        type: 'vibrate'
@@ -223,7 +255,7 @@ Ext.define('Global', {
 					$fh.act({
 			    	      act : 'CloudSendGeoData',
 			    	      req : {
-			    	    	  accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
+			    	    	  accountID : App.Global.getLocalValue('accountID'),
 			    	    	  lat : latitude,
 			    	    	  lon : longitude,
 			    	    	  when : time,
@@ -242,7 +274,7 @@ Ext.define('Global', {
 			    	    				break;
 			    	    			}
 			    	    		}
-			    	    		if(res.friends.length>0 && (aFriendAlertActive && (!Ext.getStore('LocalStore').getAt(0).get('overrideIndividualAlerts') || Ext.getStore('LocalStore').getAt(0).get('alertStatus')))){
+			    	    		if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
 			    	    			if(ShouldAlertDueToIgnoreHours()){
 			    	    				Ext.Msg.alert('Friends near you', "Friends near you");
 			    	    			}
@@ -273,11 +305,11 @@ Ext.define('Global', {
 	},
 	
 	ShouldAlertDueToIgnoreHours: function(){
-		if(Ext.getStore('LocalStore').getAt(0).get('alertHours')){ return true; }
+		if(App.Global.getLocalValue('alertHours')){ return true; }
 		var currentDate = new Date();
 		var currentHourCount = currentDate.getHours();
-		var startHour = Ext.getStore('LocalStore').getAt(0).get('startHour');
-		var endHour = Ext.getStore('LocalStore').getAt(0).get('endHour');
+		var startHour = App.Global.getLocalValue('startHour');
+		var endHour = App.Global.getLocalValue('endHour');
 		if(startHour<endHour){
 			if(currentHourCount > startHour && currentHourCount < endHour){
 				return false;

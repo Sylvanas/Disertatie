@@ -67,8 +67,7 @@ Ext.define('App.controller.Register', {
 });
 
 function HandleServerResponse(result, email, pass){
-	var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
-	localStoreRecord.set('accountID', result.guid);
-	localStoreRecord.set('email', email);
-	localStoreRecord.set('password', pass);
+	App.Global.saveLocalValue('accountID', result.guid);
+	App.Global.saveLocalValue('email', email);
+	App.Global.saveLocalValue('password', pass);
 }

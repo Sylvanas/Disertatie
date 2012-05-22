@@ -14,7 +14,7 @@ Ext.define('App.controller.ChangeLanguage', {
 			},
 			
 			'#ChangeLanguageViewSaveButton': { 'tap': function () {
-				Ext.getStore('LocalStore').getAt(0).set('language',Ext.getCmp('ChangeLanguageViewSelectField').getRecord().get('name'));
+				App.Global.saveLocalValue('language',Ext.getCmp('ChangeLanguageViewSelectField').getRecord().get('name'));
 			    App.Global.changeView(App.view.ConfigurationView.xtype);
 				}
 			},

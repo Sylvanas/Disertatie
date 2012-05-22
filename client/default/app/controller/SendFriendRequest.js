@@ -26,13 +26,13 @@ Ext.define('App.controller.SendFriendRequest', {
 				},
 														'action': function (field) {
 					if(this.validIDField){
-						this.sendFriendRequest(Ext.getStore('LocalStore').getAt(0).get('accountID'), Ext.getCmp('SendFriendRequestViewSendRequestField').getValue());
+						this.sendFriendRequest(App.Global.getLocalValue('accountID'), Ext.getCmp('SendFriendRequestViewSendRequestField').getValue());
 					}
 				},
 			},
 			
 			'#SendFriendRequestViewSendRequestButton': { 'tap': function () {
-					this.sendFriendRequest(Ext.getStore('LocalStore').getAt(0).get('accountID'), Ext.getCmp('SendFriendRequestViewSendRequestField').getValue());
+					this.sendFriendRequest(App.Global.getLocalValue('accountID'), Ext.getCmp('SendFriendRequestViewSendRequestField').getValue());
 				}
 			},
 		});

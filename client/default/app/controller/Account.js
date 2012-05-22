@@ -14,7 +14,6 @@ Ext.define('App.controller.Account', {
 			},
 
 			'#AccountViewShowIDButton': { 'tap': function () {
-				var localStore = Ext.getStore('LocalStore');
                 this.overlay = Ext.Viewport.add({
                     xtype: 'panel',
                     modal: true,
@@ -33,7 +32,7 @@ Ext.define('App.controller.Account', {
                     width: 300,
                     height: 75,
                     styleHtmlContent: true,
-                    html: 'Your ID is:</br><b>'+localStore.getAt(0).get('accountID')+'</b>',
+                    html: 'Your ID is:</br><b>'+App.Global.getLocalValue('accountID')+'</b>',
                     items: [
                         {
                             docked: 'top',

@@ -3,16 +3,15 @@ Ext.define('App.controller.Login', {
     config: {
         refs: {
             'viewport': 'LoginView',
-            'store': 'LocalStore',
         },
     },
     init: function() {
 		this.control({		
 			'#LoginViewLoginButton': { 'tap': function () {
-					var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+					/*var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
 	    	    	localStoreRecord.set('accountID', 'asdf34f34rf');
 	    	    	localStoreRecord.set('email', Ext.getCmp('LoginViewEmailField').getValue());
-	    	    	localStoreRecord.set('password', Ext.getCmp('LoginViewPassField').getValue());
+	    	    	localStoreRecord.set('password', Ext.getCmp('LoginViewPassField').getValue());*/		
 	    	    	if(App.Global.releaseCode){
 	    	    		if(this.validInputData()){
 	    					var email = Ext.getCmp('LoginViewEmailField').getValue();
@@ -25,10 +24,11 @@ Ext.define('App.controller.Login', {
 	    			    	      }
 	    			    	    }, function(res) {
 	    			    	    	if(res.message == 'ok'){
-	    			    	    		var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
+	    			    	    		/*var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
 		    			    	    	localStoreRecord.set('accountID', res.guid);
 		    			    	    	localStoreRecord.set('email', Ext.getCmp('LoginViewEmailField').getValue());
-		    			    	    	localStoreRecord.set('password', Ext.getCmp('LoginViewPassField').getValue());
+		    			    	    	localStoreRecord.set('password', Ext.getCmp('LoginViewPassField').getValue());*/
+	    			    	    		App.Global.saveLocalValue("accountID", res.guid);
 		    			    	    	App.Global.changeView(App.view.HomeView.xtype);
 	    			                  }else if (res.message == 'fail') {
 	    			                	  Ext.Msg.alert('Invalid login data', "The login data is invalid. Please retype your email and password.");
@@ -39,6 +39,9 @@ Ext.define('App.controller.Login', {
 	    					}
 	    	    	}else{
 	    	    		App.Global.changeView(App.view.HomeView.xtype);
+	    	    		App.Global.saveLocalValue("accountID", "testAcc");
+	    	    		App.Global.saveLocalValue("email", "testEmail");
+	    	    		App.Global.saveLocalValue("password", "testPassword");
 	    	    	}
 				}
 			},
