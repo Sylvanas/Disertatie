@@ -71,25 +71,25 @@ Ext.define('Global', {
     
     loadStores: function() {
     	$fh.data({act:'load', key:"language"}, function(res){
-    		App.Global.localData["language"] = res.val;
+    		if(!App.Global.localData["language"])App.Global.localData["language"] = res.val;
     		$fh.data({act:'load', key:"accountID"}, function(res){	
-    			App.Global.localData["accountID"] = res.val;
+    			if(!App.Global.localData["accountID"])App.Global.localData["accountID"] = res.val;
     			$fh.data({act:'load', key:"email"}, function(res){
-    		    	App.Global.localData["email"] = res.val;	
+    				if(!App.Global.localData["email"])App.Global.localData["email"] = res.val;	
     		    	$fh.data({act:'load', key:"password"}, function(res){
-    		        	App.Global.localData["password"] = res.val;		
+    		    		if(!App.Global.localData["password"])App.Global.localData["password"] = res.val;		
     		        	$fh.data({act:'load', key:"soundVolume"}, function(res){
-    		            	App.Global.localData["soundVolume"] = res.val;	
+    		        		if(!App.Global.localData["soundVolume"])App.Global.localData["soundVolume"] = res.val;	
     		            	$fh.data({act:'load', key:"alertStatus"}, function(res){
-    		                	App.Global.localData["alertStatus"] = res.val;	
+    		            		if(!App.Global.localData["alertStatus"])App.Global.localData["alertStatus"] = res.val;	
     		                	$fh.data({act:'load', key:"startHour"}, function(res){
-    		                    	App.Global.localData["startHour"] = res.val;	
+    		                		if(!App.Global.localData["startHour"])App.Global.localData["startHour"] = res.val;	
     		                    	$fh.data({act:'load', key:"endHour"}, function(res){
-    		                        	App.Global.localData["endHour"] = res.val;	
+    		                    		if(!App.Global.localData["endHour"])App.Global.localData["endHour"] = res.val;	
     		                        	$fh.data({act:'load', key:"alertHours"}, function(res){
-    		                            	App.Global.localData["alertHours"] = res.val;	
+    		                        		if(!App.Global.localData["alertHours"])App.Global.localData["alertHours"] = res.val;	
     		                            	$fh.data({act:'load', key:"overrideIndividualAlerts"}, function(res){
-    		                                	App.Global.localData["overrideIndividualAlerts"] = res.val;	
+    		                            		if(!App.Global.localData["overrideIndividualAlerts"])App.Global.localData["overrideIndividualAlerts"] = res.val;	
     		                                	App.Global.setLocalValues();
     		                                	App.Global.goToFirstView();
     		                                	}, function(){});
@@ -113,11 +113,10 @@ Ext.define('Global', {
     },
 
     goToFirstView: function() {
-    	if(App.Global.getLocalValue('accountID') == ""){
+    	if(App.Global.getLocalValue('accountID')){
     		App.mainView.setActiveItem(0);
     	}else{
     		App.mainView.setActiveItem(2);	
-    		alert(App.Global.getLocalValue('accountID'));
     	}
     },
 
