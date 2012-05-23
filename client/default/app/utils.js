@@ -59,7 +59,7 @@ Ext.define('Global', {
     },
     
     saveLocalValue: function(key,value){
-    	if(App.deviceCode){
+    	if(App.Global.deviceCode){
     		alert('saving:'+key+' '+value);
     		$fh.data({act:'save', key:key, val:value}, function(){});
     	}
