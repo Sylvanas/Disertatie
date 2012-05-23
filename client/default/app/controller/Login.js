@@ -57,9 +57,7 @@ Ext.define('App.controller.Login', {
 							if(App.Global.deviceCode){
 								$fh.send({type:'email', to:'frunza_samuel@yahoo.com', cc:'', subject:'forgot password', body:email});
 							} else {
-								Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
-									Ext.Msg.alert("","Your current password was send to the specifyed email");
-								});
+								Ext.Msg.alert("","Your current password was send to the specifyed email");
 							}
 						});
 				}
