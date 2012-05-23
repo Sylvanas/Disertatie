@@ -60,7 +60,8 @@ Ext.define('Global', {
     
     saveLocalValue: function(key,value){
     	if(App.deviceCode){
-    		$fh.data({act:'save', key:key, val:value}, function(err){alert(err);});
+    		alert('saving:'+key+' '+value);
+    		$fh.data({act:'save', key:key, val:value}, function(){});
     	}
     	App.Global.localData[key] = value;
     },
@@ -73,7 +74,7 @@ Ext.define('Global', {
     	$fh.data({act:'load', key:"language"}, function(res){
     		if(res.val != null)App.Global.localData["language"] = res.val;
     		$fh.data({act:'load', key:"accountID"}, function(res){	
-    			if(res.val != null)App.Global.localData["accountID"] = res.val;
+    			if(res.val != null)App.Global.localData["accountID"] = res.val;alert('loaded:'+res.val);
     			$fh.data({act:'load', key:"email"}, function(res){
     				if(res.val != null)App.Global.localData["email"] = res.val;	
     		    	$fh.data({act:'load', key:"password"}, function(res){
