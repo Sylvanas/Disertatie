@@ -38,7 +38,7 @@ Ext.define('Global', {
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.lastFriendsInArea = new Array();
     	this.releaseCode = true;
-    	this.localData = {language: "", accountID: "", email: "", password: "", soundVolume: "", alertStatus: "", startHour: "4", endHour: "6", alertHours: "", overrideIndividualAlerts: ""};
+    	this.localData = {language: "English", accountID: "", email: "", password: "", soundVolume: "90", alertStatus: "1", startHour: "4", endHour: "6", alertHours: false, overrideIndividualAlerts: true};
     	this.deviceCode = (Ext.os.deviceType == 'Phone');
     },
     
@@ -107,8 +107,8 @@ Ext.define('Global', {
     setLocalValues: function() {
     	Ext.getCmp('SoundAlertViewSetAlertTogglefield').setValue(App.Global.getLocalValue("alertStatus"));
     	Ext.getCmp('SoundAlertViewSlider').setValue(App.Global.getLocalValue("soundVolume"));
-    	Ext.getCmp('SoundAlertViewAlertHours').setValue(App.Global.getLocalValue("alertHours"));
-    	Ext.getCmp('SoundAlertViewOverrideIndividualAlerts').setValue(App.Global.getLocalValue("overrideIndividualAlerts"));
+    	Ext.getCmp('SoundAlertViewAlertHours').setChecked(App.Global.getLocalValue("alertHours"));
+    	Ext.getCmp('SoundAlertViewOverrideIndividualAlerts').setChecked(App.Global.getLocalValue("overrideIndividualAlerts"));
     	Ext.getCmp('ChangeLanguageViewSelectField').setValue(App.Global.getLocalValue("language"));
     },
 
@@ -132,7 +132,7 @@ Ext.define('Global', {
 	setAlertHoursDisable: function(disable) {
     	Ext.getCmp('SoundAlertViewSelectfieldStart').setDisabled(disable);
     	Ext.getCmp('SoundAlertViewSelectfieldEnd').setDisabled(disable);
-    	Ext.getStore('LocalStore').getAt(0).set('alertHours',disable);
+    	App.Global.saveLocalValue('alertHours',disable);
 	},
 	
 	changeHourLists: function (oldValue, newValue) {

@@ -111,6 +111,8 @@ function startApplication() {
 	    		    });
 	    	}catch(err){
 	    		App.Global.releaseCode = false;
+	    		App.Global.setLocalValues();
+	    		App.Global.setAlertHoursDisable(App.Global.getLocalValue('alertHours'));
 	    		App.Global.goToFirstView();
 	    	}
 	    },
