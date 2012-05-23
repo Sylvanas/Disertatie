@@ -59,8 +59,8 @@ Ext.define('Global', {
     },
     
     saveLocalValue: function(key,value){
-    	if(App.releaseCode){
-    		$fh.data({act:'save', key:key, val:value}, function(){});
+    	if(App.deviceCode){
+    		$fh.data({act:'save', key:key, val:value}, function(err){alert(err);});
     	}
     	App.Global.localData[key] = value;
     },
@@ -71,25 +71,25 @@ Ext.define('Global', {
     
     loadStores: function() {
     	$fh.data({act:'load', key:"language"}, function(res){
-    		if(!App.Global.localData["language"])App.Global.localData["language"] = res.val;
+    		if(res.val != null)App.Global.localData["language"] = res.val;
     		$fh.data({act:'load', key:"accountID"}, function(res){	
-    			if(res.val != null){App.Global.localData["accountID"] = res.val;alert(App.Global.localData["accountID"]);}
+    			if(res.val != null)App.Global.localData["accountID"] = res.val;
     			$fh.data({act:'load', key:"email"}, function(res){
-    				if(!App.Global.localData["email"])App.Global.localData["email"] = res.val;	
+    				if(res.val != null)App.Global.localData["email"] = res.val;	
     		    	$fh.data({act:'load', key:"password"}, function(res){
-    		    		if(!App.Global.localData["password"])App.Global.localData["password"] = res.val;		
+    		    		if(res.val != null)App.Global.localData["password"] = res.val;		
     		        	$fh.data({act:'load', key:"soundVolume"}, function(res){
-    		        		if(!App.Global.localData["soundVolume"])App.Global.localData["soundVolume"] = res.val;	
+    		        		if(res.val != null)App.Global.localData["soundVolume"] = res.val;	
     		            	$fh.data({act:'load', key:"alertStatus"}, function(res){
-    		            		if(!App.Global.localData["alertStatus"])App.Global.localData["alertStatus"] = res.val;	
+    		            		if(res.val != null)App.Global.localData["alertStatus"] = res.val;	
     		                	$fh.data({act:'load', key:"startHour"}, function(res){
-    		                		if(!App.Global.localData["startHour"])App.Global.localData["startHour"] = res.val;	
+    		                		if(res.val != null)App.Global.localData["startHour"] = res.val;	
     		                    	$fh.data({act:'load', key:"endHour"}, function(res){
-    		                    		if(!App.Global.localData["endHour"])App.Global.localData["endHour"] = res.val;	
+    		                    		if(res.val != null)App.Global.localData["endHour"] = res.val;	
     		                        	$fh.data({act:'load', key:"alertHours"}, function(res){
-    		                        		if(!App.Global.localData["alertHours"])App.Global.localData["alertHours"] = res.val;	
+    		                        		if(res.val != null)App.Global.localData["alertHours"] = res.val;	
     		                            	$fh.data({act:'load', key:"overrideIndividualAlerts"}, function(res){
-    		                            		if(!App.Global.localData["overrideIndividualAlerts"])App.Global.localData["overrideIndividualAlerts"] = res.val;	
+    		                            		if(res.val != null)App.Global.localData["overrideIndividualAlerts"] = res.val;	
     		                                	App.Global.setLocalValues();
     		                                	App.Global.goToFirstView();
     		                                	}, function(){});
@@ -117,7 +117,6 @@ Ext.define('Global', {
     		App.mainView.setActiveItem(0);
     	}else{
     		App.mainView.setActiveItem(2);	
-    		alert(App.Global.getLocalValue('accountID'));
     	}
     },
 
