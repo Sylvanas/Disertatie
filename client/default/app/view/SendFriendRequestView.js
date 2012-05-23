@@ -3,7 +3,6 @@ Ext.define('App.view.SendFriendRequestView', {
     title: "SendFriendRequest View",
     alias: "widget.SendFriendRequestView",
     config: {
-    	scrollable: true,
     	layout: { type: 'vbox' },
 		items: [{
 					xtype : 'toolbar',

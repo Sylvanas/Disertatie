@@ -3,7 +3,6 @@ Ext.define('App.view.SoundAlertView', {
     title: "SoundAlert View",
     alias: "widget.SoundAlertView",
     config: {
-    	scrollable: true,
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 				{

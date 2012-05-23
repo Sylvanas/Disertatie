@@ -3,7 +3,6 @@ Ext.define('App.view.EditRequestView', {
 	title : "EditRequest View",
 	alias : "widget.EditRequestView",
 	config : {
-		scrollable : true,
 		layout : {
 			type : 'vbox'
 		},

@@ -3,7 +3,6 @@ Ext.define('App.view.ChangePasswordView', {
     title: "ChangePassword View",
     alias: "widget.ChangePasswordView",
     config: {
-    	scrollable: true,
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		        { cls: 'logo', docked: 'top', height: 48 },

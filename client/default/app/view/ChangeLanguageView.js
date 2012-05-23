@@ -3,7 +3,6 @@ Ext.define('App.view.ChangeLanguageView', {
     title: "ChangeLanguage View",
     alias: "widget.ChangeLanguageView",
     config: {
-    	scrollable: true,
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 				{

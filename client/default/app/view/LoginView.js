@@ -3,7 +3,6 @@ Ext.define('App.view.LoginView', {
     title: "Login View",
     alias: "widget.LoginView",
    config: {
-	        scrollable: true,
     		layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		   { cls: 'logo', docked: 'top', height: 48 },

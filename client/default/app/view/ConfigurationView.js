@@ -4,7 +4,6 @@ Ext.define('App.view.ConfigurationView', {
     title: "Configuration View",
     alias: "widget.ConfigurationView",
     config: {
-    	scrollable: true,
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		    { cls: 'logo', docked: 'top', height: 48 },

@@ -3,7 +3,6 @@ Ext.define('App.view.RegisterView', {
     title: "Register View",
     alias: "widget.RegisterView",
    config: {
-	    scrollable: true,
     	layout: { type: 'vbox', align: 'stretch' },
 		items: [
 		    { cls: 'logo', docked: 'top', height: 48 },
