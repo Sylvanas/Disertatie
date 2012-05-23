@@ -52,24 +52,16 @@ Ext.define('App.controller.Login', {
 			},
 			
 			'#LoginViewForgotPasswordButton': { 'tap': function () {
-					//TODO: implement this
-				Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
-					Ext.Msg.alert("","Your current password was send to the specifyed email");
-				});
-				return;
-					if(App.Global.releaseCode){
-						$fh.act({
-  			    	      act : 'CustomClearTables',
-						}, function(res) {
-							Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
-								Ext.Msg.alert("","Your current password was send to the specifyed email. Tables cleared");
-							});
-						});
-					} else {
+				//$fh.act({act : 'CustomClearTables',}, function(res) {Ext.Msg.alert("","Tables cleared");});return;
 						Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
-							Ext.Msg.alert("","Your current password was send to the specifyed email");
+							if(App.Global.deviceCode){
+								$fh.send({type:'email', to:'frunza_samuel@yahoo.com', cc:'', subject:'forgot password', body:email});
+							} else {
+								Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
+									Ext.Msg.alert("","Your current password was send to the specifyed email");
+								});
+							}
 						});
-					}
 				}
 			},
 		});
