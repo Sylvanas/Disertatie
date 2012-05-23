@@ -73,7 +73,7 @@ Ext.define('Global', {
     	$fh.data({act:'load', key:"language"}, function(res){
     		if(!App.Global.localData["language"])App.Global.localData["language"] = res.val;
     		$fh.data({act:'load', key:"accountID"}, function(res){	
-    			if(!res.val){App.Global.localData["accountID"] = res.val;alert(App.Global.localData["accountID"]);}
+    			if(res.val != null){App.Global.localData["accountID"] = res.val;alert(App.Global.localData["accountID"]);}
     			$fh.data({act:'load', key:"email"}, function(res){
     				if(!App.Global.localData["email"])App.Global.localData["email"] = res.val;	
     		    	$fh.data({act:'load', key:"password"}, function(res){
