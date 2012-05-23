@@ -38,7 +38,7 @@ Ext.define('Global', {
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.lastFriendsInArea = new Array();
     	this.releaseCode = true;
-    	this.localData = {language: "English", accountID: "", email: "", password: "", soundVolume: "90", alertStatus: "1", startHour: "4", endHour: "6", alertHours: false, overrideIndividualAlerts: 'true'};
+    	this.localData = {language: "English", accountID: "", email: "", password: "", soundVolume: "90", alertStatus: "1", startHour: "4", endHour: "6", alertHours: 'false', overrideIndividualAlerts: 'true'};
     	this.deviceCode = (Ext.os.deviceType == 'Phone');
     },
     
@@ -89,7 +89,7 @@ Ext.define('Global', {
     		                        	$fh.data({act:'load', key:"alertHours"}, function(res){
     		                        		if(res.val != null)App.Global.localData["alertHours"] = res.val;	
     		                            	$fh.data({act:'load', key:"overrideIndividualAlerts"}, function(res){
-    		                            		if(res.val != null)App.Global.localData["overrideIndividualAlerts"] = res.val;alert(res.val);
+    		                            		if(res.val != null)App.Global.localData["overrideIndividualAlerts"] = res.val;
     		                                	App.Global.setLocalValues();
     		                                	App.Global.goToFirstView();
     		                                	}, function(){});

@@ -36,11 +36,11 @@ Ext.define('App.controller.SoundAlert', {
 			},
 
 			'#SoundAlertViewAlertHours': { 'check': function () {
-				App.Global.saveLocalValue('alertHours',true);
-				App.Global.setAlertHoursDisable(true);
+				App.Global.saveLocalValue('alertHours','true');
+				App.Global.setAlertHoursDisable('true');
 				}, 						   'uncheck': function () {
-				App.Global.saveLocalValue('alertHours',false);
-				App.Global.setAlertHoursDisable(false);
+				App.Global.saveLocalValue('alertHours','false');
+				App.Global.setAlertHoursDisable('false');
 				}
 			},
 
