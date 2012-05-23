@@ -45,9 +45,9 @@ Ext.define('App.controller.SoundAlert', {
 			},
 
 			'#SoundAlertViewOverrideIndividualAlerts': { 'check': function () {
-				App.Global.saveLocalValue('overrideIndividualAlerts',true);
+				App.Global.saveLocalValue('overrideIndividualAlerts','true');
 			}, 						   'uncheck': function () {
-				App.Global.saveLocalValue('overrideIndividualAlerts',false);
+				App.Global.saveLocalValue('overrideIndividualAlerts','false');
 			}
 		},
 		});

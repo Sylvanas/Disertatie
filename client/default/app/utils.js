@@ -38,7 +38,7 @@ Ext.define('Global', {
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.lastFriendsInArea = new Array();
     	this.releaseCode = true;
-    	this.localData = {language: "English", accountID: "", email: "", password: "", soundVolume: "90", alertStatus: "1", startHour: "4", endHour: "6", alertHours: false, overrideIndividualAlerts: true};
+    	this.localData = {language: "English", accountID: "", email: "", password: "", soundVolume: "90", alertStatus: "1", startHour: "4", endHour: "6", alertHours: false, overrideIndividualAlerts: 'true'};
     	this.deviceCode = (Ext.os.deviceType == 'Phone');
     },
     
