@@ -113,7 +113,6 @@ Ext.define('Global', {
     },
 
     goToFirstView: function() {
-    	alert(App.Global.getLocalValue('accountID'));
     	if(App.Global.getLocalValue('accountID') == "null"){
     		App.mainView.setActiveItem(0);
     	}else{

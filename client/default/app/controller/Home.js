@@ -51,7 +51,6 @@ Ext.define('App.controller.Home', {
 				App.Global.saveLocalValue('email','null');
 				App.Global.saveLocalValue('password','null');
 				App.Global.changeView(App.view.LoginView.xtype);
-				alert(App.Global.getLocalValue('accountID'));
 				}
 			},
 		});
