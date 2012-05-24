@@ -49,6 +49,7 @@ Ext.define('Global', {
     getCurrentLocation: function() {
     	if(App.Global.deviceCode){
     		$fh.geo(function(res){
+    			alert('returning current location: '+res.lat + ' ' + res.log);
     			return new google.maps.LatLng(res.lat, res.log);
     		});
     	} else {
@@ -205,11 +206,12 @@ Ext.define('Global', {
 	
 	startSendingGeoData: function(){
 		setTimeout(function sendGeoData() {
-			if(App.Global.getLocalValue('accountID') != ''){
+			if(App.Global.getLocalValue('accountID') != "null"){
 				//Ext.Msg.alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');
 				if(App.Global.deviceCode){
+					alert('deviceCode');
 					$fh.geo(function(res){//for this to work, the "Use whireless networks" on device must be activated. also accept sending data to goolge
-						//Ext.Msg.alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>, alt='+res.alt+'<br/>, at='+res.when);
+						alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>, alt='+res.alt+'<br/>, at='+res.when);
 					    $fh.act({
 				    	      act : 'CloudSendGeoData',
 				    	      req : {
@@ -220,7 +222,7 @@ Ext.define('Global', {
 				    	      }
 				    	    }, function(res) {
     			    	    	if(res.message == 'ok'){
-    			    	    		Ext.Msg.alert('sended geo data', "sended geo data.");//the problem is here. not getting here
+    			    	    		alert('sended geo data', "sended geo data.");
     			    	    		App.Global.lastFriendsInArea = new Array();
     			    	    		for(var i=0;i<res.friends.length;i++){
     			    	    			App.Global.lastFriendsInArea.push(res.friends[i]['id']);
@@ -240,9 +242,9 @@ Ext.define('Global', {
     			    	    			}
     			    	    		}
     			    			}else if (res.message == 'fail') {
-    			    			      Ext.Msg.alert('Failed to send geo data', "Failed to send geo data.");
+    			    			      alert('Failed to send geo data', "Failed to send geo data.");
     			    			}else {
-    			    			      Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
+    			    			      alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
     			    			}
     			    		});
 					  });
