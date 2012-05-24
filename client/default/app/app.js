@@ -3,6 +3,7 @@ Ext.application({
 		name: 'App',  
 	
 		views : [
+		         'LoadingView',
 		         'LoginView',
 		         'RegisterView', 
 		         'HomeView',
@@ -58,6 +59,7 @@ Ext.application({
 			    fullscreen: true,
 			    layout: 'card',
 				items: [
+				    { xtype: 'LoadingView' },
 				    { xtype: 'LoginView' },
 				    { xtype: 'RegisterView' },
 	                { xtype: 'HomeView' },
