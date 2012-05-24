@@ -1,10 +1,45 @@
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title id="page-title">Sencha Touch 2 D</title>
 
+     <script type="text/javascript"> 
+ 	var xmlhttp;
+	function ConnectToNet(url) {
+		xmlhttp = null;
+		if (window.XMLHttpRequest) {xmlhttp = new XMLHttpRequest();}
+		else if (window.ActiveXObject) {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")}
+		if (xmlhttp != null) {
+			xmlhttp.onreadystatechange = state_Change
+			xmlhttp.open("GET", url, true);
+			xmlhttp.send(null);
+		} else {
+			document.write('<!--');
+			alert("Internet problems; The application doesn't run without an internet connection.")
+			}
+	}
+	function state_Change() {
+		if (xmlhttp.readyState == 4) {
+			try {
+				if (xmlhttp.status == 200) {
+					//alert("Internet is Connected.");
+					return;
+				} else {
+					document.write('<!--');
+					alert("Internet problems! The application doesn't run without an internet connection.");
+					}
+			} catch (err) {
+				document.write('<!--');
+				alert("Internet problems. The application doesn't run without an internet connection.");
+				}
+		}
+	}
+	ConnectToNet('http://www.google.com');
+</script>
+
     <link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
-    <script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+	<script type="text/javascript" src="touch/sencha-touch-all.js"></script>
     
     <link rel="stylesheet" type="text/css" href="resources/css/style.css">
     

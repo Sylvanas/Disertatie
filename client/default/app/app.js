@@ -1,25 +1,4 @@
-Ext.Ajax.request({
-				method : 'GET',
-				url : 'www.google.com',
-				success : function() {
-					startApplication();
-					//alert('success');
-				},
-				failure : function(err) {
-					//alert(err + '--' + err.status);
-					if(err.status == 0){
-					alert('The app cannot start without an internet connection.');
-					} else {
-						startApplication();
-					}
-				}
-			});
-
-function startApplication() {
-
-	//Ext.Loader.setConfig({ enabled: true });
-	
-	Ext.application({
+Ext.application({
 		//phoneStartupScreen: 'images/sencha_logo.png',
 		name: 'App',  
 	
@@ -118,5 +97,3 @@ function startApplication() {
 	    },
 
 	});
-
-}
