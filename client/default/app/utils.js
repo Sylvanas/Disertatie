@@ -38,7 +38,7 @@ Ext.define('Global', {
     	this.viewChanger = Ext.create('ViewChanger', {view: App.mainView});
     	this.lastFriendsInArea = new Array();
     	this.releaseCode = true;
-    	this.localData = {language: "English", accountID: "", email: "", password: "", soundVolume: "90", alertStatus: "1", startHour: "4", endHour: "6", alertHours: 'false', overrideIndividualAlerts: 'true'};
+    	this.localData = {language: "English", accountID: "null", email: "null", password: "null", soundVolume: "90", alertStatus: "1", startHour: "4", endHour: "6", alertHours: 'false', overrideIndividualAlerts: 'true'};
     	this.deviceCode = (Ext.os.deviceType == 'Phone');
     },
     
@@ -114,7 +114,7 @@ Ext.define('Global', {
 
     goToFirstView: function() {
     	alert(App.Global.getLocalValue('accountID'));
-    	if(App.Global.getLocalValue('accountID') == ""){
+    	if(App.Global.getLocalValue('accountID') == "null"){
     		App.mainView.setActiveItem(0);
     	}else{
     		App.mainView.setActiveItem(2);	
