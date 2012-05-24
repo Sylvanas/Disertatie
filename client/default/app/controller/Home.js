@@ -47,9 +47,9 @@ Ext.define('App.controller.Home', {
 			},
 
 			'#HomeViewLogoutButton': { 'tap': function () {
-				App.Global.saveLocalValue('accountID');
-				App.Global.saveLocalValue('email');
-				App.Global.saveLocalValue('password');
+				App.Global.saveLocalValue('accountID',"");
+				App.Global.saveLocalValue('email',"");
+				App.Global.saveLocalValue('password',"");
 				App.Global.changeView(App.view.LoginView.xtype);
 				}
 			},
