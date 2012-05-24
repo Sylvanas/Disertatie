@@ -1,5 +1,5 @@
 Ext.application({
-		//phoneStartupScreen: 'images/sencha_logo.png',
+		phoneStartupScreen: 'resources/img/loading.png',
 		name: 'App',  
 	
 		views : [
