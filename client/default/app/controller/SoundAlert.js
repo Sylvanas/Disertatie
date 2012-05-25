@@ -35,14 +35,14 @@ Ext.define('App.controller.SoundAlert', {
 				}
 			},
 
-			'#SoundAlertViewAlertHours': { 'check': function () {
+			/*'#SoundAlertViewAlertHours': { 'check': function () {
 				App.Global.saveLocalValue('alertHours','true');
 				App.Global.setAlertHoursDisable('true');
 				}, 						   'uncheck': function () {
 				App.Global.saveLocalValue('alertHours','false');
 				App.Global.setAlertHoursDisable('false');
 				}
-			},
+			},*/
 
 			'#SoundAlertViewOverrideIndividualAlerts': { 'check': function () {
 				App.Global.saveLocalValue('overrideIndividualAlerts','true');
