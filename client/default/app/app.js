@@ -86,7 +86,6 @@ Ext.application({
 	    		      act : 'CloudTestFunction',
 	    		    }, function(res) {
 	    		    	App.Global.loadStores();
-	    		    	App.Global.setLocalstoreValues();
 	    		    	App.Global.setAlertHoursDisable(App.Global.getLocalValue('alertHours'));
 	    				App.Global.startSendingGeoData();
 	    		    });
