@@ -24,11 +24,16 @@ Ext.define('App.controller.Login', {
 	    			    	      }
 	    			    	    }, function(res) {
 	    			    	    	if(res.message == 'ok'){
-	    			    	    		/*var localStoreRecord = Ext.getStore('LocalStore').getAt(0);
-		    			    	    	localStoreRecord.set('accountID', res.guid);
-		    			    	    	localStoreRecord.set('email', Ext.getCmp('LoginViewEmailField').getValue());
-		    			    	    	localStoreRecord.set('password', Ext.getCmp('LoginViewPassField').getValue());*/
 	    			    	    		App.Global.saveLocalValue("accountID", res.guid);
+	    			    	    		if(App.Global.deviceCode){
+		    			    	    		$fh.geo(function(res){
+		    									App.Global.currentLatitude = res.lat;
+		    									App.Global.currentongitude = res.lon;
+		    								  });
+	    			    	    		}else{
+	    			    	    			App.Global.currentLatitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+	    			    	    			App.Global.currentongitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+	    			    	        	}
 		    			    	    	App.Global.changeView(App.view.HomeView.xtype);
 	    			                  }else if (res.message == 'fail') {
 	    			                	  Ext.Msg.alert('Invalid login data', "The login data is invalid. Please retype your email and password.");
@@ -42,6 +47,8 @@ Ext.define('App.controller.Login', {
 	    	    		App.Global.saveLocalValue("accountID", "testAcc");
 	    	    		App.Global.saveLocalValue("email", "testEmail");
 	    	    		App.Global.saveLocalValue("password", "testPassword");
+	    	    		App.Global.currentLatitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+    	    			App.Global.currentongitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
 	    	    	}
 				}
 			},

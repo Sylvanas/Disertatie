@@ -9,6 +9,15 @@ Ext.define('App.controller.Home', {
     init: function() {
 		this.control({	
 			'#HomeViewShowOnMapButton': { 'tap': function () {
+					if(App.Global.deviceCode){
+	    	    		$fh.geo(function(res){
+							App.Global.currentLatitude = res.lat;
+							App.Global.currentongitude = res.lon;
+						  });
+		    		}else{
+		    			App.Global.currentLatitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+		    			App.Global.currentongitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+		        	}
 					Ext.getStore('SelectFriend').removeAll();
 					this.GetFriends(App.Global.getLocalValue('accountID'));
 				}

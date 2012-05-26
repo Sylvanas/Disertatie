@@ -40,6 +40,8 @@ Ext.define('Global', {
     	this.releaseCode = true;
     	this.localData = {language: "English", accountID: "null", email: "null", password: "null", soundVolume: "90", alertStatus: "1", startHour: "4", endHour: "6", alertHours: 'false', overrideIndividualAlerts: 'true'};
     	this.deviceCode = (Ext.os.deviceType == 'Phone');
+    	this.currentLatitude  = null;
+    	this.currentongitude = null;
     },
     
     changeView: function(target, durationAnimation) {
@@ -47,16 +49,7 @@ Ext.define('Global', {
     },
     
     getCurrentLocation: function() {
-    	if(App.Global.deviceCode){
-    		$fh.geo(function(res){
-    			//alert('returning current location: '+res.lat + ' ' + res.lon);
-    			return {lat: res.lat,lon: res.lon};
-    		});
-    	} else {
-    		var latitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
-			var longitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
-    		return new google.maps.LatLng(latitude, longitude);
-    	}
+    	return new google.maps.LatLng(App.Global.currentLatitude, App.Global.currentongitude);
     },
     
     saveLocalValue: function(key,value){
@@ -212,7 +205,9 @@ Ext.define('Global', {
 					//alert('deviceCode');
 					$fh.geo(function(res){//for this to work, the "Use whireless networks" on device must be activated. also accept sending data to goolge
 						//alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>, alt='+res.alt+'<br/>, at='+res.when);
-					    $fh.act({
+						App.Global.currentLatitude = res.lat;
+						App.Global.currentongitude = res.lon;
+						$fh.act({
 				    	      act : 'CloudSendGeoData',
 				    	      req : {
 				    	    	  accountID : App.Global.getLocalValue('accountID'),
