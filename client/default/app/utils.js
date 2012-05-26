@@ -49,8 +49,8 @@ Ext.define('Global', {
     getCurrentLocation: function() {
     	if(App.Global.deviceCode){
     		$fh.geo(function(res){
-    			alert('returning current location: '+res.lat + ' ' + res.lon);
-    			return new google.maps.LatLng(res.lat, res.lon);
+    			//alert('returning current location: '+res.lat + ' ' + res.lon);
+    			return {lat: res.lat,lon: res.lon};
     		});
     	} else {
     		var latitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;

@@ -97,7 +97,10 @@ Ext.define('App.controller.Map', {
     },
     
     setMapMarkers: function(mapStore){
-    	this.currentMarker = this.setMarker(App.Global.getCurrentLocation(), 'My location');
+    	var locationJson = App.Global.getCurrentLocation();
+    	var currentLocation = new google.maps.LatLng(locationJson['lat'], locationJson['lon']);
+    	alert(locationJson['lat'] + ' -- ' + locationJson['lon']);
+    	this.currentMarker = this.setMarker(currentLocation, 'My location');
     	if(mapStore.getCount()>0){
     		var record = mapStore.getAt(0);
     		var firstMarker = this.setMarker(new google.maps.LatLng(record.get('latitude'), record.get('longitude')), this.friendName+"'s current location", "http://maps.google.com/mapfiles/marker"+String.fromCharCode(65)+".png");
