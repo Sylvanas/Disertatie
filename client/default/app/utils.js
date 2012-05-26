@@ -49,8 +49,8 @@ Ext.define('Global', {
     getCurrentLocation: function() {
     	if(App.Global.deviceCode){
     		$fh.geo(function(res){
-    			alert('returning current location: '+res.lat + ' ' + res.log);
-    			return new google.maps.LatLng(res.lat, res.log);
+    			alert('returning current location: '+res.lat + ' ' + res.lon);
+    			return new google.maps.LatLng(res.lat, res.lon);
     		});
     	} else {
     		var latitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
@@ -209,9 +209,9 @@ Ext.define('Global', {
 			if(App.Global.getLocalValue('accountID') != "null"){
 				//Ext.Msg.alert(Ext.getStore('LocalStore').getAt(0).get('accountID')+ Ext.getStore('LocalStore').getAt(0).get('email')+'-send location to cloud');
 				if(App.Global.deviceCode){
-					alert('deviceCode');
+					//alert('deviceCode');
 					$fh.geo(function(res){//for this to work, the "Use whireless networks" on device must be activated. also accept sending data to goolge
-						alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>, alt='+res.alt+'<br/>, at='+res.when);
+						//alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>, alt='+res.alt+'<br/>, at='+res.when);
 					    $fh.act({
 				    	      act : 'CloudSendGeoData',
 				    	      req : {
