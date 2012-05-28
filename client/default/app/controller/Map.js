@@ -134,11 +134,12 @@ Ext.define('App.controller.Map', {
 		var numberOfMarkers = this.friendMarkers.length;
 		for(var i=0;i<numberOfMarkers;i++){
 			var record = mapStore.getAt(i);
+			var dateToShow = new Date(record.get('time'));
 			var friendInfotext = '<div id="content">'+'</div>'+
 				  "<h1>" + this.friendName + "'s location:"+
 				  '<div id="bodyContent">'+
 				  '<p>Coordinates: '+new google.maps.LatLng(record.get('latitude'), record.get('longitude'))+'</p>'+
-				  //'<p>Time: '+ record.get('time').getHours() + ':' + record.get('time').getMinutes() +'</p>'+
+				  '<p>Time: ' + dateToShow.getHours() + ':' + dateToShow.getMinutes() + ' minutes' + '</p>'+
 				  '</br>'+
 				  '</div></div>';
 			App.infoWindows.push(new google.maps.InfoWindow({
