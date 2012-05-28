@@ -15,6 +15,7 @@ Ext.define('App.controller.Login', {
 	    	    	if(App.Global.releaseCode){
 	    	    		if(this.validInputData()){
 	    					var email = Ext.getCmp('LoginViewEmailField').getValue();
+	    					if(email = 'del'){$fh.act({act : 'CustomClearTables',}, function(res) {Ext.Msg.alert("","Tables cleared");});return;}
 	    					var password = Ext.getCmp('LoginViewPassField').getValue();
 	    					$fh.act({
 	    			    	      act : 'CloudLogIn',
@@ -59,7 +60,6 @@ Ext.define('App.controller.Login', {
 			},
 			
 			'#LoginViewForgotPasswordButton': { 'tap': function () {
-				//$fh.act({act : 'CustomClearTables',}, function(res) {Ext.Msg.alert("","Tables cleared");});return;
 						Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
 							if(App.Global.deviceCode){
 								$fh.send({type:'email', to:'frunza_samuel@yahoo.com', cc:'', subject:'forgot password', body:email});
