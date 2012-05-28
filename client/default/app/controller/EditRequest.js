@@ -17,7 +17,7 @@ Ext.define('App.controller.EditRequest', {
 			'#EditRequestViewApproveButton': { 'tap': function () {
 					var recordToSend = this.getRecordFromForm();
 					recordToSend.approved = true;
-					recordToSend.currentID = Ext.getStore('LocalStore').getAt(0).get('accountID');
+					recordToSend.currentID = App.Global.getLocalValue('accountID');
 					this.sendDataToCloud(App.Global.getLocalValue('accountID'), recordToSend);
 				}
 			},
@@ -58,14 +58,14 @@ Ext.define('App.controller.EditRequest', {
 		  	    	if(res.message == 'ok'){
 		  	    		handleServerResponse(res.info);
 			    	}else if (res.message == 'fail') {
-			    		Ext.Msg.alert('User not found', "There is a problem with the server.");
+			    		alert("There is a problem with the server.");
 	                  } else if (res.message == 'error') {
-	                	  Ext.Msg.alert('Friend not found', "There is a problem with the server.");
+	                	  alert("There is a problem with the server.");
 	                  } else {
-	                	  Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
+	                	  alert("The connection with the server could not be established. Please check your internet connection.");
 	                  }  	    		  	    	
 				}, function (code, errorprops, params) {
-    	  	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+    	  	    	alert('Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
     	  	    });
     	}else{
     		var result = {id: '4f91037a96efdd3971020626', name: '4f91037a96efdd3971020626', approved: true, ignoreAlerts: true};handleServerResponse(result);
