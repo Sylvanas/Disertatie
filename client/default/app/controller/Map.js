@@ -11,10 +11,22 @@ Ext.define('App.controller.Map', {
     	App.MapController = this;//TODO: fix this workaround
 		this.control({
 			'#MapViewBackButton': { 'tap': function () {
-				App.Global.changeView(App.view.SelectFriendView.xtype);
-				this.clearMapObjects();
-				var button = Ext.getCmp('MapViewShowLastLocationsButton');
-				button.setText('Hide Last Locations');
+					this.clearMapObjects();
+					if(App.Global.deviceCode){
+	    	    		$fh.geo(function(res){
+							App.Global.currentLatitude = res.lat;
+							App.Global.currentongitude = res.lon;
+							App.Global.changeView(App.view.SelectFriendView.xtype);
+							var button = Ext.getCmp('MapViewShowLastLocationsButton');
+							button.setText('Hide Last Locations');
+						  });
+		    		}else{
+		    			App.Global.currentLatitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+		    			App.Global.currentongitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+		    			App.Global.changeView(App.view.SelectFriendView.xtype);
+		    			var button = Ext.getCmp('MapViewShowLastLocationsButton');
+						button.setText('Hide Last Locations');
+		        	}
 				}
 			},
 			

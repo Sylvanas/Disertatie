@@ -205,8 +205,6 @@ Ext.define('Global', {
 					//alert('deviceCode');
 					$fh.geo(function(res){//for this to work, the "Use whireless networks" on device must be activated. also accept sending data to goolge
 						//alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>, alt='+res.alt+'<br/>, at='+res.when);
-						App.Global.currentLatitude = res.lat;
-						App.Global.currentongitude = res.lon;
 						$fh.act({
 				    	      act : 'CloudSendGeoData',
 				    	      req : {

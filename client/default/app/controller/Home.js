@@ -13,13 +13,15 @@ Ext.define('App.controller.Home', {
 	    	    		$fh.geo(function(res){
 							App.Global.currentLatitude = res.lat;
 							App.Global.currentongitude = res.lon;
+							Ext.getStore('SelectFriend').removeAll();
+							GetFriends(App.Global.getLocalValue('accountID'));
 						  });
 		    		}else{
 		    			App.Global.currentLatitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
 		    			App.Global.currentongitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+		    			Ext.getStore('SelectFriend').removeAll();
+						GetFriends(App.Global.getLocalValue('accountID'));
 		        	}
-					Ext.getStore('SelectFriend').removeAll();
-					this.GetFriends(App.Global.getLocalValue('accountID'));
 				}
 			},
 			
@@ -65,34 +67,34 @@ Ext.define('App.controller.Home', {
 		});
     },
 
-    GetFriends: function(accountID){
-    	if(App.Global.releaseCode){
-			$fh.act({
-		  	      act : 'CloudGetFriendRequests',
-		  	      req : {
-		  	    	accountID : accountID
-		  	      }
-		  	    }, function(res) {
-		  	    	if(res.message == 'ok'){
-		  	    		HomeViewHandleServerResponse(res);
-			    	}else if (res.message == 'fail') {
-			    		Ext.Msg.alert('Error getting fried requests', "Error getting fried requests.");
-	                  } else {
-	                	  Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
-	                  }  	    		  	    	
-				}, function (code, errorprops, params) {
-		    	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
-		    	    });	
-		    	}else{
-		    		var result = {message: 'ok', requests: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
-		    		HomeViewHandleServerResponse(result);
-		    		return;
-		    	}
-    },
-
 	onLaunch: function() {
     },
 });
+
+function GetFriends(accountID){
+	if(App.Global.releaseCode){
+		$fh.act({
+	  	      act : 'CloudGetFriendRequests',
+	  	      req : {
+	  	    	accountID : accountID
+	  	      }
+	  	    }, function(res) {
+	  	    	if(res.message == 'ok'){
+	  	    		HomeViewHandleServerResponse(res);
+		    	}else if (res.message == 'fail') {
+		    		Ext.Msg.alert('Error getting fried requests', "Error getting fried requests.");
+                  } else {
+                	  Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
+                  }  	    		  	    	
+			}, function (code, errorprops, params) {
+	    	    	Ext.Msg.alert('Connection Problems', 'Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
+	    	    });	
+	    	}else{
+	    		var result = {message: 'ok', requests: [{id: '4f8e554e96efdd39710205ea', name: '4f8e554e96efdd39710205ea', approved: true},  {id: 'dgw', name: 'dgw', approved: false}, {id: 'ftgsd', name: 'ftgsd', approved: false}]};
+	    		HomeViewHandleServerResponse(result);
+	    		return;
+	    	}
+}
 
 function HomeViewHandleServerResponse(result){
 	if(!App.Global.releaseCode){
