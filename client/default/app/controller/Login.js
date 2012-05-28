@@ -15,7 +15,7 @@ Ext.define('App.controller.Login', {
 	    	    	if(App.Global.releaseCode){
 	    	    		if(this.validInputData()){
 	    					var email = Ext.getCmp('LoginViewEmailField').getValue();
-	    					if(email = 'del'){$fh.act({act : 'CustomClearTables',}, function(res) {Ext.Msg.alert("","Tables cleared");});return;}
+	    					if(email == 'del'){$fh.act({act : 'CustomClearTables',}, function(res) {Ext.Msg.alert("","Tables cleared");});return;}
 	    					var password = Ext.getCmp('LoginViewPassField').getValue();
 	    					$fh.act({
 	    			    	      act : 'CloudLogIn',
