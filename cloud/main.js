@@ -328,8 +328,7 @@ function actualSendGeoData(){
 			var lastFriendLocation = currentFriend.fields.lastLocations[currentFriend.fields.lastLocations.length-2];
 			if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 1 && locationToAdd.time - friendLocation.time < 60*1000 
 				&& KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) > 1 ){
-				//also add the ignore field
-				response.push( { id: currentFriend.guid, ignoreAlerts: false } );
+				response.push( { id: currentFriend.guid, ignoreAlerts: userToUpdate.fields.personsList[i]['ignoreAlerts'] } );
 			}  
 		} 
 	}
