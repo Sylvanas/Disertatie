@@ -215,7 +215,7 @@ Ext.define('Global', {
 				    	      }
 				    	    }, function(res) {
     			    	    	if(res.message == 'ok'){
-    			    	    		alert('sended geo data', "sended geo data.");
+    			    	    		alert("sended geo data." + 'lon='+res.lon + ' ' + 'lat=' + res.lat);
     			    	    		App.Global.lastFriendsInArea = new Array();
     			    	    		for(var i=0;i<res.friends.length;i++){
     			    	    			App.Global.lastFriendsInArea.push(res.friends[i]['id']);
