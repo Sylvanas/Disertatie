@@ -235,8 +235,7 @@ Ext.define('Global', {
     			    	    		//if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
     			    	    		if(res.friends.length>0){	
     			    	    			if(App.Global.ShouldAlertDueToIgnoreHours()){
-    			    	    			//alert('before notify');
-    			    	    				alert('Friends near you');
+    			    	    				//alert('Friends near you');
     			    	    				$fh.notify({
         			    				        type: 'vibrate'
         			    				      }, function () {}, function (msg) {});
@@ -282,7 +281,7 @@ Ext.define('Global', {
 			    	    		if(res.friends.length>0){
 			    	    			if(App.Global.ShouldAlertDueToIgnoreHours()){
 			    	    			//alert('before notify');
-			    	    				alert('Friends near you');
+			    	    				//alert('Friends near you');
 			    	    			}
 			    	    		}
 			    			}else if (res.message == 'fail') {
