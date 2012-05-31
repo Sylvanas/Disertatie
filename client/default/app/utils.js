@@ -204,13 +204,15 @@ Ext.define('Global', {
 				if(App.Global.deviceCode){
 					//alert('deviceCode');
 					$fh.geo(function(res){//for this to work, the "Use whireless networks" on device must be activated. also accept sending data to goolge
-						alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>');
+						//alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>');
 						$fh.act({
 				    	      act : 'CloudSendGeoData',
 				    	      req : {
 				    	    	  accountID : App.Global.getLocalValue('accountID'),
-				    	    	  lat : res.lat,
-				    	    	  lon : res.lon,
+				    	    	  lat : Math.round((res.lat + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000,
+				    	    	  lon : Math.round((res.lon - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000,
+				    	    	  //lat : res.lat,
+				    	    	  //lon : res.lon,
 				    	    	  when : Date.parse(new Date()),
 				    	      }
 				    	    }, function(res) {
