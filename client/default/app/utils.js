@@ -232,8 +232,9 @@ Ext.define('Global', {
     			    	    				break;
     			    	    			}
     			    	    		}
-    			    	    		if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
-    			    	    		//if(true){
+    			    	    		//if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
+    			    	    		if(res.friends.length>0 && aFriendAlertActive ){	
+    			    	    			//if(true){
     			    	    			if(ShouldAlertDueToIgnoreHours()){
     			    	    			//alert('before notify');
     			    	    			//if(true){
@@ -312,6 +313,7 @@ Ext.define('Global', {
 	},
 	
 	ShouldAlertDueToIgnoreHours: function(){
+		return true;
 		if(App.Global.getLocalValue('alertHours')){ return true; }
 		var currentDate = new Date();
 		var currentHourCount = currentDate.getHours();

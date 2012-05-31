@@ -30,21 +30,6 @@ Ext.define('App.view.LoginView', {
     			style : 'margin: 10px',
     		},
     		{
-                xtype: 'fieldset',
-                title: 'Select',
-                items: [
-                    {
-                        xtype: 'selectfield',
-                        label: 'Choose one',
-                        options: [
-                            {text: 'First Option',  value: 'first'},
-                            {text: 'Second Option', value: 'second'},
-                            {text: 'Third Option',  value: 'third'}
-                        ]
-                    }
-                ]
-            },
-    		{
     			xtype : 'button',
     			text: 'Register',
     			id: 'LoginViewRegisterButton',
