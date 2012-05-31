@@ -233,8 +233,7 @@ Ext.define('Global', {
     			    	    			}
     			    	    		}
     			    	    		//if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
-    			    	    		//if(res.friends.length>0 && aFriendAlertActive ){	
-    			    	    		if(true){
+    			    	    		if(res.friends.length>0){	
     			    	    			if(ShouldAlertDueToIgnoreHours()){
     			    	    			//alert('before notify');
     			    	    				alert('Friends near you');
