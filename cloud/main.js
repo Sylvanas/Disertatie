@@ -341,9 +341,9 @@ function actualSendGeoData(){
 						addToResponse = true;
 						}
 			if(addToResponse){
-				response.push( { id: currentFriend.guid, ignoreAlerts: userToUpdate.fields.personsList[i]['ignoreAlerts'] },
-						distance:KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude),
-						timeDifference: locationToAdd.time - friendLocation.time);
+				response.push( { id: currentFriend.guid, ignoreAlerts: userToUpdate.fields.personsList[i]['ignoreAlerts'] ,
+						distance: KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude),
+						timeDifference: locationToAdd.time - friendLocation.time});
 			}
 		} 
 	}
