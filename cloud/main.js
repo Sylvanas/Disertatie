@@ -329,8 +329,16 @@ function actualSendGeoData(){
 			if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 1 && locationToAdd.time - friendLocation.time < 60*1000 
 				&& KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) > 1 ){
 				response.push( { id: currentFriend.guid, ignoreAlerts: userToUpdate.fields.personsList[i]['ignoreAlerts'] } );
-			}
-			response.push( { id: currentFriend.guid, ignoreAlerts: userToUpdate.fields.personsList[i]['ignoreAlerts'], distance: KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) } );
+			} //test data from those elses
+			else 
+				if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 0.01 && locationToAdd.time - friendLocation.time < 60*1000 
+					&& KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) > 0.01 ){
+					response.push( { id: currentFriend.guid, ignoreAlerts: userToUpdate.fields.personsList[i]['ignoreAlerts'] } );
+				} else 
+					if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 2 && locationToAdd.time - friendLocation.time < 60*1000 
+							&& KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) > 2 ){
+							response.push( { id: currentFriend.guid, ignoreAlerts: userToUpdate.fields.personsList[i]['ignoreAlerts'] } );
+						}
 		} 
 	}
 	return {message: "ok", friends: response};
