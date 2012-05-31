@@ -116,14 +116,14 @@ Ext.define('App.controller.Map', {
     		var firstMarker = this.setMarker(new google.maps.LatLng(record.get('latitude'), record.get('longitude')), this.friendName+"'s current location", "http://maps.google.com/mapfiles/marker"+String.fromCharCode(65)+".png");
     		this.friendMarkers.push(firstMarker);
     	}
-    	var alertText = "";
+    	//var alertText = "";
     	for(var i=1;i<mapStore.getCount();i++){
     		var record = mapStore.getAt(i);
-    		alertText = alertText + i + 'lat: ' + record.get('latitude') + 'lon: ' +  record.get('longitude');
+    		//alertText = alertText + i + 'lat: ' + record.get('latitude') + 'lon: ' +  record.get('longitude');
     		var marker = this.setMarker(new google.maps.LatLng(record.get('latitude'), record.get('longitude')), 'Location '+i, "http://maps.google.com/mapfiles/marker"+String.fromCharCode(65+i)+".png");
     		this.friendMarkers.push(marker);
     	}
-    	alert(alertText);
+    	//alert(alertText);
     	this.setMarkerInfotexts(mapStore);
     },
     
