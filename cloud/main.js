@@ -326,19 +326,25 @@ function actualSendGeoData(){
 		if(userToUpdate.fields.lastLocations.length > 1){
 			var friendLocation = currentFriend.fields.lastLocations[currentFriend.fields.lastLocations.length-1];
 			var lastFriendLocation = currentFriend.fields.lastLocations[currentFriend.fields.lastLocations.length-2];
+			var addToResponse = true;
 			if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 1 && locationToAdd.time - friendLocation.time < 60*1000 
 				&& KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) > 1 ){
-				response.push( { id: currentFriend.guid, ignoreAlerts: userToUpdate.fields.personsList[i]['ignoreAlerts'] } );
+				addToResponse = true;
 			} //test data from those elses
 			else 
 				if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 0.01 && locationToAdd.time - friendLocation.time < 60*1000 
 					&& KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) > 0.01 ){
-					response.push( { id: currentFriend.guid, ignoreAlerts: userToUpdate.fields.personsList[i]['ignoreAlerts'] } );
+					addToResponse = true;
 				} else 
 					if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 2 && locationToAdd.time - friendLocation.time < 60*1000 
 							&& KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) > 2 ){
-							response.push( { id: currentFriend.guid, ignoreAlerts: userToUpdate.fields.personsList[i]['ignoreAlerts'] } );
+						addToResponse = true;
 						}
+			if(addToResponse){
+				response.push( { id: currentFriend.guid, ignoreAlerts: userToUpdate.fields.personsList[i]['ignoreAlerts'] },
+						distance:KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude),
+						timeDifference: locationToAdd.time - friendLocation.time);
+			}
 		} 
 	}
 	return {message: "ok", friends: response};

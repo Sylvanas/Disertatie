@@ -233,11 +233,11 @@ Ext.define('Global', {
     			    	    			}
     			    	    		}
     			    	    		//if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
-    			    	    		if(res.friends.length>0 && aFriendAlertActive ){	
-    			    	    			//if(true){
-    			    	    			if(ShouldAlertDueToIgnoreHours()){
+    			    	    		//if(res.friends.length>0 && aFriendAlertActive ){	
+    			    	    		if(true){
+    			    	    			//if(ShouldAlertDueToIgnoreHours()){
     			    	    			//alert('before notify');
-    			    	    			//if(true){
+    			    	    			if(true){
     			    	    				alert('Friends near you');
     			    	    				$fh.notify({
         			    				        type: 'vibrate'
@@ -268,6 +268,7 @@ Ext.define('Global', {
 			    	    }, function(res) {
 			    	    	if(res.message == 'ok'){
 			    	    		//Ext.Msg.alert('sended geo data', "sended geo data from test code.");
+			    	    		try{alert(res.friends[0].distance + '--' + res.friends[0].timeDifference);}catch(err){}
 			    	    		App.Global.lastFriendsInArea = new Array();
 			    	    		for(var i=0;i<res.friends.length;i++){
 			    	    			App.Global.lastFriendsInArea.push(res.friends[i]['id']);
@@ -279,11 +280,11 @@ Ext.define('Global', {
 			    	    				break;
 			    	    			}
 			    	    		}
-			    	    		if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
-			    	    		//if(true){
-			    	    			if(ShouldAlertDueToIgnoreHours()){
+			    	    		//if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
+			    	    		if(true){
+			    	    			//if(ShouldAlertDueToIgnoreHours()){
 			    	    			//alert('before notify');
-			    	    			//if(true){
+			    	    			if(true){
 			    	    				alert('Friends near you');
 			    	    			}
 			    	    		}
