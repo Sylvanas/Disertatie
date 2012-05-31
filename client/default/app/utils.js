@@ -204,7 +204,7 @@ Ext.define('Global', {
 				if(App.Global.deviceCode){
 					//alert('deviceCode');
 					$fh.geo(function(res){//for this to work, the "Use whireless networks" on device must be activated. also accept sending data to goolge
-						//alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>, alt='+res.alt+'<br/>, at='+res.when);
+						alert( 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>');
 						$fh.act({
 				    	      act : 'CloudSendGeoData',
 				    	      req : {
@@ -215,7 +215,7 @@ Ext.define('Global', {
 				    	      }
 				    	    }, function(res) {
     			    	    	if(res.message == 'ok'){
-    			    	    		alert("sended geo data." + 'lon='+res.lon + ' ' + 'lat=' + res.lat);
+    			    	    		//alert("sended geo data.");
     			    	    		App.Global.lastFriendsInArea = new Array();
     			    	    		for(var i=0;i<res.friends.length;i++){
     			    	    			App.Global.lastFriendsInArea.push(res.friends[i]['id']);

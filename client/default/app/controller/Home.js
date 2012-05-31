@@ -11,6 +11,7 @@ Ext.define('App.controller.Home', {
 			'#HomeViewShowOnMapButton': { 'tap': function () {
 					if(App.Global.deviceCode){
 	    	    		$fh.geo(function(res){
+	    	    			alert( 'Current location:' + 'lon='+res.lon+'<br/>, lat='+res.lat+'<br/>');
 							App.Global.currentLatitude = res.lat;
 							App.Global.currentongitude = res.lon;
 							Ext.getStore('SelectFriend').removeAll();
