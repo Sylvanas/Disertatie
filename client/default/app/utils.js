@@ -220,7 +220,7 @@ Ext.define('Global', {
 				    	    }, function(res) {
     			    	    	if(res.message == 'ok'){
     			    	    		//alert("sended geo data.");
-    			    	    		try{alert(res.friends[0].distance);}catch(err){}
+    			    	    		//try{alert(res.friends[0].distance);}catch(err){}
     			    	    		App.Global.lastFriendsInArea = new Array();
     			    	    		for(var i=0;i<res.friends.length;i++){
     			    	    			App.Global.lastFriendsInArea.push(res.friends[i]['id']);
@@ -233,7 +233,10 @@ Ext.define('Global', {
     			    	    			}
     			    	    		}
     			    	    		if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
-    			    	    			if(ShouldAlertDueToIgnoreHours()){
+    			    	    			//if(ShouldAlertDueToIgnoreHours()){
+    			    	    			alert('before notify');
+    			    	    			if(true){
+    			    	    				alert('Friends near you');
     			    	    				$fh.notify({
         			    				        type: 'vibrate'
         			    				      }, function () {}, function (msg) {});
@@ -275,14 +278,16 @@ Ext.define('Global', {
 			    	    			}
 			    	    		}
 			    	    		if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
-			    	    			if(ShouldAlertDueToIgnoreHours()){
-			    	    				Ext.Msg.alert('Friends near you', "Friends near you");
+			    	    			//if(ShouldAlertDueToIgnoreHours()){
+			    	    			alert('before notify');
+			    	    			if(true){
+			    	    				alert('Friends near you');
 			    	    			}
 			    	    		}
 			    			}else if (res.message == 'fail') {
-			    			      Ext.Msg.alert('Failed to send geo data', "Failed to send geo data.");
+			    			      alert('Failed to send geo data');
 			    			} else {
-			    			      Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
+			    				alert("The connection with the server could not be established. Please check your internet connection.");
 			    			}
 			    		});
 				}
