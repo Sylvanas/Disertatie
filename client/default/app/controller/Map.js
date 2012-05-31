@@ -22,8 +22,8 @@ Ext.define('App.controller.Map', {
 							button.setText('Hide Last Locations');
 						  });
 		    		}else{
-		    			App.Global.currentLatitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
-		    			App.Global.currentongitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+		    			App.Global.currentLatitude = Math.round((App.Global.testLatLocation + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+		    			App.Global.currentongitude = Math.round((App.Global.testLonLocation - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
 		    			App.Global.changeView(App.view.SelectFriendView.xtype);
 		    			var button = Ext.getCmp('MapViewShowLastLocationsButton');
 						button.setText('Hide Last Locations');

@@ -42,6 +42,8 @@ Ext.define('Global', {
     	this.deviceCode = (Ext.os.deviceType == 'Phone');
     	this.currentLatitude  = null;
     	this.currentongitude = null;
+    	this.testLatLocation = 45.7465763;
+    	this.testLonLocation = 21.2398943;
     },
     
     changeView: function(target, durationAnimation) {
@@ -245,8 +247,8 @@ Ext.define('Global', {
 					  });
 				}
 				else if(App.Global.releaseCode){
-					var latitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
-					var longitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+					var latitude = Math.round((App.Global.testLatLocation + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+					var longitude = Math.round((App.Global.testLonLocation - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
 					var time = Date.parse(new Date());
 					//Ext.Msg.alert('sending location data', "send:" + latitude + longitude);
 					$fh.act({

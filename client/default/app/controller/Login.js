@@ -32,8 +32,8 @@ Ext.define('App.controller.Login', {
 		    									App.Global.currentongitude = res.lon;
 		    								  });
 	    			    	    		}else{
-	    			    	    			App.Global.currentLatitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
-	    			    	    			App.Global.currentongitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+	    			    	    			App.Global.currentLatitude = Math.round((App.Global.testLatLocation + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+	    			    	    			App.Global.currentongitude = Math.round((App.Global.testLonLocation - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
 	    			    	        	}
 		    			    	    	App.Global.changeView(App.view.HomeView.xtype);
 	    			                  }else if (res.message == 'fail') {
@@ -48,8 +48,8 @@ Ext.define('App.controller.Login', {
 	    	    		App.Global.saveLocalValue("accountID", "testAcc");
 	    	    		App.Global.saveLocalValue("email", "testEmail");
 	    	    		App.Global.saveLocalValue("password", "testPassword");
-	    	    		App.Global.currentLatitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
-    	    			App.Global.currentongitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+	    	    		App.Global.currentLatitude = Math.round((App.Global.testLatLocation + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+    	    			App.Global.currentongitude = Math.round((App.Global.testLonLocation - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
 	    	    	}
 				}
 			},

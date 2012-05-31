@@ -18,8 +18,8 @@ Ext.define('App.controller.Home', {
 							GetFriends(App.Global.getLocalValue('accountID'));
 						  });
 		    		}else{
-		    			App.Global.currentLatitude = Math.round((53.340342 + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
-		    			App.Global.currentongitude = Math.round((-6.24312 - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+		    			App.Global.currentLatitude = Math.round((App.Global.testLatLocation + App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
+		    			App.Global.currentongitude = Math.round((App.Global.testLonLocation - App.Global.GenerateRandomNumberForMaps()) * 10000000)/10000000;
 		    			Ext.getStore('SelectFriend').removeAll();
 						GetFriends(App.Global.getLocalValue('accountID'));
 		        	}
@@ -37,23 +37,6 @@ Ext.define('App.controller.Home', {
 			},
 			
 			'#HomeViewConfigurationButton': { 'tap': function () {
-				/*$fh.act({
-      			    act : 'CloudSendGeoData',
-	    			    	      req : {
-	    			    	    accountID : Ext.getStore('LocalStore').getAt(0).get('accountID'),
-  			    	    	  lat : '53.340352',
-				    	    	  lon : '-6.24314',	    	  
-				    	    	  when : new Date(),
-	    			    	      }
-	    			    	    }, function(res) {
-	    			    	    	if(res.message == 'ok'){
-	    			    	    		Ext.Msg.alert('ok', "ok.");
-	    			            }else if (res.message == 'fail') {
-	    			                Ext.Msg.alert('Invalid login data', "The login data is invalid. Please retype your email and password.");
-	    			            } else {
-	    			                Ext.Msg.alert('Connection problem', "The connection with the server could not be established. Please check your internet connection.");
-	    			            }
-	    						});*/
 				App.Global.changeView(App.view.ConfigurationView.xtype);
 				}
 			},
