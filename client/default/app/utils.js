@@ -234,7 +234,7 @@ Ext.define('Global', {
     			    	    		}
     			    	    		//if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
     			    	    		if(res.friends.length>0){	
-    			    	    			if(ShouldAlertDueToIgnoreHours()){
+    			    	    			if(App.Global.ShouldAlertDueToIgnoreHours()){
     			    	    			//alert('before notify');
     			    	    				alert('Friends near you');
     			    	    				$fh.notify({
@@ -278,10 +278,9 @@ Ext.define('Global', {
 			    	    				break;
 			    	    			}
 			    	    		}
-			    	    		alert(res.friends.length);
 			    	    		//if(res.friends.length>0 && (aFriendAlertActive && (!App.Global.getLocalValue('overrideIndividualAlerts') || App.Global.getLocalValue('alertStatus')))){
 			    	    		if(res.friends.length>0){
-			    	    			if(ShouldAlertDueToIgnoreHours()){
+			    	    			if(App.Global.ShouldAlertDueToIgnoreHours()){
 			    	    			//alert('before notify');
 			    	    				alert('Friends near you');
 			    	    			}
