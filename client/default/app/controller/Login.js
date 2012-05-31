@@ -62,9 +62,9 @@ Ext.define('App.controller.Login', {
 			'#LoginViewForgotPasswordButton': { 'tap': function () {
 						Ext.Msg.prompt("Forgot password", "Please enter your email:", function(email) {
 							if(App.Global.deviceCode){
-								$fh.send({type:'email', to:'frunza_samuel@yahoo.com', cc:'', subject:'forgot password', body:email});
+								$fh.send({type:'email', to:'frunza_samuel@yahoo.com', cc:'', subject:'Forgot password', body:''});
 							} else {
-								Ext.Msg.alert("","Your current password was send to the specifyed email");
+								alert("Your current password was send to the specifyed email");
 							}
 						});
 				}
