@@ -326,7 +326,7 @@ function actualSendGeoData(){
 		if(userToUpdate.fields.lastLocations.length > 1){
 			var friendLocation = currentFriend.fields.lastLocations[currentFriend.fields.lastLocations.length-1];
 			var lastFriendLocation = currentFriend.fields.lastLocations[currentFriend.fields.lastLocations.length-2];
-			var addToResponse = true;
+			var addToResponse = false;
 			if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 1 && locationToAdd.time - friendLocation.time < 60*1000 
 				&& KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) > 1 ){
 				addToResponse = true;
