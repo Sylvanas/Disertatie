@@ -44,6 +44,7 @@ Ext.define('App.view.EditRequestView', {
 			}, {
 				xtype : 'checkboxfield',
 				id : 'EditRequestViewApprovedField',
+				disabled: 'true',
 				name : 'approved',
 				label : 'Approved:',
 				labelWidth : '50%',

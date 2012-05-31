@@ -68,7 +68,7 @@ Ext.define('App.controller.EditRequest', {
     	  	    	alert('Server problems. Please verify your internet connection, or try again later.', Ext.emptyFn);
     	  	    });
     	}else{
-    		var result = {id: '4f91037a96efdd3971020626', name: '4f91037a96efdd3971020626', approved: true, ignoreAlerts: true};handleServerResponse(result);
+    		var result = {id: '4f91037a96efdd3971020626', name: '4f91037a96efdd3971020626', approved: 'true', ignoreAlerts: 'false'};handleServerResponse(result);
         	return;
     	}
     },
@@ -118,8 +118,7 @@ function handleServerResponse(result){
 function setFormPanel(result){
 	Ext.getCmp('EditRequestViewId').setValue(result.id);
 	Ext.getCmp('EditRequestViewName').setValue(result.name);
-	Ext.getCmp('EditRequestViewApprovedField').setValue(result.approved);
-	Ext.getCmp('EditRequestViewIgnoreAlerts').setValue(result.ignoreAlerts);
-	Ext.getCmp('EditRequestViewApprovedField').setDisabled(result.approved);
+	Ext.getCmp('EditRequestViewApprovedField').setChecked(result.approved);
+	Ext.getCmp('EditRequestViewIgnoreAlerts').setChecked(result.ignoreAlerts);
 	Ext.getCmp('EditRequestViewApproveButton').setDisabled(result.approved);
 }
