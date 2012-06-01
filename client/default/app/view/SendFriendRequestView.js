@@ -21,6 +21,7 @@ Ext.define('App.view.SendFriendRequestView', {
 				{
 					xtype: 'textfield',
 					id: 'SendFriendRequestViewSendRequestField',
+					cls: 'inputWithBorders',
 	    			height: 30,
 	    			style : 'margin: 10px; height: 30px;',
 	    			placeHolder : 'Friend ID'

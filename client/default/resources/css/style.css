@@ -25,12 +25,14 @@
 }
 
 .x-form-label{
-	border-width:1px;
-	border-style:solid;
 	border-color: #2590DC;
 }
 
 .x-field-input{
+	border-color: #2590DC;
+}
+
+.inputWithBorders{
 	border-width:1px;
 	border-style:solid;
 	border-color: #2590DC;
