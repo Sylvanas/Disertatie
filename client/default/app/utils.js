@@ -101,11 +101,11 @@ Ext.define('Global', {
     },
 
     setLocalValues: function() {
-    	Ext.getCmp('SoundAlertViewSetAlertTogglefield').setValue(App.Global.getLocalValue("alertStatus"));
+    	/*Ext.getCmp('SoundAlertViewSetAlertTogglefield').setValue(App.Global.getLocalValue("alertStatus"));
     	Ext.getCmp('SoundAlertViewSlider').setValue(App.Global.getLocalValue("soundVolume"));
     	Ext.getCmp('SoundAlertViewAlertHours').setChecked(App.Global.getLocalValue("alertHours"));
     	Ext.getCmp('SoundAlertViewOverrideIndividualAlerts').setChecked(App.Global.getLocalValue("overrideIndividualAlerts"));
-    	Ext.getCmp('ChangeLanguageViewSelectField').setValue(App.Global.getLocalValue("language"));
+    	Ext.getCmp('ChangeLanguageViewSelectField').setValue(App.Global.getLocalValue("language"));*/
     },
 
     goToFirstView: function() {
