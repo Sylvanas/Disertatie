@@ -35,7 +35,6 @@ Ext.application({
 		              ],
 		models: [
 	             'EditRequest',
-	             'HourList',
 	             'Languages',
 	             'Map',
 	             'Requests',
@@ -43,8 +42,6 @@ Ext.application({
 	             ],
 		stores : [
 		             'EditRequest',
-		             'HourListEnd',
-		             'HourListStart',
 		             'Languages',
 		             'Map',
 		             'Requests',
@@ -86,13 +83,11 @@ Ext.application({
 	    		      act : 'CloudTestFunction',
 	    		    }, function(res) {
 	    		    	App.Global.loadStores();
-	    		    	//App.Global.setAlertHoursDisable(App.Global.getLocalValue('alertHours'));
 	    				App.Global.startSendingGeoData();
 	    		    });
 	    	}catch(err){
 	    		App.Global.releaseCode = false;
 	    		App.Global.setLocalValues();
-	    		App.Global.setAlertHoursDisable(App.Global.getLocalValue('alertHours'));
 	    		App.Global.goToFirstView();
 	    	}
 	    },

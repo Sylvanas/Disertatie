@@ -7,9 +7,7 @@ Ext.define('App.controller.Configuration', {
     },
     init: function() {
 		this.control({
-			'#ConfigurationViewManageSoundAlertButton': { 'tap': function () {				
-				App.Global.refreshHourLists();
-				App.Global.fireSoundAlertSelectfieldEvent = true;
+			'#ConfigurationViewManageSoundAlertButton': { 'tap': function () {
 				App.Global.changeView(App.view.SoundAlertView.xtype);
 				}
 			},

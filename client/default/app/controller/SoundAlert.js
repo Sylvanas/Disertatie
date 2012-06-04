@@ -14,42 +14,38 @@ Ext.define('App.controller.SoundAlert', {
 				}
 			},
 			
-			
-			'#SoundAlertViewSetAlertTogglefield': { 'change': function (me, Slider, thumb, newValue, oldValue, eOpts) {
-				App.Global.saveLocalValue('alertStatus',newValue);
+			'#SoundAlertViewSetAlertCheckboxfield': { 'check': function () {
+					App.Global.saveLocalValue('alertStatus','true');
+				}, 						   'uncheck': function () {
+					App.Global.saveLocalValue('alertStatus','false');
 				}
 			},
 
-			'#SoundAlertViewSelectfieldStart': { 'change': function (selectField, newValue, oldValue) {
-				this.changeHourLists(oldValue, newValue);
+			'#SoundAlertViewSpinnerfieldStart': { 'spin': function (spinner, value, direction) {
+					App.Global.saveLocalValue('startHour',value.toString());
 				}
 			},
 
-			'#SoundAlertViewSelectfieldEnd': { 'change': function (selectField, newValue, oldValue) {
-				this.changeHourLists(oldValue, newValue);
+			'#SoundAlertViewSpinnerfieldEnd': { 'spin': function (spinner, value, direction) {
+					App.Global.saveLocalValue('endHour',value.toString());
 				}
 			},
 
-			'#SoundAlertViewSlider': { 'change': function (control, thumb, newValue) {
-				App.Global.saveLocalValue('soundVolume',newValue);
-				}
-			},
-
-			/*'#SoundAlertViewAlertHours': { 'check': function () {
+			'#SoundAlertViewAlertHours': { 'check': function () {
 				App.Global.saveLocalValue('alertHours','true');
 				App.Global.setAlertHoursDisable('true');
 				}, 						   'uncheck': function () {
 				App.Global.saveLocalValue('alertHours','false');
 				App.Global.setAlertHoursDisable('false');
 				}
-			},*/
+			},
 
 			'#SoundAlertViewOverrideIndividualAlerts': { 'check': function () {
-				App.Global.saveLocalValue('overrideIndividualAlerts','true');
-			}, 						   'uncheck': function () {
-				App.Global.saveLocalValue('overrideIndividualAlerts','false');
-			}
-		},
+					App.Global.saveLocalValue('overrideIndividualAlerts','true');
+				}, 						   'uncheck': function () {
+					App.Global.saveLocalValue('overrideIndividualAlerts','false');
+				}
+			},
 		});
     },
     

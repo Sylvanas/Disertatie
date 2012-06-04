@@ -27,7 +27,7 @@ Ext.define('App.view.SoundAlertView', {
 					},
 					items : [ {
 						xtype : 'checkboxfield',
-						id : 'SoundAlertViewSetAlertTogglefield',
+						id : 'SoundAlertViewSetAlertCheckboxfield',
 						label : 'Set vibrate:',
 						checked: true,
 						labelWidth : '70%',
@@ -37,7 +37,7 @@ Ext.define('App.view.SoundAlertView', {
 						labelWidth : '100%',
 					}, {
 						xtype : 'spinnerfield',
-						id : 'SoundAlertViewSelectfieldStart',
+						id : 'SoundAlertViewSpinnerfieldStart',
 						minValue: 1,
 						maxValue: 24,
 						increment: 1,
@@ -49,7 +49,7 @@ Ext.define('App.view.SoundAlertView', {
 						labelWidth : '100%',
 					}, {
 						xtype : 'spinnerfield',
-						id : 'SoundAlertViewSelectfieldEnd',
+						id : 'SoundAlertViewSpinnerfieldEnd',
 						minValue: 1,
 						maxValue: 24,
 						increment: 1,

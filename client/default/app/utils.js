@@ -101,11 +101,13 @@ Ext.define('Global', {
     },
 
     setLocalValues: function() {
-    	/*Ext.getCmp('SoundAlertViewSetAlertTogglefield').setValue(App.Global.getLocalValue("alertStatus"));
-    	Ext.getCmp('SoundAlertViewSlider').setValue(App.Global.getLocalValue("soundVolume"));
+    	Ext.getCmp('SoundAlertViewSetAlertCheckboxfield').setChecked(App.Global.getLocalValue("alertStatus"));
+    	Ext.getCmp('SoundAlertViewSpinnerfieldStart').setValue(App.Global.getLocalValue("startHour"));
+    	Ext.getCmp('SoundAlertViewSpinnerfieldEnd').setValue(App.Global.getLocalValue("endHour"));
     	Ext.getCmp('SoundAlertViewAlertHours').setChecked(App.Global.getLocalValue("alertHours"));
     	Ext.getCmp('SoundAlertViewOverrideIndividualAlerts').setChecked(App.Global.getLocalValue("overrideIndividualAlerts"));
-    	Ext.getCmp('ChangeLanguageViewSelectField').setValue(App.Global.getLocalValue("language"));*/
+    	Ext.getCmp('ChangeLanguageViewSelectField').setValue(App.Global.getLocalValue("language"));
+    	App.Global.setAlertHoursDisable(App.Global.getLocalValue("alertHours"));
     },
 
     goToFirstView: function() {
@@ -115,56 +117,11 @@ Ext.define('Global', {
     		App.mainView.setActiveItem(3);	
     	}
     },
-
-	refreshHourLists: function () {
-		this.fireSoundAlertSelectfieldEvent = false;
-		this.changeHourListValue(Ext.getStore('HourListStart'), App.Global.getLocalValue('endHour'));
-		Ext.getCmp('SoundAlertViewSelectfieldStart').setValue(App.Global.getLocalValue('startHour'));
-		this.changeHourListValue(Ext.getStore('HourListEnd'), App.Global.getLocalValue('startHour'));
-		Ext.getCmp('SoundAlertViewSelectfieldEnd').setValue(App.Global.getLocalValue('endHour'));
-		this.fireSoundAlertSelectfieldEvent = true;
-	},
-	
-	setAlertHoursDisable: function(disable) {
-    	Ext.getCmp('SoundAlertViewSelectfieldStart').setDisabled(disable.toLowerCase() === 'true');
-    	Ext.getCmp('SoundAlertViewSelectfieldEnd').setDisabled(disable.toLowerCase() === 'true');
-    	App.Global.saveLocalValue('alertHours',disable);
-	},
-	
-	changeHourLists: function (oldValue, newValue) {
-		this.fireSoundAlertSelectfieldEvent = false;
-		var hourListStartStore = Ext.getStore('HourListStart');
-		var hourListEndStore = Ext.getStore('HourListEnd');
-		if(App.Global.getLocalValue('startHour') == oldValue) {
-			this.changeHourListValue(hourListEndStore, newValue);
-			App.Global.saveLocalValue('startHour', newValue);
-			Ext.getCmp('SoundAlertViewSelectfieldEnd').setStore(hourListEndStore);
-			this.setSelectfieldValue(Ext.getCmp('SoundAlertViewSelectfieldEnd'), App.Global.getLocalValue('endHour'));
-		}else {
-			this.changeHourListValue(hourListStartStore, newValue);
-			App.Global.saveLocalValue('endHour', newValue);
-			Ext.getCmp('SoundAlertViewSelectfieldStart').setStore(hourListStartStore);
-			this.setSelectfieldValue(Ext.getCmp('SoundAlertViewSelectfieldStart'), App.Global.getLocalValue('startHour'));
-		}
-		this.fireSoundAlertSelectfieldEvent = true;
-	},
     
-	changeHourListValue: function (store, newValue) {
-		this.setDefaultHoursToHourStore(store);
-		store.removeAt(newValue - 1);
-	},
-	
-	setSelectfieldValue: function (selectfield, value) {
-		this.fireSoundAlertSelectfieldEvent = false;
-		selectfield.setValue(value);
-		this.fireSoundAlertSelectfieldEvent = true;
-	},
-	
-	setDefaultHoursToHourStore: function (store) {
-		store.removeAll();
-		for(var i=1;i<=24;i++) {
-			store.add({id: i});
-		}
+	setAlertHoursDisable: function(disable) {
+    	Ext.getCmp('SoundAlertViewSpinnerfieldStart').setDisabled(disable.toLowerCase() === 'true');
+    	Ext.getCmp('SoundAlertViewSpinnerfieldEnd').setDisabled(disable.toLowerCase() === 'true');
+    	App.Global.saveLocalValue('alertHours',disable);
 	},
 	
 //---------------------------------------------------
