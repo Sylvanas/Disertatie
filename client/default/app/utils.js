@@ -267,12 +267,17 @@ Ext.define('Global', {
 	},
 	
 	ShouldAlertDueToIgnoreHours: function(){
-		return true;
-		if(App.Global.getLocalValue('alertHours')){ return true; }
+		if(App.Global.getLocalValue('alertHours') == 'true')
+		{ 
+			return true; 
+		}
 		var currentDate = new Date();
 		var currentHourCount = currentDate.getHours();
 		var startHour = App.Global.getLocalValue('startHour');
 		var endHour = App.Global.getLocalValue('endHour');
+		if(startHour == endHour) {
+			return true;
+		}
 		if(startHour<endHour){
 			if(currentHourCount > startHour && currentHourCount < endHour){
 				return false;
