@@ -17,6 +17,7 @@ Ext.define('App.view.ConfigurationView', {
     		{
     			xtype : 'button',
     			text: 'Change Language',
+    			disabled: true,
     			id: 'ConfigurationViewChangeLanguageButton',
     			style : 'margin: 10px',
     		},

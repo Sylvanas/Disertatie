@@ -332,8 +332,8 @@ function actualSendGeoData(){
 				addToResponse = true;
 			} //test data from those elses
 			else 
-				if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 0.01 && locationToAdd.time - friendLocation.time < 60*1000 
-					&& KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) > 0.01 ){
+				if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 0.005 && locationToAdd.time - friendLocation.time < 60*1000 
+					&& KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, lastFriendLocation.latitude, lastFriendLocation.longitude) > 0.005 ){
 					addToResponse = true;
 				} else 
 					if(KMDistanceBetweenTwoLocations(locationToAdd.latitude, locationToAdd.longitude, friendLocation.latitude, friendLocation.longitude) < 2 && locationToAdd.time - friendLocation.time < 60*1000 
